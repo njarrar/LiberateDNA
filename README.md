@@ -5,7 +5,7 @@
 LiberateDNA reads your raw DNA file right in your web browser and shows your heritage,
 health, traits and drug response. Your file never leaves your machine.
 
-**[Open LiberateDNA](https://njarrar.github.io/LiberateDNA/)**
+**[Open LiberateDNA](https://njarrar.github.io/LiberateDNA/)** · Version 3.1.0 · English, العربية, Français
 
 ![Home page](docs/screenshots/home.png)
 
@@ -33,6 +33,44 @@ anyone else.
 - **Open source.** Every line is in this repository under the MIT license, so anyone can
   check what it does.
 
+## What's new in 3.1.0
+
+- **Languages.** LiberateDNA now speaks English, Arabic and French. Pick one on the home page,
+  in the sidebar or in the menu; the choice is remembered on your device. It also follows your
+  browser's language on first visit, and `?lang=ar` or `?lang=fr` in the address works too.
+- **Right to left.** In Arabic the whole layout mirrors: sidebar on the right, text and
+  controls read right to left. Chromosome positions keep their left to right scale.
+- **Translations anyone can add.** Each language is a plain XML file in [`lang/`](lang/).
+  Copy `en.xml`, translate it and open a pull request. You can test a file first with
+  **Load a translation file**, which uses it in your browser only.
+- The version and a link to the source now show on the home page.
+
+### 3.0.0
+
+- Heritage worked out from your own file against 36 reference groups, with a map, ranges,
+  chromosome painting and deep maternal and paternal lines.
+- Renamed to LiberateDNA, with the privacy promise on the home page.
+
+## Languages
+
+| | |
+|---|---|
+| ![Arabic home page](docs/screenshots/arabic-home.png) | ![Arabic heritage page](docs/screenshots/arabic-heritage.png) |
+
+All three languages ship inside the one `index.html`, so they work offline too. To add a
+language or fix a translation, see [lang/README.md](lang/README.md). Every entry pairs the
+English text with its translation:
+
+```xml
+<entry>
+  <source>Explore your DNA without sharing it</source>
+  <translation>استكشف حمضك النووي دون مشاركته</translation>
+</entry>
+```
+
+Values such as numbers and names appear as `{0}`, `{1}`, so a translation can place them
+wherever its grammar needs. Anything left empty falls back to English.
+
 ## What it shows
 
 | | |
@@ -45,7 +83,7 @@ anyone else.
 | **Health.** Risk factors, carrier status and drug response, with sensitive results hidden until you ask. | **Traits.** Lactose tolerance, caffeine, eye color and more. |
 
 It also has an **Explorer** to search every marker in your file, a **doctor summary** you
-can print, four color themes and a phone layout.
+can print, four color themes, three languages and a phone layout.
 
 <p align="center"><img src="docs/screenshots/mobile-home.png" width="260" alt="Phone home page"> <img src="docs/screenshots/mobile-heritage.png" width="260" alt="Phone heritage page"></p>
 
@@ -102,6 +140,7 @@ writes `src/ref.js` and `node src/refcheck.js` scores the held-out people and st
 figures shown in the app.
 
 ## Preview options (URL parameters)
+- `?lang=en|ar|fr`
 - `?theme=lab|dark|warm|poster`
 - `?start=upload|dashboard`
 - `?tab=overview|heritage|health|traits|explorer` and `?sub=risks|carrier|drugs`
@@ -110,12 +149,13 @@ figures shown in the app.
 - `?layout=desktop|mobile`
 
 ## Building from source
-`src/` holds the parts. `python3 src/build.py out.html` rebuilds the single file; it
+`src/` holds the parts. `python3 src/build.py index.html` rebuilds the single file, bundling
+every language in `lang/`; it
 expects Preact + htm (`htm/preact/standalone.umd.js`) and `@phosphor-icons/web` 2.1.1
 unpacked in a `deps/` folder next to `src/`.
 
 ## Tests
-`tests/` holds Playwright scripts and sample files (a normal zip, a phased zip, a zip with password `hunter2`, an AncestryDNA export, a cut-off file and an empty file). `tests/files/make_me.py` builds three more: a Middle Eastern style male file (J1 lines, Arabian lactase variant, G6PD, an i-number duplicate), the same as CSV, and a female file whose Y rows are single-dash no-calls. `genome_Full_her.txt` is a held-out Palestinian man from the reference build, used to check the Heritage page; `node tests/fixtest.js` checks them. Serve the folder (`python3 -m http.server 8765`), then run `node tests/realtest.js` from inside `tests/` with Playwright installed.
+`tests/` holds Playwright scripts and sample files (a normal zip, a phased zip, a zip with password `hunter2`, an AncestryDNA export, a cut-off file and an empty file). `tests/files/make_me.py` builds three more: a Middle Eastern style male file (J1 lines, Arabian lactase variant, G6PD, an i-number duplicate), the same as CSV, and a female file whose Y rows are single-dash no-calls. `genome_Full_her.txt` is a held-out Palestinian man from the reference build, used to check the Heritage page; `node tests/fixtest.js` checks them. Serve the folder (`python3 -m http.server 8765`), then run `node tests/realtest.js` from inside `tests/` with Playwright installed. `node tests/i18ntest.js` checks language switching, the right to left layout and that no translated text is left in English; `LANGS=en,ar,fr node tests/sweep.js` checks every theme and language at desktop and phone widths.
 
 ## License
 

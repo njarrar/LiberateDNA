@@ -12,6 +12,6 @@ const { chromium } = require('playwright');
   const out = (await p.innerText('[aria-live=polite] >> nth=1')).replace(/\n+/g, ' | ');
   console.log(out.slice(200, 900));
   console.log(/Pathogenic/.test(out) && /0\.033/.test(out) ? 'PASS second hit read' : 'FAIL second hit not read');
-  await p.screenshot({ path: 'mock-lookup.png' });
+  await p.screenshot({ path: '../shots/mock-lookup.png' });
   await b.close();
 })();

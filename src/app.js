@@ -1,5 +1,17 @@
 /* LiberateDNA app shell and report views. */
-const { html, render, Component } = htmPreact;
+const { render, Component } = htmPreact;
+const APP_VERSION = '3.1.0';
+const notr = html.keep;
+/* Page language, direction and, for scripts the theme fonts lack, a matching web font. */
+function applyLang() {
+  const d = document.documentElement; d.lang = I18N.code; d.dir = I18N.dir;
+  const fam = I18N.fontName;
+  if (fam && !document.querySelector(`link[data-font="${fam}"]`)) {
+    const l = document.createElement('link'); l.rel = 'stylesheet'; l.dataset.font = fam;
+    l.href = 'https://fonts.googleapis.com/css2?family=' + encodeURIComponent(fam).replace(/%20/g, '+') + ':wght@400;500;600;700&display=swap';
+    document.head.appendChild(l);
+  }
+}
 
 const P = (() => { const o = {}; try { new URLSearchParams(location.search).forEach((v, k) => o[k] = v); } catch (e) {} return o; })();
 const ls = {
@@ -26,7 +38,7 @@ const Pips = n => html`<span aria-hidden="true" style="display:flex;gap:3px">${[
 const Copies = (n, eff) => html`<span style="display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink)">${Pips(n)}${n == null ? 'Not called in your file' : copiesLabel(n, eff)}</span>`;
 const Rare = text => html`<span style="align-self:flex-start;display:flex;gap:6px;font-size:13px;line-height:1.5;font-weight:600;padding:6px 10px;border-radius:var(--r);color:var(--l2f);background:var(--l2b)"><i class="ph ph-seal-warning" style="flex:none;margin-top:2px"></i><span>${text}</span></span>`;
 const ErrIcon = (icon, k) => html`<span style="flex:none;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:var(--rc);color:var(--l${k}f);background:var(--l${k}b)"><i class=${'ph ' + icon} style="font-size:22px"></i></span>`;
-const today = () => new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+const today = () => new Date().toLocaleDateString(I18N.locale, { month: 'short', day: 'numeric', year: 'numeric' });
 const DB_LINKS = {
   ClinVar: id => `https://www.ncbi.nlm.nih.gov/snp/${id}`,
   SNPedia: id => `https://www.snpedia.com/index.php/${id[0].toUpperCase() + id.slice(1)}`,
@@ -64,7 +76,11 @@ class LiberateDNA extends Component {
     let theme = P.theme && THEMES[P.theme] ? P.theme : ls.get('locus-theme');
     if (!THEMES[theme]) theme = 'lab';
     let saved = null; try { saved = JSON.parse(ls.get('locus-saved') || 'null'); } catch (e) {}
-    this.state = Object.assign({ theme, saved, phase: 'upload', tab: P.tab || 'overview', sub: P.sub || 'risks', step: 0,
+    try { const x = ls.get('locus-lang-file'); if (x) I18N.add(x); } catch (e) { ls.del('locus-lang-file'); }
+    const have = I18N.list().map(l => l.code), nav = ((navigator.languages || [navigator.language || 'en'])[0] || 'en').slice(0, 2).toLowerCase();
+    let lang = [P.lang, ls.get('locus-lang'), nav].find(c => c && have.includes(c)) || 'en';
+    lang = I18N.load(lang); applyLang();
+    this.state = Object.assign({ theme, lang, langErr: '', saved, phase: 'upload', tab: P.tab || 'overview', sub: P.sub || 'risks', step: 0,
       err: null, errFile: '', vendor: '', errText: '', pw: '', pwErr: false, pwWrong: false, slow: false, q: '', live: false, sel: 'rs4988235', xsel: null, ask: null, lk: {}, lkData: {},
       open: null, rev: {}, fine: true, look: false, report: false, term: null, scan: 'idle', scanStep: 0, segSel: null, w: window.innerWidth, drag: false,
       real: null, rows: 0, est: 0, xrows: [], xtotal: 0, hasStore: false, attachErr: '' }, this.sample(P.sample || 'phased'));
@@ -141,7 +157,7 @@ class LiberateDNA extends Component {
     if (m.type === 'search') { if (m.q === this.state.q.trim().toLowerCase()) this.setState({ xrows: m.rows, xtotal: m.total }); return; }
     if (m.id && m.id === this._attachJob) {
       if (m.type === 'done') { this.setState({ attaching: false }); this.attachPhased(this._attachName); }
-      else if (m.type === 'error') this.setState({ attaching: false, attachErr: m.code === 'vendor' ? `That looks like an ${m.vendor} file. Add the phased file from 23andMe.` : "We couldn't read that file. Try the phased genotype zip from 23andMe." });
+      else if (m.type === 'error') this.setState({ attaching: false, attachErr: m.code === 'vendor' ? t('That looks like an {0} file. Add the phased file from 23andMe.', m.vendor) : "We couldn't read that file. Try the phased genotype zip from 23andMe." });
       return;
     }
     if (m.type === 'step') { if (this.state.phase === 'parsing') this.setState({ step: m.step, rows: m.rows != null ? m.rows : this.state.rows, est: m.est || this.state.est }); return; }
@@ -186,6 +202,22 @@ class LiberateDNA extends Component {
     this.setState(Object.assign({ saved: null, phase: 'upload', report: false, look: false, err: null, rev: {}, lk: {}, lkData: {}, scan: 'idle', q: '', xrows: [], hasStore: false, open: null }, this.sample('phased')));
   }
   setTheme(t) { ls.set('locus-theme', t); this.setState({ theme: t, look: false }); this._returnFocus(); }
+  setLang(code) { const c = I18N.load(code); ls.set('locus-lang', c); applyLang(); this.setState({ lang: c, langErr: '' }); }
+  loadLangFile(f) {
+    if (!f) return;
+    f.text().then(x => { const p = I18N.add(x); ls.set('locus-lang-file', x); this.setLang(p.code); })
+      .catch(e => this.setState({ langErr: (e && e.message) || t('That file could not be read.') }));
+  }
+  langButtons() {
+    const s = this.state;
+    return html`<div style="display:flex;flex-wrap:wrap;gap:8px">
+      ${I18N.list().map(l => { const on = l.code === s.lang; return html`<button onClick=${() => this.setLang(l.code)} aria-pressed=${on ? 'true' : 'false'} lang=${l.code} dir=${l.dir} style="min-height:44px;padding:0 14px;border:var(--bw) solid ${on ? 'var(--accent)' : 'var(--line)'};border-radius:var(--rc);background:var(--surface);color:var(--ink);font:inherit;font-size:14px;font-weight:600;cursor:pointer">${notr(l.name)}</button>`; })}
+      <label style="min-height:44px;padding:0 12px;display:inline-flex;align-items:center;gap:6px;border:var(--bw) dashed var(--ctl);border-radius:var(--rc);font-size:13px;font-weight:600;color:var(--muted);cursor:pointer"><i class="ph ph-upload-simple" aria-hidden="true"></i>Load a translation file
+        <input type="file" accept=".xml,text/xml,application/xml" onChange=${e => { this.loadLangFile(e.target.files && e.target.files[0]); e.target.value = ''; }} style="position:absolute;width:1px;height:1px;opacity:0" /></label>
+    </div>
+    ${s.langErr && html`<span role="alert" style="font-size:13px;font-weight:600;color:var(--l2f)">${s.langErr}</span>`}`;
+  }
+
   closeLook() { this.setState({ look: false }); this._returnFocus(); }
   closeReport() { this.setState({ report: false }); this._returnFocus(); }
   _returnFocus() { const el = this._opener; this._opener = null; if (el && el.isConnected) setTimeout(() => el.focus(), 0); }
@@ -214,16 +246,16 @@ class LiberateDNA extends Component {
       if (want.includes('ClinVar')) {
         const rcv = hits.flatMap(h => h && h.clinvar ? [].concat(h.clinvar.rcv || []) : []);
         const sig = [...new Set(rcv.map(x => x.clinical_significance).filter(Boolean))];
-        res.ClinVar = { live: true, val: sig.length ? sig.slice(0, 2).join('; ') : 'No ClinVar record', sub: sig.length ? `${rcv.length} submission records` : 'Not classified in ClinVar' };
+        res.ClinVar = { live: true, val: sig.length ? sig.slice(0, 2).join('; ') : 'No ClinVar record', sub: sig.length ? t('{0} submission records', rcv.length) : 'Not classified in ClinVar' };
       }
       if (want.includes('gnomAD')) {
         const afOf = h => { const g = h && (h.gnomad_genome || h.gnomad_exome); return g && g.af && g.af.af; };
         const afs = hits.map(afOf).filter(x => x != null);
-        res.gnomAD = { live: true, val: afs.length ? `Allele frequency ${afs.map(x => Number(x).toPrecision(2)).join(', ')}` : 'Not in gnomAD', sub: afs.length > 1 ? 'One value per alternate allele, all populations' : 'All populations combined' };
+        res.gnomAD = { live: true, val: afs.length ? t('Allele frequency {0}', afs.map(x => Number(x).toPrecision(2)).join(', ')) : 'Not in gnomAD', sub: afs.length > 1 ? 'One value per alternate allele, all populations' : 'All populations combined' };
       }
     }).catch(() => { if (want.includes('ClinVar')) res.ClinVar = { fallback: true }; if (want.includes('gnomAD')) res.gnomAD = { fallback: true }; }));
     if (isRs && want.includes('Ensembl')) tasks.push(fetchJSON(`https://rest.ensembl.org/variation/human/${rsid}?content-type=application/json`).then(j => {
-      res.Ensembl = { live: true, val: (j.most_severe_consequence || 'Unknown consequence').replace(/_/g, ' '), sub: j.MAF != null ? `Minor allele ${j.minor_allele}, frequency ${j.MAF}` : 'Ensembl GRCh38 record' };
+      res.Ensembl = { live: true, val: (j.most_severe_consequence || 'Unknown consequence').replace(/_/g, ' '), sub: j.MAF != null ? t('Minor allele {0}, frequency {1}', j.minor_allele, j.MAF) : 'Ensembl GRCh38 record' };
     }).catch(() => { res.Ensembl = { fallback: true }; }));
     if (isRs && want.includes('SNPedia')) tasks.push((forceFail ? new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 900)) : fetchJSON(`https://bots.snpedia.com/api.php?action=query&titles=${rsid[0].toUpperCase() + rsid.slice(1)}&format=json&origin=*`)).then(j => {
       const pages = j && j.query && j.query.pages ? Object.values(j.query.pages) : [];
@@ -262,7 +294,7 @@ class LiberateDNA extends Component {
     const nocallN = total - called;
     const callRate = (called / Math.max(total, 1) * 100).toFixed(2) + '%';
     const ftypeLabel = s.file2 ? 'Full genome + phased' : phased ? 'Phased genotype' : 'Full genome';
-    const chipLabel = '23andMe ' + s.chip + ' chip';
+    const chipLabel = t('23andMe {0} chip', s.chip);
     const yCalls = (chr.find(c => c[0] === 'Y') || [0, 0, 0])[2];
 
     const health = buildHealth(G, xx).map(h => { const hidden = !!h.sens && !rev[h.id]; return { ...h, hidden, shown: !hidden, ...lv(h.level) }; });
@@ -292,8 +324,8 @@ class LiberateDNA extends Component {
 
   render() {
     const D = this.derive(), s = this.state, T = D.T;
-    const rootStyle = Object.assign({}, T.vars, { position: 'fixed', inset: '0', display: 'flex', flexDirection: 'column', fontFamily: 'var(--font)', color: 'var(--ink)', background: 'var(--bg)', overflow: 'hidden' });
-    return html`<div data-locus-root="1" class=${'locus theme-' + s.theme} style=${rootStyle}>
+    const rootStyle = Object.assign({}, T.vars, I18N.font ? { '--font': `${I18N.font}, ${T.vars['--font'] || 'system-ui, sans-serif'}` } : {}, { position: 'fixed', inset: '0', display: 'flex', flexDirection: 'column', fontFamily: 'var(--font)', color: 'var(--ink)', background: 'var(--bg)', overflow: 'hidden' });
+    return html`<div data-locus-root="1" class=${'locus theme-' + s.theme} lang=${s.lang} dir=${I18N.dir} style=${rootStyle}>
       <input id=${this.inputId} type="file" accept=".zip,.txt" onChange=${e => { const f = e.target.files && e.target.files[0]; if (!f) return; if (this._attach) { this._attach = false; this.attachReal(f); } else this.pickFile(f); }} tabindex="-1" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;left:-10px;top:-10px" />
       <div class="locus-shell" style="flex:1;min-height:0;display:flex;flex-direction:column" inert=${s.look || s.report ? true : undefined} aria-hidden=${s.look || s.report ? 'true' : undefined}>
         ${s.phase === 'upload' && this.viewUpload(D)}
@@ -311,7 +343,7 @@ class LiberateDNA extends Component {
       if (!big) return html`<button onClick=${() => this.setTheme(id)} aria-pressed=${on ? 'true' : 'false'} style="display:flex;align-items:center;gap:8px;min-height:44px;padding:6px 12px 6px 6px;border:var(--bw) solid ${on ? 'var(--accent)' : 'var(--line)'};border-radius:var(--rc);background:var(--surface);color:var(--ink);font:inherit;font-size:13px;font-weight:600;cursor:pointer">
           <span style="width:30px;height:30px;border-radius:var(--rc);background:${swBg};border:1px solid ${swLine};display:flex;align-items:flex-end;padding:4px;gap:3px;overflow:hidden"><span style="flex:1;height:60%;background:${swAccent}"></span><span style="flex:1;height:35%;background:${swInk}"></span></span>
           ${t.name}</button>`;
-      return html`<button onClick=${() => this.setTheme(id)} aria-pressed=${on ? 'true' : 'false'} style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center;padding:8px;border:var(--bw) solid ${on ? 'var(--accent)' : 'var(--line)'};border-radius:var(--r);background:var(--surface);color:var(--ink);font:inherit;text-align:left;cursor:pointer">
+      return html`<button onClick=${() => this.setTheme(id)} aria-pressed=${on ? 'true' : 'false'} style="display:grid;grid-template-columns:56px minmax(0,1fr) auto;gap:12px;align-items:center;padding:8px;border:var(--bw) solid ${on ? 'var(--accent)' : 'var(--line)'};border-radius:var(--r);background:var(--surface);color:var(--ink);font:inherit;text-align:start;cursor:pointer">
           <span style="width:56px;height:40px;border-radius:var(--rc);background:${swBg};border:1px solid ${swLine};display:flex;align-items:flex-end;padding:5px;gap:4px;overflow:hidden"><span style="flex:1;height:65%;background:${swAccent}"></span><span style="flex:1;height:40%;background:${swInk}"></span><span style="flex:1;height:25%;background:${swAccent};opacity:.5"></span></span>
           <span style="display:flex;flex-direction:column;gap:2px"><span style="font-size:14px;font-weight:700">${t.name}</span><span style="font-size:12px;color:var(--muted)">${t.desc}</span></span>
           ${on ? html`<i class="ph ph-check" aria-hidden="true" style="font-size:18px;color:var(--accent)"></i>` : html`<span></span>`}</button>`; });
@@ -339,17 +371,22 @@ class LiberateDNA extends Component {
           <p style="margin:0;font-size:17px;line-height:1.55;color:var(--muted);max-width:44ch">For people who have had their genome read, or have taken their raw data back from 23andMe and similar services. Add your file to see your heritage, health, traits and drug response.</p>
           <section aria-label="Privacy" style="${S.card};padding:18px 20px;display:flex;flex-direction:column;gap:12px;max-width:50ch">
             <div style="display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700"><i class="ph ph-lock-simple" aria-hidden="true" style="font-size:20px;color:var(--accent)"></i>Private by design</div>
-            <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.5;color:var(--muted)">
+            <ul style="margin:0;padding-inline-start:20px;display:flex;flex-direction:column;gap:6px;font-size:14px;line-height:1.5;color:var(--muted)">
               <li>Your file is read in this browser and stays on your machine. There is no server, no account and no upload.</li>
               <li>Nothing goes to any online service unless you choose to. Database lookups stay off until you turn them on, and then send only a marker name, never your genotypes.</li>
               <li>Your results are kept only in this browser so you can come back to them. Delete my data clears them at any time.</li>
             </ul>
             <p style="margin:0;font-size:13px;line-height:1.5;color:var(--muted)"><strong style="color:var(--ink)">Why it exists:</strong> most DNA tools ask you to upload your genome to their servers. LiberateDNA lets you explore it without handing it to anyone.</p>
           </section>
-          <div style="display:flex;flex-direction:column;gap:10px;padding-top:6px">
+          <div role="group" aria-label="Language" style="display:flex;flex-direction:column;gap:10px;padding-top:6px">
+            <span style="font-size:13px;font-weight:600"><i class="ph ph-translate" aria-hidden="true"></i> Language</span>
+            ${this.langButtons()}
+          </div>
+          <div style="display:flex;flex-direction:column;gap:10px">
             <span style="font-size:13px;font-weight:600" id="look-label">Look</span>
             <div role="group" aria-label="Choose a look" style="display:flex;flex-wrap:wrap;gap:8px">${this.themeButtons(false)}</div>
           </div>
+          <p style="margin:0;font-size:12px;line-height:1.5;color:var(--muted)">${t('Version {0}. Open source under the MIT license.', APP_VERSION)} <a href="https://github.com/njarrar/LiberateDNA" target="_blank" rel="noopener">${t('Code and translations on GitHub')}</a></p>
         </div>
         <div style="display:flex;flex-direction:column;gap:14px">
           ${s.saved && html`<div style="${S.card};padding:16px 18px;display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px">
@@ -373,7 +410,7 @@ class LiberateDNA extends Component {
             </label>
             <span id="pw-msg" aria-live="polite">${(s.pwErr || s.pwWrong) && html`<span style="display:inline-block;font-size:13px;font-weight:600;padding:4px 9px;border-radius:var(--rc);color:var(--l2f);background:var(--l2b)">${s.pwWrong ? "That password didn't open the file. Try again." : 'Enter the password to continue'}</span>`}</span>
             <div style="display:flex;gap:8px;flex-wrap:wrap"><button onClick=${unlock} style=${S.btnP}>Unlock and read</button><button onClick=${() => { this.setState({ err: null }); this.openPicker(); }} style=${S.btnS}>Choose another file</button></div>`)}
-          ${s.err === 'vendor' && errCard('ph-warning-circle', 1, `This looks like an ${s.vendor} file`, html`
+          ${s.err === 'vendor' && errCard('ph-warning-circle', 1, t('This looks like an {0} file', s.vendor), html`
             <p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted)">LiberateDNA reads 23andMe files for now. ${s.vendor} uses a different column layout and marker set, so the results would not be reliable.</p>
             <p style="margin:0;font-size:14px;line-height:1.6">To get your 23andMe file: Settings → 23andMe Data → Download raw data.</p>
             <button onClick=${() => { this.setState({ err: null }); this.openPicker(); }} style="${S.btnP};align-self:flex-start">Choose another file</button>`)}
@@ -381,7 +418,7 @@ class LiberateDNA extends Component {
             <p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted)">${s.errText || 'The file is empty or ends partway through, which usually means the download was cut off. Download it again from 23andMe: Settings → 23andMe Data → Download raw data.'}</p>
             <button onClick=${() => { this.setState({ err: null }); this.openPicker(); }} style="${S.btnP};align-self:flex-start">Choose another file</button>`)}
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;font-size:14px;color:var(--muted)">
-            <span style="margin-right:4px">No file handy? Try a sample:</span>
+            <span style="margin-inline-end:4px">No file handy? Try a sample:</span>
             ${[['phased', 'Phased, XY'], ['full', 'Full genome'], ['xx', 'Phased, no Y data']].map(([v, label]) => html`<button class="hov-ink" onClick=${() => this.startSample(v)} style="min-height:40px;padding:0 14px;border:var(--bw) solid var(--ctl);border-radius:var(--rc);background:var(--surface);color:var(--ink);font:inherit;font-size:13px;font-weight:600;cursor:pointer">${label}</button>`)}
           </div>
         </div>
@@ -395,7 +432,7 @@ class LiberateDNA extends Component {
     const totalShown = s.real ? s.real.rows : D.total;
     const rows = s.real ? s.real.rows : s.est ? s.rows : Math.round(Math.min(s.step + 1, 6) / 6 * D.total);
     const est = s.real ? s.real.rows : s.est || D.total;
-    const STEPS = [`Unzipping ${s.file}`, `Reading ${s.real ? fmt(totalShown) : s.est && !s.real ? 'about ' + fmt(est) : fmt(D.total)} genotype rows`, `Detected ${D.chipLabel}, build GRCh37`, `File type: ${D.phased ? 'phased genotype (parent of origin known)' : 'full genome (unphased)'}`, 'Comparing with reference populations', 'Building your report'];
+    const STEPS = [t('Unzipping {0}', s.file), (s.est && !s.real ? t('Reading about {0} genotype rows', fmt(est)) : t('Reading {0} genotype rows', s.real ? fmt(totalShown) : fmt(D.total))), t('Detected {0}, build GRCh37', D.chipLabel), (D.phased ? t('File type: phased genotype (parent of origin known)') : t('File type: full genome (unphased)')), 'Comparing with reference populations', 'Building your report'];
     const pct = s.est && s.step <= 1 && !s.real ? Math.min(30, 4 + s.rows / Math.max(est, 1) * 26) : Math.round(Math.min(s.step, 6) / 6 * 100);
     return html`<div style="flex:1;display:flex;align-items:center;justify-content:center;padding:24px;overflow:auto">
       <div role="status" aria-live="polite" style="width:100%;max-width:520px;display:flex;flex-direction:column;gap:20px">
@@ -426,7 +463,7 @@ class LiberateDNA extends Component {
     const topBtn = 'min-height:40px;padding:0 14px;border:var(--bw) solid var(--ctl);border-radius:var(--rc);background:transparent;color:var(--ink);font:inherit;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px';
     const pad = D.mobile ? '20px 16px 40px' : '32px clamp(20px,4vw,44px) 64px';
     return html`<div style="flex:1;min-height:0;display:flex;flex-direction:${side ? 'row' : 'column'}">
-      ${side && html`<aside style="width:252px;flex:none;background:var(--sideBg);border-right:var(--bw) solid var(--sideLine);display:flex;flex-direction:column;gap:20px;padding:22px 14px;overflow:auto">
+      ${side && html`<aside style="width:252px;flex:none;background:var(--sideBg);border-inline-end:var(--bw) solid var(--sideLine);display:flex;flex-direction:column;gap:20px;padding:22px 14px;overflow:auto">
         <div style="display:flex;align-items:center;gap:10px;padding:0 10px;font-weight:700;font-size:16px"><span style="width:13px;height:13px;border-radius:var(--rc);background:var(--accent)"></span>LiberateDNA</div>
         <div style="margin:0 4px;padding:12px;border:var(--bw) solid var(--line);border-radius:var(--r);background:var(--surface);display:flex;flex-direction:column;gap:6px">
           <div style="font-family:var(--mono);font-size:12px;word-break:break-all">${s.file}</div>
@@ -435,21 +472,23 @@ class LiberateDNA extends Component {
           <div style="display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)"><i class="ph ph-lock-simple" aria-hidden="true"></i>Read locally${s.saved ? ', saved on this device' : ''}</div>
         </div>
         <nav aria-label="Report sections" style="display:flex;flex-direction:column;gap:2px">
-          ${NAV.map(([id, label, icon, badge]) => { const on = s.tab === id; return html`<button onClick=${() => this.go(id)} aria-current=${on ? 'page' : 'false'} style="display:flex;align-items:center;gap:11px;min-height:42px;padding:0 12px;border:0;border-radius:var(--rc);background:${on ? 'var(--navOnB)' : 'transparent'};color:${on ? 'var(--navOnF)' : 'var(--ink)'};font:inherit;font-size:15px;font-weight:${on ? 600 : 500};text-align:left;cursor:pointer">
+          ${NAV.map(([id, label, icon, badge]) => { const on = s.tab === id; return html`<button onClick=${() => this.go(id)} aria-current=${on ? 'page' : 'false'} style="display:flex;align-items:center;gap:11px;min-height:42px;padding:0 12px;border:0;border-radius:var(--rc);background:${on ? 'var(--navOnB)' : 'transparent'};color:${on ? 'var(--navOnF)' : 'var(--ink)'};font:inherit;font-size:15px;font-weight:${on ? 600 : 500};text-align:start;cursor:pointer">
             <i class=${'ph ' + icon} aria-hidden="true" style="font-size:18px"></i><span style="flex:1">${label}</span>
-            ${badge ? html`<span aria-label=${`${badge} results to review`} style="min-width:22px;padding:2px 7px;border-radius:var(--rc);font-family:var(--mono);font-size:12px;font-weight:600;text-align:center;color:var(--l1f);background:var(--l1b)">${badge}</span>` : null}</button>`; })}
+            ${badge ? html`<span aria-label=${t('{0} results to review', badge)} style="min-width:22px;padding:2px 7px;border-radius:var(--rc);font-family:var(--mono);font-size:12px;font-weight:600;text-align:center;color:var(--l1f);background:var(--l1b)">${badge}</span>` : null}</button>`; })}
         </nav>
         <div style="margin-top:auto;display:flex;flex-direction:column;gap:8px;padding:0 4px">
+          <button onClick=${openLook} style=${sideBtn}><i class="ph ph-translate" aria-hidden="true"></i>${notr(I18N.list().find(l => l.code === s.lang).name)}</button>
           <button onClick=${openLook} style=${sideBtn}><i class="ph ph-palette" aria-hidden="true"></i>Look: ${D.T.name}</button>
           <button onClick=${openReport} style=${sideBtn}><i class="ph ph-file-text" aria-hidden="true"></i>Doctor summary</button>
           <button onClick=${reset} style=${sideBtn}><i class="ph ph-upload-simple" aria-hidden="true"></i>New file</button>
-          <button onClick=${() => this.forget()} style="min-height:36px;padding:0 12px;border:0;background:transparent;color:var(--muted);font:inherit;font-size:13px;text-decoration:underline;cursor:pointer;text-align:left">Delete my data</button>
+          <button onClick=${() => this.forget()} style="min-height:36px;padding:0 12px;border:0;background:transparent;color:var(--muted);font:inherit;font-size:13px;text-decoration:underline;cursor:pointer;text-align:start">Delete my data</button>
         </div>
       </aside>`}
       ${top && html`<header style="flex:none;background:var(--bg);border-bottom:var(--bw) solid var(--line)">
         <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px clamp(16px,3vw,32px);flex-wrap:wrap">
-          <div style="display:flex;align-items:baseline;gap:16px;min-width:0;flex-wrap:wrap"><span style="font-weight:800;font-size:18px">LOCUS</span><span style="font-family:var(--mono);font-size:12px;word-break:break-all">${s.file}${s.file2 ? ' + ' + s.file2 : ''}</span><span style="font-size:12px">${D.ftypeLabel}, ${D.chipLabel}, read locally</span></div>
+          <div style="display:flex;align-items:baseline;gap:16px;min-width:0;flex-wrap:wrap"><span style="font-weight:800;font-size:18px">LIBERATEDNA</span><span style="font-family:var(--mono);font-size:12px;word-break:break-all">${s.file}${s.file2 ? ' + ' + s.file2 : ''}</span><span style="font-size:12px">${D.ftypeLabel}, ${D.chipLabel}, read locally</span></div>
           <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button onClick=${openLook} style=${topBtn}><i class="ph ph-translate" aria-hidden="true"></i>Language</button>
             <button onClick=${openLook} style=${topBtn}><i class="ph ph-palette" aria-hidden="true"></i>Look</button>
             <button onClick=${openReport} style=${topBtn}>Doctor summary</button>
             <button onClick=${reset} style=${topBtn}>New file</button>
@@ -457,13 +496,13 @@ class LiberateDNA extends Component {
           </div>
         </div>
         <nav aria-label="Report sections" style="display:flex;border-top:var(--bw) solid var(--line)">
-          ${NAV.map(([id, label, , badge], ni) => { const on = s.tab === id; return html`<button onClick=${() => this.go(id)} aria-current=${on ? 'page' : 'false'} style="flex:1;min-height:52px;padding:0 18px;border:0;border-right:${ni === NAV.length - 1 ? '0' : 'var(--bw) solid var(--line)'};background:${on ? 'var(--navOnB)' : 'transparent'};color:${on ? 'var(--navOnF)' : 'var(--ink)'};font:inherit;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px">${label}${badge ? html`<span aria-label=${`${badge} results to review`} style="font-family:var(--mono);font-size:13px;font-weight:500;padding:1px 7px;color:var(--l1f);background:var(--l1b)">${badge}</span>` : null}</button>`; })}
+          ${NAV.map(([id, label, , badge], ni) => { const on = s.tab === id; return html`<button onClick=${() => this.go(id)} aria-current=${on ? 'page' : 'false'} style="flex:1;min-height:52px;padding:0 18px;border:0;border-inline-end:${ni === NAV.length - 1 ? '0' : 'var(--bw) solid var(--line)'};background:${on ? 'var(--navOnB)' : 'transparent'};color:${on ? 'var(--navOnF)' : 'var(--ink)'};font:inherit;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px">${label}${badge ? html`<span aria-label=${t('{0} results to review', badge)} style="font-family:var(--mono);font-size:13px;font-weight:500;padding:1px 7px;color:var(--l1f);background:var(--l1b)">${badge}</span>` : null}</button>`; })}
         </nav>
       </header>`}
       ${D.mobile && html`<header style="flex:none;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 8px 6px 16px;background:var(--sideBgM);border-bottom:var(--bw) solid var(--line)">
         <div style="display:flex;flex-direction:column;min-width:0"><span style="font-weight:700;font-size:16px">LiberateDNA</span><span style="font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${D.ftypeLabel}, read locally</span></div>
         <div style="display:flex;gap:2px">
-          <button onClick=${openLook} aria-label="Change look" style="width:44px;height:44px;border:0;background:transparent;color:var(--ink);font-size:20px;cursor:pointer"><i class="ph ph-palette" aria-hidden="true"></i></button>
+          <button onClick=${openLook} aria-label="Language and look" style="width:44px;height:44px;border:0;background:transparent;color:var(--ink);font-size:20px;cursor:pointer"><i class="ph ph-palette" aria-hidden="true"></i></button>
           <button onClick=${openReport} aria-label="Doctor summary" style="width:44px;height:44px;border:0;background:transparent;color:var(--ink);font-size:20px;cursor:pointer"><i class="ph ph-file-text" aria-hidden="true"></i></button>
           <button onClick=${reset} aria-label="New file" style="width:44px;height:44px;border:0;background:transparent;color:var(--ink);font-size:20px;cursor:pointer"><i class="ph ph-upload-simple" aria-hidden="true"></i></button>
         </div>
@@ -480,7 +519,7 @@ class LiberateDNA extends Component {
       ${D.mobile && html`<nav aria-label="Report sections" style="flex:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));background:var(--sideBgM);border-top:var(--bw) solid var(--line);padding-bottom:env(safe-area-inset-bottom)">
         ${NAV.map(([id, label, icon, badge]) => { const on = s.tab === id; return html`<button onClick=${() => this.go(id)} aria-current=${on ? 'page' : 'false'} style="min-height:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:0;background:transparent;color:${on ? 'var(--accent)' : 'var(--muted)'};font:inherit;font-size:11px;font-weight:${on ? 700 : 500};cursor:pointer;position:relative">
           <i class=${'ph ' + icon} aria-hidden="true" style="font-size:22px"></i>${label}
-          ${badge ? html`<span aria-label=${`${badge} results to review`} style="position:absolute;top:6px;left:calc(50% + 6px);min-width:18px;height:18px;padding:0 5px;border-radius:9px;font-size:11px;font-weight:700;line-height:18px;color:var(--l1f);background:var(--l1b)">${badge}</span>` : null}</button>`; })}
+          ${badge ? html`<span aria-label=${t('{0} results to review', badge)} style="position:absolute;top:6px;inset-inline-start:calc(50% + 6px);min-width:18px;height:18px;padding:0 5px;border-radius:9px;font-size:11px;font-weight:700;line-height:18px;color:var(--l1f);background:var(--l1b)">${badge}</span>` : null}</button>`; })}
       </nav>`}
     </div>`;
   }
@@ -496,15 +535,15 @@ class LiberateDNA extends Component {
     const regMeta = {}; REF_PANEL.regions.forEach(r => regMeta[r.id] = r);
     const confOf = (lo, hi, pct) => { const w = hi - lo; if (pct < 4) return ['Small, may be noise', 1]; return w <= 6 ? ['High confidence', 0] : w <= 14 ? ['Medium confidence', -1] : ['Low confidence', 1]; };
     const row = (m, x) => { const c = confOf(x.lo, x.hi, x.pct), cc = lv(c[1]); const lo = Math.max(0, Math.floor(Math.min(x.lo, x.pct))), hi = Math.ceil(Math.max(x.hi, x.pct));
-      return { ...m, pct: x.pct, lo, hi, pctLabel: Math.round(x.pct) + '%', range: lo === hi ? `About ${Math.round(x.pct)}%` : `${lo} to ${hi}%`, hasConf: true, confLabel: c[0], confFg: cc.fg, confBg: cc.bg, w: x.pct + '%', big: x.pct >= (mobile ? 30 : 12) }; };
+      return { ...m, pct: x.pct, lo, hi, pctLabel: Math.round(x.pct) + '%', range: lo === hi ? t('About {0}%', Math.round(x.pct)) : t('{0} to {1}%', lo, hi), hasConf: true, confLabel: c[0], confFg: cc.fg, confBg: cc.bg, w: x.pct + '%', big: x.pct >= (mobile ? 30 : 12) }; };
     const rows = (arr, m, subOf) => { const keep = arr.filter(x => x.pct >= 2).sort((a, b) => b.pct - a.pct).map(x => row({ ...m[x.id], sub: subOf(m[x.id]) }, x));
       const rest = 100 - keep.reduce((t, x) => t + x.pct, 0);
-      if (rest >= 0.5) keep.push({ id: 'other', name: 'Other groups', sub: 'Each under 2%', color: '#9a9a9a', on: '#111111', pct: rest, pctLabel: Math.round(rest) + '%', range: `About ${Math.max(1, Math.round(rest))}%`, hasConf: false, w: rest + '%', big: false });
+      if (rest >= 0.5) keep.push({ id: 'other', name: 'Other groups', sub: 'Each under 2%', color: '#9a9a9a', on: '#111111', pct: rest, pctLabel: Math.round(rest) + '%', range: t('About {0}%', Math.max(1, Math.round(rest))), hasConf: false, w: rest + '%', big: false });
       return keep; };
     const groups = rows(H.anc.groups, meta, g => g.sub);
-    const regions = rows(H.anc.regions, regMeta, r => REF_PANEL.groups.filter(g => g.region === r.id).map(g => g.name).slice(0, 4).join(', '));
-    const mat = H.mt && { hg: H.mt.hg, path: H.mt.path, via: 'mitochondrial DNA, from mother to every child', desc: lineInfo(MT_INFO, H.mt.hg), markers: `Placed on PhyloTree from ${fmt(H.mt.tested)} mitochondrial markers. Match score ${Math.round(H.mt.score * 100)}%.` };
-    const pat = !xx && H.y && { hg: H.y.short || H.y.hg, alt: H.y.short ? `ISOGG 2016: ${H.y.hg}` : '', path: H.y.path.filter(n => n !== 'Root'), via: 'the Y chromosome, from father to son', desc: lineInfo(Y_INFO, H.y.hg), markers: `Placed on the ISOGG tree from ${fmt(H.y.tested)} Y-chromosome markers; ${fmt(H.y.derived)} carry the branch mutations on your path.` };
+    const regions = rows(H.anc.regions, regMeta, r => I18N.join(REF_PANEL.groups.filter(g => g.region === r.id).map(g => g.name).slice(0, 4)));
+    const mat = H.mt && { hg: H.mt.hg, path: H.mt.path, via: 'mitochondrial DNA, from mother to every child', desc: lineInfo(MT_INFO, H.mt.hg), markers: t('Placed on PhyloTree from {0} mitochondrial markers. Match score {1}%.', fmt(H.mt.tested), Math.round(H.mt.score * 100)) };
+    const pat = !xx && H.y && { hg: H.y.short || H.y.hg, alt: H.y.short ? `ISOGG 2016: ${H.y.hg}` : '', path: H.y.path.filter(n => n !== 'Root'), via: 'the Y chromosome, from father to son', desc: lineInfo(Y_INFO, H.y.hg), markers: t('Placed on the ISOGG tree from {0} Y-chromosome markers; {1} carry the branch mutations on your path.', fmt(H.y.tested), fmt(H.y.derived)) };
     return { groups, regions, closest: H.anc.closest.map(c => meta[c.id]), paint: H.paint, used: H.anc.used, refPeople: REF_PANEL.groups.reduce((t, g) => t + g.n, 0), lines: { mat, pat } };
   }
 
@@ -512,7 +551,7 @@ class LiberateDNA extends Component {
     if (D.her) return { regRows: D.her.regions, popRows: D.her.groups, list: this.state.fine ? D.her.groups : D.her.regions };
     const mobile = D.mobile, s = this.state;
     const confMap = { high: ['High confidence', 0], medium: ['Medium confidence', -1], low: ['Low confidence', 1] };
-    const rowOf = p => { const c = confMap[p.conf]; const cc = lv(c ? c[1] : -1); return { ...p, pctLabel: Math.round(p.pct) + '%', range: p.lo != null ? `${p.lo} to ${p.hi}%` : `About ${Math.round(p.pct)}%`, hasConf: !!c, confLabel: c ? c[0] : '', confFg: cc.fg, confBg: cc.bg, w: p.pct + '%', big: p.pct >= (mobile ? 30 : 12) }; };
+    const rowOf = p => { const c = confMap[p.conf]; const cc = lv(c ? c[1] : -1); return { ...p, pctLabel: Math.round(p.pct) + '%', range: p.lo != null ? t('{0} to {1}%', p.lo, p.hi) : t('About {0}%', Math.round(p.pct)), hasConf: !!c, confLabel: c ? c[0] : '', confFg: cc.fg, confBg: cc.bg, w: p.pct + '%', big: p.pct >= (mobile ? 30 : 12) }; };
     const regRows = REGIONS.map(rowOf), popRows = POPS.map(rowOf);
     return { regRows, popRows, list: s.fine ? popRows : regRows };
   }
@@ -521,29 +560,29 @@ class LiberateDNA extends Component {
   /* ---------- Overview ---------- */
   viewOverview(D) {
     const s = this.state, A = this.ancestryRows(D), RR = A.regRows.filter(r => r.id !== 'other' && r.id !== 'un'), r1 = RR[0], r2 = RR[1], p1 = D.her ? D.her.closest[0] : POPS[0], L = D.lineage;
-    const aria = arr => arr.map(p => `${p.name} ${p.range}`).join(', ');
+    const aria = arr => I18N.join(arr.map(p => I18N.tr(p.name) + ' ' + p.range));
     const F = [];
     const apoe = D.health.find(h => h.id === 'apoe');
     if (D.rev.apoe && apoe.level === 2) F.push({ kind: 'Health', title: `APOE ${apoe.result.split(',')[0]}`, text: apoe.n === 2 ? "Two copies of ε4, linked to higher Alzheimer's risk" : "One copy of ε4, linked to higher Alzheimer's risk", level: 2, tab: 'health', sub: 'risks' });
     const brca = D.health.find(h => h.id === 'brca');
     if (D.rev.brca && brca.level === 2) F.push({ kind: 'Health', title: 'Possible BRCA variant', text: 'A mixed call at a BRCA founder variant needs a clinical test', level: 2, rare: true, tab: 'health', sub: 'risks' });
     D.health.filter(h => !h.sens && h.level === 2).forEach(h => F.push({ kind: 'Health', title: h.title, text: h.summary.split('.')[0], level: 2, tab: 'health', sub: 'risks' }));
-    D.drugs.filter(d => d.level === 2).forEach(d => F.push({ kind: 'Drug response', title: `${d.gene} ${d.pheno.toLowerCase()}`, text: d.note.split('.')[0], level: 2, rare: !!d.rare, tab: 'health', sub: 'drugs' }));
-    D.carriers.forEach(c => F.push({ kind: 'Carrier status', title: `${c.cond} ${c.affected ? 'variant, two copies' : 'carrier'}`, text: c.affected ? `Two copies of ${c.gene} ${c.variant}. Talk to a doctor about this result.` : `One copy of ${c.gene} ${c.variant}. Carriers usually have no symptoms.`, level: c.affected ? 2 : 1, rare: c.rare, tab: 'health', sub: 'carrier' }));
+    D.drugs.filter(d => d.level === 2).forEach(d => F.push({ kind: 'Drug response', title: `${d.gene} ${I18N.code === 'en' ? d.pheno.toLowerCase() : I18N.tr(d.pheno)}`, text: d.note.split('.')[0], level: 2, rare: !!d.rare, tab: 'health', sub: 'drugs' }));
+    D.carriers.forEach(c => F.push({ kind: 'Carrier status', title: (c.affected ? t('{0} variant, two copies', c.cond) : t('{0} carrier', c.cond)), text: c.affected ? t('Two copies of {0} {1}. Talk to a doctor about this result.', c.gene, c.variant) : t('One copy of {0} {1}. Carriers usually have no symptoms.', c.gene, c.variant), level: c.affected ? 2 : 1, rare: c.rare, tab: 'health', sub: 'carrier' }));
     D.health.filter(h => !h.sens && h.level === 1).slice(0, 1).forEach(h => F.push({ kind: 'Health', title: h.title, text: h.summary.split(',')[0].split('.')[0], level: 1, tab: 'health', sub: 'risks' }));
     const hid = D.hiddenH;
-    if (hid.length) F.push({ kind: 'Your choice', title: `${hid.length} sensitive result${hid.length > 1 ? 's' : ''} hidden`, text: `${hid.map(h => h.short).join(' and ')} stay${hid.length > 1 ? '' : 's'} hidden until you choose to see ${hid.length > 1 ? 'them' : 'it'}.`, level: -1, tab: 'health', sub: 'risks' });
+    if (hid.length) F.push({ kind: 'Your choice', title: hid.length > 1 ? t('{0} sensitive results hidden', hid.length) : t('1 sensitive result hidden'), text: hid.length > 1 ? t('{0} stay hidden until you choose to see them.', I18N.join(hid.map(h => h.short), true)) : t('{0} stays hidden until you choose to see it.', hid[0].short), level: -1, tab: 'health', sub: 'risks' });
     const chr = D.chr, maxC = Math.max(...chr.map(c => c[2]), 1);
     const autos = chr.slice(0, 22), minA = autos.reduce((a, c) => c[2] < a[2] ? c : a), maxR = chr.reduce((a, c) => c[2] > a[2] ? c : a);
     const mt = chr.find(c => c[0] === 'MT') || ['MT', 0, 0];
     const present = chr.filter(c => c[2] > 0).map(c => c[0]);
     const extra = ['X', 'Y', 'MT'].filter(c => present.includes(c));
-    const chromSummary = `Most markers on chromosome ${maxR[0]} (${fmt(maxR[2])}), fewest among numbered chromosomes on ${minA[0]} (${fmt(minA[2])}). ` + (D.yCalls === 0 ? 'No Y-chromosome markers, as expected for an XX file. ' : '') + `Mitochondrial DNA has ${fmt(mt[2])} markers. X, Y and mitochondrial bars are shown in grey.`;
+    const chromSummary = t('Most markers on chromosome {0} ({1}), fewest among numbered chromosomes on {2} ({3}).', maxR[0], fmt(maxR[2]), minA[0], fmt(minA[2])) + ' ' + (D.yCalls === 0 ? t('No Y-chromosome markers, as expected for an XX file.') + ' ' : '') + t('Mitochondrial DNA has {0} markers. X, Y and mitochondrial bars are shown in grey.', fmt(mt[2]));
     const stats = [
-      { label: 'Genotypes read', value: fmt(D.real ? D.total : D.total), sub: `${present.length} chromosomes incl. ${extra.length === 3 ? 'X, Y, MT' : extra.join(' and ')}` },
-      { label: 'Called', value: fmt(D.called), sub: fmt(D.nocallN) + ' no-calls' },
+      { label: 'Genotypes read', value: fmt(D.real ? D.total : D.total), sub: t('{0} chromosomes incl. {1}', present.length, extra.length === 3 ? 'X, Y, MT' : I18N.join(extra, true)) },
+      { label: 'Called', value: fmt(D.called), sub: t('{0} no-calls', fmt(D.nocallN)) },
       { label: 'Call rate', value: D.callRate, sub: 'Above 98% is good quality' },
-      { label: 'Inferred sex', value: s.sex, sub: D.yCalls === 0 ? 'No Y-chromosome calls' : fmt(D.yCalls) + ' Y-chromosome calls' },
+      { label: 'Inferred sex', value: s.sex, sub: D.yCalls === 0 ? 'No Y-chromosome calls' : t('{0} Y-chromosome calls', fmt(D.yCalls)) },
       { label: 'File type', value: D.phased ? 'Phased' : 'Full', sub: D.phased ? 'Parent of origin known' : 'Unphased genotypes' },
       { label: 'Chip and build', value: s.chip + ' / GRCh37', sub: 'Detected from marker set' }
     ];
@@ -560,14 +599,14 @@ class LiberateDNA extends Component {
         </div>
       </div>` : html`      <div style="${S.card};padding:clamp(20px,4vw,34px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:28px;align-items:center">
         <div style="display:flex;flex-direction:column;gap:14px">
-          <h1 id="h-ov" style="margin:0;font-size:var(--hero);font-weight:var(--h1w);letter-spacing:var(--h1t);font-stretch:var(--h1s);line-height:1.06;text-wrap:balance">${r2 && r2.pct >= 5 ? `Mostly ${r1.name}, with ${r2.name} roots` : `Mostly ${r1.name}`}</h1>
-          <p style="margin:0;font-size:16px;line-height:1.6;color:var(--muted);max-width:48ch;text-wrap:pretty">${D.her ? `About ${Math.round(r1.pct)}% ${r1.name}${r2 ? ` and ${Math.round(r2.pct)}% ${r2.name}` : ''}. ${D.real ? 'Your' : "The sample's"} closest reference group is ${p1.name}.` : `About ${Math.round(r1.pct)}% ${r1.name} and ${Math.round(r2.pct)}% ${r2.name}. Your largest single group is ${p1.name}, estimated at ${p1.lo} to ${p1.hi}%.`}</p>
+          <h1 id="h-ov" style="margin:0;font-size:var(--hero);font-weight:var(--h1w);letter-spacing:var(--h1t);font-stretch:var(--h1s);line-height:1.06;text-wrap:balance">${r2 && r2.pct >= 5 ? t('Mostly {0}, with {1} roots', r1.name, r2.name) : t('Mostly {0}', r1.name)}</h1>
+          <p style="margin:0;font-size:16px;line-height:1.6;color:var(--muted);max-width:48ch;text-wrap:pretty">${D.her ? (r2 ? t('About {0}% {1} and {2}% {3}.', Math.round(r1.pct), r1.name, Math.round(r2.pct), r2.name) : t('About {0}% {1}.', Math.round(r1.pct), r1.name)) + ' ' + (D.real ? t('Your closest reference group is {0}.', p1.name) : t("The sample's closest reference group is {0}.", p1.name)) : t('About {0}% {1} and {2}% {3}.', Math.round(r1.pct), r1.name, Math.round(r2.pct), r2.name) + ' ' + t('Your largest single group is {0}, estimated at {1} to {2}%.', p1.name, p1.lo, p1.hi)}</p>
           <button class="press" onClick=${() => this.go('heritage')} style="${S.btnP};align-self:flex-start;font-size:15px">See your heritage<i class="ph ph-arrow-right" aria-hidden="true"></i></button>
         </div>
         <div style="display:flex;flex-direction:column;gap:16px">
           ${D.T.ring && html`<div style="display:flex;justify-content:center"><div role="img" aria-label=${'Broad regions: ' + aria(A.regRows)} style="width:180px;height:180px;border-radius:50%;background:${this.conic(A.regRows)};display:flex;align-items:center;justify-content:center"><div style="width:112px;height:112px;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center"><span style="font-size:26px;font-weight:700">${Math.round(r1.pct)}%</span><span style="font-size:12px;color:var(--muted)">${r1.name}</span></div></div></div>`}
           <div role="img" aria-label=${'Broad regions: ' + aria(A.regRows)} style="display:flex;height:var(--barS);gap:2px;border-radius:var(--rc);overflow:hidden">
-            ${A.regRows.map(p => html`<div title=${`${p.name} ${p.range}`} style="width:${p.w};background:${p.color}"></div>`)}
+            ${A.regRows.map(p => html`<div title=${I18N.tr(p.name) + ' ' + p.range} style="width:${p.w};background:${p.color}"></div>`)}
           </div>
           <div style="display:flex;flex-direction:column;gap:8px">
             ${A.regRows.map(p => html`<div style="display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:14px"><span style="width:12px;height:12px;border-radius:var(--rc);background:${p.color}"></span><span>${p.name}</span><span style="font-family:var(--mono);color:var(--muted);white-space:nowrap">${p.range}</span></div>`)}
@@ -577,7 +616,7 @@ class LiberateDNA extends Component {
       <div style="display:flex;flex-direction:column;gap:14px">
         <h2 style=${S.h2}>Worth a closer look</h2>
         ${F.length ? html`<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px">
-          ${F.map(f => { const c = lv(f.level); return html`<button class="lift" onClick=${() => this.go(f.tab, f.sub)} style="display:flex;flex-direction:column;gap:10px;padding:18px;border:var(--bw) solid var(--card);border-radius:var(--r);background:var(--surface);box-shadow:var(--sh);font:inherit;color:inherit;text-align:left;cursor:pointer">
+          ${F.map(f => { const c = lv(f.level); return html`<button class="lift" onClick=${() => this.go(f.tab, f.sub)} style="display:flex;flex-direction:column;gap:10px;padding:18px;border:var(--bw) solid var(--card);border-radius:var(--r);background:var(--surface);box-shadow:var(--sh);font:inherit;color:inherit;text-align:start;cursor:pointer">
             <span style="align-self:flex-start;font-size:12px;font-weight:600;padding:4px 9px;border-radius:var(--rc);color:${c.fg};background:${c.bg}">${f.kind}</span>
             <span style="font-size:17px;font-weight:var(--tw);line-height:1.25">${f.title}</span>
             <span style="font-size:14px;line-height:1.5;color:var(--muted)">${f.text}</span>
@@ -595,7 +634,7 @@ class LiberateDNA extends Component {
         <div style="${S.card};padding:18px;display:flex;flex-direction:column;gap:12px">
           <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap"><h3 style="margin:0;font-size:15px;font-weight:600">Markers per chromosome</h3><span style="${S.mono12}">max ${fmt(maxC)}</span></div>
           <div aria-hidden="true" style="height:150px;display:flex;align-items:flex-end;gap:3px">
-            ${chr.map(([name, , n]) => html`<div title=${`Chromosome ${name}: ${fmt(n)}`} style="flex:1;min-width:0;height:${(n / maxC * 100).toFixed(1)}%;background:${/^(X|Y|MT)$/.test(name) ? 'var(--muted)' : 'var(--accent)'};border-radius:var(--rbar)"></div>`)}
+            ${chr.map(([name, , n]) => html`<div title=${t('Chromosome {0}: {1}', name, fmt(n))} style="flex:1;min-width:0;height:${(n / maxC * 100).toFixed(1)}%;background:${/^(X|Y|MT)$/.test(name) ? 'var(--muted)' : 'var(--accent)'};border-radius:var(--rbar)"></div>`)}
           </div>
           <div aria-hidden="true" style="display:flex;gap:3px;margin-top:-6px">
             ${chr.map(([name]) => html`<div style="flex:1;min-width:0;text-align:center;font-family:var(--mono);font-size:11px;color:var(--muted);overflow:hidden">${D.mobile && !/^(1|5|10|15|20|X|Y|MT)$/.test(name) ? '' : name === 'MT' ? 'M' : name}</div>`)}
@@ -611,7 +650,7 @@ class LiberateDNA extends Component {
     const s = this.state, H = D.her;
     if (!H) return this.viewHeritageExample(D);
     const list = s.fine ? H.groups : H.regions;
-    const aria = list.map(p => `${p.name} ${p.range}`).join(', ');
+    const aria = I18N.join(list.map(p => I18N.tr(p.name) + ' ' + p.range));
     const regById = {}; REF_PANEL.regions.forEach(r => regById[r.id] = r);
     const top = H.closest[0], top2 = H.closest[1];
     const who = D.real ? 'your file' : 'the sample';
@@ -626,7 +665,7 @@ class LiberateDNA extends Component {
     const vb = [Math.max(0, Math.min(1000 - vw, cx - vw / 2)), Math.max(0, Math.min(383 - vh, cy - vh / 2)), Math.min(vw, 1000), Math.min(vh, 383)];
     const k = vb[2] / 1000;
     const dots = REF_PANEL.groups.map(g => { const r = H.groups.find(x => x.id === g.id); const pct = r ? r.pct : 0; return { ...g, pct, x: X(g.lon), y: Y(g.lat), r: (pct >= 1 ? 4 + Math.sqrt(pct) * 2.6 : 2.2) * k * 1.6 }; }).sort((a, b) => a.pct - b.pct);
-    const map = html`<svg viewBox=${vb.join(' ')} role="img" aria-label=${'Map of reference groups. Largest matches: ' + shown.slice(0, 4).map(g => `${g.name} ${g.pctLabel}`).join(', ')} style="width:100%;height:auto;display:block;border-radius:var(--r);background:var(--soft)">
+    const map = html`<svg viewBox=${vb.join(' ')} role="img" aria-label=${t('Map of reference groups. Largest matches: {0}', I18N.join(shown.slice(0, 4).map(g => I18N.tr(g.name) + ' ' + g.pctLabel)))} style="width:100%;height:auto;display:block;border-radius:var(--r);background:var(--soft)">
       <path d=${WORLD_PATH} fill="var(--ctl)" fill-opacity="0.55" stroke="var(--muted)" stroke-opacity="0.35" stroke-width=${0.6 * k}></path>
       ${dots.map(d => html`<circle cx=${d.x} cy=${d.y} r=${d.r} fill=${d.pct >= 1 ? d.color : 'var(--muted)'} fill-opacity=${d.pct >= 1 ? 0.9 : 0.35} stroke=${d.pct >= 1 ? 'var(--surface)' : 'none'} stroke-width=${1.2 * k}><title>${d.name}${d.pct >= 1 ? ', ' + Math.round(d.pct) + '%' : ''}</title></circle>`)}
       ${shown.slice(0, 4).map(d => dots.find(x => x.id === d.id)).filter((dd, i, a) => a.slice(0, i).every(o => Math.abs(o.x - dd.x) > 60 * k || Math.abs(o.y - dd.y) > 14 * k)).slice(0, 3).map(dd => { const d = dd; return html`<text x=${dd.x + dd.r + 4 * k} y=${dd.y + 4 * k} font-size=${12 * k * 1.6} font-weight="600" fill="var(--ink)" stroke="var(--soft)" stroke-width=${3 * k} paint-order="stroke">${d.name}</text>`; })}
@@ -634,17 +673,17 @@ class LiberateDNA extends Component {
     // Painting
     const segName = id => regById[id].name, segCol = id => regById[id].color;
     const paint = (H.paint || []).map((cp2, ci) => { const name = String(ci + 1), len = CHR[ci][1]; let selText = '', selColor = '';
-      const copies = cp2.map((segs, i) => ({ label: `Chromosome ${name}, copy ${i + 1}: ` + [...new Set(segs.map(x => segName(x.pop)))].join(', '),
+      const copies = cp2.map((segs, i) => ({ label: t('Chromosome {0}, copy {1}: {2}', name, i + 1, I18N.join([...new Set(segs.map(x => segName(x.pop)))])),
         segs: segs.map((x, j) => { const key = name + '|' + i + '|' + j, a = x.s / 1e6, b = x.e / 1e6, l = b - a, on = s.segSel === key;
-          if (on) { selText = `Chromosome ${name}, copy ${i + 1}: ${a.toFixed(1)} to ${b.toFixed(1)} Mb (${l.toFixed(1)} Mb, ${Math.round(l / len * 100)}% of the chromosome). ${segName(x.pop)}.`; selColor = segCol(x.pop); }
-          return { key, w: (l / len * 100).toFixed(2) + '%', color: segCol(x.pop), title: `${segName(x.pop)}, ${a.toFixed(0)} to ${b.toFixed(0)} Mb`, on }; }) }));
+          if (on) { selText = t('Chromosome {0}, copy {1}: {2} to {3} Mb ({4} Mb, {5}% of the chromosome). {6}.', name, i + 1, a.toFixed(1), b.toFixed(1), l.toFixed(1), Math.round(l / len * 100), segName(x.pop)); selColor = segCol(x.pop); }
+          return { key, w: (l / len * 100).toFixed(2) + '%', color: segCol(x.pop), title: t('{0}, {1} to {2} Mb', segName(x.pop), a.toFixed(0), b.toFixed(0)), on }; }) }));
       return { name, w: (len / 249 * 100).toFixed(1) + '%', copies, selText, selColor }; });
     const paintRegions = REF_PANEL.regions.filter(r => (H.paint || []).some(c => c.some(cp => cp.some(x => x.pop === r.id))));
     const steps = arr => { const a = arr.length > 8 ? ['…'].concat(arr.slice(-7)) : arr; return a.map((n, i) => { const last = i === a.length - 1; return html`<span style="font-family:var(--mono);font-size:12px;padding:4px 8px;border-radius:var(--rc);background:${last ? 'var(--accent)' : 'var(--surface2)'};color:${last ? 'var(--onaccent)' : 'var(--ink)'}">${n}</span>`; }); };
     const lineCard = (label, icon, x) => html`<div style="${S.card};padding:22px;display:flex;flex-direction:column;gap:14px">
       <span aria-hidden="true" style="display:var(--iconDisp);width:52px;height:52px;border-radius:50%;background:var(--soft);align-items:center;justify-content:center"><i class=${'ph ' + icon} style="font-size:24px;color:var(--accent)"></i></span>
       <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:13px;font-weight:600;color:var(--muted)">${label}</span><span style="font-size:clamp(32px,4vw,44px);font-weight:var(--h1w);letter-spacing:-0.02em;font-stretch:var(--h1s);line-height:1;overflow-wrap:anywhere">${x.hg}</span>${x.alt && html`<span style="font-family:var(--mono);font-size:13px;color:var(--muted)">${x.alt}</span>`}<span style="font-size:13px;color:var(--muted)">Traced through ${x.via}</span></div>
-      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px" aria-label=${'Path: ' + x.path.join(', ')}>${steps(x.path)}</div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:6px" aria-label=${t('Path: {0}', x.path.join(', '))}>${steps(x.path)}</div>
       <p style="margin:0;font-size:15px;line-height:1.6;text-wrap:pretty">${x.desc}</p>
       ${x.desc2 && html`<p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted);text-wrap:pretty">${x.desc2}</p>`}
       <span style="font-size:13px;color:var(--muted)">${x.markers}</span>
@@ -679,7 +718,7 @@ class LiberateDNA extends Component {
         <div style="display:flex;flex-direction:column;gap:16px;grid-column:var(--chartSpan);min-width:0">
           ${D.T.ring && html`<div style="display:flex;justify-content:center"><div role="img" aria-label=${aria} style="width:min(240px,64vw);aspect-ratio:1;border-radius:50%;background:${this.conic(list)};display:flex;align-items:center;justify-content:center"><div style="width:62%;height:62%;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8px"><span style="font-size:28px;font-weight:700">${Math.round(list[0].pct)}%</span><span style="font-size:12px;color:var(--muted);line-height:1.3">${list[0].name}</span></div></div></div>`}
           <div role="img" aria-label=${aria} style="display:flex;height:var(--barH);gap:3px;border-radius:var(--rc);overflow:hidden">
-            ${list.map(p => html`<div title=${`${p.name} ${p.range}`} style="width:${p.w};min-width:0;background:${p.color};padding:${D.T.nav === 'top' ? '10px' : '0'};display:flex;flex-direction:column;justify-content:space-between;overflow:hidden">
+            ${list.map(p => html`<div title=${I18N.tr(p.name) + ' ' + p.range} style="width:${p.w};min-width:0;background:${p.color};padding:${D.T.nav === 'top' ? '10px' : '0'};display:flex;flex-direction:column;justify-content:space-between;overflow:hidden">
               ${p.big && html`<span style="display:var(--barLbl);font-size:clamp(20px,3vw,36px);font-weight:800;letter-spacing:-0.03em;line-height:1;color:${p.on}">${p.pctLabel}</span><span style="display:var(--barLbl);font-size:12px;font-weight:700;line-height:1.2;color:${p.on}">${p.name}</span>`}
             </div>`)}
           </div>
@@ -704,9 +743,9 @@ class LiberateDNA extends Component {
         <div style="font-size:14px;color:var(--muted)">Tap a segment to see its position, length and origin.</div>
         <div style="display:flex;flex-direction:column;gap:9px">
           ${paint.map(c => html`<div style="display:grid;grid-template-columns:26px minmax(0,1fr);gap:6px 10px;align-items:center">
-            <span style="font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right">${c.name}</span>
+            <span style="font-family:var(--mono);font-size:12px;color:var(--muted);text-align:end">${c.name}</span>
             <div style="width:${c.w};display:flex;flex-direction:column;gap:3px">
-              ${c.copies.map(cp => html`<div role="group" aria-label=${cp.label} style="display:flex;height:12px;border-radius:var(--rc);overflow:hidden">${cp.segs.map(sg => html`<button class="seg" aria-label=${sg.title} aria-pressed=${sg.on ? 'true' : 'false'} title=${sg.title} onClick=${() => this.setState({ segSel: this.state.segSel === sg.key ? null : sg.key })} style="width:${sg.w};flex:none;height:100%;padding:0;border:0;background:${sg.color};box-shadow:${sg.on ? 'inset 0 0 0 2px var(--ink), inset 0 0 0 4px var(--surface)' : 'none'};cursor:pointer"></button>`)}</div>`)}
+              ${c.copies.map(cp => html`<div role="group" dir="ltr" aria-label=${cp.label} style="display:flex;height:12px;border-radius:var(--rc);overflow:hidden">${cp.segs.map(sg => html`<button class="seg" aria-label=${sg.title} aria-pressed=${sg.on ? 'true' : 'false'} title=${sg.title} onClick=${() => this.setState({ segSel: this.state.segSel === sg.key ? null : sg.key })} style="width:${sg.w};flex:none;height:100%;padding:0;border:0;background:${sg.color};box-shadow:${sg.on ? 'inset 0 0 0 2px var(--ink), inset 0 0 0 4px var(--surface)' : 'none'};cursor:pointer"></button>`)}</div>`)}
             </div>
             ${c.selText && html`<div aria-live="polite" style="grid-column:2;display:flex;align-items:flex-start;gap:8px;padding:8px 10px;border-radius:var(--r);background:var(--soft);font-size:13px;line-height:1.5"><span style="width:10px;height:10px;margin-top:4px;flex:none;border-radius:var(--rc);background:${c.selColor}"></span><span>${c.selText}</span></div>`}
           </div>`)}
@@ -744,17 +783,17 @@ class LiberateDNA extends Component {
 
   viewHeritageExample(D) {
     const s = this.state, A = this.ancestryRows(D), list = A.list;
-    const aria = list.map(p => `${p.name} ${p.range}`).join(', ');
+    const aria = I18N.join(list.map(p => I18N.tr(p.name) + ' ' + p.range));
     const popById = {}; POPS.forEach(p => popById[p.id] = p);
     const regById = {}; REGIONS.forEach(r => regById[r.id] = r);
     const segName = id => s.fine ? popById[id].name : regById[popById[id].region].name;
     const segCol = id => s.fine ? popById[id].color : regById[popById[id].region].color;
     const paint = PAINT.map(c => { let selText = '', selColor = '';
       const copies = c.copies.map((segs, i) => { let pos = 0;
-        return { label: `Chromosome ${c.name}, copy ${i + 1}: ` + [...new Set(segs.map(x => segName(x.pop)))].join(', '),
+        return { label: t('Chromosome {0}, copy {1}: {2}', c.name, i + 1, I18N.join([...new Set(segs.map(x => segName(x.pop)))])),
           segs: segs.map((x, j) => { const key = c.name + '|' + i + '|' + j, a = pos, b = pos + x.l; pos = b; const on = s.segSel === key;
-            if (on) { selText = `Chromosome ${c.name}, copy ${i + 1}: ${a.toFixed(1)} to ${b.toFixed(1)} Mb (${x.l.toFixed(1)} Mb, ${Math.round(x.l / c.len * 100)}% of the chromosome). ${segName(x.pop)}.`; selColor = segCol(x.pop); }
-            return { key, w: (x.l / c.len * 100).toFixed(2) + '%', color: segCol(x.pop), title: `${segName(x.pop)}, ${a.toFixed(0)} to ${b.toFixed(0)} Mb`, on }; }) }; });
+            if (on) { selText = t('Chromosome {0}, copy {1}: {2} to {3} Mb ({4} Mb, {5}% of the chromosome). {6}.', c.name, i + 1, a.toFixed(1), b.toFixed(1), x.l.toFixed(1), Math.round(x.l / c.len * 100), segName(x.pop)); selColor = segCol(x.pop); }
+            return { key, w: (x.l / c.len * 100).toFixed(2) + '%', color: segCol(x.pop), title: t('{0}, {1} to {2} Mb', segName(x.pop), a.toFixed(0), b.toFixed(0)), on }; }) }; });
       return { name: c.name, w: (c.len / 249 * 100).toFixed(1) + '%', copies, selText, selColor }; });
     const L = D.lineage;
     const steps = arr => arr.map((n, i) => { const last = i === arr.length - 1; return html`<span style="font-family:var(--mono);font-size:12px;padding:4px 8px;border-radius:var(--rc);background:${last ? 'var(--accent)' : 'var(--surface2)'};color:${last ? 'var(--onaccent)' : 'var(--ink)'}">${n}</span>`; });
@@ -798,7 +837,7 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
         <div style="display:flex;flex-direction:column;gap:16px;grid-column:var(--chartSpan);min-width:0">
           ${D.T.ring && html`<div style="display:flex;justify-content:center"><div role="img" aria-label=${aria} style="width:min(240px,64vw);aspect-ratio:1;border-radius:50%;background:${this.conic(list)};display:flex;align-items:center;justify-content:center"><div style="width:62%;height:62%;border-radius:50%;background:var(--surface);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8px"><span style="font-size:28px;font-weight:700">${Math.round(list[0].pct)}%</span><span style="font-size:12px;color:var(--muted);line-height:1.3">${list[0].name}</span></div></div></div>`}
           <div role="img" aria-label=${aria} style="display:flex;height:var(--barH);gap:3px;border-radius:var(--rc);overflow:hidden">
-            ${list.map(p => html`<div title=${`${p.name} ${p.range}`} style="width:${p.w};min-width:0;background:${p.color};padding:${D.T.nav === 'top' ? '10px' : '0'};display:flex;flex-direction:column;justify-content:space-between;overflow:hidden">
+            ${list.map(p => html`<div title=${I18N.tr(p.name) + ' ' + p.range} style="width:${p.w};min-width:0;background:${p.color};padding:${D.T.nav === 'top' ? '10px' : '0'};display:flex;flex-direction:column;justify-content:space-between;overflow:hidden">
               ${p.big && html`<span style="display:var(--barLbl);font-size:clamp(20px,3vw,36px);font-weight:800;letter-spacing:-0.03em;line-height:1;color:${p.on}">${p.pctLabel}</span><span style="display:var(--barLbl);font-size:12px;font-weight:700;line-height:1.2;color:${p.on}">${p.name}</span>`}
             </div>`)}
           </div>
@@ -824,9 +863,9 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
           <div style="font-size:14px;color:var(--muted)">Tap a segment to see its position, length and origin.</div>
           <div style="display:flex;flex-direction:column;gap:9px">
             ${paint.map(c => html`<div style="display:grid;grid-template-columns:26px minmax(0,1fr);gap:6px 10px;align-items:center">
-              <span style="font-family:var(--mono);font-size:12px;color:var(--muted);text-align:right">${c.name}</span>
+              <span style="font-family:var(--mono);font-size:12px;color:var(--muted);text-align:end">${c.name}</span>
               <div style="width:${c.w};display:flex;flex-direction:column;gap:3px">
-                ${c.copies.map(cp => html`<div role="group" aria-label=${cp.label} style="display:flex;height:12px;border-radius:var(--rc);overflow:hidden">${cp.segs.map(sg => html`<button class="seg" aria-label=${sg.title} aria-pressed=${sg.on ? 'true' : 'false'} title=${sg.title} onClick=${() => this.setState({ segSel: this.state.segSel === sg.key ? null : sg.key })} style="width:${sg.w};flex:none;height:100%;padding:0;border:0;background:${sg.color};box-shadow:${sg.on ? 'inset 0 0 0 2px var(--ink), inset 0 0 0 4px var(--surface)' : 'none'};cursor:pointer"></button>`)}</div>`)}
+                ${c.copies.map(cp => html`<div role="group" dir="ltr" aria-label=${cp.label} style="display:flex;height:12px;border-radius:var(--rc);overflow:hidden">${cp.segs.map(sg => html`<button class="seg" aria-label=${sg.title} aria-pressed=${sg.on ? 'true' : 'false'} title=${sg.title} onClick=${() => this.setState({ segSel: this.state.segSel === sg.key ? null : sg.key })} style="width:${sg.w};flex:none;height:100%;padding:0;border:0;background:${sg.color};box-shadow:${sg.on ? 'inset 0 0 0 2px var(--ink), inset 0 0 0 4px var(--surface)' : 'none'};cursor:pointer"></button>`)}</div>`)}
               </div>
               ${c.selText && html`<div aria-live="polite" style="grid-column:2;display:flex;align-items:flex-start;gap:8px;padding:8px 10px;border-radius:var(--r);background:var(--soft);font-size:13px;line-height:1.5"><span style="width:10px;height:10px;margin-top:4px;flex:none;border-radius:var(--rc);background:${c.selColor}"></span><span>${c.selText}</span></div>`}
             </div>`)}
@@ -852,7 +891,7 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
     const scanAll = scanClinvar(D.G);
     const scanHidden = scanAll.filter(x => x.sens && !D.rev[x.sens]).length;
     const scanResults = scanAll.filter(x => !(x.sens && !D.rev[x.sens]));
-    const scanSteps = [`Loading the ClinVar subset built into LiberateDNA (${CLINVAR.length} variants)`, `Matching ${fmt(D.total)} markers on this device`, 'Sorting by clinical significance'];
+    const scanSteps = [t('Loading the ClinVar subset built into LiberateDNA ({0} variants)', CLINVAR.length), t('Matching {0} markers on this device', fmt(D.total)), 'Sorting by clinical significance'];
     const stepRow = (label, i, cur) => { const st = i < cur ? 0 : i === cur ? 1 : 2; return html`<div style="display:flex;align-items:center;gap:10px;font-size:14px;color:${['var(--ink)', 'var(--accent)', 'var(--muted)'][st]}"><i class=${'ph ' + ['ph-check', 'ph-circle-notch spin', 'ph-circle'][st]} aria-hidden="true"></i>${label}</div>`; };
     const rareText = 'Rare result. About 40% of rare variants in consumer chip data are false positives (Tandy-Connor et al., 2018). Confirm with a clinical test.';
     return html`<section aria-labelledby="h-hl" style="display:flex;flex-direction:column;gap:20px">
@@ -875,7 +914,7 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
               <div style="display:flex;gap:8px;flex-wrap:wrap"><button onClick=${() => this.setState({ rev: { ...s.rev, [h.id]: true }, open: h.id })} style=${S.btnS}>Show this result</button></div>
             </div>` : html`
             <div style="${S.card};overflow:hidden">
-              <button onClick=${() => this.setState({ open: s.open === h.id ? null : h.id })} aria-expanded=${s.open === h.id ? 'true' : 'false'} aria-controls=${'hd-' + h.id} style="width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:16px 18px;border:0;background:transparent;font:inherit;color:inherit;text-align:left;cursor:pointer">
+              <button onClick=${() => this.setState({ open: s.open === h.id ? null : h.id })} aria-expanded=${s.open === h.id ? 'true' : 'false'} aria-controls=${'hd-' + h.id} style="width:100%;display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:14px;align-items:center;padding:16px 18px;border:0;background:transparent;font:inherit;color:inherit;text-align:start;cursor:pointer">
                 <div style="display:flex;flex-direction:column;gap:4px;min-width:0"><span style="font-size:16px;font-weight:var(--tw)">${h.title}</span><span style="${S.mono12}">${h.gene}, ${h.result}</span></div>
                 <span style="${S.tag};color:${h.fg};background:${h.bg}">${h.tag}</span>
                 <i class=${'ph ' + (s.open === h.id ? 'ph-caret-up' : 'ph-caret-down')} aria-hidden="true" style="color:var(--muted)"></i>
@@ -896,7 +935,7 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
             <button class="press" onClick=${() => this.runScan()} style="${S.btnP};align-self:flex-start"><i class="ph ph-magnifying-glass" aria-hidden="true"></i>Scan my file</button>`}
           ${s.scan === 'running' && html`<div role="status" aria-live="polite" style="display:flex;flex-direction:column;gap:10px">${scanSteps.map((l, i) => stepRow(l, i, s.scanStep))}</div>`}
           ${s.scan === 'done' && html`
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted)" aria-live="polite">${scanAll.length} marker${scanAll.length === 1 ? '' : 's'} in your file ${scanAll.length === 1 ? 'has' : 'have'} a ClinVar classification in this subset. No other pathogenic or likely pathogenic matches.${scanHidden ? ` ${scanHidden} match is hidden with your sensitive results.` : ''}</p>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted)" aria-live="polite">${scanAll.length === 1 ? t('1 marker in your file has a ClinVar classification in this subset.') : t('{0} markers in your file have a ClinVar classification in this subset.', scanAll.length)} ${t('No other pathogenic or likely pathogenic matches.')}${scanHidden ? ' ' + t('{0} match is hidden with your sensitive results.', scanHidden) : ''}</p>
             <div style="display:flex;flex-direction:column">
               ${scanResults.map(x => { const c = lv(x.level); return html`<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:6px 18px;align-items:center;padding:12px 0;border-top:var(--row)">
                 <div style="display:flex;flex-direction:column;gap:3px"><span style="font-size:15px;font-weight:600">${x.cond}</span><span style="${S.mono12}">${x.gene} ${x.rsid}</span></div>
@@ -909,8 +948,8 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
       ${s.sub === 'carrier' && html`
         <div style="display:flex;flex-direction:column;gap:14px">
           <div style="${S.card};padding:clamp(18px,3vw,24px);display:flex;flex-direction:column;gap:8px">
-            <span style="font-size:clamp(20px,2.4vw,26px);font-weight:var(--hw);letter-spacing:-0.01em;line-height:1.2">${D.carriers.length ? `Carrier for ${D.carriers.length} of ${D.carrier.length} conditions tested` : `No carrier variants found in ${D.carrier.length} conditions tested`}</span>
-            <p style="margin:0;font-size:15px;line-height:1.6;color:var(--muted);max-width:72ch">${D.carriers.length ? `${D.carriers.map(c => `${c.cond} (${c.affected ? 'two copies' : 'one copy'} of ${c.gene} ${c.variant})`).join(', ')}. Carriers usually have no symptoms. If a partner carries a variant in the same gene, each child has a 1 in 4 chance of the condition.` : 'This lowers, but does not rule out, the chance of being a carrier.'}</p>
+            <span style="font-size:clamp(20px,2.4vw,26px);font-weight:var(--hw);letter-spacing:-0.01em;line-height:1.2">${D.carriers.length ? t('Carrier for {0} of {1} conditions tested', D.carriers.length, D.carrier.length) : t('No carrier variants found in {0} conditions tested', D.carrier.length)}</span>
+            <p style="margin:0;font-size:15px;line-height:1.6;color:var(--muted);max-width:72ch">${D.carriers.length ? `${I18N.join(D.carriers.map(c => c.affected ? t('{0} (two copies of {1} {2})', c.cond, c.gene, c.variant) : t('{0} (one copy of {1} {2})', c.cond, c.gene, c.variant)))}. ${t('Carriers usually have no symptoms.')} ${t('If a partner carries a variant in the same gene, each child has a 1 in 4 chance of the condition.')}` : 'This lowers, but does not rule out, the chance of being a carrier.'}</p>
           </div>
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px">
             ${D.carrier.map(c => html`<div style="${S.card};padding:16px 18px;display:flex;flex-direction:column;gap:8px">
@@ -978,11 +1017,11 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
     const builtIn = {
       ClinVar: { val: CLIN[sr.cat], sub: sr.cat === 'none' ? 'No submissions noted' : 'Criteria provided, multiple submitters' },
       SNPedia: { val: sm ? sr.rsid : `${sr.rsid}(${sr.geno.replace('/', ';')})`, sub: sm ? 'Summary hidden with your sensitive results' : sr.label },
-      Ensembl: { val: sr.cons, sub: `chr${sr.loc} on GRCh37` },
-      gnomAD: { val: sr.maf ? `Minor allele ${sr.maf[0]}, frequency ${sr.maf[1]}` : 'No built-in figure', sub: sr.maf ? '1000 Genomes, all populations' : 'Look it up for gnomAD data' },
+      Ensembl: { val: sr.cons, sub: t('chr{0} on GRCh37', sr.loc) },
+      gnomAD: { val: sr.maf ? t('Minor allele {0}, frequency {1}', sr.maf[0], sr.maf[1]) : 'No built-in figure', sub: sr.maf ? '1000 Genomes, all populations' : 'Look it up for gnomAD data' },
       PharmGKB: { val: sr.cat === 'drug' ? 'Level 1A clinical annotation' : 'No drug annotations', sub: sr.cat === 'drug' ? 'CPIC guideline available' : 'Not a pharmacogene marker' }
     };
-    const fetched = 'Fetched ' + ((s.lkTime || {})[sr.rsid] || today());
+    const fetched = t('Fetched {0}', (s.lkTime || {})[sr.rsid] || today());
     const results = ['ClinVar', 'SNPedia', 'Ensembl', 'gnomAD', 'PharmGKB'].map(db => {
       const d = data[db] || {};
       if (d.fail) return { db, failed: lk !== 'retrying', retrying: lk === 'retrying' };
@@ -1006,10 +1045,10 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
       <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;justify-content:space-between">
         <label style="flex:1 1 300px;display:flex;flex-direction:column;gap:6px;font-size:13px;font-weight:600">Search by rsID, gene or chromosome
           <input type="search" value=${s.q} onInput=${e => this.onQuery(e.target.value)} placeholder="rs671, HFE or 19" style="height:46px;padding:0 14px;border:var(--bw) solid var(--ctl);border-radius:var(--rc);background:var(--surface);color:var(--ink);font-family:var(--mono);font-size:14px;font-weight:400;min-width:0" />
-          <span style="font-size:12px;font-weight:400;color:var(--muted)" aria-live="polite">${cur.length} of ${all.length} curated markers shown${extra.length ? `, plus ${extra.length} more from your file` : ''}${s.hasStore ? '' : D.real ? '. Reopen the file to search all of it.' : ''}</span>
+          <span style="font-size:12px;font-weight:400;color:var(--muted)" aria-live="polite">${extra.length ? t('{0} of {1} curated markers shown, plus {2} more from your file', cur.length, all.length, extra.length) : t('{0} of {1} curated markers shown', cur.length, all.length)}${s.hasStore ? '' : D.real ? ' ' + t('Reopen the file to search all of it.') : ''}</span>
         </label>
         <button onClick=${() => this.setState({ live: !s.live })} role="switch" aria-checked=${s.live ? 'true' : 'false'} style="min-height:46px;display:flex;align-items:center;gap:10px;padding:0 6px;border:0;background:transparent;font:inherit;font-size:14px;font-weight:500;color:var(--ink);cursor:pointer">
-          <span style="width:38px;height:22px;padding:3px;border-radius:var(--rc);background:${s.live ? 'var(--accent)' : 'var(--ctl)'};transition:background .2s"><span class="knob" style="display:block;width:16px;height:16px;border-radius:var(--rc);background:${s.live ? 'var(--onaccent)' : '#ffffff'};transform:${s.live ? 'translateX(16px)' : 'translateX(0)'}"></span></span>
+          <span style="width:38px;height:22px;padding:3px;border-radius:var(--rc);background:${s.live ? 'var(--accent)' : 'var(--ctl)'};transition:background .2s"><span class="knob" style="display:block;width:16px;height:16px;border-radius:var(--rc);background:${s.live ? 'var(--onaccent)' : '#ffffff'};transform:${s.live ? 'translateX(calc(var(--kx, 1) * 16px))' : 'translateX(0)'}"></span></span>
           Live database lookups
         </button>
       </div>
@@ -1021,7 +1060,7 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
         <div style="${S.card};overflow:hidden">
           <div aria-hidden="true" style="display:grid;${cols};gap:10px;padding:10px 16px;font-size:12px;font-weight:700;color:var(--muted);border-bottom:var(--row)"><span>rsID</span><span>Position</span><span>Call</span><span>Gene</span></div>
           <div role="listbox" aria-label="Markers" onKeyDown=${onListKey} style="max-height:440px;overflow:auto">
-            ${rows.map(r => { const on = r.rsid === sr.rsid; return html`<button data-rs=${r.rsid} onClick=${() => select(r)} role="option" aria-selected=${on ? 'true' : 'false'} tabindex=${on ? '0' : '-1'} style="width:100%;display:grid;${cols};gap:10px;padding:10px 16px;border:0;border-bottom:1px solid var(--line2);background:${on ? 'var(--soft)' : 'transparent'};font-family:var(--mono);font-size:13px;color:var(--ink);text-align:left;cursor:pointer"><span style="overflow:hidden;text-overflow:ellipsis">${r.rsid}</span><span style="color:var(--muted);overflow:hidden;text-overflow:ellipsis">${r.loc}</span><span>${masked(r) ? 'Hidden' : r.geno}</span><span style="overflow:hidden;text-overflow:ellipsis">${r.gene}</span></button>`; })}
+            ${rows.map(r => { const on = r.rsid === sr.rsid; return html`<button data-rs=${r.rsid} onClick=${() => select(r)} role="option" aria-selected=${on ? 'true' : 'false'} tabindex=${on ? '0' : '-1'} style="width:100%;display:grid;${cols};gap:10px;padding:10px 16px;border:0;border-bottom:1px solid var(--line2);background:${on ? 'var(--soft)' : 'transparent'};font-family:var(--mono);font-size:13px;color:var(--ink);text-align:start;cursor:pointer"><span style="overflow:hidden;text-overflow:ellipsis">${r.rsid}</span><span style="color:var(--muted);overflow:hidden;text-overflow:ellipsis">${r.loc}</span><span>${masked(r) ? 'Hidden' : r.geno}</span><span style="overflow:hidden;text-overflow:ellipsis">${r.gene}</span></button>`; })}
             ${rows.length === 0 && html`<div style="padding:32px 16px;text-align:center;font-size:14px;color:var(--muted);line-height:1.6">No markers match "${s.q}".<br />Try an rsID like rs671 or a gene like HFE.</div>`}
           </div>
         </div>
@@ -1064,8 +1103,10 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
   viewLook(D) {
     return html`<div>
       <div onClick=${() => this.closeLook()} style="position:absolute;inset:0;z-index:30;background:rgba(0,0,0,.45);backdrop-filter:blur(2px)"></div>
-      <div data-look-dialog="1" role="dialog" aria-modal="true" aria-label="Choose a look" style="position:absolute;z-index:31;top:64px;right:16px;width:min(340px,calc(100% - 32px));max-height:calc(100% - 80px);overflow:auto;background:var(--surface);color:var(--ink);border:var(--bw) solid var(--line);border-radius:var(--r);box-shadow:0 18px 50px rgba(10,12,14,.22);padding:16px;display:flex;flex-direction:column;gap:10px">
-        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:16px;font-weight:700">Look</span><button onClick=${() => this.closeLook()} aria-label="Close" style="width:40px;height:40px;border:0;background:transparent;color:var(--ink);font-size:18px;cursor:pointer"><i class="ph ph-x" aria-hidden="true"></i></button></div>
+      <div data-look-dialog="1" role="dialog" aria-modal="true" aria-label="Language and look" style="position:absolute;z-index:31;top:64px;inset-inline-end:16px;width:min(340px,calc(100% - 32px));max-height:calc(100% - 80px);overflow:auto;background:var(--surface);color:var(--ink);border:var(--bw) solid var(--line);border-radius:var(--r);box-shadow:0 18px 50px rgba(10,12,14,.22);padding:16px;display:flex;flex-direction:column;gap:10px">
+        <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:16px;font-weight:700">Language</span><button onClick=${() => this.closeLook()} aria-label="Close" style="width:40px;height:40px;border:0;background:transparent;color:var(--ink);font-size:18px;cursor:pointer"><i class="ph ph-x" aria-hidden="true"></i></button></div>
+        ${this.langButtons()}
+        <span style="font-size:16px;font-weight:700;padding-top:8px">Look</span>
         ${this.themeButtons(true)}
         <span style="font-size:12px;color:var(--muted)">Remembered on this device. Your place in the report stays the same.</span>
       </div>
@@ -1096,7 +1137,7 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
         <div style="display:flex;flex-direction:column;gap:10px">
           <h2 style="margin:0;font-size:16px;font-weight:600">Carrier status</h2>
           ${D.carriers.map(x => html`<div style=${row}><b>${x.cond}</b>: ${x.affected ? 'two copies' : 'one copy'} of ${x.gene} ${x.variant} (${x.rsid} ${x.geno}). Rare finding; clinical confirmation recommended.</div>`)}
-          <span style="font-size:13px;color:#4a5058">${D.carriers.length ? `${D.carrier.length - D.carriers.length} other conditions tested: not detected.` : `None detected in ${D.carrier.length} conditions tested.`}</span>
+          <span style="font-size:13px;color:#4a5058">${D.carriers.length ? t('{0} other conditions tested: not detected.', D.carrier.length - D.carriers.length) : t('None detected in {0} conditions tested.', D.carrier.length)}</span>
         </div>
         <div style="display:flex;flex-direction:column;gap:10px">
           <h2 style="margin:0;font-size:16px;font-weight:600">Pharmacogenomics</h2>

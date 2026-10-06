@@ -1,0 +1,3620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- LiberateDNA language file. How to add or fix a translation: lang/README.md -->
+<language code="en" name="English" english-name="English" dir="ltr" locale="en-US">
+  <entry>
+    <source>, as released in</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>, read locally</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>, saved on this device</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>: {0} of {1} {2} ({3} {4}). Rare finding; clinical confirmation recommended.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>. It timed out.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>. Markers</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>. Ranges show how much the answer moves when the markers are resampled.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>. The user chose not to view these results.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>. This compares the DNA with each group on its own. The breakdown below lets it come from several groups at once.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>), then</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>). Generated</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>). Rare finding; clinical confirmation recommended.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} (one copy of {1} {2})</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} (two copies of {1} {2})</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} carrier</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} chromosomes incl. {1}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} evidence</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} markers in your file have a ClinVar classification in this subset.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} match is hidden with your sensitive results.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} no-calls</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} of {1} curated markers shown</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} of {1} curated markers shown, plus {2} more from your file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} of {1} tested variants may be present</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} of {1}{2} rows</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} of 2 copies of the {1} allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} other conditions tested: not detected.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} results to review</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} sensitive results hidden</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} stay hidden until you choose to see them.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} stays hidden until you choose to see it.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} submission records</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} to {1}%</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} variant, two copies</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} Y-chromosome calls</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}, {1} to {2} Mb</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}, {1}, read locally</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}, no ε4</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}, on both X copies</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}, on your one X</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}, one copy</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}, one copy (carrier)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}, one copy of ε4</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}, read locally</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}, two copies</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}, two copies of ε4</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}: not present</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}: one copy</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}: two copies</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}. Markers {1}.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0}. Not present</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>% of them, and the top broad region was right for</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>%. It is weakest between close neighbors:</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>0 of {0} tested variants found</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>1 marker in your file has a ClinVar classification in this subset.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>1 sensitive result hidden</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>1000 Genomes</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>10398G: marks J within JT</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>11719G: shared by R0, HV and H</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>12308G: marks haplogroup U, K included</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>1278insTATC</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>15452A: with 4216C, marks haplogroup JT</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>23andMe {0} chip</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>2706A: with 7028C, marks haplogroup H</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>3 prime UTR variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>3010A: marks H1 on an H line, J1 on a J line</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>4216C: with 15452A, marks haplogroup JT</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>7028C: marks haplogroup H</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>A European line carried by Ice Age hunter-gatherers.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>A genetic counselor can help you talk this through. Heart-healthy habits (blood pressure, exercise, sleep) are linked to lower dementia risk for everyone.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>A haplogroup is a branch on the human family tree, defined by mutations passed down one line only: mother to child through mitochondrial DNA, or father to son through the Y chromosome.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>A rare branch found in East Africa.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>A rare branch found in Yemen and Ethiopia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>A- and Mediterranean variants not found</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>about</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About {0}%</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About {0}% {1} and {2}% {3}.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About {0}% {1}.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 1 in 10 people of European ancestry carry R151C.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 1 in 10 people of Northern European ancestry carry C282Y.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 1 in 100 Ashkenazi Jewish people are carriers.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 1 in 13 Black Americans carry sickle cell trait.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 1 in 15 Ashkenazi Jewish people carry N370S.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 1 in 20 people of European ancestry carry Factor V Leiden.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 1 in 25 people of European ancestry carry a CF variant.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 1 in 30 Ashkenazi Jewish people are carriers.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 1 in 4 people carry at least one ε4 copy.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 1 in 4 people of European ancestry carry DQ2.5.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 1 in 40 Ashkenazi Jewish people carry one of these three.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 1 in 5 people have two X copies.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 1 in 5 people of European ancestry carry H63D.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 1 in 7 people of European ancestry carry rs10455872 G.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 3 in 4 people can taste PTC.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About half of people carry at least one slow C.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About half of people of European ancestry carry at least one T.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Above 98% is good quality</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Add phased file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Add your phased file to see this</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Adds to this report. Nothing else is reset.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Adygei, North Caucasus</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Alcohol flush</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Alcohol flush allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>All populations combined</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Allele frequency {0}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Alzheimer's disease</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Alzheimer's risk (APOE)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Amazonian Indigenous</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>An African branch from which almost every lineage outside Africa descends. Common in East Africa.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>An old African branch, found in Central and southern Africa.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>An old African branch, most common in Central and West Africa.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>An rsID is a reference number for one position in the genome where people commonly differ, like rs671. Every database uses the same numbers.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Anatolian, Caucasian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>AncestryDNA</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>and</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Arose in the Near East. Found across the Middle East, Europe and North Africa.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Array genotyping does not detect most rare variants, copy-number changes (including CYP2D6) or structural variants, and rare positive calls have a high false-positive rate. Findings should be confirmed with clinical-grade testing before medical decisions.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Ashkenazi Jewish</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Ask for a fasting glucose or HbA1c test at your next checkup.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Ask for a G6PD enzyme blood test, and mention this before taking primaquine, dapsone or rasburicase.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Ask for a one-time Lp(a) blood test.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Ask for clinical CYP2D6 testing if one of these drugs is being considered.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Ask for clinical testing if a related drug is being considered.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Ask for ferritin and transferrin saturation blood tests.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Ask your doctor for clinical BRCA testing and a genetic counselor referral.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Baloch and Brahui</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Baloch and Brahui vs Makrani; French vs Northwestern European; Finnish vs Eastern European</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Balochistan, Pakistan</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Bangladesh</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Based on CPIC and PharmGKB guidance. Share these with your doctor or pharmacist, and never change a medication on your own.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Bedouin</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Bengali</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Beta thalassemia</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Beta thalassemia, codon 39 (Q40X)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Beta thalassemia, IVS1-110</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Biaka, Mbuti</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Bitter taste</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Bitter taste receptor, taster allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>blmAsh</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Bloom syndrome</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>blue-eye G</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Bold type, flat color</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>BRCA1 and BRCA2</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>BRCA1 and BRCA2 (3 variants)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Breakdown</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>British and Irish</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>British, Orcadian, Utah residents of NW European descent</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Broad regions</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Build 17, scored the way</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Building your report</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Built-in note</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Burusho</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>by LiberateDNA. Call rate</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>C282Y and H63D not found</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>C282Y and H63D, one copy each</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>C282Y, one copy</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>C282Y, two copies</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Caffeine metabolism</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Call</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Call rate</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Call rate is the share of markers the chip read successfully. Above 98% is good quality. A no-call means that position couldn't be read and is left out of every result.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Called</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Can taste bitter compounds</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Can taste bitter compounds strongly</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Cannot be determined</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Carrier</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Carrier for {0} of {1} conditions tested</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Carrier status</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Carriers usually have no symptoms.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Caucasus</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Celiac disease</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Central African forest peoples</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Central and Eastern Europe</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Central Israel and the West Bank</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Check file type</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Checks ClinVar, SNPedia, Ensembl, gnomAD and PharmGKB. Sends one rsID per request, never your genotype or file.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Checks the European variant and the Arabian one (rs41380347). Other variants exist in East Africa.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>China</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Chip and build</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Chip limitation</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Chips test a few known variants per gene. Not detected lowers the chance you are a carrier but does not rule it out.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Chitral valleys</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Choose a look</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Choose another file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Choose file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Choose your 23andMe file, or drop it here</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>chr</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>chr{0} on GRCh37</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>chr{0}, GRCh37</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Chromosome {0}, copy {1}: {2}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Chromosome {0}, copy {1}: {2} to {3} Mb ({4} Mb, {5}% of the chromosome). {6}.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Chromosome {0}: {1}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Chromosome painting</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Cilantro soapy-taste allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Cilantro taste</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Circassian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Clinical and precise</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>ClinVar</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>ClinVar, SNPedia</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>ClinVar; Farrer et al., 1997</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Clopidogrel is unlikely to work well. CPIC guidance recommends a different antiplatelet drug.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Clopidogrel may be less effective</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Clopidogrel may be less effective. CPIC guidance suggests considering a different antiplatelet drug.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Clopidogrel response</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Clopidogrel response (*3)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Clopidogrel, citalopram, omeprazole</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Close</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Closest reference group</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Code and translations on GitHub</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Codeine, tamoxifen, many antidepressants</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>codon 39 (Q40X)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Codon 39 is common in Sardinia, Italy and across the Mediterranean.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Common across Europe and the Near East.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Common around the North Sea: England, the Netherlands and Germany.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Common in Armenian, Turkish and Arab populations.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Common in Armenian, Turkish, Arab and Jewish populations.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Common in Eastern Europe, Central Asia and South Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Common in North and East Africa, the Near East and southern Europe.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Common in the Balkans, Sardinia and Eastern Europe.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Common in the Fertile Crescent, Anatolia, the Caucasus, Iran and around the Mediterranean.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Compared with</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Compared with {0} people in {1} reference groups from HGDP and 1000 Genomes, using {2} markers from {3}. Ranges show how much the answer moves when the markers are resampled.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Comparing with reference populations</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Concentrated in northern Italy, Switzerland and eastern France.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Confirm with a clinical test and tell any oncologist before chemotherapy.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Consider a one-time Lp(a) blood test, especially with a family history of early heart disease.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Consumer genotyping data (</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Consumer genotyping data ({0}, {1}). Generated {2} by LiberateDNA. Call rate {3}.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Couldn't reach</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Couldn't reach {0}. It timed out.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>CYP2C19 *17, faster metabolism</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>CYP2C19 *2 allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>CYP2C19 *3 allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>CYP2D6 often has extra gene copies or deletions, which genotyping chips cannot see.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Cystic fibrosis</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Decreased function</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>deficiency</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Defines APOE ε2</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Defines APOE ε4</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Delete my data</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Descends from N and is the parent of most lineages in Europe, the Middle East and South Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Detail level</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Detailed</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Detect chip and build</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Detected {0}, build GRCh37</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Detected from marker set</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Diagnosis needs blood tests and a biopsy, not genotype.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>DM Mono</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>DM Sans</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Do you want to see this result?</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Doctor summary</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>does. Paternal tree: the</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>DQ2.5 is needed for most celiac disease, but about 1 in 3 people carry it and most never develop the condition.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>DQ2.5 was not found. Most celiac disease needs DQ2.5 or DQ8, so your risk is lower than average. DQ8 is not tested here.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Drop your 23andMe zip here</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Drug response</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Druze</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Dry earwax</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Dry earwax allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Dry earwax is the norm in East Asia and rare in Europe.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>dry-earwax T</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>E1b1b arose roughly 30,000 years ago</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>E1b1b is common in North and East Africa, the Near East and southern Europe.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Each traces a single line of ancestors thousands of years back.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Each under 2%</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Earwax type</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Easier on the eyes at night</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>East African</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>East and North Asian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Eastern European</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Elevated</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Ensembl</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Enter the password you set when downloading. It is only used to open the file on this device.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Especially common in Arabia, Yemen and Socotra.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>European</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>evidence</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Example numbers below, not computed from your file.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Explore your DNA without sharing it</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Explorer</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Eye color</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Factor V Leiden</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Factor V Leiden and prothrombin G20210A, the two most common inherited clotting variants, were not found.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Factor V Leiden thrombophilia</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Factor V Leiden, one copy</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Factor V Leiden, two copies</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Familial Mediterranean fever</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Familial Mediterranean fever (M680I)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Familial Mediterranean fever (M694I)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Familial Mediterranean fever (V726A)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Familial Mediterranean fever, M680I</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Familial Mediterranean fever, M694I</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Familial Mediterranean fever, M694V</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Familial Mediterranean fever, V726A</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Family history of breast, ovarian, prostate or pancreatic cancer matters more than this result.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Fast metabolizer</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Fetched {0}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>File type</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>File type: full genome (unphased)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>File type: phased genotype (parent of origin known)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Finland</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Finnish</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>First marker in a 23andMe file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Fluoropyrimidine toxicity</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Fluorouracil, capecitabine</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>flush A</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>For people who have had their genome read, or have taken their raw data back from 23andMe and similar services. Add your file to see your heritage, health, traits and drug response.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found across East Asia, Siberia and among Indigenous Americans.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found across Europe and South and Central Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found across Europe, the Near East and Central Asia, and common among Ashkenazi Jews.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found across northern Eurasia, from Finland to Siberia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found across the Middle East, Arabia and the Caucasus.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found across the Near East, Europe and Central Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found at low levels across Europe, the Middle East and Central Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found at low levels across the Middle East, the Caucasus and Europe.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found at low levels across the Near East, East Africa, the Mediterranean and Europe.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found at low levels from Europe to South Asia, most common in Pakistan and northern India.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found from the Near East and the Caucasus to Europe and Central Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found from the Near East to Iran and South Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in Armenian, Arab, Jewish and Druze populations.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in East and Central Asia, Siberia, Oceania and among some Indigenous Americans.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in East and Southeast Asia, Polynesia and the Americas.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in East and Southeast Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in East Asia, especially Japan and among the Nivkh.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in East Asia, Siberia and the Americas.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in Eastern Europe, Siberia and among the Kalash.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in Egypt, Sudan, Ethiopia, Somalia and the Balkans.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in Island Southeast Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in New Guinea and Indonesia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in New Guinea and Melanesia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in North and East Africa and the Middle East.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in North and East Asia and among Indigenous Americans.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in North Asia and among the Saami.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in Oceania.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in Siberia and Central Asia, and the main line among Indigenous Americans.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in South Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in the Balkans, Anatolia and South Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in the Levant, Arabia, Ethiopia and southern Europe.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in the Near East and Arabia, and at lower levels in Europe.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in the Near East, the Caucasus and around the Black Sea.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in the Near East, the Caucasus and Iran.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found in Western Europe, especially in Iberia and among the Saami.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found mainly in East Africa.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found mainly in New Guinea and Melanesia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found mainly in North Africa, especially among Berbers.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found mainly in Northeast Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found mainly in Pakistan and South Asia, with branches in the Near East and the Caucasus.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found mainly in South Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found mainly in Tibet, Japan and the Andaman Islands.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found mostly around the Mediterranean and in the Near East.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found mostly in Africa, with branches in the Near East and southern Europe.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Found mostly in South Asia; its U2e branch is European.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>France</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Freckling</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>French</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Full</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Full genome</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Full genome + phased</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>G6PD A- usually also needs a second change (376G) that this report does not check. Other G6PD variants exist.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>G6PD deficiency (A-)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>G6PD deficiency (favism)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>G6PD deficiency (Mediterranean)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>G6PD deficiency is common across the Middle East, the Mediterranean, Africa and South Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>G6PD Mediterranean (S188F)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Gambia, Mandenka, Mende</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Gaucher disease</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Gaucher disease type 1</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>GBA N370S, the main Gaucher carrier variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Gene</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Genetic summary for your clinician</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>genotype</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Genotypes read</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>gnomAD</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>groups,</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Gujarat</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Gujarati</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>GWAS Catalog</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>H arose roughly 20,000 years ago</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>H is the most common maternal lineage in Europe and is also frequent in the Near East and the Caucasus. LiberateDNA does not test the markers for its branches beyond H1.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>H63D, one copy</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>H63D, two copies</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Han Chinese</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>HaploGrep</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>harmful</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Have the phased file too?</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Health</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Health findings</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Health risks</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Health sections</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Hemochromatosis (C282Y)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Hemochromatosis (H63D)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Hereditary hemochromatosis</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Heritage</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Heritage percentages are not worked out from your file yet</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Hidden</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Hidden by default</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Hide the example</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Hide this result again</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>High chance of muscle pain on simvastatin. CPIC guidance suggests a different statin or a low dose.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>High confidence</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>High warfarin sensitivity</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>high-Lp(a)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>High-Lp(a) allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Higher chance of muscle pain on high-dose simvastatin</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Higher chance of muscle pain on high-dose simvastatin.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>How sure we are</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>How this works and how sure it is</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Hunza valley</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Iberian and Basque</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>IBM Plex Mono</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>IBM Plex Sans</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>If a partner carries a variant in the same gene, each child has a 1 in 4 chance of the condition.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>If a statin is prescribed, ask whether a lower dose or a different statin fits better.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>If a statin is prescribed, ask which one fits this result.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>If close relatives had these cancers, ask your doctor about clinical BRCA testing.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>In this report</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Indigenous American</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Inferred sex</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Inherited blood clotting risk</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>intergenic variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Intermediate function</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Intermediate metabolizer</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>intron variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Iron build-up also depends on sex, age, diet and alcohol.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Italian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Italian, Sicilian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>IVS1-110 is one of the most frequent beta thalassemia variants around the Mediterranean.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>J arose roughly 40,000 years ago</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>J is found across the Near East, Arabia and Europe. J1 is its larger branch.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>J1 arose roughly 20,000 years ago</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>J1 is the most common paternal lineage in Arabia and much of the Near East, and is frequent in the Caucasus and North Africa.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Japan</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Japanese</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>JetBrains Mono</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Kalash</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Karitiana, Surui</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Kinh, Dai, Khmer</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Lab</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Lab dark</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Lactase persistence (-13915G), the main form in Arabia</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Lactase persistence. Linked to lactose tolerance</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>lactase-persistence</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>lactase-persistence A</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Lactose tolerance</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Lahore</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Language</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Language and look</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Late-onset Alzheimer's disease</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Lebanese, Syrian, Palestinian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Less sensitive to bitter compounds</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Levantine</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>LiberateDNA</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>LiberateDNA checks</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>LiberateDNA checks {0} markers that vary between populations and are on the chip 23andMe uses. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>LiberateDNA checks markers for H, HV, J, T and U. Your file did not match them, or they were not called. A fuller tree is planned.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>LiberateDNA does not yet work out heritage percentages from a file, because that needs a reference panel it does not ship. Your maternal and paternal lines, and every health, drug and trait result below, come from your own calls.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>LiberateDNA reads 23andMe files for now.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>LiberateDNA reads 23andMe files for now. {0} uses a different column layout and marker set, so the results would not be reliable.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Likely</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Likely blue</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Likely brown</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Likely flush after alcohol</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Likely hazel or green</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Likely intolerant as an adult</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Likely needs a much lower warfarin dose</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Likely needs a much lower warfarin dose. Dosing calculators combine this with CYP2C9.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Likely tastes like an herb</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Likely tolerant as an adult</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Limited</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Lipoprotein(a)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Live database lookups</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Live rows show the date fetched. Built-in notes come with LiberateDNA and work offline.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Load a translation file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Loading the ClinVar subset built into LiberateDNA ({0} variants)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Location</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Look</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Look up this marker</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Look:</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Look: {0}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Looking up</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>looks most like</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Low confidence</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Lp(a) is mostly genetic but driven by many variants.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>LPA I4399M, a high-Lp(a) allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Luhya and Bantu speakers of Kenya</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>M172: marks haplogroup J2</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>M201: marks haplogroup G</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>M215: marks haplogroup E1b1b</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>M253: marks haplogroup I1</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>M267: marks haplogroup J1</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>M269 arose roughly 6,000 years ago</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>M269: marks haplogroup R-M269</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>M304: marks haplogroup J</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>M420: marks haplogroup R1a</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Maghrebi</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Main eye color switch, blue-eye allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Makran coast, Pakistan</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Makrani</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Map of reference groups. Largest matches: {0}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Markers</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>markers from</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>markers in your file against the ClinVar subset built into LiberateDNA (</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Markers per chromosome</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>markers that vary between populations and are on the chip 23andMe uses. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Matching {0} markers on this device</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Maternal and paternal lines</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Maternal line</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>max</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>max {0}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>May need a lower starting dose. Dosing calculators combine this with CYP2C9.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Medium confidence</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Mention this before starting clopidogrel or an SSRI.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Mention this before starting clopidogrel, an SSRI or a proton pump inhibitor.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Mention this before starting warfarin, phenytoin or an NSAID.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Mention this if an SSRI or acid reducer is prescribed.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Mention this if warfarin, phenytoin or a long-term NSAID is prescribed.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Mesoamerican Indigenous</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Middle Eastern</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Middle Eastern and North African results have lower confidence. 1000 Genomes has no reference groups from this region, so LiberateDNA relies on a few HGDP groups (Bedouin, Druze, Palestinian, Mozabite) plus ancient DNA from the AADR. Expect these figures to shift as reference data grows.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Middle Eastern reference people in open data come from only three groups: Bedouin from the Negev, Palestinians and Druze. Mozabite Berbers stand in for North Africa and Circassians for the Caucasus. There are no open reference groups for the Gulf, Iraq, Iran, Turkey, Egypt or Yemen, so ancestry from those places shows up split across the nearest groups. Bedouin is the closest stand-in for Arabia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Might taste soapy</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Minor allele {0}, frequency {1}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>missense variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Mitochondrial DNA has {0} markers. X, Y and mitochondrial bars are shown in grey.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>mitochondrial DNA, from mother to every child</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>mitochondrial missense variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>mitochondrial rRNA variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>mitochondrial synonymous variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>mitochondrial tRNA variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Mix of power and endurance fibers</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Moderate</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Moderate warfarin sensitivity</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>More endurance-type fibers</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>More likely to freckle</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>More likely to taste soapy</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>More power-type fibers</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Most Alzheimer's risk comes from age and other factors, not APOE alone.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Most common in Arab and North African populations.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Most common in Arabia, Yemen, the Levant and the Caucasus, and among many Jewish groups.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Most common in Scandinavia and around the North Sea.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Most common in the Caucasus, and found across the Near East, Iran, Anatolia and southern Europe.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>most DNA tools ask you to upload your genome to their servers. LiberateDNA lets you explore it without handing it to anyone.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Most markers on chromosome {0} ({1}), fewest among numbered chromosomes on {2} ({3}).</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Most Northern Europeans carry this; it is rare in East Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Most people of Northern European ancestry carry at least one G.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Most people with one ε4 copy never develop Alzheimer's. Age, blood pressure, sleep, hearing and activity also contribute. ε4 is also linked to higher LDL cholesterol.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Mostly {0}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Mostly {0}, with {1} roots</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Mount Carmel</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Mozabite Berber</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>mt 2706A, 7028C</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>mt 4216C, 15452A, 10398G, 3010A</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>mtDNA</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>MTHFR C677T. Common and of little clinical significance</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Much more likely to freckle</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Muscle composition</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Mzab valley, Algeria</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Negev Bedouin, the closest open sample to Arabian ancestry</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Neither of the two common variants linked to high Lp(a) was found.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Neither of the two main hemochromatosis variants was found.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Neither of the two most common G6PD deficiency variants was found.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>New file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>New Guinea, Bougainville</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>New to this?</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Nigerian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No action needed beyond routine checkups.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No action needed.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No action needed. Heart-healthy habits help everyone.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No action needed. If you have fatigue or joint pain, ask for a ferritin test.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No call</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No carrier variants found in {0} conditions tested</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No common high-Lp(a) variants</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No copies</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No DQ2.5 tag</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No drug annotations</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No file handy? Try a sample:</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No flush reaction expected</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No markers match "</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No markers match "{0}".</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No other pathogenic or likely pathogenic matches.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No reduced-function variants found among those tested.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No risk alleles</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No Y chromosome</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No Y chromosome in this file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No Y-chromosome calls</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No Y-chromosome markers, as expected for an XX file.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>None detected in {0} conditions tested.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Normal</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Normal function</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Normal metabolizer</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>North African</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>North African and Western Asian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>North Asian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Northwest Pakistan</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Northwestern European</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Not a pharmacogene marker</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Not called</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Not called in your file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Not detected</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Not in file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Not in your file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Not included:</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Not included: {0}. The user chose not to view these results.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Not on your chip</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Not placed</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Not placed with these markers</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Nothing goes to any online service unless you choose to. Database lookups stay off until you turn them on, and then send only a marker name, never your genotypes.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Oceanian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>of</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Of all</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Of all {0} groups, {1} looks most like {2} reference people ({3}), then {4}. This compares the DNA with each group on its own. The breakdown below lets it come from several groups at once.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Older chip detected (23andMe v4). Two drug-response markers are not on this chip, so CYP2C19 and SLCO1B1 cannot be called.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>one copy</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>One copy</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>One copy each of C282Y and H63D slightly raises the chance of iron overload, though most people with it never develop symptoms.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>One copy of {0} {1}. Carriers usually have no symptoms.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>One copy of a high-Lp(a) variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>One copy of APOE ε4 is associated with about 2 to 3 times the typical risk of late-onset Alzheimer's disease.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>One copy of C282Y makes you a carrier. On its own it rarely causes iron overload.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>One DQ2.5 tag</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>One of the deepest maternal branches. Found mostly in southern and eastern Africa, including among the Khoisan.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>One of the oldest lineages outside Africa, with branches from Europe to South Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>One of the two branches that left Africa. Most common in South and East Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>One or both APOE markers were not read</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>One risk allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Only relevant if you have symptoms. Ask about a tTG-IgA blood test before cutting out gluten.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Open report</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Open the page for community notes</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>or</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Other clotting variants exist that this chip does not test.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Other groups</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Overview</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>P312 arose roughly 4,500 to 5,000 years ago</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>P312: marks R-P312, under M269</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Page found</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Palestinian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Papuan and Melanesian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Parent of origin known</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Pashtun</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Paternal line</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Path: {0}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Pathogenic</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>people in</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>people left out of the reference.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Pharmacogenomics</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>PharmGKB</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Phased</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Phased file added:</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Phased file added: {0}. {1}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Phased genotype</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Phased, no Y data</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Phased, XY</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>PhyloTree</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Pima, Maya</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Placed on PhyloTree from {0} mitochondrial markers. Match score {1}%.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Placed on the ISOGG tree from {0} Y-chromosome markers; {1} carry the branch mutations on your path.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Polish, Ukrainian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Poor function</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Poor metabolizer</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Position</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Possible variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Poster</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Print or save PDF</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Privacy</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Private by design</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Progress</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Prothrombin G20210A</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Prothrombin G20210A, one copy</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Prothrombin G20210A, two copies</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Public databases</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Punjabi</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>R-M269 is the most common paternal lineage in Western Europe and is also found in Anatolia, the Caucasus and the Near East.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>R-M269 is the most common paternal lineage in Western Europe. P312 is its largest western branch.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>R-M269 is the most common paternal lineage in Western Europe. The U152 branch is most common in northern Italy, Switzerland and eastern France.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>R0 or HV</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Rapid metabolizer</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Rare and widespread: the Druze, the Near East, Europe, North Africa and some Indigenous North Americans.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Rare result: confirm with a clinical test</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Rare result. About 40% of rare variants in consumer chip data are false positives (Tandy-Connor et al., 2018). Confirm with a clinical test before family planning decisions.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Read locally</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Read locally{0}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Reading {0} genotype rows</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Reading about {0} genotype rows</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Reading your genome</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Reading…</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>reference groups from HGDP and 1000 Genomes, using</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>reference people (</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Remembered on this device. Your place in the report stays the same.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Reopen the file to search all of it.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Report sections</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Retry</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>risk</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Risk factor</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Risk factors, conditions you could pass on, and how you may respond to some medications.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Roughly 1 in 7 people of European ancestry find cilantro soapy.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>rows</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>rs671, HFE or 19</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>rsID</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Russian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>s risk (APOE)", title: "Late-onset Alzheimer</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>s risk. It can</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>s. Age, blood pressure, sleep, hearing and activity also contribute. ε4 is also linked to higher LDL cholesterol." : "Most Alzheimer</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>San</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Sardinia</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Sardinian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Saved on this device</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Scan my file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Scan your whole file against ClinVar</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Search by rsID, gene or chromosome</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Search markers in your file. Select one to see what it means and, if you choose, check public databases.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>See your heritage</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Segments too short to place</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Senegambian and Sierra Leonean</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Share with whoever doses warfarin, if it is ever prescribed.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Show the example layout</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Show this result</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Sickle cell anemia</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Sickle cell variant (HbS)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Simvastatin, atorvastatin</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Sindh, Pakistan</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Sindhi</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>SLCO1B1 *5 allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Slightly elevated</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>slow C</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Slower caffeine allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Slower metabolizer</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Small, may be noise</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>SNPedia</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>soapy C</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Soft, friendly, personal</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Some drugs, like warfarin and certain painkillers, may build up more than usual.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Some SSRIs and proton pump inhibitors may clear a little faster than usual.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Some SSRIs and proton pump inhibitors may clear faster and work less well at standard doses.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Source:</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Source: {0}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Sources:</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>South Africa</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>South and Central Asian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>South India, Sri Lanka</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Southeast Asian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Southern Africa</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Southern African Bantu</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Southern Chinese minorities</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Southern European</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Spain, Basque Country</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>splice donor variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>splice variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Standard doses of fluorouracil or capecitabine could cause severe side effects. CPIC guidance calls for a reduced dose or a different drug.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Standard dosing applies.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Standard statin dosing applies.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Standard warfarin dosing applies.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>stop gained</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Strong</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Strong flush likely</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Sub-Saharan African</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>synonymous variant (splice defect)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>T risk</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Tags HLA-DQ2.5</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Tap a segment to see its position, length and origin.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>taster</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Tay-Sachs disease</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Tell your doctor before surgery, pregnancy, or starting estrogen-containing medicine.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Tell your doctor if close relatives had blood clots, since other variants exist.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Telugu and Tamil</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Terms:</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Tested on</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Tested on {0} people left out of the reference.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>That file could not be read.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>That looks like an {0} file. Add the phased file from 23andMe.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>That needs a reference panel of people from many regions, which LiberateDNA does not ship. Rather than guess, it shows nothing here. You can still look at the layout with example numbers that are not yours.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>That password didn't open the file. Try again.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The *17 marker was not in your file.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The ancestor of lines Q and R.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The ancestor of many lines across Asia, Oceania and Europe.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The ancestor of most lines outside Africa. F itself is rare.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The Asian branch of R1a, common in South and Central Asia and Iran.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The deepest branches of the Y tree, found in Africa.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The eastern branch of M269, found in the Caucasus, Anatolia, Iran and Eastern Europe.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The extracted .txt file works too</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The file is empty or ends partway through, which usually means the download was cut off. Download it again from 23andMe: Settings → 23andMe Data → Download raw data.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The flush allele is common in East Asia (about 1 in 3) and rare elsewhere.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The full genome file lists both letters at each position but not which parent each came from. The phased file adds that, so each copy can be painted on its own.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The HFE markers were not read in this file.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The larger J2 branch, centered on Anatolia, the Caucasus and Iran.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The largest western branch, common from Iberia to Germany.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The main branch in Arabia and among Arabic speakers. It spread widely with the Arab expansion.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The main C282Y variant was not found. One copy of H63D on its own rarely causes iron overload.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The main G branch in Europe and the Caucasus, linked with the first farmers from Anatolia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The main line in Ireland, Scotland and Wales.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The main paternal line of North African Berbers.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The main paternal line of the Near East. It arose in western Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The marker for this gene is not on the v4 chip, so it cannot be called from your file.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The most common J branch in Europe.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The most common line in East and Southeast Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The most common line in West and Central Africa and among Bantu speakers.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The most common line in Western Europe, also found in Anatolia, the Caucasus and Iran.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The most common line in Western Europe. Older branches are found in the Near East, the Caucasus and Central Africa.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The most common maternal line in Europe, about 40% of people there, and also common in the Near East and the Caucasus.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The most common maternal line in West and Central Africa, and common among African Americans.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The oldest European branch, carried by Ice Age hunter-gatherers. Highest today in Finland and among the Saami.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The paternal line is carried on the Y chromosome, passed from father to son. A father's, brother's or paternal uncle's 23andMe file can show this line for your family.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The results above cover markers LiberateDNA checks by default. A scan matches all</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The results above cover markers LiberateDNA checks by default. A scan matches all {0} markers in your file against the ClinVar subset built into LiberateDNA ({1} well-studied variants), right here on this device. No marker IDs leave your device.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>the sample</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The sample person is built from two real reference genomes held out of the panel: one parent from Tuscany and one Palestinian. Add your own file to see yours.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The sample's closest reference group is {0}.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>the sample's DNA</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The second branch that left Africa, and the ancestor of most European and Middle Eastern lines.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The three founder variants most common in people with Ashkenazi Jewish ancestry were not found.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The top group was the right one for</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The top group was the right one for {0}% of them, and the top broad region was right for {1}%. It is weakest between close neighbors: {2}.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The two rows are the two copies, but LiberateDNA does not yet know which came from which parent, even with the phased file. A stretch shown on the top row may come from either parent.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>the Y chromosome, from father to son</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>These markers were not read</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>These results come from a consumer genotyping chip, not sequencing, and they are not a diagnosis. Confirm anything important with a clinical test and talk it through with a doctor or genetic counselor.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>These variants are linked to high Lp(a)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>These variants are linked to high Lp(a), a lifelong heart risk factor that standard cholesterol tests miss.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>This checks 3 of more than 1,000 known harmful BRCA variants. A positive result would mean a much higher risk of some cancers. A negative result does not rule one out.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>This is the strongest common genetic signal for type 2 diabetes</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>This is the strongest common genetic signal for type 2 diabetes, raising risk by about 1</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>This is the strongest common genetic signal for type 2 diabetes, raising risk by about 1.4 times per copy.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>This looks like an {0} file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>This shows whether you carry APOE ε4, which is linked to higher Alzheimer's risk. It can't tell you whether you will develop the disease, and no treatment changes the genetic risk, so some people prefer not to know.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>This variant usually lowers G6PD enzyme levels</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>This variant usually lowers G6PD enzyme levels. Fava beans, some antimalarials, some antibiotics and other oxidant drugs can then break down red blood cells.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>This zip is password-protected</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>To get your 23andMe file: Settings → 23andMe Data → Download raw data.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Traced through</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Traced through {0}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Traits</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Try an rsID like rs671 or a gene like HFE.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Tuscany and Bergamo</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Two copies</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Two copies of {0} {1}. Talk to a doctor about this result.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Two copies of a high-Lp(a) variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Two copies of APOE ε4 are associated with roughly 8 to 12 times the typical risk of late-onset Alzheimer's disease.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Two copies of C282Y is the main genetic cause of iron overload. Many people with this result build up extra iron over time.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Two copies of H63D can slightly raise iron levels but rarely cause disease.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Two DQ2.5 tags</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Two risk alleles</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Type 2 diabetes</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Type 2 diabetes risk allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Typical</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Typical freckling</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Typical warfarin sensitivity</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>U152 arose roughly 4,500 years ago</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>U152: marks R-U152, under P312</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Ultrarapid metabolizer</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Unassigned</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Unlock and read</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Unphased genotypes</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Unusual combination</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Unzipping {0}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>upstream variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Use sample phased file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>uses a different column layout and marker set, so the results would not be reliable.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>v3.1.2. Maternal tree:</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Version {0}. Open source under the MIT license.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Warfarin</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Warfarin sensitivity allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Warfarin, ibuprofen, phenytoin</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Warfarin, phenytoin and some NSAIDs can build up. CPIC guidance suggests lower doses or other drugs.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Warm</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>We couldn't read this file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Weight, diet and activity have a much larger effect than this variant.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Well-studied markers for appearance, taste and metabolism. Most traits come from many genes, so treat these as tendencies.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>well-studied variants), right here on this device. No marker IDs leave your device.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Western Asian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Wet earwax</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>What is a haplogroup?</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>What is call rate?</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>What it means</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>What to do</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>What was in your file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>What we found</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Which copy is which?</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Why it exists:</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Why the phased file?</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>With one X copy carrying this variant, enzyme levels are often normal or mildly low.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Worth a closer look</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Y-chromosome SNP</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Y-DNA tree, 2016 edition. Branch names in newer trees may differ.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Yakut, Mongol, Daur, Hezhen, Oroqen, Xibo, Tu</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Yi, Naxi, Lahu, Miao, She, Tujia</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Yoruba, Esan</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>You carry an inherited clotting variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>You carry an inherited clotting variant. One copy raises the chance of a deep vein clot several times, especially with estrogen, surgery or long travel.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>You do not carry the T allele, the strongest common genetic signal for type 2 diabetes.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>You have no ε4 copies, the most common result.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>You have two copies of each chromosome, one from each parent. Colors show where each stretch most likely comes from.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>You have two copies of each chromosome, one from each parent. Each stretch of about 120 markers is matched to the closest pair of broad regions. Short pieces under a few percent can be noise, so treat this as a rough picture.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>You uploaded the full genome file, which can't tell which parent each piece came from. Your percentages above are still valid. In 23andMe go to Settings → 23andMe Data, and download Phased genotype.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>You're offline. Your file and report still work; database lookups need a connection.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Your choice</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Your closest reference group is {0}.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>your DNA</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Your family lines, read from your file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>your file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Your file is read in this browser and stays on your machine. There is no server, no account and no upload.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Your file shows a call at a BRCA founder variant. Rare calls on consumer chips are often wrong, so this needs a clinical test before you act on it.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Your file, read in this browser</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Your genotype is the two letters you have at a position, one from each parent. A/G means one parent passed on A and the other passed on G.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Your largest single group is {0}, estimated at {1} to {2}%.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Your maternal and paternal lines, read from your own markers.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Your other results are unchanged.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Your results are kept only in this browser so you can come back to them. Delete my data clears them at any time.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Zip password</source>
+    <translation></translation>
+  </entry>
+</language>

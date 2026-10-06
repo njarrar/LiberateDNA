@@ -167,7 +167,7 @@ const OTHER = { rs1801133:'G', rs3918290:'C', rs76763715:'T', rs6025:'C', rs4988
 const EFFECT = {}; SNP_DEF.forEach(r => { if (r[5]) EFFECT[r[0]] = r[5]; });
 
 const word = n => n === 0 ? 'No copies' : n === 1 ? 'One copy' : 'Two copies';
-const copiesLabel = (n, eff) => `${n == null ? '?' : n} of 2 copies of the ${eff} allele`;
+const copiesLabel = (n, eff) => t('{0} of 2 copies of the {1} allele', n == null ? '?' : n, eff);
 
 /* Indel markers (I/D calls). I is the longer allele and D the shorter, so a
    deletion variant shows as D and an insertion variant as I. A mixed call is
@@ -195,7 +195,7 @@ function buildHealth(G, xx) {
     const level = miss ? -1 : e4 >= 1 ? 2 : 0;
     out.push({ id: 'apoe', sens: true, short: "Alzheimer's risk (APOE)", title: "Late-onset Alzheimer's disease", gene: 'APOE', level,
       tag: miss ? 'Not called' : e4 === 2 ? 'Elevated' : e4 === 1 ? 'Elevated' : 'Typical',
-      result: miss ? 'One or both APOE markers were not read' : e4 === 1 ? `${geno}, one copy of ε4` : e4 === 2 ? `${geno}, two copies of ε4` : `${geno}, no ε4`,
+      result: miss ? 'One or both APOE markers were not read' : e4 === 1 ? t('{0}, one copy of ε4', geno) : e4 === 2 ? t('{0}, two copies of ε4', geno) : t('{0}, no ε4', geno),
       markers: `rs429358 ${showGeno(G.rs429358)}, rs7412 ${showGeno(G.rs7412)}`, n: e4, eff: 'ε4', freq: 'About 1 in 4 people carry at least one ε4 copy.',
       why: "This shows whether you carry APOE ε4, which is linked to higher Alzheimer's risk. It can't tell you whether you will develop the disease, and no treatment changes the genetic risk, so some people prefer not to know.",
       summary: e4 === 2 ? "Two copies of APOE ε4 are associated with roughly 8 to 12 times the typical risk of late-onset Alzheimer's disease."
@@ -250,7 +250,7 @@ function buildHealth(G, xx) {
     const miss = f == null && p == null, n = (f || 0) + (p || 0);
     out.push({ id: 'f5', title: 'Inherited blood clotting risk', gene: 'F5, F2', level: miss ? -1 : n >= 1 ? 2 : 0,
       tag: miss ? 'Not called' : n >= 1 ? 'Elevated' : 'Typical',
-      result: miss ? 'Not called' : n === 0 ? 'Not detected' : [f ? `Factor V Leiden, ${word(f).toLowerCase()}` : '', p ? `Prothrombin G20210A, ${word(p).toLowerCase()}` : ''].filter(Boolean).join('; '),
+      result: miss ? 'Not called' : n === 0 ? 'Not detected' : [f ? (f === 1 ? t('Factor V Leiden, one copy') : t('Factor V Leiden, two copies')) : '', p ? (p === 1 ? t('Prothrombin G20210A, one copy') : t('Prothrombin G20210A, two copies')) : ''].filter(Boolean).join('; '),
       markers: `rs6025 ${showGeno(G.rs6025)}, rs1799963 ${showGeno(G.rs1799963)}`, n: Math.min(n, 2), eff: 'risk', freq: 'About 1 in 20 people of European ancestry carry Factor V Leiden.',
       summary: n === 0 ? 'Factor V Leiden and prothrombin G20210A, the two most common inherited clotting variants, were not found.' : 'You carry an inherited clotting variant. One copy raises the chance of a deep vein clot several times, especially with estrogen, surgery or long travel.',
       detail: 'Other clotting variants exist that this chip does not test.', evidence: 'Strong', src: 'ClinVar',
@@ -262,7 +262,7 @@ function buildHealth(G, xx) {
     const miss = g == null && i == null, n = (g || 0) + (i || 0);
     out.push({ id: 'lpa', title: 'Lipoprotein(a)', gene: 'LPA', level: miss ? -1 : n >= 2 ? 2 : n,
       tag: miss ? 'Not called' : n >= 2 ? 'Elevated' : n === 1 ? 'Slightly elevated' : 'Typical',
-      result: miss ? 'Not called' : n === 0 ? 'No common high-Lp(a) variants' : `${word(Math.min(n, 2))} of a high-Lp(a) variant`, markers: `rs10455872 ${showGeno(G.rs10455872)}, rs3798220 ${showGeno(G.rs3798220)}`,
+      result: miss ? 'Not called' : n === 0 ? 'No common high-Lp(a) variants' : (n === 1 ? t('One copy of a high-Lp(a) variant') : t('Two copies of a high-Lp(a) variant')), markers: `rs10455872 ${showGeno(G.rs10455872)}, rs3798220 ${showGeno(G.rs3798220)}`,
       n: Math.min(n, 2), eff: 'high-Lp(a)', freq: 'About 1 in 7 people of European ancestry carry rs10455872 G.',
       summary: n === 0 ? 'Neither of the two common variants linked to high Lp(a) was found.' : 'These variants are linked to high Lp(a), a lifelong heart risk factor that standard cholesterol tests miss.',
       detail: 'Lp(a) is mostly genetic but driven by many variants.', evidence: 'Moderate', src: 'GWAS Catalog',
@@ -277,7 +277,7 @@ function buildHealth(G, xx) {
     const which = [a ? 'G6PD A-' : '', m ? 'G6PD Mediterranean' : ''].filter(Boolean).join(' and ');
     out.push({ id: 'g6pd', title: 'G6PD deficiency (favism)', gene: 'G6PD', level,
       tag: miss ? 'Not called' : level === 2 ? 'Likely' : level === 1 ? 'Carrier' : 'Not detected',
-      result: miss ? 'Not called' : !hit ? 'A- and Mediterranean variants not found' : oneX ? `${which}, on your one X` : n === 2 ? `${which}, on both X copies` : `${which}, one copy`,
+      result: miss ? 'Not called' : !hit ? 'A- and Mediterranean variants not found' : oneX ? t('{0}, on your one X', which) : n === 2 ? t('{0}, on both X copies', which) : t('{0}, one copy', which),
       markers: `rs1050828 ${showGeno(G.rs1050828)}, rs5030868 ${showGeno(G.rs5030868)}`, n: oneX && hit ? 2 : n, eff: 'deficiency',
       freq: 'G6PD deficiency is common across the Middle East, the Mediterranean, Africa and South Asia.',
       summary: !hit ? 'Neither of the two most common G6PD deficiency variants was found.' : level === 2 ? 'This variant usually lowers G6PD enzyme levels. Fava beans, some antimalarials, some antibiotics and other oxidant drugs can then break down red blood cells.' : 'With one X copy carrying this variant, enzyme levels are often normal or mildly low.',
@@ -291,7 +291,7 @@ function buildHealth(G, xx) {
     const level = tested === 0 ? -1 : found ? 2 : 0;
     out.push({ id: 'brca', sens: true, short: 'BRCA1 and BRCA2', title: 'BRCA1 and BRCA2 (3 variants)', gene: 'BRCA1, BRCA2', level,
       tag: tested === 0 ? 'Not called' : found ? 'Possible variant' : 'Not detected',
-      result: tested === 0 ? 'These markers were not read' : found ? `${found} of ${tested} tested variants may be present` : `0 of ${tested} tested variants found`,
+      result: tested === 0 ? 'These markers were not read' : found ? t('{0} of {1} tested variants may be present', found, tested) : t('0 of {0} tested variants found', tested),
       markers: ids.map(id => `${id} ${showGeno(G[id])}`).join(', '), n: Math.min(found, 2), eff: 'harmful', rare: !!found,
       freq: 'About 1 in 40 Ashkenazi Jewish people carry one of these three.',
       why: 'This checks 3 of more than 1,000 known harmful BRCA variants. A positive result would mean a much higher risk of some cancers. A negative result does not rule one out.',
@@ -466,7 +466,7 @@ const CLINVAR = [
 function scanClinvar(G) {
   return CLINVAR.map(x => ({ ...x, n: copies(G[x.rsid], EFFECT[x.rsid], OTHER[x.rsid]) }))
     .filter(x => x.n >= 1)
-    .map(x => ({ ...x, cond: `${x.cond}, ${x.n === 1 ? 'one copy' : 'two copies'}${x.level === 1 && x.n === 1 && x.cls === 'Pathogenic' ? ' (carrier)' : ''}` }));
+    .map(x => ({ ...x, cond: x.n !== 1 ? t('{0}, two copies', x.cond) : x.level === 1 && x.cls === 'Pathogenic' ? t('{0}, one copy (carrier)', x.cond) : t('{0}, one copy', x.cond) }));
 }
 
 /* ---------- Explorer rows ---------- */
@@ -475,8 +475,8 @@ function snpRows(G, real) {
     const g = G[rsid];
     const p = real && real.pos && real.pos[rsid] ? real.pos[rsid] : pos;
     let label = desc;
-    if (eff && cat !== 'lineage' && !nocall(g)) { const n = copies(g, eff, OTHER[rsid]); if (n != null) label = `${desc}: ${n === 0 ? 'not present' : n === 1 ? 'one copy' : 'two copies'}`; }
-    if (cat === 'lineage' && !nocall(g)) label = `${desc}${g.includes(eff) ? '' : '. Not present'}`;
+    if (eff && cat !== 'lineage' && !nocall(g)) { const n = copies(g, eff, OTHER[rsid]); if (n != null) label = n === 0 ? t('{0}: not present', desc) : n === 1 ? t('{0}: one copy', desc) : t('{0}: two copies', desc); }
+    if (cat === 'lineage' && !nocall(g)) label = (g.includes(eff) ? desc : t('{0}. Not present', desc));
     return { rsid, chr, pos: p, loc: `${chr}:${fmt(p)}`, geno: g ? showGeno(g) : 'Not in file', gene: gene || '-', label, cat, cons, maf: MAF[rsid] || null, missing: !g };
   });
 }
