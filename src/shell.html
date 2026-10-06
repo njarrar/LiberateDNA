@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LiberateDNA - DNA Reader</title>
+<meta name="description" content="LiberateDNA - DNA Reader. Explore your 23andMe raw DNA data in your browser. Your file never leaves your machine.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&family=Archivo:wdth,wght@75..100,400;75..100,500;75..100,700;75..100,800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/*PHOSPHOR*/
+</style>
+<style>
+:root { --bg: #f5f7f9; --ink: #15181c; --accent: oklch(0.5 0.13 240); }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--ink); }
+* { box-sizing: border-box; }
+body { font-family: 'IBM Plex Sans', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: var(--accent); }
+a:hover { color: var(--ink); }
+button:focus-visible, input:focus-visible, a:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+input::placeholder { color: var(--muted); opacity: 1; }
+button:disabled { cursor: not-allowed; }
+.lift { transition: transform .25s cubic-bezier(.16,1,.3,1); }
+.lift:hover { transform: translateY(-2px); }
+.press:active { transform: scale(0.98); }
+.hov-ink:hover { border-color: var(--ink) !important; }
+.bar { transition: width .5s cubic-bezier(.16,1,.3,1); }
+.knob { transition: transform .25s cubic-bezier(.16,1,.3,1); }
+.seg:focus-visible { outline-offset: -2px; position: relative; z-index: 1; }
+.spin { display: inline-block; animation: locus-spin 1s linear infinite; }
+.pulse { animation: locus-pulse 1.2s ease-in-out infinite; }
+@keyframes locus-spin { to { transform: rotate(360deg); } }
+@keyframes locus-pulse { 50% { opacity: .45; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
+@media print {
+  html, body { height: auto; background: #fff !important; }
+  [data-locus-root] { position: static !important; display: block !important; overflow: visible !important; background: #fff !important; }
+  .locus-shell, [data-noprint] { display: none !important; }
+  [data-print-root] { position: static !important; overflow: visible !important; background: #fff !important; }
+  [data-print-root] article { box-shadow: none !important; margin: 0 auto !important; padding: 0 !important; }
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<noscript><p style="padding:24px;font-family:system-ui">LiberateDNA needs JavaScript to read your file in this browser.</p></noscript>
+<script>
+/*PREACT*/
+</script>
+<script>
+/*APP*/
+</script>
+</body>
+</html>
