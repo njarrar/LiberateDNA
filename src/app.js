@@ -1,6 +1,6 @@
 /* LiberateDNA app shell and report views. */
 const { render, Component } = htmPreact;
-const APP_VERSION = '3.1.0';
+const APP_VERSION = '3.2.0';
 const notr = html.keep;
 /* Page language, direction and, for scripts the theme fonts lack, a matching web font. */
 function applyLang() {
@@ -50,15 +50,15 @@ const DB_LINKS = {
 /* Runs the parser in a Web Worker, or in this page if workers are blocked. */
 function makeEngine(onMsg) {
   try {
-    const url = URL.createObjectURL(new Blob([`${locusAnc.toString()}\n(${locusWorker.toString()})(self, postMessage.bind(self));`], { type: 'text/javascript' }));
+    const ff = document.getElementById('fflate-src'), url = URL.createObjectURL(new Blob([`${ff ? ff.textContent : ''}\n${locusAnc.toString()}\n(${locusWorker.toString()})(self, postMessage.bind(self));`], { type: 'text/javascript' }));
     const w = new Worker(url);
     w.onmessage = e => onMsg(e.data);
-    w.postMessage({ type: 'ref', ref: { P: REF_PANEL, MT: REF_MT, Y: REF_Y } });
+    w.postMessage({ type: 'ref', ref: { P: REF_PANEL, MT: REF_MT, Y: REF_Y, B38: REF_B38 }, curated: { pos: CURATED_POS } });
     return { send: m => w.postMessage(m), kind: 'worker' };
   } catch (e) {
     const fake = {};
     locusWorker(fake, m => setTimeout(() => onMsg(m), 0));
-    fake.onmessage({ data: { type: 'ref', ref: { P: REF_PANEL, MT: REF_MT, Y: REF_Y } } });
+    fake.onmessage({ data: { type: 'ref', ref: { P: REF_PANEL, MT: REF_MT, Y: REF_Y, B38: REF_B38 }, curated: { pos: CURATED_POS } } });
     return { send: m => setTimeout(() => fake.onmessage({ data: m }), 0), kind: 'inline' };
   }
 }
@@ -86,7 +86,8 @@ class LiberateDNA extends Component {
       real: null, rows: 0, est: 0, xrows: [], xtotal: 0, hasStore: false, attachErr: '' }, this.sample(P.sample || 'phased'));
     if (P.start === 'dashboard') this.state.phase = 'ready';
     else if (P.demo === 'password') Object.assign(this.state, { err: 'password', errFile: 'genome_Full_protected.zip' });
-    else if (P.demo === 'vendor') Object.assign(this.state, { err: 'vendor', vendor: 'AncestryDNA', errFile: 'AncestryDNA_raw_data.zip' });
+    else if (P.demo === 'reads') Object.assign(this.state, { err: 'unsupported', kind: 'reads', errFile: 'sample.bam' });
+    else if (P.demo === 'format') Object.assign(this.state, { err: 'format', errFile: 'matches.csv' });
     else if (P.demo === 'corrupt') Object.assign(this.state, { err: 'corrupt', errFile: 'genome_Full_20240312.zip' });
     this.inputId = 'locus-file';
     this.dialogRef = null; this.reportRef = null;
@@ -132,32 +133,31 @@ class LiberateDNA extends Component {
     const n = (f.name || '').toLowerCase();
     this.setState({ drag: false });
     if (P.demo === 'password' || /protect|locked|password/.test(n)) { this._pending = { file: f, fake: true }; this.setState({ phase: 'upload', err: 'password', errFile: f.name, pw: '', pwErr: false, pwWrong: false }); return; }
-    if (P.demo === 'vendor' || /ancestry|myheritage|ftdna|familytreedna/.test(n)) { this.setState({ phase: 'upload', err: 'vendor', vendor: n.includes('myheritage') ? 'MyHeritage' : /ftdna|familytree/.test(n) ? 'FamilyTreeDNA' : 'AncestryDNA', errFile: f.name }); return; }
-    if (P.demo === 'corrupt' || f.size === 0 || !/\.(zip|txt|csv|tsv)$/.test(n)) { this.setState({ phase: 'upload', err: 'corrupt', errFile: f.name, errText: '' }); return; }
+    if (P.demo === 'reads') { this.setState({ phase: 'upload', err: 'unsupported', kind: 'reads', errFile: f.name }); return; }
+    if (P.demo === 'corrupt' || f.size === 0) { this.setState({ phase: 'upload', err: 'corrupt', errFile: f.name, errText: '' }); return; }
     this.readReal(f, '');
   }
   async readReal(f, pw) {
     clearInterval(this._t); clearTimeout(this._slowT);
-    let buf;
-    try { buf = await f.arrayBuffer(); } catch (e) { this.setState({ phase: 'upload', err: 'corrupt', errFile: f.name, errText: '' }); return; }
     this._pending = { file: f };
     this._job = (this._job || 0) + 1;
     this._jobStart = Date.now();
     this.setState({ phase: 'parsing', step: 0, err: null, slow: P.demo === 'slow', file: f.name, file2: null, rows: 0, est: 0, report: false, look: false, segSel: null, xrows: [], scan: 'idle', lk: {}, lkData: {} });
     this._slowT = setTimeout(() => { if (this.state.phase === 'parsing') this.setState({ slow: true }); }, 8000);
-    this.engine().send({ type: 'parse', id: this._job, buf, name: f.name, pw, curated: CURATED_IDS, coords: CURATED_POS, heritage: true });
+    this.engine().send({ type: 'parse', id: this._job, file: f, name: f.name, pw, curated: CURATED_IDS, coords: CURATED_POS, heritage: true });
   }
   attachReal(f) {
     this._attachJob = 'a' + Date.now();
     this.setState({ attachErr: '', attaching: true });
-    f.arrayBuffer().then(buf => this.engine().send({ type: 'parse', id: this._attachJob, buf, name: f.name, pw: '', curated: [], keep: false, fname: f.name }));
+    this.engine().send({ type: 'parse', id: this._attachJob, file: f, name: f.name, pw: '', curated: [], keep: false, fname: f.name });
     this._attachName = f.name;
   }
   onEngine(m) {
     if (m.type === 'search') { if (m.q === this.state.q.trim().toLowerCase()) this.setState({ xrows: m.rows, xtotal: m.total }); return; }
     if (m.id && m.id === this._attachJob) {
-      if (m.type === 'done') { this.setState({ attaching: false }); this.attachPhased(this._attachName); }
-      else if (m.type === 'error') this.setState({ attaching: false, attachErr: m.code === 'vendor' ? t('That looks like an {0} file. Add the phased file from 23andMe.', m.vendor) : "We couldn't read that file. Try the phased genotype zip from 23andMe." });
+      if (m.type === 'done' && (!m.result.vendor || m.result.vendor === '23andMe')) { this.setState({ attaching: false }); this.attachPhased(this._attachName); }
+      else if (m.type === 'error') this.setState({ attaching: false, attachErr: "We couldn't read that file. Try the phased genotype zip from 23andMe." });
+      else if (m.type === 'done' && m.result.vendor && m.result.vendor !== '23andMe') this.setState({ attaching: false, attachErr: t('That looks like a {0} file. Add the phased file from 23andMe.', m.result.vendor) });
       return;
     }
     if (m.type === 'step') { if (this.state.phase === 'parsing') this.setState({ step: m.step, rows: m.rows != null ? m.rows : this.state.rows, est: m.est || this.state.est }); return; }
@@ -166,17 +166,17 @@ class LiberateDNA extends Component {
     clearTimeout(this._slowT);
     if (m.type === 'error') {
       const f = this._pending && this._pending.file;
-      const st = { phase: 'upload', errFile: f ? f.name : this.state.file, err: m.code, vendor: m.vendor, errText: '', pwErr: false, pwWrong: !!m.wrong };
+      const st = { phase: 'upload', errFile: f ? f.name : this.state.file, err: m.code, kind: m.kind, errText: '', pwErr: false, pwWrong: !!m.wrong };
       if (m.code === 'password' && m.aes) Object.assign(st, { err: 'corrupt', errText: "This zip uses AES encryption, which browsers can't open. Unzip it on your computer, then add the .txt file inside." });
       if (m.code === 'corrupt' && m.why === 'no-inflate') st.errText = "This browser can't unzip files. Unzip it on your computer, then add the .txt file inside.";
-      if (m.code === 'corrupt' && m.why === 'no-txt') st.errText = "This zip doesn't contain a 23andMe .txt file. Download raw data again from 23andMe: Settings, then 23andMe Data, then Download raw data.";
+      if (m.code === 'corrupt' && m.why === 'no-txt') st.errText = t('This zip doesn\'t contain a DNA data file (.txt, .csv or .vcf). Download your raw data again from the company that tested you.');
       this.setState(st);
       return;
     }
     if (m.type === 'done') {
       const r = m.result;
       const called = r.counts.reduce((a, c) => a + c[2], 0);
-      const real = { rows: r.rows, called, counts: r.counts, genos: r.genos, pos: r.pos, heritage: r.heritage };
+      const real = { rows: r.rows, called, counts: r.counts, genos: r.genos, pos: r.pos, heritage: r.heritage, vendor: r.vendor, build: r.build, kind: r.kind, filled: r.filled };
       this.setState({ real, ftype: r.ftype, sex: r.sex, chip: r.chip, rows: r.rows, est: r.rows, step: 2, hasStore: true, variant: r.ftype === 'phased' ? 'phased' : 'full' });
       const tick = () => { const k = this.state.step + 1; if (k >= 6) { this.setState({ phase: 'ready', step: 6, slow: false }); this.save(); } else { this.setState({ step: k }); this._t = setTimeout(tick, P.demo === 'slow' ? 1200 : 380); } };
       this._t = setTimeout(tick, 380);
@@ -293,8 +293,10 @@ class LiberateDNA extends Component {
     }
     const nocallN = total - called;
     const callRate = (called / Math.max(total, 1) * 100).toFixed(2) + '%';
-    const ftypeLabel = s.file2 ? 'Full genome + phased' : phased ? 'Phased genotype' : 'Full genome';
-    const chipLabel = t('23andMe {0} chip', s.chip);
+    const vendor = real && real.vendor != null ? real.vendor : '23andMe', kind = real && real.kind || 'chip', seq = kind !== 'chip', is23 = vendor === '23andMe';
+    const build = real && real.build ? real.build : 37, buildLabel = build === 36 ? 'NCBI36' : 'GRCh' + build;
+    const ftypeLabel = s.file2 ? 'Full genome + phased' : phased ? 'Phased genotype' : kind === 'gvcf' ? t('Whole genome (gVCF)') : kind === 'wgs' ? t('Whole genome (VCF)') : kind === 'vcf' ? t('VCF file') : is23 ? 'Full genome' : t('Raw data');
+    const chipLabel = s.chip ? t('23andMe {0} chip', s.chip) : vendor ? (seq ? t('{0} sequencing', vendor) : t('{0} chip', vendor)) : seq ? t('Sequencing data') : t('DNA chip data');
     const yCalls = (chr.find(c => c[0] === 'Y') || [0, 0, 0])[2];
 
     const health = buildHealth(G, xx).map(h => { const hidden = !!h.sens && !rev[h.id]; return { ...h, hidden, shown: !hidden, ...lv(h.level) }; });
@@ -312,7 +314,7 @@ class LiberateDNA extends Component {
     const traits = buildTraits(G);
     const lineage = buildLineage(G, !xx);
     const her = this.herOf(real ? real.heritage : REF_SAMPLE_RESULT, xx, mobile);
-    return { her, s, T, mobile, xx, phased, v4, rev, real, G, chr, total, called, nocallN, callRate, ftypeLabel, chipLabel, yCalls, health, hiddenH, carrier, carriers, drugs, traits, lineage };
+    return { her, s, T, mobile, xx, phased, v4, rev, real, vendor, kind, seq, is23, build, buildLabel, G, chr, total, called, nocallN, callRate, ftypeLabel, chipLabel, yCalls, health, hiddenH, carrier, carriers, drugs, traits, lineage };
   }
 
   go(tab, sub) {
@@ -326,7 +328,7 @@ class LiberateDNA extends Component {
     const D = this.derive(), s = this.state, T = D.T;
     const rootStyle = Object.assign({}, T.vars, I18N.font ? { '--font': `${I18N.font}, ${T.vars['--font'] || 'system-ui, sans-serif'}` } : {}, { position: 'fixed', inset: '0', display: 'flex', flexDirection: 'column', fontFamily: 'var(--font)', color: 'var(--ink)', background: 'var(--bg)', overflow: 'hidden' });
     return html`<div data-locus-root="1" class=${'locus theme-' + s.theme} lang=${s.lang} dir=${I18N.dir} style=${rootStyle}>
-      <input id=${this.inputId} type="file" accept=".zip,.txt" onChange=${e => { const f = e.target.files && e.target.files[0]; if (!f) return; if (this._attach) { this._attach = false; this.attachReal(f); } else this.pickFile(f); }} tabindex="-1" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;left:-10px;top:-10px" />
+      <input id=${this.inputId} type="file"  onChange=${e => { const f = e.target.files && e.target.files[0]; if (!f) return; if (this._attach) { this._attach = false; this.attachReal(f); } else this.pickFile(f); }} tabindex="-1" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;left:-10px;top:-10px" />
       <div class="locus-shell" style="flex:1;min-height:0;display:flex;flex-direction:column" inert=${s.look || s.report ? true : undefined} aria-hidden=${s.look || s.report ? 'true' : undefined}>
         ${s.phase === 'upload' && this.viewUpload(D)}
         ${s.phase === 'parsing' && this.viewParsing(D)}
@@ -394,13 +396,13 @@ class LiberateDNA extends Component {
             <div style="flex:1 1 200px;display:flex;flex-direction:column;gap:3px;min-width:0"><span style="font-size:15px;font-weight:600">Saved on this device</span><span style="${S.mono12};word-break:break-all">${s.saved.file}, ${s.saved.date}</span></div>
             <div style="display:flex;gap:8px;flex-wrap:wrap"><button onClick=${() => this.openSaved()} style=${S.btnP}>Open report</button><button onClick=${() => this.forget()} style=${S.btnS}>Delete my data</button></div>
           </div>`}
-          ${!s.err && html`<div role="button" tabindex="0" aria-label="Choose your 23andMe file, or drop it here" onClick=${() => this.openPicker()} onKeyDown=${e => { if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); this.openPicker(); } }}
+          ${!s.err && html`<div role="button" tabindex="0" aria-label="Choose your DNA file, or drop it here" onClick=${() => this.openPicker()} onKeyDown=${e => { if (e.target === e.currentTarget && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); this.openPicker(); } }}
               onDragOver=${e => { e.preventDefault(); if (!s.drag) this.setState({ drag: true }); }} onDragLeave=${() => this.setState({ drag: false })}
               onDrop=${e => { e.preventDefault(); const f = e.dataTransfer && e.dataTransfer.files[0]; if (f) this.pickFile(f); else this.setState({ drag: false }); }}
               style="min-height:300px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:32px;text-align:center;cursor:pointer;border-radius:var(--r);border:2px dashed ${s.drag ? 'var(--accent)' : 'var(--ctl)'};background:${s.drag ? 'var(--soft)' : 'var(--surface)'};transition:background .2s,border-color .2s">
-            <i class="ph ph-file-zip" aria-hidden="true" style="font-size:44px;color:var(--accent)"></i>
-            <div style="font-size:19px;font-weight:700">Drop your 23andMe zip here</div>
-            <div style="font-size:14px;color:var(--muted);line-height:1.6"><span style="font-family:var(--mono)">genome_Full_*.zip</span> or <span style="font-family:var(--mono)">phased_genotype*.zip</span><br />The extracted .txt file works too</div>
+            <i class="ph ph-file-arrow-up" aria-hidden="true" style="font-size:44px;color:var(--accent)"></i>
+            <div style="font-size:19px;font-weight:700">Drop your raw DNA file here</div>
+            <div style="font-size:14px;color:var(--muted);line-height:1.6">From 23andMe, AncestryDNA, MyHeritage, FamilyTreeDNA, Living DNA and others, or a VCF from genome sequencing<br />Zip and gzip files work as they are</div>
             <button class="press" tabindex="-1" onClick=${e => { e.stopPropagation(); this.openPicker(); }} style="${S.btnP};margin-top:4px;font-size:15px;padding:0 20px"><i class="ph ph-folder-open" aria-hidden="true"></i>Choose file</button>
           </div>`}
           ${s.err === 'password' && errCard('ph-lock-key', 1, 'This zip is password-protected', html`
@@ -410,13 +412,27 @@ class LiberateDNA extends Component {
             </label>
             <span id="pw-msg" aria-live="polite">${(s.pwErr || s.pwWrong) && html`<span style="display:inline-block;font-size:13px;font-weight:600;padding:4px 9px;border-radius:var(--rc);color:var(--l2f);background:var(--l2b)">${s.pwWrong ? "That password didn't open the file. Try again." : 'Enter the password to continue'}</span>`}</span>
             <div style="display:flex;gap:8px;flex-wrap:wrap"><button onClick=${unlock} style=${S.btnP}>Unlock and read</button><button onClick=${() => { this.setState({ err: null }); this.openPicker(); }} style=${S.btnS}>Choose another file</button></div>`)}
-          ${s.err === 'vendor' && errCard('ph-warning-circle', 1, t('This looks like an {0} file', s.vendor), html`
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted)">LiberateDNA reads 23andMe files for now. ${s.vendor} uses a different column layout and marker set, so the results would not be reliable.</p>
-            <p style="margin:0;font-size:14px;line-height:1.6">To get your 23andMe file: Settings → 23andMe Data → Download raw data.</p>
+          ${s.err === 'unsupported' && errCard('ph-warning-circle', 1, s.kind === 'reads' ? t('This is a file of raw reads') : s.kind === 'zip64' ? t('This zip is too large to open here') : t('This isn\'t a DNA data file'), html`
+            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted)">${s.kind === 'reads' ? t('BAM, CRAM and FASTQ files hold the raw reads from sequencing, before anyone has called your genotypes. Ask your provider for the VCF or gVCF file instead, or make one with a tool such as GATK or DeepVariant.')
+              : s.kind === 'zip64' ? t('Unzip it on your computer, then add the file inside. A .vcf.gz file can be added as it is.')
+              : s.kind === 'archive' ? t('LiberateDNA opens zip and gzip files. Unpack this one on your computer, then add the file inside.')
+              : t('LiberateDNA reads raw data as text (.txt, .csv, .tsv), VCF and gVCF files, as they are or zipped.')}</p>
+            <button onClick=${() => { this.setState({ err: null }); this.openPicker(); }} style="${S.btnP};align-self:flex-start">Choose another file</button>`)}
+          ${s.err === 'format' && errCard('ph-table', 1, "We couldn't find genotypes in this file", html`
+            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted)">LiberateDNA looks for a marker name, chromosome, position and genotype in each line, or a VCF. Check that this is the raw data download, not a report or a list of matches.</p>
             <button onClick=${() => { this.setState({ err: null }); this.openPicker(); }} style="${S.btnP};align-self:flex-start">Choose another file</button>`)}
           ${s.err === 'corrupt' && errCard('ph-file-x', 2, "We couldn't read this file", html`
-            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted)">${s.errText || 'The file is empty or ends partway through, which usually means the download was cut off. Download it again from 23andMe: Settings → 23andMe Data → Download raw data.'}</p>
+            <p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted)">${s.errText || 'The file is empty or ends partway through, which usually means the download was cut off. Download your raw data again from the company that tested you.'}</p>
             <button onClick=${() => { this.setState({ err: null }); this.openPicker(); }} style="${S.btnP};align-self:flex-start">Choose another file</button>`)}
+          <details style="font-size:14px;line-height:1.6;color:var(--muted)">
+            <summary style="cursor:pointer;font-weight:600;color:var(--ink)">Which files work?</summary>
+            <ul style="margin:8px 0 0;padding-inline-start:20px;display:flex;flex-direction:column;gap:4px">
+              <li>Chip data from 23andMe, AncestryDNA, MyHeritage, FamilyTreeDNA, Living DNA, tellmeGen, Genes for Good, SelfDecode, Sano and others with the same columns.</li>
+              <li>Illumina reports (the [Header] and [Data] format) from labs that run the Global Screening Array.</li>
+              <li>VCF and gVCF files from genome sequencing, such as Nebula, Dante Labs or Sequencing.com, or ones you made yourself. GRCh37 and GRCh38 both work.</li>
+              <li>The build and the company are found from the file. Zip and gzip work as they are.</li>
+            </ul>
+          </details>
           <div style="display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;font-size:14px;color:var(--muted)">
             <span style="margin-inline-end:4px">No file handy? Try a sample:</span>
             ${[['phased', 'Phased, XY'], ['full', 'Full genome'], ['xx', 'Phased, no Y data']].map(([v, label]) => html`<button class="hov-ink" onClick=${() => this.startSample(v)} style="min-height:40px;padding:0 14px;border:var(--bw) solid var(--ctl);border-radius:var(--rc);background:var(--surface);color:var(--ink);font:inherit;font-size:13px;font-weight:600;cursor:pointer">${label}</button>`)}
@@ -432,7 +448,7 @@ class LiberateDNA extends Component {
     const totalShown = s.real ? s.real.rows : D.total;
     const rows = s.real ? s.real.rows : s.est ? s.rows : Math.round(Math.min(s.step + 1, 6) / 6 * D.total);
     const est = s.real ? s.real.rows : s.est || D.total;
-    const STEPS = [t('Unzipping {0}', s.file), (s.est && !s.real ? t('Reading about {0} genotype rows', fmt(est)) : t('Reading {0} genotype rows', s.real ? fmt(totalShown) : fmt(D.total))), t('Detected {0}, build GRCh37', D.chipLabel), (D.phased ? t('File type: phased genotype (parent of origin known)') : t('File type: full genome (unphased)')), 'Comparing with reference populations', 'Building your report'];
+    const STEPS = [t('Unzipping {0}', s.file), (s.est && !s.real ? t('Reading about {0} genotype rows', fmt(est)) : t('Reading {0} genotype rows', s.real ? fmt(totalShown) : fmt(D.total))), t('Detected {0}, build {1}', D.chipLabel, D.buildLabel), (D.phased ? t('File type: phased genotype (parent of origin known)') : t('File type: full genome (unphased)')), 'Comparing with reference populations', 'Building your report'];
     const pct = s.est && s.step <= 1 && !s.real ? Math.min(30, 4 + s.rows / Math.max(est, 1) * 26) : Math.round(Math.min(s.step, 6) / 6 * 100);
     return html`<div style="flex:1;display:flex;align-items:center;justify-content:center;padding:24px;overflow:auto">
       <div role="status" aria-live="polite" style="width:100%;max-width:520px;display:flex;flex-direction:column;gap:20px">
@@ -583,8 +599,8 @@ class LiberateDNA extends Component {
       { label: 'Called', value: fmt(D.called), sub: t('{0} no-calls', fmt(D.nocallN)) },
       { label: 'Call rate', value: D.callRate, sub: 'Above 98% is good quality' },
       { label: 'Inferred sex', value: s.sex, sub: D.yCalls === 0 ? 'No Y-chromosome calls' : t('{0} Y-chromosome calls', fmt(D.yCalls)) },
-      { label: 'File type', value: D.phased ? 'Phased' : 'Full', sub: D.phased ? 'Parent of origin known' : 'Unphased genotypes' },
-      { label: 'Chip and build', value: s.chip + ' / GRCh37', sub: 'Detected from marker set' }
+      { label: 'File type', value: D.phased ? 'Phased' : D.seq ? D.ftypeLabel : 'Full', sub: D.phased ? 'Parent of origin known' : D.real && D.real.filled ? t('{0} sites filled in from the reference', fmt(D.real.filled)) : 'Unphased genotypes' },
+      { label: 'Source and build', value: notr((s.chip ? s.chip : D.vendor || (D.seq ? 'VCF' : '?')) + ' / ' + D.buildLabel), sub: 'Detected from the file' }
     ];
     return html`<section aria-labelledby="h-ov" style="display:flex;flex-direction:column;gap:26px">
       ${D.v4 && html`<div role="note" style="display:flex;gap:12px;padding:14px 16px;border-radius:var(--r);background:var(--l1b);color:var(--l1f);font-size:14px;line-height:1.55"><i class="ph ph-cpu" aria-hidden="true" style="font-size:19px;flex:none"></i><span>Older chip detected (23andMe v4). Two drug-response markers are not on this chip, so CYP2C19 and SLCO1B1 cannot be called.</span></div>`}
@@ -765,7 +781,7 @@ class LiberateDNA extends Component {
         ${s.term === 'hap' && html`<div style=${S.tip}>A haplogroup is a branch on the human family tree, defined by mutations passed down one line only: mother to child through mitochondrial DNA, or father to son through the Y chromosome.</div>`}
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px">
           ${L.mat ? lineCard('Maternal line', 'ph-flower-lotus', L.mat) : emptyCard('Maternal line', 'Not placed', 'Too few mitochondrial markers were read to place this line.')}
-          ${D.xx ? emptyCard('Paternal line', 'No Y chromosome in this file', "The paternal line is carried on the Y chromosome, passed from father to son. A father's, brother's or paternal uncle's 23andMe file can show this line for your family.")
+          ${D.xx ? emptyCard('Paternal line', 'No Y chromosome in this file', "The paternal line is carried on the Y chromosome, passed from father to son. A father's, brother's or paternal uncle's DNA file can show this line for your family.")
             : L.pat ? lineCard('Paternal line', 'ph-tree', L.pat) : emptyCard('Paternal line', 'Not placed', 'Too few Y-chromosome markers were read to place this line.')}
         </div>
       </div>
@@ -773,7 +789,7 @@ class LiberateDNA extends Component {
       <details style="${S.card};padding:clamp(18px,3vw,26px)">
         <summary style="cursor:pointer;font-size:var(--h2);font-weight:var(--hw)">How this works and how sure it is</summary>
         <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;font-size:14px;line-height:1.6;max-width:72ch">
-          <p style="margin:0">LiberateDNA checks ${fmt(REF_PANEL.n)} markers that vary between populations and are on the chip 23andMe uses. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</p>
+          <p style="margin:0">LiberateDNA checks ${fmt(REF_PANEL.n)} markers that vary between populations and are on the chips most DNA companies use. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</p>
           <p style="margin:0"><b>Tested on ${CK.people} people left out of the reference.</b> The top group was the right one for ${CK.topPct}% of them, and the top broad region was right for ${CK.regPct}%. It is weakest between close neighbors: ${CK.weak}.</p>
           <p style="margin:0">Sources: <a href="https://www.internationalgenome.org/" target="_blank" rel="noopener">1000 Genomes</a> and <a href="https://www.cephb.fr/en/hgdp_panel.php" target="_blank" rel="noopener">HGDP</a>, as released in <a href="https://gnomad.broadinstitute.org/" target="_blank" rel="noopener">gnomAD</a> v3.1.2. Maternal tree: <a href="https://www.phylotree.org/" target="_blank" rel="noopener">PhyloTree</a> Build 17, scored the way <a href="https://haplogrep.i-med.ac.at/" target="_blank" rel="noopener">HaploGrep</a> does. Paternal tree: the <a href="https://isogg.org/tree/" target="_blank" rel="noopener">ISOGG</a> Y-DNA tree, 2016 edition. Branch names in newer trees may differ.</p>
         </div>
@@ -814,7 +830,7 @@ class LiberateDNA extends Component {
         ${s.term === 'hap' && html`<div style=${S.tip}>A haplogroup is a branch on the human family tree, defined by mutations passed down one line only: mother to child through mitochondrial DNA, or father to son through the Y chromosome.</div>`}
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:14px">
           ${L.mat ? lineCard('Maternal line', 'ph-flower-lotus', L.mat) : emptyCard('Maternal line', 'Not placed with these markers', 'LiberateDNA checks markers for H, HV, J, T and U. Your file did not match them, or they were not called. A fuller tree is planned.')}
-          ${D.xx ? emptyCard('Paternal line', 'No Y chromosome in this file', "The paternal line is carried on the Y chromosome, passed from father to son. A father's, brother's or paternal uncle's 23andMe file can show this line for your family.")
+          ${D.xx ? emptyCard('Paternal line', 'No Y chromosome in this file', "The paternal line is carried on the Y chromosome, passed from father to son. A father's, brother's or paternal uncle's DNA file can show this line for your family.")
             : L.pat ? lineCard('Paternal line', 'ph-tree', L.pat) : emptyCard('Paternal line', 'Not placed with these markers', 'LiberateDNA checks markers for R1b, R1a, J1, J2, E1b1b, G and I1. Your file did not match them, or they were not called. A fuller tree is planned.')}
         </div>
       </div>`;
@@ -873,13 +889,14 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
           <div style="display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px">
             ${list.map(p => html`<span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:var(--rc);background:${p.color}"></span>${p.name}</span>`)}
           </div>` : html`
-          <div style="padding:20px;border:2px dashed var(--ctl);border-radius:var(--r);display:flex;flex-direction:column;gap:10px;align-items:flex-start">
+          ${!D.is23 ? html`<p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted);max-width:62ch">Your file can't tell which parent each piece came from, so this view needs a phased file from 23andMe. Your percentages above are still valid.</p>` : html`<div style="padding:20px;border:2px dashed var(--ctl);border-radius:var(--r);display:flex;flex-direction:column;gap:10px;align-items:flex-start">
             <span style="font-size:17px;font-weight:700">Add your phased file to see this</span>
             <p style="margin:0;font-size:14px;line-height:1.6;color:var(--muted);max-width:62ch">You uploaded the full genome file, which can't tell which parent each piece came from. Your percentages above are still valid. In 23andMe go to Settings → 23andMe Data, and download Phased genotype.</p>
             <div style="display:flex;gap:8px;flex-wrap:wrap"><button onClick=${() => this.openPicker(true)} style=${S.btnP}><i class="ph ph-plus" aria-hidden="true"></i>${s.attaching ? 'Reading…' : 'Add phased file'}</button><button onClick=${() => this.attachPhased('phased_genotype_20240312.zip')} style=${S.btnS}>Use sample phased file</button></div>
             ${s.attachErr && html`<span role="alert" style="font-size:13px;font-weight:600;padding:4px 9px;border-radius:var(--rc);color:var(--l2f);background:var(--l2b)">${s.attachErr}</span>`}
             <span style="font-size:12px;color:var(--muted)">Adds to this report. Nothing else is reset.</span>
           </div>`}
+          `}
       </div>`}
       ${!D.real && lines}
     </section>`;
@@ -902,7 +919,7 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
       <div role="group" aria-label="Health sections" style="display:flex;flex-wrap:wrap;gap:4px;padding:4px;align-self:flex-start;border:var(--bw) solid var(--line);border-radius:var(--rc);background:var(--surface);max-width:100%">
         ${[['risks', 'Health risks'], ['carrier', 'Carrier status'], ['drugs', 'Drug response']].map(([id, label]) => { const on = s.sub === id; return html`<button onClick=${() => this.setState({ sub: id })} aria-pressed=${on ? 'true' : 'false'} style="min-height:40px;padding:0 14px;border:0;border-radius:var(--rc);background:${on ? 'var(--navOnB)' : 'transparent'};color:${on ? 'var(--navOnF)' : 'var(--ink)'};font:inherit;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap">${label}</button>`; })}
       </div>
-      <div role="note" style=${S.note}><i class="ph ph-info" aria-hidden="true" style="font-size:19px;flex:none;margin-top:1px"></i><span>These results come from a consumer genotyping chip, not sequencing, and they are not a diagnosis. Confirm anything important with a clinical test and talk it through with a doctor or genetic counselor.</span></div>
+      <div role="note" style=${S.note}><i class="ph ph-info" aria-hidden="true" style="font-size:19px;flex:none;margin-top:1px"></i><span>${D.seq ? 'These results come from your sequencing file and they are not a diagnosis.' : 'These results come from a consumer genotyping chip, not sequencing, and they are not a diagnosis.'} Confirm anything important with a clinical test and talk it through with a doctor or genetic counselor.</span></div>
 
       ${s.sub === 'risks' && html`
         <div style="display:flex;flex-direction:column;gap:10px">

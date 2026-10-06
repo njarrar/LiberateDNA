@@ -7,7 +7,7 @@
 LiberateDNA reads your raw DNA file right in your web browser and shows your heritage,
 health, traits and drug response. Your file never leaves your machine.
 
-**[Open LiberateDNA](https://njarrar.github.io/LiberateDNA/)** · Version 3.1.0 · English, العربية, Français
+**[Open LiberateDNA](https://njarrar.github.io/LiberateDNA/)** · Version 3.2.0 · English, العربية, Français
 
 ![Home page](docs/screenshots/home.png)
 
@@ -17,8 +17,8 @@ Most DNA tools ask you to upload your genome to their servers before they show y
 anything. Once it is there, you no longer control who keeps it or what they do with it.
 
 LiberateDNA is for people who have had their genome read, or who have taken their raw data
-back from 23andMe and similar services, and want to explore it without handing it to
-anyone else.
+back from 23andMe, AncestryDNA, MyHeritage and similar services, and want to explore it
+without handing it to anyone else.
 
 ## Your data stays private
 
@@ -35,7 +35,22 @@ anyone else.
 - **Open source.** Every line is in this repository under the MIT license, so anyone can
   check what it does.
 
-## What's new in 3.1.0
+## What's new in 3.2.0
+
+- **Files from any provider.** LiberateDNA now reads raw data from AncestryDNA, MyHeritage,
+  FamilyTreeDNA, Living DNA and many more, not only 23andMe. It works out the company, the
+  column layout and the genome build on its own.
+- **Genome sequencing.** VCF and gVCF files from whole genome sequencing (Nebula, Dante Labs,
+  Sequencing.com, or ones you made yourself) work too, on GRCh37 or GRCh38, plain or gzipped.
+  Large files are read in pieces, so a full genome does not have to fit in memory at once.
+- **Sites that match the reference are filled in.** A whole genome VCF lists only where you
+  differ from the reference genome. For the markers LiberateDNA reads, it fills in the
+  reference letter, so heritage and health results are complete. In a gVCF it does this only
+  where the file says the site was read.
+- Clear messages for files it can't use, such as BAM or CRAM reads, PDFs and match lists.
+- See [What it reads](#what-it-reads) for the full list.
+
+### 3.1.0
 
 - **Languages.** LiberateDNA now speaks English, Arabic and French. Pick one on the home page,
   in the sidebar or in the menu; the choice is remembered on your device. It also follows your
@@ -92,12 +107,28 @@ can print, four color themes, three languages and a phone layout.
 
 ## What it reads
 
-- 23andMe raw data: `genome_Full_*.zip`, `phased_genotype*.zip`, or the `.txt` inside them
-- Password-protected zips (standard zip encryption). AES zips must be unzipped first.
-- The same table saved as CSV
+Drop in the file as you downloaded it. Zip, gzip and bgzip files are opened as they are.
 
-Files from AncestryDNA, MyHeritage and FamilyTreeDNA are detected and turned away for now,
-because their marker sets differ and the results would not be reliable.
+| Source | File | Notes |
+|---|---|---|
+| 23andMe | `genome_*.zip`, `phased_genotype*.zip` or the `.txt` inside | All chip versions. Builds 36 and 37. |
+| AncestryDNA | `AncestryDNA.zip` or `.txt` | Allele columns, chromosomes 23 to 26. |
+| MyHeritage | `MyHeritage_raw_dna_data.csv` or `.zip` | Both the old and the extra-quoted layouts. |
+| FamilyTreeDNA | `*_Autosomal_o37_Results.csv.gz` | Including files with two joined parts. |
+| Living DNA, Genes for Good, DNA.Land, SelfDecode, 23Mofang, tellmeGen, Sano, CircleDNA | `.txt`, `.csv` | Any table with marker, chromosome, position and genotype or allele columns. |
+| Illumina Final Report (Codigo46, Mapmygenome and other GSA labs) | `.txt` | `[Header]` and `[Data]` sections, Plus or Forward strand columns. |
+| Whole genome or exome sequencing (Nebula, Dante Labs, Sequencing.com, Full Genomes, your own) | `.vcf`, `.vcf.gz`, `.g.vcf.gz` | GRCh37 or GRCh38, with or without `chr` names and rsids. The first sample is used. |
+
+- Password-protected zips (standard zip encryption). AES zips must be unzipped first.
+- The genome build comes from where known markers sit in the file, with the header as a
+  tie-breaker. On GRCh38, positions are matched through a table of every marker LiberateDNA
+  reads (`src/b38.js`, built by `src/b38build.py` from the UCSC liftOver chain and gnomAD).
+- Files on build 36 are matched by marker name only, and the paternal line is skipped, since
+  its tree uses GRCh37 positions.
+- In a whole genome VCF, a site that is not listed is taken to match the reference. In a
+  gVCF, only sites inside a reference block are filled in.
+- Not read: BAM, CRAM and FASTQ (raw reads, before genotypes are called), PDF reports and
+  lists of DNA matches. LiberateDNA says so instead of guessing.
 
 These results come from a consumer chip, not a medical test. They are not a diagnosis.
 Confirm anything important with a clinical test and a doctor or genetic counselor.
@@ -105,7 +136,7 @@ Confirm anything important with a clinical test and a doctor or genetic counselo
 ## How heritage works
 Everything below runs in your browser, on your file:
 
-- **Closest group and breakdown.** About 15,400 markers that 23andMe chips share with the
+- **Closest group and breakdown.** About 15,400 markers that common DNA chips share with the
   Illumina GSA are compared with 3,284 people in 36 reference groups from the HGDP and
   1000 Genomes projects. A supervised mixture model (as in frappe and ADMIXTURE projection)
   finds the share of each group; ranges come from resampling blocks of markers. Groups under
@@ -134,6 +165,9 @@ Druze, Circassian, Pathan and others).
 - ISOGG Y-DNA Haplogroup Tree 2016, as shipped in github.com/23andMe/yhaplo. Only the
   tree and SNP table are used; no yhaplo code is included.
 - World outline: Natural Earth via world-atlas (ISC).
+- fflate 0.8.3 for gzip (MIT).
+- The list of file layouts was checked against the `snps` Python library (BSD), whose
+  readers cover many providers. No `snps` code is included.
 
 ### Rebuilding the reference data
 `anc/` holds the scripts. In that folder, with pysam, pyliftover and the files above:
@@ -148,17 +182,17 @@ figures shown in the app.
 - `?start=upload|dashboard`
 - `?tab=overview|heritage|health|traits|explorer` and `?sub=risks|carrier|drugs`
 - `?sample=phased|full|xx`
-- `?demo=password|vendor|corrupt|oldchip|slow|lookupfail|offline`
+- `?demo=password|reads|format|corrupt|oldchip|slow|lookupfail|offline`
 - `?layout=desktop|mobile`
 
 ## Building from source
 `src/` holds the parts. `python3 src/build.py index.html` rebuilds the single file, bundling
 every language in `lang/`; it
-expects Preact + htm (`htm/preact/standalone.umd.js`) and `@phosphor-icons/web` 2.1.1
-unpacked in a `deps/` folder next to `src/`.
+expects Preact + htm (`htm/preact/standalone.umd.js`), `@phosphor-icons/web` 2.1.1 and
+fflate 0.8.3 (for gzip and bgzip files) unpacked in a `deps/` folder next to `src/`.
 
 ## Tests
-`tests/` holds Playwright scripts and sample files (a normal zip, a phased zip, a zip with password `hunter2`, an AncestryDNA export, a cut-off file and an empty file). `tests/files/make_me.py` builds three more: a Middle Eastern style male file (J1 lines, Arabian lactase variant, G6PD, an i-number duplicate), the same as CSV, and a female file whose Y rows are single-dash no-calls. `genome_Full_her.txt` is a held-out Palestinian man from the reference build, used to check the Heritage page; `node tests/fixtest.js` checks them. Serve the folder (`python3 -m http.server 8765`), then run `node tests/realtest.js` from inside `tests/` with Playwright installed. `node tests/i18ntest.js` checks language switching, the right to left layout and that no translated text is left in English; `LANGS=en,ar,fr node tests/sweep.js` checks every theme and language at desktop and phone widths.
+`tests/` holds Playwright scripts and sample files (a normal zip, a phased zip, a zip with password `hunter2`, an AncestryDNA export, a cut-off file and an empty file). `node tests/formats.js` writes the same person's DNA in 15 formats (AncestryDNA, MyHeritage, FamilyTreeDNA, Illumina reports, build 36, a chip VCF, a GRCh38 whole genome VCF in bgzip blocks, a gVCF and more) to `shots/formats/`, reads each one with the real parser and checks that genotypes, heritage and both family lines match the 23andMe original. `tests/files/make_me.py` builds three more: a Middle Eastern style male file (J1 lines, Arabian lactase variant, G6PD, an i-number duplicate), the same as CSV, and a female file whose Y rows are single-dash no-calls. `genome_Full_her.txt` is a held-out Palestinian man from the reference build, used to check the Heritage page; `node tests/fixtest.js` checks them. Serve the folder (`python3 -m http.server 8765`), then run `node tests/realtest.js` from inside `tests/` with Playwright installed. `node tests/i18ntest.js` checks language switching, the right to left layout and that no translated text is left in English; `LANGS=en,ar,fr node tests/sweep.js` checks every theme and language at desktop and phone widths.
 
 ## License
 

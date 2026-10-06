@@ -31,7 +31,7 @@ const check = (name, ok, extra) => { console.log((ok ? 'PASS ' : 'FAIL ') + name
   for (const L of ['ar', 'fr']) {
     en = changed(L);
     const left = new Set();
-    for (const q of ['?start=upload', '?demo=password', '?demo=vendor', '?demo=corrupt']) { await p.goto(U + q + '&lang=' + L); await p.waitForTimeout(150); (await leftovers()).forEach(x => left.add(x)); }
+    for (const q of ['?start=upload', '?demo=password', '?demo=reads', '?demo=format', '?demo=corrupt']) { await p.goto(U + q + '&lang=' + L); await p.waitForTimeout(150); (await leftovers()).forEach(x => left.add(x)); }
     for (const sample of ['phased', 'full', 'xx']) for (const tab of ['overview', 'heritage', 'health', 'traits', 'explorer']) {
       await p.goto(`${U}?start=dashboard&sample=${sample}&tab=${tab}&lang=${L}`); await p.waitForTimeout(150);
       for (const el of await p.$$('[data-locus-root] button[aria-expanded="false"]')) await el.click().catch(() => {});

@@ -22,7 +22,7 @@ function locusAnc() {
   function dosages(P, lookup) {
     const U = unpack(P), g = new Int8Array(U.n);
     for (let i = 0; i < U.n; i++) {
-      const c = lookup(U.ids[i]);
+      const c = lookup(U.ids[i], U.chr[i], U.pos[i]);
       g[i] = -1;
       if (!c || c.length !== 2) continue;
       const r = U.ref[i], a = U.alt[i];
@@ -180,5 +180,5 @@ function locusAnc() {
     return { hg: T.names[best.k], snp: nameOf(best.k), short: `${lead}-${nameOf(best.k)}`, path, derived: path.reduce((t, n) => t + der[T.names.indexOf(n)], 0), tested: call.size };
   }
 
-  return { dosages, ancestry, paint, mtPlace, yPlace, unpack };
+  return { dosages, ancestry, paint, mtPlace, yPlace, unpack, unpackPanel: unpack };
 }

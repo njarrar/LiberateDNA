@@ -11,7 +11,7 @@ const TF = 'files/';
   await up('genome_Full_test.zip');
   await p.waitForSelector('text=What was in your file', { timeout: 20000 });
   let t = await txt();
-  console.log('ZIP overview:', /Genotypes read ([\d,]+)/.exec(t)[1], /Call rate ([\d.]+%)/.exec(t)[1], /Inferred sex (\w+)/.exec(t)[1], /File type (\w+)/.exec(t)[1], /Chip and build (\S+)/.exec(t)[1]);
+  console.log('ZIP overview:', /Genotypes read ([\d,]+)/.exec(t)[1], /Call rate ([\d.]+%)/.exec(t)[1], /Inferred sex (\w+)/.exec(t)[1], /File type (\w+)/.exec(t)[1], /Source and build (.+?) Detected/.exec(t)[1]);
   await p.screenshot({ path: '../shots/real-overview.png' });
   await p.click('nav >> text=Health'); await p.waitForTimeout(200);
   await p.screenshot({ path: '../shots/real-health.png' });
@@ -36,8 +36,17 @@ const TF = 'files/';
   await p.click('text=Unlock and read'); console.log('empty pw msg:', await p.isVisible('text=Enter the password to continue'));
   await p.fill('input[type=password]', 'wrong'); await p.click('text=Unlock and read'); await p.waitForSelector("text=That password didn't open the file", { timeout: 15000 }); console.log('wrong pw ok');
   await p.fill('input[type=password]', 'hunter2'); await p.click('text=Unlock and read'); await p.waitForSelector('text=What was in your file', { timeout: 20000 }); console.log('right pw ok');
-  // 4. vendor, corrupt, empty
-  await up('dna_export.zip'); await p.waitForSelector('[role=alert]'); console.log('vendor:', (await p.innerText('[role=alert]')).split('\n')[0]);
+  // 4. other providers, corrupt, empty
+  await up('dna_export.zip'); await p.waitForSelector('text=What was in your file', { timeout: 30000 }); t = await txt(); console.log('AncestryDNA zip:', /Source and build (.+?) Detected/.exec(t)[1], '/', /Genotypes read ([\d,]+)/.exec(t)[1]);
+  const FMT = '../shots/formats/';
+  if (require('fs').existsSync(FMT + 'NG1234.vcf.gz')) {
+    for (const f of ['NG1234.vcf.gz', 'sample.g.vcf.gz', 'MyHeritage_raw_dna_data.csv.gz']) {
+      await p.goto('http://localhost:8765/?theme=lab'); await p.setInputFiles('#locus-file', FMT + f); await p.waitForSelector('text=What was in your file', { timeout: 90000 });
+      t = await txt(); console.log(f + ':', /File type (.+?) (Parent|Unphased|[\d,]+ sites)/.exec(t)[1], '/', /Source and build (.+?) Detected/.exec(t)[1], '/', /Inferred sex (\w+)/.exec(t)[1]);
+      await p.screenshot({ path: '../shots/real-' + f.split('.')[0] + '.png' });
+    }
+    await p.goto('http://localhost:8765/?theme=lab'); await p.setInputFiles('#locus-file', FMT + 'reads.bam'); await p.waitForSelector('[role=alert]'); console.log('bam:', (await p.innerText('[role=alert]')).split('\n')[0]);
+  } else console.log('run node tests/formats.js first to test VCF files in the browser');
   await up('genome_Full_cut.txt'); await p.waitForSelector('[role=alert]'); console.log('cut:', (await p.innerText('[role=alert]')).split('\n')[0]);
   await up('genome_Full_empty.zip'); await p.waitForSelector('[role=alert]'); console.log('empty:', (await p.innerText('[role=alert]')).split('\n')[0]);
   // 5. saved report

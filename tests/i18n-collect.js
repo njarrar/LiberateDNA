@@ -25,7 +25,7 @@ const seen = new Set();
   };
   const tabs = ['overview', 'heritage', 'health', 'traits', 'explorer'];
   // upload page and its states
-  for (const d of ['', 'demo=password', 'demo=vendor', 'demo=corrupt', 'demo=offline']) await open('start=upload&' + d);
+  for (const d of ['', 'demo=password', 'demo=reads', 'demo=format', 'demo=corrupt', 'demo=offline']) await open('start=upload&' + d);
   await p.goto(U + 'demo=password'); await p.click('text=Choose file').catch(() => {});
   // dashboards
   for (const sample of ['phased', 'full', 'xx']) for (const demo of ['', 'oldchip']) for (const tab of tabs) {
@@ -33,6 +33,13 @@ const seen = new Set();
     if (tab === 'health') for (const sub of ['Carrier status', 'Drug response', 'Health risks']) { await p.click(`text=${sub}`).catch(() => {}); await expandAll(); await grab(); }
     else await expandAll();
     if (tab === 'heritage') { await p.click('text=Broad regions').catch(() => {}); await grab(); const seg = await p.$('.seg'); if (seg) { await seg.click().catch(() => {}); await grab(); } }
+  }
+  // real files from other providers and from sequencing (run tests/formats.js first for the VCF)
+  for (const f of ['tests/files/dna_export.zip', 'shots/formats/NG1234.vcf.gz']) {
+    if (!fs.existsSync(path.join(ROOT, f))) continue;
+    await open('start=upload'); await p.setInputFiles('#locus-file', path.join(ROOT, f));
+    await p.waitForSelector('text=What was in your file', { timeout: 90000 }).catch(() => {}); await grab();
+    for (const tab of ['Heritage', 'Health', 'Traits', 'Overview']) { await p.click(`nav >> text=${tab}`).catch(() => {}); await p.waitForTimeout(200); await expandAll(); await grab(); }
   }
   // explorer lookups
   for (const demo of ['', 'lookupfail', 'offline']) {

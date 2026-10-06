@@ -62,7 +62,15 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>{0} chip</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>{0} chromosomes incl. {1}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} Confirm anything important with a clinical test and talk it through with a doctor or genetic counselor.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -111,6 +119,14 @@
   </entry>
   <entry>
     <source>{0} sensitive results hidden</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} sequencing</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} sites filled in from the reference</source>
     <translation></translation>
   </entry>
   <entry>
@@ -506,6 +522,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>BAM, CRAM and FASTQ files hold the raw reads from sequencing, before anyone has called your genotypes. Ask your provider for the VCF or gVCF file instead, or make one with a tool such as GATK or DeepVariant.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Bangladesh</source>
     <translation></translation>
   </entry>
@@ -706,7 +726,7 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>Chip and build</source>
+    <source>Chip data from 23andMe, AncestryDNA, MyHeritage, FamilyTreeDNA, Living DNA, tellmeGen, Genes for Good, SelfDecode, Sano and others with the same columns.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -734,7 +754,7 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>Choose your 23andMe file, or drop it here</source>
+    <source>Choose your DNA file, or drop it here</source>
     <translation></translation>
   </entry>
   <entry>
@@ -890,6 +910,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Confirm anything important with a clinical test and talk it through with a doctor or genetic counselor.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Confirm with a clinical test and tell any oncologist before chemotherapy.</source>
     <translation></translation>
   </entry>
@@ -970,11 +994,11 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>Detected {0}, build GRCh37</source>
+    <source>Detected {0}, build {1}</source>
     <translation></translation>
   </entry>
   <entry>
-    <source>Detected from marker set</source>
+    <source>Detected from the file</source>
     <translation></translation>
   </entry>
   <entry>
@@ -987,6 +1011,10 @@
   </entry>
   <entry>
     <source>DM Sans</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>DNA chip data</source>
     <translation></translation>
   </entry>
   <entry>
@@ -1010,7 +1038,7 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>Drop your 23andMe zip here</source>
+    <source>Drop your raw DNA file here</source>
     <translation></translation>
   </entry>
   <entry>
@@ -1410,6 +1438,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>From 23andMe, AncestryDNA, MyHeritage, FamilyTreeDNA, Living DNA and others, or a VCF from genome sequencing</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Full</source>
     <translation></translation>
   </entry>
@@ -1650,6 +1682,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Illumina reports (the [Header] and [Data] format) from labs that run the Global Screening Array.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>In this report</source>
     <translation></translation>
   </entry>
@@ -1802,7 +1838,7 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>LiberateDNA checks {0} markers that vary between populations and are on the chip 23andMe uses. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</source>
+    <source>LiberateDNA checks {0} markers that vary between populations and are on the chips most DNA companies use. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -1814,11 +1850,15 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>LiberateDNA reads 23andMe files for now.</source>
+    <source>LiberateDNA looks for a marker name, chromosome, position and genotype in each line, or a VCF. Check that this is the raw data download, not a report or a list of matches.</source>
     <translation></translation>
   </entry>
   <entry>
-    <source>LiberateDNA reads 23andMe files for now. {0} uses a different column layout and marker set, so the results would not be reliable.</source>
+    <source>LiberateDNA opens zip and gzip files. Unpack this one on your computer, then add the file inside.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>LiberateDNA reads raw data as text (.txt, .csv, .tsv), VCF and gVCF files, as they are or zipped.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2002,7 +2042,7 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>markers that vary between populations and are on the chip 23andMe uses. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</source>
+    <source>markers that vary between populations and are on the chips most DNA companies use. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2502,10 +2542,6 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>or</source>
-    <translation></translation>
-  </entry>
-  <entry>
     <source>Other clotting variants exist that this chip does not test.</source>
     <translation></translation>
   </entry>
@@ -2706,6 +2742,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Raw data</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Read locally</source>
     <translation></translation>
   </entry>
@@ -2786,6 +2826,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>sample.bam</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>San</source>
     <translation></translation>
   </entry>
@@ -2827,6 +2871,10 @@
   </entry>
   <entry>
     <source>Senegambian and Sierra Leonean</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Sequencing data</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2907,6 +2955,10 @@
   </entry>
   <entry>
     <source>Some SSRIs and proton pump inhibitors may clear faster and work less well at standard doses.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Source and build</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3050,7 +3102,7 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>That looks like an {0} file. Add the phased file from 23andMe.</source>
+    <source>That looks like a {0} file. Add the phased file from 23andMe.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3082,6 +3134,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>The build and the company are found from the file. Zip and gzip work as they are.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>The deepest branches of the Y tree, found in Africa.</source>
     <translation></translation>
   </entry>
@@ -3090,11 +3146,7 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>The extracted .txt file works too</source>
-    <translation></translation>
-  </entry>
-  <entry>
-    <source>The file is empty or ends partway through, which usually means the download was cut off. Download it again from 23andMe: Settings → 23andMe Data → Download raw data.</source>
+    <source>The file is empty or ends partway through, which usually means the download was cut off. Download your raw data again from the company that tested you.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3178,7 +3230,7 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>The paternal line is carried on the Y chromosome, passed from father to son. A father's, brother's or paternal uncle's 23andMe file can show this line for your family.</source>
+    <source>The paternal line is carried on the Y chromosome, passed from father to son. A father's, brother's or paternal uncle's DNA file can show this line for your family.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3234,7 +3286,11 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>These results come from a consumer genotyping chip, not sequencing, and they are not a diagnosis. Confirm anything important with a clinical test and talk it through with a doctor or genetic counselor.</source>
+    <source>These results come from a consumer genotyping chip, not sequencing, and they are not a diagnosis.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>These results come from your sequencing file and they are not a diagnosis.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3250,6 +3306,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>This is a file of raw reads</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>This is the strongest common genetic signal for type 2 diabetes</source>
     <translation></translation>
   </entry>
@@ -3262,7 +3322,7 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>This looks like an {0} file</source>
+    <source>This isn't a DNA data file</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3278,11 +3338,15 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>This zip doesn't contain a DNA data file (.txt, .csv or .vcf). Download your raw data again from the company that tested you.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>This zip is password-protected</source>
     <translation></translation>
   </entry>
   <entry>
-    <source>To get your 23andMe file: Settings → 23andMe Data → Download raw data.</source>
+    <source>This zip is too large to open here</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3390,6 +3454,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Unzip it on your computer, then add the file inside. A .vcf.gz file can be added as it is.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Unzipping {0}</source>
     <translation></translation>
   </entry>
@@ -3402,11 +3470,15 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>uses a different column layout and marker set, so the results would not be reliable.</source>
+    <source>v3.1.2. Maternal tree:</source>
     <translation></translation>
   </entry>
   <entry>
-    <source>v3.1.2. Maternal tree:</source>
+    <source>VCF and gVCF files from genome sequencing, such as Nebula, Dante Labs or Sequencing.com, or ones you made yourself. GRCh37 and GRCh38 both work.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>VCF file</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3431,6 +3503,10 @@
   </entry>
   <entry>
     <source>Warm</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>We couldn't find genotypes in this file</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3483,6 +3559,18 @@
   </entry>
   <entry>
     <source>Which copy is which?</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Which files work?</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Whole genome (gVCF)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Whole genome (VCF)</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3578,6 +3666,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Your file can't tell which parent each piece came from, so this view needs a phased file from 23andMe. Your percentages above are still valid.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Your file is read in this browser and stays on your machine. There is no server, no account and no upload.</source>
     <translation></translation>
   </entry>
@@ -3607,6 +3699,10 @@
   </entry>
   <entry>
     <source>Your results are kept only in this browser so you can come back to them. Delete my data clears them at any time.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Zip and gzip files work as they are</source>
     <translation></translation>
   </entry>
   <entry>

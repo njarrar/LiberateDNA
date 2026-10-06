@@ -62,8 +62,16 @@
     <translation>حامل لـ {0}</translation>
   </entry>
   <entry>
+    <source>{0} chip</source>
+    <translation>شريحة {0}</translation>
+  </entry>
+  <entry>
     <source>{0} chromosomes incl. {1}</source>
     <translation>عدد الكروموسومات: {0}، منها {1}</translation>
+  </entry>
+  <entry>
+    <source>{0} Confirm anything important with a clinical test and talk it through with a doctor or genetic counselor.</source>
+    <translation>{0} تأكد من أي نتيجة مهمة بفحص سريري، وناقشها مع طبيب أو مستشار وراثي.</translation>
   </entry>
   <entry>
     <source>{0} evidence</source>
@@ -112,6 +120,14 @@
   <entry>
     <source>{0} sensitive results hidden</source>
     <translation>نتائج حساسة مخفية: {0}</translation>
+  </entry>
+  <entry>
+    <source>{0} sequencing</source>
+    <translation>تسلسل {0}</translation>
+  </entry>
+  <entry>
+    <source>{0} sites filled in from the reference</source>
+    <translation>{0} موقعًا مُكمَّلًا من الجينوم المرجعي</translation>
   </entry>
   <entry>
     <source>{0} stay hidden until you choose to see them.</source>
@@ -506,6 +522,10 @@
     <translation>بلوشستان، باكستان</translation>
   </entry>
   <entry>
+    <source>BAM, CRAM and FASTQ files hold the raw reads from sequencing, before anyone has called your genotypes. Ask your provider for the VCF or gVCF file instead, or make one with a tool such as GATK or DeepVariant.</source>
+    <translation>تحتوي ملفات BAM وCRAM وFASTQ على القراءات الخام من التسلسل قبل استخراج أنماطك الجينية. اطلب من الجهة التي أجرت الفحص ملف VCF أو gVCF بدلًا منها، أو أنشئه بأداة مثل GATK أو DeepVariant.</translation>
+  </entry>
+  <entry>
     <source>Bangladesh</source>
     <translation>بنغلاديش</translation>
   </entry>
@@ -706,8 +726,8 @@
     <translation>الصين</translation>
   </entry>
   <entry>
-    <source>Chip and build</source>
-    <translation>الشريحة وإصدار الجينوم المرجعي</translation>
+    <source>Chip data from 23andMe, AncestryDNA, MyHeritage, FamilyTreeDNA, Living DNA, tellmeGen, Genes for Good, SelfDecode, Sano and others with the same columns.</source>
+    <translation>بيانات الشرائح من 23andMe وAncestryDNA وMyHeritage وFamilyTreeDNA وLiving DNA وtellmeGen وGenes for Good وSelfDecode وSano وغيرها مما يستخدم الأعمدة نفسها.</translation>
   </entry>
   <entry>
     <source>Chip limitation</source>
@@ -734,8 +754,8 @@
     <translation>اختر ملفًا</translation>
   </entry>
   <entry>
-    <source>Choose your 23andMe file, or drop it here</source>
-    <translation>اختر ملف 23andMe الخاص بك، أو أفلته هنا</translation>
+    <source>Choose your DNA file, or drop it here</source>
+    <translation>اختر ملف حمضك النووي أو أفلته هنا</translation>
   </entry>
   <entry>
     <source>chr</source>
@@ -890,6 +910,10 @@
     <translation>يتركز في شمال إيطاليا وسويسرا وشرق فرنسا.</translation>
   </entry>
   <entry>
+    <source>Confirm anything important with a clinical test and talk it through with a doctor or genetic counselor.</source>
+    <translation>تأكد من أي نتيجة مهمة بفحص سريري، وناقشها مع طبيب أو مستشار وراثي.</translation>
+  </entry>
+  <entry>
     <source>Confirm with a clinical test and tell any oncologist before chemotherapy.</source>
     <translation>أكّد النتيجة باختبار سريري وأبلغ أي طبيب أورام قبل العلاج الكيميائي.</translation>
   </entry>
@@ -970,12 +994,12 @@
     <translation>اكتشاف الشريحة وإصدار الجينوم المرجعي</translation>
   </entry>
   <entry>
-    <source>Detected {0}, build GRCh37</source>
-    <translation>تم اكتشاف {0}، الإصدار GRCh37</translation>
+    <source>Detected {0}, build {1}</source>
+    <translation>تم التعرف على {0}، الإصدار {1}</translation>
   </entry>
   <entry>
-    <source>Detected from marker set</source>
-    <translation>اكتُشف من مجموعة المؤشرات الجينية</translation>
+    <source>Detected from the file</source>
+    <translation>تم التعرف عليه من الملف</translation>
   </entry>
   <entry>
     <source>Diagnosis needs blood tests and a biopsy, not genotype.</source>
@@ -988,6 +1012,10 @@
   <entry>
     <source>DM Sans</source>
     <translation>DM Sans</translation>
+  </entry>
+  <entry>
+    <source>DNA chip data</source>
+    <translation>بيانات شريحة الحمض النووي</translation>
   </entry>
   <entry>
     <source>Do you want to see this result?</source>
@@ -1010,8 +1038,8 @@
     <translation>لم يُعثر على DQ2.5. معظم حالات الداء البطني تتطلب DQ2.5 أو DQ8، لذا فخطرك أقل من المتوسط. لا يُفحص DQ8 هنا.</translation>
   </entry>
   <entry>
-    <source>Drop your 23andMe zip here</source>
-    <translation>أفلت ملف 23andMe المضغوط (zip) هنا</translation>
+    <source>Drop your raw DNA file here</source>
+    <translation>أفلت ملف بيانات حمضك النووي الخام هنا</translation>
   </entry>
   <entry>
     <source>Drug response</source>
@@ -1410,6 +1438,10 @@
     <translation>فرنسي</translation>
   </entry>
   <entry>
+    <source>From 23andMe, AncestryDNA, MyHeritage, FamilyTreeDNA, Living DNA and others, or a VCF from genome sequencing</source>
+    <translation>من 23andMe وAncestryDNA وMyHeritage وFamilyTreeDNA وLiving DNA وغيرها، أو ملف VCF من تسلسل الجينوم</translation>
+  </entry>
+  <entry>
     <source>Full</source>
     <translation>كامل</translation>
   </entry>
@@ -1650,6 +1682,10 @@
     <translation>إذا أُصيب أقارب مقرّبون بهذه السرطانات، فاسأل طبيبك عن اختبار BRCA السريري.</translation>
   </entry>
   <entry>
+    <source>Illumina reports (the [Header] and [Data] format) from labs that run the Global Screening Array.</source>
+    <translation>تقارير Illumina (بصيغة [Header] و[Data]) من المختبرات التي تستخدم شريحة Global Screening Array.</translation>
+  </entry>
+  <entry>
     <source>In this report</source>
     <translation>في هذا التقرير</translation>
   </entry>
@@ -1802,8 +1838,8 @@
     <translation>يفحص LiberateDNA</translation>
   </entry>
   <entry>
-    <source>LiberateDNA checks {0} markers that vary between populations and are on the chip 23andMe uses. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</source>
-    <translation>يفحص LiberateDNA {0} مؤشرًا جينيًا تختلف بين الشعوب وموجودة على الشريحة التي تستخدمها 23andMe. ويعرف لكل منها مدى شيوع كل حرف في كل مجموعة مرجعية. ثم يجد مزيج المجموعات الذي يفسّر حروفك على أفضل وجه، وكل ذلك داخل هذا المتصفح.</translation>
+    <source>LiberateDNA checks {0} markers that vary between populations and are on the chips most DNA companies use. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</source>
+    <translation>يفحص LiberateDNA {0} مؤشرًا جينيًا يختلف بين الشعوب وموجودًا على الشرائح التي تستخدمها معظم شركات الحمض النووي. ولكل مؤشر يعرف مدى شيوع كل حرف في كل مجموعة مرجعية. ثم يجد مزيج المجموعات الذي يفسر حروفك على أفضل وجه، وكل ذلك داخل هذا المتصفح.</translation>
   </entry>
   <entry>
     <source>LiberateDNA checks markers for H, HV, J, T and U. Your file did not match them, or they were not called. A fuller tree is planned.</source>
@@ -1814,12 +1850,16 @@
     <translation>لا يحسب LiberateDNA بعدُ نسب الأصول من الملف، لأن ذلك يتطلب لوحة مرجعية غير مضمّنة فيه. سلالتاك الأمومية والأبوية، وكل نتائج الصحة والأدوية والصفات أدناه، مستخرجة من قراءات ملفك أنت.</translation>
   </entry>
   <entry>
-    <source>LiberateDNA reads 23andMe files for now.</source>
-    <translation>يقرأ LiberateDNA ملفات 23andMe حاليًا.</translation>
+    <source>LiberateDNA looks for a marker name, chromosome, position and genotype in each line, or a VCF. Check that this is the raw data download, not a report or a list of matches.</source>
+    <translation>يبحث LiberateDNA في كل سطر عن اسم المؤشر الجيني والكروموسوم والموضع والنمط الجيني، أو عن ملف VCF. تأكد أن هذا ملف البيانات الخام، لا تقريرًا أو قائمة أقارب متطابقين.</translation>
   </entry>
   <entry>
-    <source>LiberateDNA reads 23andMe files for now. {0} uses a different column layout and marker set, so the results would not be reliable.</source>
-    <translation>يقرأ LiberateDNA ملفات 23andMe حاليًا فقط. يستخدم {0} ترتيبًا مختلفًا للأعمدة ومجموعة مختلفة من المؤشرات الجينية، لذا لن تكون النتائج موثوقة.</translation>
+    <source>LiberateDNA opens zip and gzip files. Unpack this one on your computer, then add the file inside.</source>
+    <translation>يفتح LiberateDNA ملفات zip وgzip. فك ضغط هذا الملف على حاسوبك، ثم أضف الملف الذي بداخله.</translation>
+  </entry>
+  <entry>
+    <source>LiberateDNA reads raw data as text (.txt, .csv, .tsv), VCF and gVCF files, as they are or zipped.</source>
+    <translation>يقرأ LiberateDNA البيانات الخام بصيغة نصية (‎.txt و‎.csv و‎.tsv) وملفات VCF وgVCF، كما هي أو مضغوطة.</translation>
   </entry>
   <entry>
     <source>Likely</source>
@@ -2002,8 +2042,8 @@
     <translation>المؤشرات الجينية لكل كروموسوم</translation>
   </entry>
   <entry>
-    <source>markers that vary between populations and are on the chip 23andMe uses. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</source>
-    <translation>مؤشرًا جينيًا تختلف بين الشعوب وموجودة على الشريحة التي تستخدمها 23andMe. ويعرف لكل منها مدى شيوع كل حرف في كل مجموعة مرجعية. ثم يجد مزيج المجموعات الذي يفسّر حروفك على أفضل وجه، وكل ذلك داخل هذا المتصفح.</translation>
+    <source>markers that vary between populations and are on the chips most DNA companies use. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</source>
+    <translation>مؤشرًا جينيًا يختلف بين الشعوب وموجودًا على الشرائح التي تستخدمها معظم شركات الحمض النووي. ولكل مؤشر يعرف مدى شيوع كل حرف في كل مجموعة مرجعية. ثم يجد مزيج المجموعات الذي يفسر حروفك على أفضل وجه، وكل ذلك داخل هذا المتصفح.</translation>
   </entry>
   <entry>
     <source>Matching {0} markers on this device</source>
@@ -2502,10 +2542,6 @@
     <translation>افتح الصفحة لقراءة ملاحظات المجتمع</translation>
   </entry>
   <entry>
-    <source>or</source>
-    <translation>أو</translation>
-  </entry>
-  <entry>
     <source>Other clotting variants exist that this chip does not test.</source>
     <translation>توجد متغيرات جينية أخرى تتعلق بالتخثر لا تفحصها هذه الشريحة.</translation>
   </entry>
@@ -2706,6 +2742,10 @@
     <translation>نتيجة نادرة. نحو 40% من المتغيرات الجينية النادرة في بيانات الشرائح الاستهلاكية إيجابيات كاذبة (Tandy-Connor et al., 2018). أكّدها باختبار سريري قبل اتخاذ قرارات تتعلق بتنظيم الأسرة.</translation>
   </entry>
   <entry>
+    <source>Raw data</source>
+    <translation>بيانات خام</translation>
+  </entry>
+  <entry>
     <source>Read locally</source>
     <translation>قراءة محلية</translation>
   </entry>
@@ -2786,6 +2826,10 @@
     <translation>الروس</translation>
   </entry>
   <entry>
+    <source>sample.bam</source>
+    <translation>sample.bam</translation>
+  </entry>
+  <entry>
     <source>San</source>
     <translation>السان</translation>
   </entry>
@@ -2828,6 +2872,10 @@
   <entry>
     <source>Senegambian and Sierra Leonean</source>
     <translation>سنغامبي وسيراليوني</translation>
+  </entry>
+  <entry>
+    <source>Sequencing data</source>
+    <translation>بيانات تسلسل</translation>
   </entry>
   <entry>
     <source>Share with whoever doses warfarin, if it is ever prescribed.</source>
@@ -2908,6 +2956,10 @@
   <entry>
     <source>Some SSRIs and proton pump inhibitors may clear faster and work less well at standard doses.</source>
     <translation>قد تُزال بعض مضادات الاكتئاب من فئة SSRI ومثبطات مضخة البروتون من الجسم أسرع، وتكون أقل فعالية بالجرعات المعتادة.</translation>
+  </entry>
+  <entry>
+    <source>Source and build</source>
+    <translation>المصدر والإصدار</translation>
   </entry>
   <entry>
     <source>Source:</source>
@@ -3050,8 +3102,8 @@
     <translation>تعذّرت قراءة ذلك الملف.</translation>
   </entry>
   <entry>
-    <source>That looks like an {0} file. Add the phased file from 23andMe.</source>
-    <translation>يبدو أن هذا ملف {0}. أضف الملف مُحدَّد الطور من 23andMe.</translation>
+    <source>That looks like a {0} file. Add the phased file from 23andMe.</source>
+    <translation>يبدو هذا ملفًا من {0}. أضف الملف مُحدَّد الطور من 23andMe.</translation>
   </entry>
   <entry>
     <source>That needs a reference panel of people from many regions, which LiberateDNA does not ship. Rather than guess, it shows nothing here. You can still look at the layout with example numbers that are not yours.</source>
@@ -3082,6 +3134,10 @@
     <translation>الفرع الآسيوي من R1a، الشائع في جنوب آسيا ووسطها وإيران.</translation>
   </entry>
   <entry>
+    <source>The build and the company are found from the file. Zip and gzip work as they are.</source>
+    <translation>يُستخرج الإصدار والشركة من الملف نفسه. وتعمل ملفات zip وgzip كما هي.</translation>
+  </entry>
+  <entry>
     <source>The deepest branches of the Y tree, found in Africa.</source>
     <translation>أعمق فروع شجرة Y، وتوجد في أفريقيا.</translation>
   </entry>
@@ -3090,12 +3146,8 @@
     <translation>الفرع الشرقي من M269، ويوجد في القوقاز والأناضول وإيران وشرق أوروبا.</translation>
   </entry>
   <entry>
-    <source>The extracted .txt file works too</source>
-    <translation>يعمل ملف .txt المستخرج أيضًا</translation>
-  </entry>
-  <entry>
-    <source>The file is empty or ends partway through, which usually means the download was cut off. Download it again from 23andMe: Settings → 23andMe Data → Download raw data.</source>
-    <translation>الملف فارغ أو ينتهي في منتصفه، وهذا يعني عادةً أن التنزيل انقطع. نزّله مرة أخرى من 23andMe: Settings → 23andMe Data → Download raw data.</translation>
+    <source>The file is empty or ends partway through, which usually means the download was cut off. Download your raw data again from the company that tested you.</source>
+    <translation>الملف فارغ أو ينتهي في منتصفه، وهذا يعني عادةً أن التنزيل انقطع. نزّل بياناتك الخام مرة أخرى من الشركة التي أجرت لك الفحص.</translation>
   </entry>
   <entry>
     <source>The flush allele is common in East Asia (about 1 in 3) and rare elsewhere.</source>
@@ -3178,8 +3230,8 @@
     <translation>أقدم فرع أوروبي، حمله الصيادون وجامعو الثمار في العصر الجليدي. وأعلى نسبه اليوم في فنلندا ولدى شعب السامي.</translation>
   </entry>
   <entry>
-    <source>The paternal line is carried on the Y chromosome, passed from father to son. A father's, brother's or paternal uncle's 23andMe file can show this line for your family.</source>
-    <translation>تنتقل السلالة الأبوية عبر الكروموسوم Y من الأب إلى ابنه. يمكن لملف 23andMe الخاص بأبيك أو أخيك أو عمك أن يُظهر هذه السلالة لعائلتك.</translation>
+    <source>The paternal line is carried on the Y chromosome, passed from father to son. A father's, brother's or paternal uncle's DNA file can show this line for your family.</source>
+    <translation>تُحمل السلالة الأبوية على الكروموسوم Y الذي ينتقل من الأب إلى الابن. يمكن لملف الحمض النووي لأبيك أو أخيك أو عمك أن يُظهر هذه السلالة لعائلتك.</translation>
   </entry>
   <entry>
     <source>The results above cover markers LiberateDNA checks by default. A scan matches all</source>
@@ -3234,8 +3286,12 @@
     <translation>لم تتم قراءة هذه المؤشرات الجينية</translation>
   </entry>
   <entry>
-    <source>These results come from a consumer genotyping chip, not sequencing, and they are not a diagnosis. Confirm anything important with a clinical test and talk it through with a doctor or genetic counselor.</source>
-    <translation>تأتي هذه النتائج من شريحة تنميط جيني استهلاكية، وليس من تسلسل جيني، وهي ليست تشخيصًا. أكّد أي نتيجة مهمة بفحص سريري وناقشها مع طبيب أو مستشار وراثي.</translation>
+    <source>These results come from a consumer genotyping chip, not sequencing, and they are not a diagnosis.</source>
+    <translation>تأتي هذه النتائج من شريحة تنميط جيني استهلاكية، لا من تسلسل الجينوم، وهي ليست تشخيصًا.</translation>
+  </entry>
+  <entry>
+    <source>These results come from your sequencing file and they are not a diagnosis.</source>
+    <translation>تأتي هذه النتائج من ملف التسلسل الخاص بك، وهي ليست تشخيصًا.</translation>
   </entry>
   <entry>
     <source>These variants are linked to high Lp(a)</source>
@@ -3250,6 +3306,10 @@
     <translation>يفحص هذا 3 فقط من أكثر من 1,000 متغير جيني ضار معروف في BRCA. النتيجة الإيجابية تعني خطرًا أعلى بكثير للإصابة ببعض السرطانات. النتيجة السلبية لا تستبعد وجود متغير.</translation>
   </entry>
   <entry>
+    <source>This is a file of raw reads</source>
+    <translation>هذا ملف قراءات خام</translation>
+  </entry>
+  <entry>
     <source>This is the strongest common genetic signal for type 2 diabetes</source>
     <translation>هذه أقوى إشارة وراثية شائعة للسكري من النوع 2</translation>
   </entry>
@@ -3262,8 +3322,8 @@
     <translation>هذه أقوى إشارة جينية شائعة لداء السكري من النوع الثاني، إذ ترفع الخطر بنحو 1.4 مرة لكل نسخة.</translation>
   </entry>
   <entry>
-    <source>This looks like an {0} file</source>
-    <translation>يبدو أن هذا ملف من {0}</translation>
+    <source>This isn't a DNA data file</source>
+    <translation>هذا ليس ملف بيانات حمض نووي</translation>
   </entry>
   <entry>
     <source>This shows whether you carry APOE ε4, which is linked to higher Alzheimer's risk. It can't tell you whether you will develop the disease, and no treatment changes the genetic risk, so some people prefer not to know.</source>
@@ -3278,12 +3338,16 @@
     <translation>عادةً ما يخفض هذا المتغير الجيني مستوى إنزيم G6PD. وعندها قد يؤدي الفول وبعض أدوية الملاريا وبعض المضادات الحيوية وأدوية مؤكسدة أخرى إلى تكسّر خلايا الدم الحمراء.</translation>
   </entry>
   <entry>
+    <source>This zip doesn't contain a DNA data file (.txt, .csv or .vcf). Download your raw data again from the company that tested you.</source>
+    <translation>لا يحتوي ملف zip هذا على ملف بيانات حمض نووي (‎.txt أو ‎.csv أو ‎.vcf). نزّل بياناتك الخام مرة أخرى من الشركة التي أجرت لك الفحص.</translation>
+  </entry>
+  <entry>
     <source>This zip is password-protected</source>
     <translation>ملف zip هذا محمي بكلمة مرور</translation>
   </entry>
   <entry>
-    <source>To get your 23andMe file: Settings → 23andMe Data → Download raw data.</source>
-    <translation>للحصول على ملفك من 23andMe: Settings → 23andMe Data → Download raw data.</translation>
+    <source>This zip is too large to open here</source>
+    <translation>ملف zip هذا أكبر من أن يُفتح هنا</translation>
   </entry>
   <entry>
     <source>Traced through</source>
@@ -3390,6 +3454,10 @@
     <translation>تركيبة غير مألوفة</translation>
   </entry>
   <entry>
+    <source>Unzip it on your computer, then add the file inside. A .vcf.gz file can be added as it is.</source>
+    <translation>فك ضغطه على حاسوبك، ثم أضف الملف الذي بداخله. يمكن إضافة ملف ‎.vcf.gz كما هو.</translation>
+  </entry>
+  <entry>
     <source>Unzipping {0}</source>
     <translation>جارٍ فك ضغط {0}</translation>
   </entry>
@@ -3402,12 +3470,16 @@
     <translation>استخدم ملف العينة المُحدَّد الطور</translation>
   </entry>
   <entry>
-    <source>uses a different column layout and marker set, so the results would not be reliable.</source>
-    <translation>يستخدم ترتيب أعمدة ومجموعة مؤشرات جينية مختلفة، لذا لن تكون النتائج موثوقة.</translation>
-  </entry>
-  <entry>
     <source>v3.1.2. Maternal tree:</source>
     <translation>v3.1.2. الشجرة الأمومية:</translation>
+  </entry>
+  <entry>
+    <source>VCF and gVCF files from genome sequencing, such as Nebula, Dante Labs or Sequencing.com, or ones you made yourself. GRCh37 and GRCh38 both work.</source>
+    <translation>ملفات VCF وgVCF من تسلسل الجينوم، مثل Nebula أو Dante Labs أو Sequencing.com، أو ملفات أنشأتها بنفسك. يعمل كل من GRCh37 وGRCh38.</translation>
+  </entry>
+  <entry>
+    <source>VCF file</source>
+    <translation>ملف VCF</translation>
   </entry>
   <entry>
     <source>Version {0}. Open source under the MIT license.</source>
@@ -3432,6 +3504,10 @@
   <entry>
     <source>Warm</source>
     <translation>دافئ</translation>
+  </entry>
+  <entry>
+    <source>We couldn't find genotypes in this file</source>
+    <translation>لم نجد أنماطًا جينية في هذا الملف</translation>
   </entry>
   <entry>
     <source>We couldn't read this file</source>
@@ -3484,6 +3560,18 @@
   <entry>
     <source>Which copy is which?</source>
     <translation>أي نسخة هي أيّها؟</translation>
+  </entry>
+  <entry>
+    <source>Which files work?</source>
+    <translation>ما الملفات التي تعمل؟</translation>
+  </entry>
+  <entry>
+    <source>Whole genome (gVCF)</source>
+    <translation>الجينوم الكامل (gVCF)</translation>
+  </entry>
+  <entry>
+    <source>Whole genome (VCF)</source>
+    <translation>الجينوم الكامل (VCF)</translation>
   </entry>
   <entry>
     <source>Why it exists:</source>
@@ -3578,6 +3666,10 @@
     <translation>ملفك</translation>
   </entry>
   <entry>
+    <source>Your file can't tell which parent each piece came from, so this view needs a phased file from 23andMe. Your percentages above are still valid.</source>
+    <translation>لا يستطيع ملفك أن يحدد من أي والد جاء كل جزء، لذا تحتاج هذه الصورة إلى ملف مُحدَّد الطور من 23andMe. نسبك المئوية أعلاه تبقى صحيحة.</translation>
+  </entry>
+  <entry>
     <source>Your file is read in this browser and stays on your machine. There is no server, no account and no upload.</source>
     <translation>يُقرأ ملفك في هذا المتصفح ويبقى على جهازك. لا يوجد خادم ولا حساب ولا رفع للملفات.</translation>
   </entry>
@@ -3608,6 +3700,10 @@
   <entry>
     <source>Your results are kept only in this browser so you can come back to them. Delete my data clears them at any time.</source>
     <translation>تُحفظ نتائجك في هذا المتصفح فقط لتتمكن من العودة إليها. يمسحها زر احذف بياناتي في أي وقت.</translation>
+  </entry>
+  <entry>
+    <source>Zip and gzip files work as they are</source>
+    <translation>تعمل ملفات zip وgzip كما هي</translation>
   </entry>
   <entry>
     <source>Zip password</source>

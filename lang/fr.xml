@@ -15,7 +15,7 @@
   </entry>
   <entry>
     <source>: {0} of {1} {2} ({3} {4}). Rare finding; clinical confirmation recommended.</source>
-    <translation> : {0} sur {1} {2} ({3} {4}). Résultat rare ; une confirmation clinique est recommandée.</translation>
+    <translation>: {0} sur {1} {2} ({3} {4}). Résultat rare ; une confirmation clinique est recommandée.</translation>
   </entry>
   <entry>
     <source>. It timed out.</source>
@@ -62,8 +62,16 @@
     <translation>Porteur de {0}</translation>
   </entry>
   <entry>
+    <source>{0} chip</source>
+    <translation>Puce {0}</translation>
+  </entry>
+  <entry>
     <source>{0} chromosomes incl. {1}</source>
     <translation>{0} chromosomes, dont {1}</translation>
+  </entry>
+  <entry>
+    <source>{0} Confirm anything important with a clinical test and talk it through with a doctor or genetic counselor.</source>
+    <translation>{0} Confirmez tout résultat important par un test clinique et parlez-en avec un médecin ou un conseiller en génétique.</translation>
   </entry>
   <entry>
     <source>{0} evidence</source>
@@ -112,6 +120,14 @@
   <entry>
     <source>{0} sensitive results hidden</source>
     <translation>Résultats sensibles masqués : {0}</translation>
+  </entry>
+  <entry>
+    <source>{0} sequencing</source>
+    <translation>Séquençage {0}</translation>
+  </entry>
+  <entry>
+    <source>{0} sites filled in from the reference</source>
+    <translation>{0} sites complétés à partir de la référence</translation>
   </entry>
   <entry>
     <source>{0} stay hidden until you choose to see them.</source>
@@ -506,6 +522,10 @@
     <translation>Baloutchistan, Pakistan</translation>
   </entry>
   <entry>
+    <source>BAM, CRAM and FASTQ files hold the raw reads from sequencing, before anyone has called your genotypes. Ask your provider for the VCF or gVCF file instead, or make one with a tool such as GATK or DeepVariant.</source>
+    <translation>Les fichiers BAM, CRAM et FASTQ contiennent les lectures brutes du séquençage, avant que vos génotypes ne soient déterminés. Demandez plutôt le fichier VCF ou gVCF à votre prestataire, ou créez-le avec un outil comme GATK ou DeepVariant.</translation>
+  </entry>
+  <entry>
     <source>Bangladesh</source>
     <translation>Bangladesh</translation>
   </entry>
@@ -706,8 +726,8 @@
     <translation>Chine</translation>
   </entry>
   <entry>
-    <source>Chip and build</source>
-    <translation>Puce et version du génome</translation>
+    <source>Chip data from 23andMe, AncestryDNA, MyHeritage, FamilyTreeDNA, Living DNA, tellmeGen, Genes for Good, SelfDecode, Sano and others with the same columns.</source>
+    <translation>Données de puce de 23andMe, AncestryDNA, MyHeritage, FamilyTreeDNA, Living DNA, tellmeGen, Genes for Good, SelfDecode, Sano et d'autres avec les mêmes colonnes.</translation>
   </entry>
   <entry>
     <source>Chip limitation</source>
@@ -734,8 +754,8 @@
     <translation>Choisir un fichier</translation>
   </entry>
   <entry>
-    <source>Choose your 23andMe file, or drop it here</source>
-    <translation>Choisissez votre fichier 23andMe, ou déposez-le ici</translation>
+    <source>Choose your DNA file, or drop it here</source>
+    <translation>Choisissez votre fichier ADN ou déposez-le ici</translation>
   </entry>
   <entry>
     <source>chr</source>
@@ -890,6 +910,10 @@
     <translation>Concentré dans le nord de l'Italie, en Suisse et dans l'est de la France.</translation>
   </entry>
   <entry>
+    <source>Confirm anything important with a clinical test and talk it through with a doctor or genetic counselor.</source>
+    <translation>Confirmez tout résultat important par un test clinique et parlez-en avec un médecin ou un conseiller en génétique.</translation>
+  </entry>
+  <entry>
     <source>Confirm with a clinical test and tell any oncologist before chemotherapy.</source>
     <translation>Faites confirmer par un test clinique et prévenez tout oncologue avant une chimiothérapie.</translation>
   </entry>
@@ -970,12 +994,12 @@
     <translation>Détecter la puce et la version du génome</translation>
   </entry>
   <entry>
-    <source>Detected {0}, build GRCh37</source>
-    <translation>{0} détecté, version GRCh37</translation>
+    <source>Detected {0}, build {1}</source>
+    <translation>Détecté : {0}, version {1}</translation>
   </entry>
   <entry>
-    <source>Detected from marker set</source>
-    <translation>Détecté à partir de l'ensemble de marqueurs</translation>
+    <source>Detected from the file</source>
+    <translation>Détecté à partir du fichier</translation>
   </entry>
   <entry>
     <source>Diagnosis needs blood tests and a biopsy, not genotype.</source>
@@ -988,6 +1012,10 @@
   <entry>
     <source>DM Sans</source>
     <translation>DM Sans</translation>
+  </entry>
+  <entry>
+    <source>DNA chip data</source>
+    <translation>Données de puce ADN</translation>
   </entry>
   <entry>
     <source>Do you want to see this result?</source>
@@ -1010,8 +1038,8 @@
     <translation>DQ2.5 n'a pas été trouvé. La plupart des cas de maladie cœliaque nécessitent DQ2.5 ou DQ8, votre risque est donc inférieur à la moyenne. DQ8 n'est pas testé ici.</translation>
   </entry>
   <entry>
-    <source>Drop your 23andMe zip here</source>
-    <translation>Déposez ici votre fichier zip 23andMe</translation>
+    <source>Drop your raw DNA file here</source>
+    <translation>Déposez ici votre fichier ADN brut</translation>
   </entry>
   <entry>
     <source>Drug response</source>
@@ -1410,6 +1438,10 @@
     <translation>Français</translation>
   </entry>
   <entry>
+    <source>From 23andMe, AncestryDNA, MyHeritage, FamilyTreeDNA, Living DNA and others, or a VCF from genome sequencing</source>
+    <translation>De 23andMe, AncestryDNA, MyHeritage, FamilyTreeDNA, Living DNA et d'autres, ou un VCF issu du séquençage du génome</translation>
+  </entry>
+  <entry>
     <source>Full</source>
     <translation>Complet</translation>
   </entry>
@@ -1650,6 +1682,10 @@
     <translation>Si des proches parents ont eu ces cancers, demandez à votre médecin un test BRCA clinique.</translation>
   </entry>
   <entry>
+    <source>Illumina reports (the [Header] and [Data] format) from labs that run the Global Screening Array.</source>
+    <translation>Rapports Illumina (format [Header] et [Data]) des laboratoires qui utilisent la puce Global Screening Array.</translation>
+  </entry>
+  <entry>
     <source>In this report</source>
     <translation>Dans ce rapport</translation>
   </entry>
@@ -1802,8 +1838,8 @@
     <translation>LiberateDNA vérifie</translation>
   </entry>
   <entry>
-    <source>LiberateDNA checks {0} markers that vary between populations and are on the chip 23andMe uses. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</source>
-    <translation>LiberateDNA vérifie {0} marqueurs qui varient entre les populations et figurent sur la puce utilisée par 23andMe. Pour chacun, il sait à quelle fréquence chaque lettre apparaît dans chaque groupe de référence. Il trouve ensuite le mélange de groupes qui explique le mieux vos lettres, le tout dans ce navigateur.</translation>
+    <source>LiberateDNA checks {0} markers that vary between populations and are on the chips most DNA companies use. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</source>
+    <translation>LiberateDNA examine {0} marqueurs qui varient entre les populations et figurent sur les puces utilisées par la plupart des entreprises d'ADN. Pour chacun, il sait à quel point chaque lettre est courante dans chaque groupe de référence. Il trouve ensuite le mélange de groupes qui explique le mieux vos lettres, le tout dans ce navigateur.</translation>
   </entry>
   <entry>
     <source>LiberateDNA checks markers for H, HV, J, T and U. Your file did not match them, or they were not called. A fuller tree is planned.</source>
@@ -1814,12 +1850,16 @@
     <translation>LiberateDNA ne calcule pas encore de pourcentages d'origines à partir d'un fichier, car il faudrait un panel de référence que l'application ne contient pas. Vos lignées maternelle et paternelle, ainsi que tous les résultats de santé, de médicaments et de traits ci-dessous, proviennent de vos propres lectures.</translation>
   </entry>
   <entry>
-    <source>LiberateDNA reads 23andMe files for now.</source>
-    <translation>Pour l'instant, LiberateDNA lit les fichiers 23andMe.</translation>
+    <source>LiberateDNA looks for a marker name, chromosome, position and genotype in each line, or a VCF. Check that this is the raw data download, not a report or a list of matches.</source>
+    <translation>LiberateDNA cherche dans chaque ligne un nom de marqueur, un chromosome, une position et un génotype, ou un VCF. Vérifiez qu'il s'agit bien du téléchargement des données brutes, et non d'un rapport ou d'une liste de correspondances.</translation>
   </entry>
   <entry>
-    <source>LiberateDNA reads 23andMe files for now. {0} uses a different column layout and marker set, so the results would not be reliable.</source>
-    <translation>LiberateDNA lit pour l'instant les fichiers 23andMe. {0} utilise une autre disposition des colonnes et un autre ensemble de marqueurs, les résultats ne seraient donc pas fiables.</translation>
+    <source>LiberateDNA opens zip and gzip files. Unpack this one on your computer, then add the file inside.</source>
+    <translation>LiberateDNA ouvre les fichiers zip et gzip. Décompressez celui-ci sur votre ordinateur, puis ajoutez le fichier qu'il contient.</translation>
+  </entry>
+  <entry>
+    <source>LiberateDNA reads raw data as text (.txt, .csv, .tsv), VCF and gVCF files, as they are or zipped.</source>
+    <translation>LiberateDNA lit les données brutes au format texte (.txt, .csv, .tsv), ainsi que les fichiers VCF et gVCF, tels quels ou compressés.</translation>
   </entry>
   <entry>
     <source>Likely</source>
@@ -2002,8 +2042,8 @@
     <translation>Marqueurs par chromosome</translation>
   </entry>
   <entry>
-    <source>markers that vary between populations and are on the chip 23andMe uses. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</source>
-    <translation>marqueurs qui varient entre les populations et figurent sur la puce utilisée par 23andMe. Pour chacun, il sait à quelle fréquence chaque lettre apparaît dans chaque groupe de référence. Il trouve ensuite le mélange de groupes qui explique le mieux vos lettres, le tout dans ce navigateur.</translation>
+    <source>markers that vary between populations and are on the chips most DNA companies use. For each one it knows how common each letter is in every reference group. It then finds the mix of groups that best explains your letters, all inside this browser.</source>
+    <translation>marqueurs qui varient entre les populations et figurent sur les puces utilisées par la plupart des entreprises d'ADN. Pour chacun, il sait à quel point chaque lettre est courante dans chaque groupe de référence. Il trouve ensuite le mélange de groupes qui explique le mieux vos lettres, le tout dans ce navigateur.</translation>
   </entry>
   <entry>
     <source>Matching {0} markers on this device</source>
@@ -2502,10 +2542,6 @@
     <translation>Ouvrir la page pour voir les notes de la communauté</translation>
   </entry>
   <entry>
-    <source>or</source>
-    <translation>ou</translation>
-  </entry>
-  <entry>
     <source>Other clotting variants exist that this chip does not test.</source>
     <translation>Il existe d'autres variants de la coagulation que cette puce ne teste pas.</translation>
   </entry>
@@ -2706,6 +2742,10 @@
     <translation>Résultat rare. Environ 40 % des variants rares dans les données de puces grand public sont des faux positifs (Tandy-Connor et al., 2018). Faites confirmer par un test clinique avant toute décision de projet familial.</translation>
   </entry>
   <entry>
+    <source>Raw data</source>
+    <translation>Données brutes</translation>
+  </entry>
+  <entry>
     <source>Read locally</source>
     <translation>Lu localement</translation>
   </entry>
@@ -2786,6 +2826,10 @@
     <translation>Russes</translation>
   </entry>
   <entry>
+    <source>sample.bam</source>
+    <translation>sample.bam</translation>
+  </entry>
+  <entry>
     <source>San</source>
     <translation>San</translation>
   </entry>
@@ -2828,6 +2872,10 @@
   <entry>
     <source>Senegambian and Sierra Leonean</source>
     <translation>Sénégambien et sierra-léonais</translation>
+  </entry>
+  <entry>
+    <source>Sequencing data</source>
+    <translation>Données de séquençage</translation>
   </entry>
   <entry>
     <source>Share with whoever doses warfarin, if it is ever prescribed.</source>
@@ -2908,6 +2956,10 @@
   <entry>
     <source>Some SSRIs and proton pump inhibitors may clear faster and work less well at standard doses.</source>
     <translation>Certains ISRS et inhibiteurs de la pompe à protons peuvent être éliminés plus vite et être moins efficaces aux doses standard.</translation>
+  </entry>
+  <entry>
+    <source>Source and build</source>
+    <translation>Source et version</translation>
   </entry>
   <entry>
     <source>Source:</source>
@@ -3050,7 +3102,7 @@
     <translation>Ce fichier n'a pas pu être lu.</translation>
   </entry>
   <entry>
-    <source>That looks like an {0} file. Add the phased file from 23andMe.</source>
+    <source>That looks like a {0} file. Add the phased file from 23andMe.</source>
     <translation>Cela ressemble à un fichier {0}. Ajoutez le fichier phasé de 23andMe.</translation>
   </entry>
   <entry>
@@ -3082,6 +3134,10 @@
     <translation>La branche asiatique de R1a, fréquente en Asie du Sud et centrale et en Iran.</translation>
   </entry>
   <entry>
+    <source>The build and the company are found from the file. Zip and gzip work as they are.</source>
+    <translation>La version et l'entreprise sont trouvées à partir du fichier. Les fichiers zip et gzip fonctionnent tels quels.</translation>
+  </entry>
+  <entry>
     <source>The deepest branches of the Y tree, found in Africa.</source>
     <translation>Les branches les plus anciennes de l'arbre Y, présentes en Afrique.</translation>
   </entry>
@@ -3090,12 +3146,8 @@
     <translation>La branche orientale de M269, présente dans le Caucase, en Anatolie, en Iran et en Europe de l'Est.</translation>
   </entry>
   <entry>
-    <source>The extracted .txt file works too</source>
-    <translation>Le fichier .txt extrait fonctionne aussi</translation>
-  </entry>
-  <entry>
-    <source>The file is empty or ends partway through, which usually means the download was cut off. Download it again from 23andMe: Settings → 23andMe Data → Download raw data.</source>
-    <translation>Le fichier est vide ou s'arrête en cours de route, ce qui signifie généralement que le téléchargement a été interrompu. Téléchargez-le à nouveau depuis 23andMe : Settings → 23andMe Data → Download raw data.</translation>
+    <source>The file is empty or ends partway through, which usually means the download was cut off. Download your raw data again from the company that tested you.</source>
+    <translation>Le fichier est vide ou s'arrête en cours de route, ce qui signifie en général que le téléchargement a été interrompu. Téléchargez à nouveau vos données brutes auprès de l'entreprise qui vous a testé.</translation>
   </entry>
   <entry>
     <source>The flush allele is common in East Asia (about 1 in 3) and rare elsewhere.</source>
@@ -3178,8 +3230,8 @@
     <translation>La plus ancienne branche européenne, portée par les chasseurs-cueilleurs de l'ère glaciaire. Elle est aujourd'hui la plus fréquente en Finlande et chez les Samis.</translation>
   </entry>
   <entry>
-    <source>The paternal line is carried on the Y chromosome, passed from father to son. A father's, brother's or paternal uncle's 23andMe file can show this line for your family.</source>
-    <translation>La lignée paternelle est portée par le chromosome Y, transmis de père en fils. Le fichier 23andMe d'un père, d'un frère ou d'un oncle paternel peut montrer cette lignée pour votre famille.</translation>
+    <source>The paternal line is carried on the Y chromosome, passed from father to son. A father's, brother's or paternal uncle's DNA file can show this line for your family.</source>
+    <translation>La lignée paternelle est portée par le chromosome Y, transmis de père en fils. Le fichier ADN d'un père, d'un frère ou d'un oncle paternel peut montrer cette lignée pour votre famille.</translation>
   </entry>
   <entry>
     <source>The results above cover markers LiberateDNA checks by default. A scan matches all</source>
@@ -3234,8 +3286,12 @@
     <translation>Ces marqueurs n'ont pas été lus</translation>
   </entry>
   <entry>
-    <source>These results come from a consumer genotyping chip, not sequencing, and they are not a diagnosis. Confirm anything important with a clinical test and talk it through with a doctor or genetic counselor.</source>
-    <translation>Ces résultats proviennent d'une puce de génotypage grand public, pas d'un séquençage, et ne constituent pas un diagnostic. Faites confirmer tout résultat important par un test clinique et parlez-en avec un médecin ou un conseiller en génétique.</translation>
+    <source>These results come from a consumer genotyping chip, not sequencing, and they are not a diagnosis.</source>
+    <translation>Ces résultats proviennent d'une puce de génotypage grand public, pas d'un séquençage, et ne constituent pas un diagnostic.</translation>
+  </entry>
+  <entry>
+    <source>These results come from your sequencing file and they are not a diagnosis.</source>
+    <translation>Ces résultats proviennent de votre fichier de séquençage et ne constituent pas un diagnostic.</translation>
   </entry>
   <entry>
     <source>These variants are linked to high Lp(a)</source>
@@ -3250,6 +3306,10 @@
     <translation>Ce test vérifie 3 des plus de 1 000 variants BRCA nocifs connus. Un résultat positif signifierait un risque bien plus élevé de certains cancers. Un résultat négatif ne permet pas de l'exclure.</translation>
   </entry>
   <entry>
+    <source>This is a file of raw reads</source>
+    <translation>Ceci est un fichier de lectures brutes</translation>
+  </entry>
+  <entry>
     <source>This is the strongest common genetic signal for type 2 diabetes</source>
     <translation>Il s'agit du signal génétique courant le plus fort pour le diabète de type 2</translation>
   </entry>
@@ -3262,8 +3322,8 @@
     <translation>C'est le signal génétique courant le plus fort pour le diabète de type 2 : il multiplie le risque par environ 1,4 par copie.</translation>
   </entry>
   <entry>
-    <source>This looks like an {0} file</source>
-    <translation>Ceci ressemble à un fichier {0}</translation>
+    <source>This isn't a DNA data file</source>
+    <translation>Ce n'est pas un fichier de données ADN</translation>
   </entry>
   <entry>
     <source>This shows whether you carry APOE ε4, which is linked to higher Alzheimer's risk. It can't tell you whether you will develop the disease, and no treatment changes the genetic risk, so some people prefer not to know.</source>
@@ -3278,12 +3338,16 @@
     <translation>Ce variant diminue généralement le niveau de l'enzyme G6PD. Les fèves, certains antipaludiques, certains antibiotiques et d'autres médicaments oxydants peuvent alors détruire les globules rouges.</translation>
   </entry>
   <entry>
+    <source>This zip doesn't contain a DNA data file (.txt, .csv or .vcf). Download your raw data again from the company that tested you.</source>
+    <translation>Ce zip ne contient pas de fichier de données ADN (.txt, .csv ou .vcf). Téléchargez à nouveau vos données brutes auprès de l'entreprise qui vous a testé.</translation>
+  </entry>
+  <entry>
     <source>This zip is password-protected</source>
     <translation>Ce zip est protégé par un mot de passe</translation>
   </entry>
   <entry>
-    <source>To get your 23andMe file: Settings → 23andMe Data → Download raw data.</source>
-    <translation>Pour obtenir votre fichier 23andMe : Settings → 23andMe Data → Download raw data.</translation>
+    <source>This zip is too large to open here</source>
+    <translation>Ce zip est trop volumineux pour être ouvert ici</translation>
   </entry>
   <entry>
     <source>Traced through</source>
@@ -3390,6 +3454,10 @@
     <translation>Combinaison inhabituelle</translation>
   </entry>
   <entry>
+    <source>Unzip it on your computer, then add the file inside. A .vcf.gz file can be added as it is.</source>
+    <translation>Décompressez-le sur votre ordinateur, puis ajoutez le fichier qu'il contient. Un fichier .vcf.gz peut être ajouté tel quel.</translation>
+  </entry>
+  <entry>
     <source>Unzipping {0}</source>
     <translation>Décompression de {0}</translation>
   </entry>
@@ -3402,12 +3470,16 @@
     <translation>Utiliser le fichier phasé d'exemple</translation>
   </entry>
   <entry>
-    <source>uses a different column layout and marker set, so the results would not be reliable.</source>
-    <translation>utilise une autre disposition des colonnes et un autre ensemble de marqueurs, les résultats ne seraient donc pas fiables.</translation>
-  </entry>
-  <entry>
     <source>v3.1.2. Maternal tree:</source>
     <translation>v3.1.2. Arbre maternel :</translation>
+  </entry>
+  <entry>
+    <source>VCF and gVCF files from genome sequencing, such as Nebula, Dante Labs or Sequencing.com, or ones you made yourself. GRCh37 and GRCh38 both work.</source>
+    <translation>Fichiers VCF et gVCF issus du séquençage du génome, comme Nebula, Dante Labs ou Sequencing.com, ou que vous avez créés vous-même. GRCh37 et GRCh38 fonctionnent tous les deux.</translation>
+  </entry>
+  <entry>
+    <source>VCF file</source>
+    <translation>Fichier VCF</translation>
   </entry>
   <entry>
     <source>Version {0}. Open source under the MIT license.</source>
@@ -3432,6 +3504,10 @@
   <entry>
     <source>Warm</source>
     <translation>Chaleureux</translation>
+  </entry>
+  <entry>
+    <source>We couldn't find genotypes in this file</source>
+    <translation>Nous n'avons pas trouvé de génotypes dans ce fichier</translation>
   </entry>
   <entry>
     <source>We couldn't read this file</source>
@@ -3484,6 +3560,18 @@
   <entry>
     <source>Which copy is which?</source>
     <translation>Quelle copie est laquelle ?</translation>
+  </entry>
+  <entry>
+    <source>Which files work?</source>
+    <translation>Quels fichiers fonctionnent ?</translation>
+  </entry>
+  <entry>
+    <source>Whole genome (gVCF)</source>
+    <translation>Génome complet (gVCF)</translation>
+  </entry>
+  <entry>
+    <source>Whole genome (VCF)</source>
+    <translation>Génome complet (VCF)</translation>
   </entry>
   <entry>
     <source>Why it exists:</source>
@@ -3578,6 +3666,10 @@
     <translation>votre fichier</translation>
   </entry>
   <entry>
+    <source>Your file can't tell which parent each piece came from, so this view needs a phased file from 23andMe. Your percentages above are still valid.</source>
+    <translation>Votre fichier ne permet pas de savoir de quel parent vient chaque morceau, donc cette vue nécessite un fichier phasé de 23andMe. Vos pourcentages ci-dessus restent valables.</translation>
+  </entry>
+  <entry>
     <source>Your file is read in this browser and stays on your machine. There is no server, no account and no upload.</source>
     <translation>Votre fichier est lu dans ce navigateur et reste sur votre appareil. Il n'y a ni serveur, ni compte, ni envoi de données.</translation>
   </entry>
@@ -3608,6 +3700,10 @@
   <entry>
     <source>Your results are kept only in this browser so you can come back to them. Delete my data clears them at any time.</source>
     <translation>Vos résultats sont conservés uniquement dans ce navigateur pour que vous puissiez y revenir. Supprimer mes données les efface à tout moment.</translation>
+  </entry>
+  <entry>
+    <source>Zip and gzip files work as they are</source>
+    <translation>Les fichiers zip et gzip fonctionnent tels quels</translation>
   </entry>
   <entry>
     <source>Zip password</source>

@@ -17,7 +17,7 @@ const vps = [{ n: 'd', width: 1280, height: 2600 }, { n: 'm', width: 390, height
       await p.screenshot({ path: `../shots/${L}-${t0}-${vp.n}-${name}.png` });
     };
     await p.goto(`http://localhost:8765/?theme=${t}`); await shot('upload');
-    for (const d of ['password', 'vendor', 'corrupt']) { await p.goto(`http://localhost:8765/?theme=${t}&demo=${d}`); await shot('err-' + d); }
+    for (const d of ['password', 'reads', 'format', 'corrupt']) { await p.goto(`http://localhost:8765/?theme=${t}&demo=${d}`); await shot('err-' + d); }
     await p.goto(`http://localhost:8765/?theme=${t}&start=dashboard`); await shot('overview');
     for (const tab of ['heritage', 'traits', 'explorer']) { await p.goto(`http://localhost:8765/?theme=${t}&start=dashboard&tab=${tab}`); await shot(tab); }
     await p.goto(`http://localhost:8765/?theme=${t}&start=dashboard&tab=health`);
