@@ -75,9 +75,10 @@ const seen = new Set();
   const data = fs.readFileSync(path.join(ROOT, 'src', 'data.js'), 'utf8');
   for (const m of data.matchAll(/'((?:[^'\\\n]|\\.){4,})'/g)) { const v = m[1].replace(/\\'/g, "'"); if (/[A-Za-z]{2,} [A-Za-z]{2,}/.test(v) && !/=>|var\(|\dpx|^https?:/.test(v)) seen.add(v.replace(/\s+/g, ' ').trim()); }
   for (const m of data.matchAll(/eff: '([^']+)'/g)) seen.add(m[1]);
+  for (const m of data.matchAll(/"((?:[^"\\\n]|\\.){4,})"/g)) { const v = m[1]; if (/[A-Za-z]{2,} [A-Za-z]{2,}/.test(v) && !/=>|var\(|\dpx|^https?:/.test(v)) seen.add(v.replace(/\s+/g, ' ').trim()); }
   const ref = fs.readFileSync(path.join(ROOT, 'src', 'ref.js'), 'utf8').split('\n').find(l => l.startsWith('const REF_PANEL'));
   for (const m of ref.matchAll(/"(?:name|sub)":"([^"]+)"/g)) seen.add(m[1]);
-  const skip = k => /^(rs|i)\d+$/i.test(k) || /\.(zip|txt|csv|xml)$/i.test(k) || /^[A-Z0-9*\/\-+.,: ]+$/.test(k) || !/[a-z]{2}/.test(k) || /^https?:/.test(k) || /^[A-Za-z]+\d[\w-]*$/.test(k) || k.length > 2000;
+  const skip = k => /sans-serif|monospace|,serif/.test(k) || /"\s*[,:]\s*"|", [a-z]+:|^s [a-z]/.test(k) || /^(rs|i)\d+$/i.test(k) || /\.(zip|txt|csv|xml)$/i.test(k) || /^[A-Z0-9*\/\-+.,: ]+$/.test(k) || !/[a-z]{2}/.test(k) || /^https?:/.test(k) || /^[A-Za-z]+\d[\w-]*$/.test(k) || k.length > 2000;
   // Keep only text written in the source: values computed at run time are left out, since
   // their pieces are translated through their own patterns.
   const SRC = ['app.js', 'data.js', 'i18n.js', 'ref.js'].map(f => fs.readFileSync(path.join(ROOT, 'src', f), 'utf8')).join('\n').replace(/\\'/g, "'").replace(/\\"/g, '"').replace(/\s+/g, ' ');

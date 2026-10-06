@@ -366,7 +366,7 @@ class LiberateDNA extends Component {
     return html`<div style="flex:1;overflow:auto;display:flex">
       <div style="margin:auto;width:100%;max-width:1120px;padding:clamp(20px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(28px,5vw,56px);align-items:center">
         <div style="display:flex;flex-direction:column;gap:20px">
-          <div style="display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px"><span style="width:13px;height:13px;border-radius:var(--rc);background:var(--accent)"></span>LiberateDNA</div>
+          <div style="display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px"><span aria-hidden="true" style="width:22px;height:22px;border-radius:6px;background:var(--accent);color:var(--onaccent);display:inline-flex;align-items:center;justify-content:center;font-size:15px"><i class="ph ph-dna"></i></span>LiberateDNA</div>
           <h1 style="margin:0;font-size:var(--hero);line-height:1.04;letter-spacing:var(--h1t);font-weight:var(--h1w);font-stretch:var(--h1s);text-wrap:balance">Explore your DNA without sharing it</h1>
           <p style="margin:0;font-size:17px;line-height:1.55;color:var(--muted);max-width:44ch">For people who have had their genome read, or have taken their raw data back from 23andMe and similar services. Add your file to see your heritage, health, traits and drug response.</p>
           <section aria-label="Privacy" style="${S.card};padding:18px 20px;display:flex;flex-direction:column;gap:12px;max-width:50ch">
@@ -464,7 +464,7 @@ class LiberateDNA extends Component {
     const pad = D.mobile ? '20px 16px 40px' : '32px clamp(20px,4vw,44px) 64px';
     return html`<div style="flex:1;min-height:0;display:flex;flex-direction:${side ? 'row' : 'column'}">
       ${side && html`<aside style="width:252px;flex:none;background:var(--sideBg);border-inline-end:var(--bw) solid var(--sideLine);display:flex;flex-direction:column;gap:20px;padding:22px 14px;overflow:auto">
-        <div style="display:flex;align-items:center;gap:10px;padding:0 10px;font-weight:700;font-size:16px"><span style="width:13px;height:13px;border-radius:var(--rc);background:var(--accent)"></span>LiberateDNA</div>
+        <div style="display:flex;align-items:center;gap:10px;padding:0 10px;font-weight:700;font-size:16px"><span aria-hidden="true" style="width:22px;height:22px;border-radius:6px;background:var(--accent);color:var(--onaccent);display:inline-flex;align-items:center;justify-content:center;font-size:15px"><i class="ph ph-dna"></i></span>LiberateDNA</div>
         <div style="margin:0 4px;padding:12px;border:var(--bw) solid var(--line);border-radius:var(--r);background:var(--surface);display:flex;flex-direction:column;gap:6px">
           <div style="font-family:var(--mono);font-size:12px;word-break:break-all">${s.file}</div>
           ${s.file2 && html`<div style="font-family:var(--mono);font-size:12px;word-break:break-all">+ ${s.file2}</div>`}

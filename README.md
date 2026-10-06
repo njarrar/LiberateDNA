@@ -1,3 +1,5 @@
+<p align="center"><img src="docs/icon.svg" width="96" alt="LiberateDNA icon"></p>
+
 # LiberateDNA - DNA Reader
 
 **Explore your DNA without sharing it.**
@@ -44,6 +46,7 @@ anyone else.
   Copy `en.xml`, translate it and open a pull request. You can test a file first with
   **Load a translation file**, which uses it in your browser only.
 - The version and a link to the source now show on the home page.
+- A new app icon, shown in the app, as the browser tab icon and in the repository preview.
 
 ### 3.0.0
 

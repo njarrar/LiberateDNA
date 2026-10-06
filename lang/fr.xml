@@ -2786,18 +2786,6 @@
     <translation>Russes</translation>
   </entry>
   <entry>
-    <source>s risk (APOE)", title: "Late-onset Alzheimer</source>
-    <translation>s risk (APOE)", title: "Late-onset Alzheimer</translation>
-  </entry>
-  <entry>
-    <source>s risk. It can</source>
-    <translation> risque d'Alzheimer. Il ne peut</translation>
-  </entry>
-  <entry>
-    <source>s. Age, blood pressure, sleep, hearing and activity also contribute. ε4 is also linked to higher LDL cholesterol." : "Most Alzheimer</source>
-    <translation>. L'âge, la tension artérielle, le sommeil, l'audition et l'activité physique y contribuent aussi. ε4 est aussi associé à un taux plus élevé de cholestérol LDL." : "La plupart des cas d'Alzheimer</translation>
-  </entry>
-  <entry>
     <source>San</source>
     <translation>San</translation>
   </entry>
@@ -3318,6 +3306,10 @@
     <translation>Toscane et Bergame</translation>
   </entry>
   <entry>
+    <source>two copies</source>
+    <translation>deux copies</translation>
+  </entry>
+  <entry>
     <source>Two copies</source>
     <translation>Deux copies</translation>
   </entry>
@@ -3544,6 +3536,10 @@
   <entry>
     <source>You have no ε4 copies, the most common result.</source>
     <translation>Vous n'avez aucune copie de ε4, le résultat le plus fréquent.</translation>
+  </entry>
+  <entry>
+    <source>You have no ε4 copies. ε2 is linked to slightly lower Alzheimer's risk.</source>
+    <translation>Vous n'avez aucune copie de ε4. ε2 est associé à un risque d'Alzheimer légèrement plus faible.</translation>
   </entry>
   <entry>
     <source>You have two copies of each chromosome, one from each parent. Colors show where each stretch most likely comes from.</source>

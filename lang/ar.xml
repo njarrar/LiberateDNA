@@ -2786,18 +2786,6 @@
     <translation>الروس</translation>
   </entry>
   <entry>
-    <source>s risk (APOE)", title: "Late-onset Alzheimer</source>
-    <translation>خطر الإصابة (APOE)", title: "مرض ألزهايمر المتأخر الظهور</translation>
-  </entry>
-  <entry>
-    <source>s risk. It can</source>
-    <translation>خطر. لا يمكنه</translation>
-  </entry>
-  <entry>
-    <source>s. Age, blood pressure, sleep, hearing and activity also contribute. ε4 is also linked to higher LDL cholesterol." : "Most Alzheimer</source>
-    <translation>مرض ألزهايمر. يساهم أيضًا العمر وضغط الدم والنوم والسمع والنشاط البدني. ويرتبط ε4 أيضًا بارتفاع كوليسترول LDL." : "معظم خطر ألزهايمر</translation>
-  </entry>
-  <entry>
     <source>San</source>
     <translation>السان</translation>
   </entry>
@@ -3318,6 +3306,10 @@
     <translation>توسكانا وبيرغامو</translation>
   </entry>
   <entry>
+    <source>two copies</source>
+    <translation>نسختان</translation>
+  </entry>
+  <entry>
     <source>Two copies</source>
     <translation>نسختان</translation>
   </entry>
@@ -3544,6 +3536,10 @@
   <entry>
     <source>You have no ε4 copies, the most common result.</source>
     <translation>ليست لديك أي نسخة من ε4، وهي النتيجة الأكثر شيوعًا.</translation>
+  </entry>
+  <entry>
+    <source>You have no ε4 copies. ε2 is linked to slightly lower Alzheimer's risk.</source>
+    <translation>ليست لديك أي نسخة من ε4. يرتبط ε2 بخطر أقل قليلًا للإصابة بمرض ألزهايمر.</translation>
   </entry>
   <entry>
     <source>You have two copies of each chromosome, one from each parent. Colors show where each stretch most likely comes from.</source>
