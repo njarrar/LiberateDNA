@@ -9,7 +9,7 @@ const seen = new Set();
   const b = await chromium.launch({ executablePath: process.env.CHROME || '/opt/pw-browsers/chromium-1194/chrome-linux/chrome' });
   const ctx = await b.newContext({ viewport: { width: 1280, height: 1000 } });
   const cors = { 'access-control-allow-origin': '*' };
-  await ctx.route('https://myvariant.info/**', r => r.fulfill({ headers: cors, json: { total: 1, hits: [{ _id: 'x', clinvar: { rcv: [{ clinical_significance: 'Pathogenic' }] }, gnomad_genome: { af: { af: 0.03 } } }] } }));
+  await ctx.route('https://myvariant.info/**', r => r.fulfill({ headers: cors, json: { total: 1, hits: [{ _id: 'x', clinvar: { rcv: [{ clinical_significance: 'Pathogenic' }] }, gnomad_genome: { af: { af: 0.03, af_afr: 0.01, af_nfe: 0.05 } }, gwassnps: { trait: 'Ferritin levels' }, cadd: { phred: 12 } }] } }));
   await ctx.route('https://rest.ensembl.org/**', r => r.fulfill({ headers: cors, json: { name: 'rs1', MAF: 0.01, minor_allele: 'A', most_severe_consequence: 'missense_variant' } }));
   await ctx.route('https://grch37.rest.ensembl.org/**', r => r.fulfill({ headers: cors, json: { name: 'rs1', MAF: 0.01, minor_allele: 'A', most_severe_consequence: 'missense_variant' } }));
   await ctx.route('https://bots.snpedia.com/**', r => r.fulfill({ headers: cors, json: { query: { pages: { '1': { pageid: 1, title: 'Rs1' } } } } }));
@@ -62,7 +62,7 @@ const seen = new Set();
   for (const tab of tabs) await open(`start=dashboard&sample=phased&tab=${tab}`);
   await p.setViewportSize({ width: 1280, height: 1000 });
   // real files
-  for (const f of ['genome_Full_her.txt', 'genome_Full_me.txt', 'genome_Full_xxdash.txt', 'genome_Full_test.zip', 'genome_Full_cut.txt', 'genome_Full_empty.zip', 'dna_export.zip', 'genome_Full_secret.zip']) {
+  for (const f of ['genome_Full_mix.txt', 'genome_Full_me.txt', 'genome_Full_xxdash.txt', 'genome_Full_test.zip', 'genome_Full_cut.txt', 'genome_Full_empty.zip', 'dna_export.zip', 'genome_Full_secret.zip']) {
     await open('start=upload'); await p.setInputFiles('#locus-file', path.join(__dirname, 'files', f));
     await p.waitForTimeout(400); await grab();
     const ok = await p.waitForSelector('text=What was in your file', { timeout: 30000 }).catch(() => null);

@@ -162,7 +162,7 @@ function locusWorker(self, postMessage) {
     return g;
   }
 
-  async function parse({ file, buf, name, pw, curated, coords, keep, heritage }) {
+  async function parse({ file, buf, name, pw, curated, coords, keep, heritage, compare }) {
     if (!file) file = new File([buf || new Uint8Array(0)], name || 'file.txt');
     const src = await openFile(file, pw);
 
@@ -171,7 +171,7 @@ function locusWorker(self, postMessage) {
     const comments = [];
     let mode = null, sep = null, C = null, isVcf = false, illum = 0, hdrFirst = null;
     // VCF state
-    const V = { gt: new Map(), contig: {}, blocks: 0, homRef: 0, variants: 0, samples: 0, cover: new Map(), filtered: 0 };
+    const V = { gt: new Map(), contig: {}, blocks: 0, homRef: 0, variants: 0, samples: 0, cover: new Map(), filtered: 0, phased: 0, unphased: 0 };
     const tgt = refs && refs.T;
 
     const push = (id, ci, p, g) => { ids.push(id); chr.push(ci); pos.push(p); geno.push(g); rows++; };
@@ -262,7 +262,8 @@ function locusWorker(self, postMessage) {
       const al = [ref].concat(alts.map(a => a[0] === '<' || a === '*' ? null : a));
       const lens = al.filter(Boolean).map(a => a.length), snv = lens.every(l => l === 1), maxL = Math.max.apply(null, lens);
       const letter = a => !a ? null : snv ? a : a.length === maxL ? 'I' : 'D';
-      if (gt.includes('|')) V.phased = true;
+      if (gt.includes('|')) V.phased++; else if (gt.includes('/')) V.unphased++;
+      if (V.ps === undefined) V.ps = /(^|:)PS(:|$)/.test(f[8]);
       let g = '';
       for (const k of gt.split(/[\/|]/)) { const a = k === '.' ? null : letter(al[+k]); if (!a) { g = '--'; break; } g += a; }
       if (filt !== 'PASS' && filt !== '.' && filt !== '') { V.filtered++; g = '--'; }
@@ -413,19 +414,93 @@ function locusWorker(self, postMessage) {
       if ((i === undefined || isNoCall(geno[i])) && coords && coords[id]) { const j = posIndex.get(coords[id]); if (j !== undefined && (i === undefined || !isNoCall(geno[j]))) i = j; }
       if (i !== undefined) { genos[id] = geno[i]; posMap[id] = p37[i] || pos[i]; }
     }
-    if (keep !== false) store = { ids, chr: Uint8Array.from(chr), pos: Int32Array.from(pos), geno, index };
+    const roh = runsOfHomozygosity(chr, pos, geno, kind);
+    let cmp = null;
+    if (compare && store) cmp = kinship(store, ids, chr, geno, p37, index);
+    if (keep !== false) store = { ids, chr: Uint8Array.from(chr), pos: Int32Array.from(pos), p37, geno, index, posIndex };
+    // Phased files keep the letters in copy order. A VCF counts only when its phase is
+    // statistical (whole chromosome), not read-backed blocks marked with PS.
+    const phasedData = ftype === 'phased' || (mode === 'vcf' && V.phased > 0.9 * (V.phased + V.unphased) && !V.ps);
     let her = null;
     if (heritage && refs) {
       postMessage({ type: 'step', step: 2 });
       const A = locusAnc();
       const g = A.dosages(refs.P, (id, c, p) => { let i = index.get(id); if (i === undefined && p) i = posIndex.get(c + ':' + p); return i === undefined ? null : geno[i]; });
       const anc = A.ancestry(refs.P, g);
-      const paint = anc.tooFew ? null : A.paint(refs.P, g, anc.regions.map(r => r.pct));
+      let haps = null;
+      if (phasedData) {
+        const U = A.unpack(refs.P); haps = [new Int8Array(U.n).fill(-1), new Int8Array(U.n).fill(-1)];
+        for (let i = 0; i < U.n; i++) { let j = index.get(U.ids[i]); if (j === undefined) j = posIndex.get(U.chr[i] + ':' + U.pos[i]); const x = j === undefined ? null : geno[j]; if (x && x.length === 2) for (let k = 0; k < 2; k++) haps[k][i] = x[k] === U.alt[i] ? 1 : x[k] === U.ref[i] ? 0 : -1; }
+      }
+      const paint = anc.tooFew ? null : A.paint(refs.P, g, anc.regions.map(r => r.pct), haps);
       const one = (c, ok) => { const y = [], seen = new Set(); if (!ok) return y; for (let i = 0; i < ids.length; i++) if (chr[i] === c && p37[i] && !seen.has(p37[i])) { const v = geno[i]; if (v && /^[ACGT]{1,2}$/.test(v) && (v.length === 1 || v[0] === v[1])) { y.push([p37[i], v[0]]); seen.add(p37[i]); } } return y; };
-      her = { anc, paint, mt: A.mtPlace(refs.MT, one(24, mode !== 'vcf' || V.mtOk)), y: sex === 'XY' ? A.yPlace(refs.Y, one(23, build !== 36)) : null };
+      her = { anc, paint, phasedPaint: !!(paint && haps), mt: A.mtPlace(refs.MT, one(24, mode !== 'vcf' || V.mtOk)), y: sex === 'XY' ? A.yPlace(refs.Y, one(23, build !== 36)) : null };
     }
     return { heritage: her, rows, counts: CHRS.map((c, i) => [c, counts[i][0], counts[i][1]]), sex, ftype, chip, genos, pos: posMap,
-      vendor, build, kind, filled, wrap: src.wrap, samples: V.samples };
+      vendor, build, kind, filled, wrap: src.wrap, samples: V.samples, roh, compare: cmp };
+  }
+
+  /* Runs of homozygosity: long stretches where both copies of a chromosome carry the
+     same letters, a sign that the two copies share a recent common ancestor. A run
+     needs at least 1.5 Mb and 80 markers, may hold one mixed call per 100 markers
+     (chip errors), and stops at gaps over 1 Mb. */
+  function runsOfHomozygosity(chr, pos, geno, kind) {
+    const AUTO = 2881e6, segs = [];
+    let called = 0, het = 0;
+    for (let c = 0; c < 22; c++) {
+      const idx = [];
+      for (let i = 0; i < chr.length; i++) if (chr[i] === c && pos[i] > 0) { const g = geno[i]; if (g.length === 2 && g !== '--') idx.push(i); }
+      idx.sort((a, b) => pos[a] - pos[b]);
+      let start = -1, last = -1, n = 0, h = 0;
+      const close = () => { if (start >= 0 && n >= 80 && pos[last] - pos[start] >= 1.5e6) segs.push([c + 1, pos[start], pos[last], n]); start = -1; n = 0; h = 0; };
+      for (const i of idx) {
+        const g = geno[i], isHet = g[0] !== g[1];
+        called++; if (isHet) het++;
+        if (last >= 0 && pos[i] - pos[last] > 1e6) close();
+        if (isHet) { if (start >= 0 && (h + 1) * 100 <= n) { h++; n++; last = i; continue; } close(); continue; }
+        if (start < 0) start = i;
+        n++; last = i;
+      }
+      close();
+    }
+    const auto = called;
+    if (kind === 'chip' && auto < 100000) return { tooFew: true, markers: auto };
+    const len = s => (s[2] - s[1]) / 1e6;
+    const total = segs.reduce((t, s) => t + len(s), 0), long = segs.filter(s => len(s) >= 8).reduce((t, s) => t + len(s), 0);
+    return { markers: auto, het: kind === 'chip' || kind === 'vcf' ? het / Math.max(auto, 1) : null, n: segs.length, totalMb: total, longMb: long,
+      f: total * 1e6 / AUTO, fLong: long * 1e6 / AUTO, longest: segs.reduce((m, s) => Math.max(m, len(s)), 0),
+      segs: segs.sort((a, b) => (b[2] - b[1]) - (a[2] - a[1])).slice(0, 200).map(s => [s[0], s[1], s[2]]) };
+  }
+
+  /* How closely two people are related, from markers both files read (KING-robust
+     kinship, Manichaikul et al. 2010), plus opposite-homozygote calls to tell a
+     parent and child from siblings. */
+  function kinship(A, ids, chr, geno, p37, index) {
+    let n = 0, ibs0 = 0, ibs2 = 0, hetA = 0, hetB = 0, hetBoth = 0;
+    for (let i = 0; i < ids.length; i++) {
+      if (chr[i] > 21) continue;
+      const b = geno[i]; if (b.length !== 2 || !/^[ACGT]{2}$/.test(b)) continue;
+      let j = A.index.get(ids[i]);
+      if (j === undefined && p37[i]) j = A.posIndex.get(CHRS[chr[i]] + ':' + p37[i]);
+      if (j === undefined) continue;
+      const a = A.geno[j]; if (a.length !== 2 || !/^[ACGT]{2}$/.test(a)) continue;
+      if (new Set(a + b).size > 2) continue;
+      n++;
+      const ha = a[0] !== a[1], hb = b[0] !== b[1];
+      if (ha) hetA++; if (hb) hetB++; if (ha && hb) hetBoth++;
+      const sa = a[0] < a[1] ? a : a[1] + a[0], sb = b[0] < b[1] ? b : b[1] + b[0];
+      if (sa === sb) ibs2++; else if (!ha && !hb) ibs0++;
+    }
+    if (n < 2000) return { tooFew: true, n };
+    const phi = (hetBoth - 2 * ibs0) / Math.max(hetA + hetB, 1), ibs0r = ibs0 / n;
+    let rel;
+    if (phi > 0.354) rel = 'same';
+    else if (phi > 0.177) rel = ibs0r < 0.002 ? 'parent' : 'sibling';
+    else if (phi > 0.0884) rel = 'second';
+    else if (phi > 0.0442) rel = 'third';
+    else if (phi > 0.0221) rel = 'fourth';
+    else rel = 'none';
+    return { n, phi, ibs0: ibs0r, ibs2: ibs2 / n, rel, shared: Math.max(0, Math.min(1, 2 * phi)) };
   }
 
   /* Every site LiberateDNA reads, on both builds, so a file on either one can be used. */

@@ -86,6 +86,14 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>{0} Mb in stretches over 8 Mb</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} Neanderthal copies at {1} places tested</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>{0} no-calls</source>
     <translation></translation>
   </entry>
@@ -95,6 +103,18 @@
   </entry>
   <entry>
     <source>{0} of {1} curated markers shown, plus {2} more from your file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} of {1} lighter-skin alleles</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} of {1} lower-conversion alleles</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} of {1} lower-vitamin-D alleles</source>
     <translation></translation>
   </entry>
   <entry>
@@ -138,11 +158,19 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>{0} stretches over 1.5 Mb</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>{0} submission records</source>
     <translation></translation>
   </entry>
   <entry>
     <source>{0} to {1}%</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>{0} traits linked in published studies</source>
     <translation></translation>
   </entry>
   <entry>
@@ -282,7 +310,15 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>677T: {0} of 2; 1298C: {1} of 2</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>7028C: marks haplogroup H</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>9p21 heart disease risk allele</source>
     <translation></translation>
   </entry>
   <entry>
@@ -298,6 +334,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>A mix of lighter and darker alleles</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>A rare branch found in East Africa.</source>
     <translation></translation>
   </entry>
@@ -310,7 +350,31 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Abacavir (HIV)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>ABO 261delG, the O blood group allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>ABO 796C&gt;A, marks the B blood group allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>ABO 803G&gt;C, marks the B blood group allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>ABO blood group</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>about</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About {0} cM</source>
     <translation></translation>
   </entry>
   <entry>
@@ -323,6 +387,10 @@
   </entry>
   <entry>
     <source>About {0}% {1}.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 1 in 10 people have 677TT. Medical groups advise against routine MTHFR testing; normal folate intake, plus folic acid in pregnancy, is enough.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -366,6 +434,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>About 1 in 4 people of European or Asian ancestry have two copies.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>About 1 in 40 Ashkenazi Jewish people carry one of these three.</source>
     <translation></translation>
   </entry>
@@ -374,11 +446,19 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>About 1 in 5 people of European ancestry are non-secretors, who resist the most common norovirus strains. This marker misses the East Asian non-secretor variant.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>About 1 in 5 people of European ancestry carry H63D.</source>
     <translation></translation>
   </entry>
   <entry>
     <source>About 1 in 7 people of European ancestry carry rs10455872 G.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>About 3 in 100 people of European ancestry carry R46L.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -398,7 +478,19 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Across {0} diabetes markers (TCF7L2, SLC30A8, KCNJ11 and PPARG) you carry {1} of {2} risk alleles. Most people carry 3 to 6.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Add another person's raw DNA file to see how closely you are related, and whether you both carry a variant for the same recessive condition. Their file is read in this browser and is not saved. Ask them first: it is their DNA.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Add phased file</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Add their file</source>
     <translation></translation>
   </entry>
   <entry>
@@ -410,7 +502,19 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>ADORA2A 1976T, caffeine anxiety allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Adygei, North Caucasus</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Affects how much vitamin A you make from beta-carotene in plants. Animal foods supply vitamin A directly.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>African</source>
     <translation></translation>
   </entry>
   <entry>
@@ -422,11 +526,15 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>All populations combined</source>
+    <source>Allele frequency {0}</source>
     <translation></translation>
   </entry>
   <entry>
-    <source>Allele frequency {0}</source>
+    <source>Alleles linked to darker skin</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Alleles linked to lighter skin</source>
     <translation></translation>
   </entry>
   <entry>
@@ -439,6 +547,10 @@
   </entry>
   <entry>
     <source>Amazonian Indigenous</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Among the top 10% most likely to be harmful</source>
     <translation></translation>
   </entry>
   <entry>
@@ -470,6 +582,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>APOA2 -265C promoter allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Arose in the Near East. Found across the Middle East, Europe and North Africa.</source>
     <translation></translation>
   </entry>
@@ -490,6 +606,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Ask for a G6PD enzyme test before these drugs.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Ask for a one-time Lp(a) blood test.</source>
     <translation></translation>
   </entry>
@@ -507,6 +627,14 @@
   </entry>
   <entry>
     <source>Ask your doctor for clinical BRCA testing and a genetic counselor referral.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Average</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Azathioprine, mercaptopurine, thioguanine</source>
     <translation></translation>
   </entry>
   <entry>
@@ -534,6 +662,22 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>BCO1 A379V, lower beta-carotene conversion</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>BCO1 T170S, lower beta-carotene conversion</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>BDNF release</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>BDNF V66M, Met allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Bedouin</source>
     <translation></translation>
   </entry>
@@ -554,7 +698,15 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Beta-carotene to vitamin A</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Biaka, Mbuti</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Bilirubin may run a little high. Standard dosing usually applies. *80 stands in for *28, which chips cannot read directly.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -570,15 +722,39 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>blond C</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Blond hair</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Blood</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Blood pressure, cholesterol, smoking and diabetes matter far more than this marker.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Bloom syndrome</source>
     <translation></translation>
   </entry>
   <entry>
-    <source>blue-eye G</source>
+    <source>Blue {0}%, green or hazel {1}%, brown {2}%</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>BNC2 second</source>
     <translation></translation>
   </entry>
   <entry>
     <source>Bold type, flat color</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Brain, sleep and aging</source>
     <translation></translation>
   </entry>
   <entry>
@@ -626,6 +802,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>C risk</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>C282Y and H63D not found</source>
     <translation></translation>
   </entry>
@@ -639,6 +819,10 @@
   </entry>
   <entry>
     <source>C282Y, two copies</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Caffeine and sleep</source>
     <translation></translation>
   </entry>
   <entry>
@@ -690,6 +874,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Carries one red hair variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Caucasus</source>
     <translation></translation>
   </entry>
@@ -714,11 +902,15 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>Checks ClinVar, SNPedia, Ensembl, gnomAD and PharmGKB. Sends one rsID per request, never your genotype or file.</source>
+    <source>Checks ClinVar, SNPedia, Ensembl, gnomAD, PharmGKB, the GWAS Catalog and CADD. Sends one rsID per request, never your genotype or file.</source>
     <translation></translation>
   </entry>
   <entry>
     <source>Checks the European variant and the Arabian one (rs41380347). Other variants exist in East Africa.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Children of first cousins have about 6% of their genome in such stretches, children of second cousins about 1.5%. Chip data finds stretches over about 1.5 Mb; shorter ones are missed. If your parents are related, a genetic counselor can explain what it means for recessive conditions in your family.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -739,6 +931,14 @@
   </entry>
   <entry>
     <source>Chitral valleys</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Cholesterol tests still matter, whatever this result.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Choline need</source>
     <translation></translation>
   </entry>
   <entry>
@@ -782,6 +982,14 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Chromosome {0}: {1} to {2} Mb</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Chromosome 3</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Chromosome painting</source>
     <translation></translation>
   </entry>
@@ -807,6 +1015,10 @@
   </entry>
   <entry>
     <source>ClinVar, SNPedia</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>ClinVar; Cohen et al., 2006</source>
     <translation></translation>
   </entry>
   <entry>
@@ -894,6 +1106,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Compare with a relative or partner</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Compared with</source>
     <translation></translation>
   </entry>
@@ -903,6 +1119,10 @@
   </entry>
   <entry>
     <source>Comparing with reference populations</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>COMT V158M, Met allele</source>
     <translation></translation>
   </entry>
   <entry>
@@ -918,6 +1138,14 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Confirm with a clinical test before any thiopurine.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Confirm with a G6PD enzyme test before these drugs.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Consider a one-time Lp(a) blood test, especially with a family history of early heart disease.</source>
     <translation></translation>
   </entry>
@@ -930,11 +1158,23 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Coronary heart disease (9p21)</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Couldn't reach</source>
     <translation></translation>
   </entry>
   <entry>
     <source>Couldn't reach {0}. It timed out.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>CPIC guidance says to avoid rasburicase and pegloticase, and to take care with primaquine, dapsone and some antibiotics</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>CPIC guidance says to avoid rasburicase and pegloticase, and to take care with primaquine, dapsone and some antibiotics.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -954,6 +1194,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>CYP3A5 *3, non-working allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Cystic fibrosis</source>
     <translation></translation>
   </entry>
@@ -963,6 +1207,10 @@
   </entry>
   <entry>
     <source>deficiency</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Deficiency variant</source>
     <translation></translation>
   </entry>
   <entry>
@@ -1030,6 +1278,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Dopamine clearance</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>DQ2.5 is needed for most celiac disease, but about 1 in 3 people carry it and most never develop the condition.</source>
     <translation></translation>
   </entry>
@@ -1063,6 +1315,26 @@
   </entry>
   <entry>
     <source>dry-earwax T</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Duffy blood group</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Duffy positive</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Duffy-null C</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Duffy-null is common in African and some Middle Eastern ancestry. It protects against one malaria parasite and comes with a lower, healthy neutrophil count that standard lab ranges can flag as low.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Duffy-null promoter variant</source>
     <translation></translation>
   </entry>
   <entry>
@@ -1142,6 +1414,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Eye color marker used by IrisPlex</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Factor V Leiden</source>
     <translation></translation>
   </entry>
@@ -1159,6 +1435,10 @@
   </entry>
   <entry>
     <source>Factor V Leiden, two copies</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>FADS1, lower omega-3 and omega-6 conversion</source>
     <translation></translation>
   </entry>
   <entry>
@@ -1206,6 +1486,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Fewer alleles linked to low vitamin D</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>File type</source>
     <translation></translation>
   </entry>
@@ -1239,6 +1523,10 @@
   </entry>
   <entry>
     <source>flush A</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Folate processing</source>
     <translation></translation>
   </entry>
   <entry>
@@ -1402,6 +1690,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Found mainly in Northern Europe. It lightens hair only a little; many genes shape hair color.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Found mainly in Pakistan and South Asia, with branches in the Near East and the Caucasus.</source>
     <translation></translation>
   </entry>
@@ -1414,6 +1706,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Found more often in people who live past 95 in several studies. Its effect for any one person is tiny.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Found mostly around the Mediterranean and in the Near East.</source>
     <translation></translation>
   </entry>
@@ -1423,6 +1719,14 @@
   </entry>
   <entry>
     <source>Found mostly in South Asia; its U2e branch is European.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>FOXO3, allele linked to long life</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>frameshift variant</source>
     <translation></translation>
   </entry>
   <entry>
@@ -1451,6 +1755,10 @@
   </entry>
   <entry>
     <source>Full genome + phased</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>FUT2 W154X, the non-secretor allele</source>
     <translation></translation>
   </entry>
   <entry>
@@ -1530,6 +1838,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>GWAS Catalog; Samani et al., 2007</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>H arose roughly 20,000 years ago</source>
     <translation></translation>
   </entry>
@@ -1583,6 +1895,10 @@
   </entry>
   <entry>
     <source>Hemochromatosis (H63D)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>HERC2, OCA2 and 4 more</source>
     <translation></translation>
   </entry>
   <entry>
@@ -1642,6 +1958,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>HLA-B*57:01 unlikely</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>How sure we are</source>
     <translation></translation>
   </entry>
@@ -1686,6 +2006,14 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>In between (Val/Met)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>In some studies, people with two copies gained more weight on diets high in saturated fat. About 4 in 10 people of European ancestry have two copies.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>In this report</source>
     <translation></translation>
   </entry>
@@ -1715,6 +2043,22 @@
   </entry>
   <entry>
     <source>intron variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>IRF4, freckling and lighter eye allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Irinotecan, atazanavir</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>IrisPlex model with {0} of 6 markers; the missing ones use typical values, so treat it as a rough guess. It is best at telling blue from brown.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>IrisPlex model with all 6 markers. It is best at telling blue from brown; green and hazel are harder to call.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -1770,7 +2114,19 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>KCNJ11 E23K, type 2 diabetes risk allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Keep up regular blood pressure and cholesterol checks.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Kinh, Dai, Khmer</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Known as F(ROH)</source>
     <translation></translation>
   </entry>
   <entry>
@@ -1819,6 +2175,10 @@
   </entry>
   <entry>
     <source>Lebanese, Syrian, Palestinian</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Less likely to feel jittery from caffeine</source>
     <translation></translation>
   </entry>
   <entry>
@@ -1874,11 +2234,27 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Likely deficient</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Likely flush after alcohol</source>
     <translation></translation>
   </entry>
   <entry>
-    <source>Likely hazel or green</source>
+    <source>Likely genotype {0}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Likely Gilbert syndrome, a harmless rise in bilirubin. Atazanavir often causes jaundice (CPIC suggests weighing another drug), and standard irinotecan doses can cause severe side effects.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Likely green or hazel</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Likely group {0}</source>
     <translation></translation>
   </entry>
   <entry>
@@ -1930,6 +2306,22 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Long stretches where the copy from your mother and the copy from your father carry the same letters. They show how closely related your parents' families are.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Longest stretch</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Longevity marker</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>longevity-linked G</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Look</source>
     <translation></translation>
   </entry>
@@ -1950,11 +2342,35 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Looks and taste</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>looks most like</source>
     <translation></translation>
   </entry>
   <entry>
     <source>Low confidence</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Lower (677TT)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Lower conversion</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Lower LDL cholesterol (PCSK9)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>lower-conversion C</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Lowest {0} {1}, highest {2} {3}</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2050,6 +2466,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Matching stretches (runs of homozygosity)</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Maternal and paternal lines</source>
     <translation></translation>
   </entry>
@@ -2074,6 +2494,14 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Mention this before abacavir is considered.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Mention this before irinotecan or atazanavir.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Mention this before starting clopidogrel or an SSRI.</source>
     <translation></translation>
   </entry>
@@ -2090,11 +2518,35 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Mention this if irinotecan or atazanavir is prescribed.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Mention this if tacrolimus is prescribed.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Mention this if warfarin, phenytoin or a long-term NSAID is prescribed.</source>
     <translation></translation>
   </entry>
   <entry>
     <source>Mesoamerican Indigenous</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Met (A)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Met (T)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Met lowers how nerve cells release BDNF. Links to memory and mood are small and mixed. Met is common in East Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Met slows how the brain clears dopamine. Claims about stress, pain or personality from this marker are not reliable.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2158,7 +2610,19 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>More alleles linked to low vitamin D</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>More endurance-type fibers</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>More likely blond</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>More likely to feel anxious or sleep worse after caffeine</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2171,6 +2635,10 @@
   </entry>
   <entry>
     <source>More power-type fibers</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>More than half of people carry this variant, and its effect on B12 use is small.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2194,6 +2662,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Most DNA chips do not include these markers. Whole genome files usually do.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>most DNA tools ask you to upload your genome to their servers. LiberateDNA lets you explore it without handing it to anyone.</source>
     <translation></translation>
   </entry>
@@ -2206,7 +2678,7 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>Most people of Northern European ancestry carry at least one G.</source>
+    <source>Most people outside Africa carry 1 to 2% Neanderthal DNA. The chromosome 3 stretch is linked to severe COVID-19, the BNC2 one to sunburn. The OAS1 G is linked to milder COVID-19; in African ancestry it is old human DNA rather than Neanderthal, so it is not counted.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2258,6 +2730,38 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Neanderthal BNC2 allele, linked to sunburn</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Neanderthal DNA</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Neanderthal stretch on chromosome 3 (second tag)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Neanderthal stretch on chromosome 3, linked to severe COVID-19</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Neanderthal variants</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Near CYP2R1, lower vitamin D allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Near DHCR7, lower vitamin D allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Near KITLG, blond hair allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Negev Bedouin, the closest open sample to Arabian ancestry</source>
     <translation></translation>
   </entry>
@@ -2294,6 +2798,14 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>No action needed beyond routine cholesterol checks.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No action needed unless abacavir is considered.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>No action needed.</source>
     <translation></translation>
   </entry>
@@ -2319,6 +2831,10 @@
   </entry>
   <entry>
     <source>No copies</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>No dosing guideline uses this gene.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2358,6 +2874,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>No shared carrier variants among the {0} tested in both files.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>No Y chromosome</source>
     <translation></translation>
   </entry>
@@ -2374,6 +2894,14 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>non-coding transcript variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>non-secretor A</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>None detected in {0} conditions tested.</source>
     <translation></translation>
   </entry>
@@ -2387,6 +2915,10 @@
   </entry>
   <entry>
     <source>Normal metabolizer</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Normal metabolizer (expresser)</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2426,6 +2958,14 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Not enough markers</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Not found</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Not in file</source>
     <translation></translation>
   </entry>
@@ -2458,6 +2998,18 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Nutrition</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>OAS1 splice allele, on a Neanderthal stretch outside Africa</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>OCA2 R419Q, eye color marker</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Oceanian</source>
     <translation></translation>
   </entry>
@@ -2475,6 +3027,10 @@
   </entry>
   <entry>
     <source>Older chip detected (23andMe v4). Two drug-response markers are not on this chip, so CYP2C19 and SLCO1B1 cannot be called.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Omega-3 conversion</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2498,6 +3054,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>One copy of a mildly slower variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>One copy of APOE ε4 is associated with about 2 to 3 times the typical risk of late-onset Alzheimer's disease.</source>
     <translation></translation>
   </entry>
@@ -2506,7 +3066,19 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>One copy of the longevity-linked allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>One copy of ε4, linked to higher Alzheimer's risk</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>One DQ2.5 tag</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>One Met copy</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2530,7 +3102,15 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Only {0} markers are in both files, too few to compare.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Only relevant if you have symptoms. Ask about a tTG-IgA blood test before cutting out gluten.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Only the OAS1 marker was found</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2539,6 +3119,14 @@
   </entry>
   <entry>
     <source>Open the page for community notes</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Opioid pain relievers</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Opposite calls: {0}%</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2594,11 +3182,23 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>PCSK9 R46L, lowers LDL cholesterol</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>PEMT V175M, linked to higher choline need</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>people in</source>
     <translation></translation>
   </entry>
   <entry>
     <source>people left out of the reference.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>People with HLA-B*57:01 can have a severe allergic reaction to abacavir. This marker only tags it; a clinical HLA-B test decides.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2662,7 +3262,15 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Poor metabolizer (non-expresser)</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Position</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Possible HLA-B*57:01</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2670,7 +3278,19 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Possibly higher choline need</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Possibly higher opioid need</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Poster</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>PPARG P12A, Pro12 type 2 diabetes risk allele</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2726,6 +3346,22 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>R46L lowers LDL cholesterol by about 15% for life and is linked to less heart disease.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>R46L not found</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>R46L, one copy</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>R46L, two copies</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Rapid metabolizer</source>
     <translation></translation>
   </entry>
@@ -2742,7 +3378,15 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Rasburicase, primaquine, dapsone, nitrofurantoin</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Raw data</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Read from a marker that tags the O allele, so less certain.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2770,6 +3414,18 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Red hair</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Red hair likely</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Red hair unlikely</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>reference groups from HGDP and 1000 Genomes, using</source>
     <translation></translation>
   </entry>
@@ -2791,6 +3447,10 @@
   </entry>
   <entry>
     <source>Retry</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Rh (positive or negative) cannot be read from DNA chip data. Never use this for a transfusion; a blood test decides.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2842,6 +3502,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Saturated fat and weight</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Saved on this device</source>
     <translation></translation>
   </entry>
@@ -2854,11 +3518,27 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Score {0}</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Search by rsID, gene or chromosome</source>
     <translation></translation>
   </entry>
   <entry>
     <source>Search markers in your file. Select one to see what it means and, if you choose, check public databases.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Second Neanderthal BNC2 allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Secretor</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Secretor status</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2874,7 +3554,15 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Separate from how fast you clear caffeine. Some studies link two T copies to anxiety and lighter sleep after coffee.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Sequencing data</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Share of your genome</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2910,11 +3598,31 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Skin tone markers</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>SLC24A5 A111T, light skin allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>SLC30A8 R325W, type 2 diabetes risk allele C</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>SLC45A2 L374F, light skin and hair allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>SLCO1B1 *5 allele</source>
     <translation></translation>
   </entry>
   <entry>
     <source>Slightly elevated</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Slightly more likely blond</source>
     <translation></translation>
   </entry>
   <entry>
@@ -2955,6 +3663,18 @@
   </entry>
   <entry>
     <source>Some SSRIs and proton pump inhibitors may clear faster and work less well at standard doses.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Some studies link the G allele to needing more opioid for pain relief, but results are mixed. CPIC makes no dosing change for this gene.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Somewhat lower (677T and 1298C)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Somewhat lower conversion</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3010,6 +3730,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>splice acceptor variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>splice donor variant</source>
     <translation></translation>
   </entry>
@@ -3026,7 +3750,31 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Standard dosing applies. This marker stands in for the *28 repeat, which chips cannot read directly.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Standard statin dosing applies.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Standard tacrolimus dosing applies. This is the most common result in people of European ancestry.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Standard thiopurine doses can cause life-threatening bone marrow suppression. CPIC guidance calls for a much lower dose or a different drug.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Standard thiopurine doses can drop blood counts dangerously. CPIC guidance suggests a lower starting dose. This variant is most common in East and South Asia.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Standard thiopurine dosing applies.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Standard thiopurine dosing applies. Rarer TPMT variants are not tested.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3046,7 +3794,19 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Studies link the T allele to higher choline needs, mainly in women after menopause. Eggs, meat and soy are rich sources.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Sub-Saharan African</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Sun, diet and skin tone matter much more. Only a blood test shows your level.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>synonymous variant</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3058,7 +3818,35 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Tacrolimus</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Tacrolimus clears faster. CPIC guidance suggests a higher starting dose, then dosing by blood levels.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Tacrolimus clears faster. CPIC guidance suggests a starting dose 1.5 to 2 times higher, then dosing by blood levels.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Tag not found</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Tag present</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Tags HLA-B*57:01</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Tags HLA-DQ2.5</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Tags the O blood group allele</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3118,6 +3906,14 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>The *6 and *7 alleles, found mainly in African ancestry, are not tested.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The 9p21 region is the most replicated common genetic signal for heart disease. Each C raises risk by about a quarter.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>The ancestor of lines Q and R.</source>
     <translation></translation>
   </entry>
@@ -3134,7 +3930,15 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>The B allele markers were not in your file.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>The build and the company are found from the file. Zip and gzip work as they are.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The C allele lowers how well you turn plant omega-3 and omega-6 fats into long-chain forms. Fish and algae provide these directly.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3178,6 +3982,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>The main eye color marker, rs12913832, was not in your file.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>The main G branch in Europe and the Caucasus, linked with the first farmers from Anatolia.</source>
     <translation></translation>
   </entry>
@@ -3195,6 +4003,10 @@
   </entry>
   <entry>
     <source>The marker for this gene is not on the v4 chip, so it cannot be called from your file.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>The marker that tags HLA-B*57:01 was not found. The tag can miss carriers, so a clinical HLA-B test is still required before abacavir.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3274,6 +4086,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>The two most common deficiency variants were not found. Others exist.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>The two rows are the two copies, but LiberateDNA does not yet know which came from which parent, even with the phased file. A stretch shown on the top row may come from either parent.</source>
     <translation></translation>
   </entry>
@@ -3291,6 +4107,10 @@
   </entry>
   <entry>
     <source>These results come from your sequencing file and they are not a diagnosis.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>These two genes explain much of the skin color difference between African and European ancestry, but little within a group. Many other genes play a part.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3350,6 +4170,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Total in long stretches</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Traced through</source>
     <translation></translation>
   </entry>
@@ -3386,6 +4210,10 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Two copies of a mildly slower variant</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Two copies of APOE ε4 are associated with roughly 8 to 12 times the typical risk of late-onset Alzheimer's disease.</source>
     <translation></translation>
   </entry>
@@ -3398,7 +4226,19 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Two copies of the longevity-linked allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Two DQ2.5 tags</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Two MC1R red hair variants, one from each parent, usually give red hair. Other MC1R variants are not tested.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Two Met copies</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3418,11 +4258,31 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Typical (Val/Val)</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Typical conversion</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Typical for people whose parents are not related.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Typical freckling</source>
     <translation></translation>
   </entry>
   <entry>
+    <source>Typical response</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Typical warfarin sensitivity</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>TYR, lighter eye allele</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3431,6 +4291,10 @@
   </entry>
   <entry>
     <source>U152: marks R-U152, under P312</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>UGT1A1 *80, stands in for *28</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3486,6 +4350,18 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Vitamin B12 recycling</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Vitamin D binding protein, lower vitamin D allele</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Vitamin D level</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>Warfarin</source>
     <translation></translation>
   </entry>
@@ -3514,11 +4390,15 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>Weight, diet and activity have a much larger effect than this variant.</source>
+    <source>Weight may respond more to saturated fat</source>
     <translation></translation>
   </entry>
   <entry>
-    <source>Well-studied markers for appearance, taste and metabolism. Most traits come from many genes, so treat these as tendencies.</source>
+    <source>Weight, diet and activity have a much larger effect than these variants.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Well-studied markers for looks, taste, blood, nutrition, the brain and Neanderthal DNA. Most traits come from many genes, so treat these as tendencies, and check the evidence label on each card.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3582,6 +4462,14 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>Windows of about 60 markers are matched to the closest pair of broad regions, and a smoothing pass removes short switches that are likely noise. Treat it as a rough picture.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>With one of two X copies affected, enzyme levels range from normal to low. CPIC guidance treats this as uncertain until tested.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>With one X copy carrying this variant, enzyme levels are often normal or mildly low.</source>
     <translation></translation>
   </entry>
@@ -3610,11 +4498,23 @@
     <translation></translation>
   </entry>
   <entry>
+    <source>You both carry a variant in {0}, linked to {1} (yours: {2}; theirs: {3}). If two carriers have a child, each child has a 1 in 4 chance of the condition. Rare calls on consumer chips are often wrong, so confirm with a clinical test.</source>
+    <translation></translation>
+  </entry>
+  <entry>
     <source>You carry an inherited clotting variant</source>
     <translation></translation>
   </entry>
   <entry>
     <source>You carry an inherited clotting variant. One copy raises the chance of a deep vein clot several times, especially with estrogen, surgery or long travel.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>You do not carry R46L, a variant that lowers LDL cholesterol for life. Most people do not.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>You do not carry the C allele at 9p21, the most replicated common genetic signal for heart disease.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3630,11 +4530,15 @@
     <translation></translation>
   </entry>
   <entry>
-    <source>You have two copies of each chromosome, one from each parent. Colors show where each stretch most likely comes from.</source>
+    <source>You have two copies of each chromosome, one from each parent.</source>
     <translation></translation>
   </entry>
   <entry>
-    <source>You have two copies of each chromosome, one from each parent. Each stretch of about 120 markers is matched to the closest pair of broad regions. Short pieces under a few percent can be noise, so treat this as a rough picture.</source>
+    <source>You have two copies of each chromosome, one from each parent. {0}</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>You have two copies of each chromosome, one from each parent. Colors show where each stretch most likely comes from.</source>
     <translation></translation>
   </entry>
   <entry>
@@ -3667,6 +4571,10 @@
   </entry>
   <entry>
     <source>Your file can't tell which parent each piece came from, so this view needs a phased file from 23andMe. Your percentages above are still valid.</source>
+    <translation></translation>
+  </entry>
+  <entry>
+    <source>Your file has {0} autosomal markers. This needs at least 100,000, as on a full chip file, to find long stretches reliably.</source>
     <translation></translation>
   </entry>
   <entry>

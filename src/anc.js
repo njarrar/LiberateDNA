@@ -88,34 +88,56 @@ function locusAnc() {
     return { used: idx.length, groups, regions, closest: ll.slice(0, 5) };
   }
 
-  /* Rough chromosome painting: windows of markers, best pair of regions per
-     window (one per chromosome copy), weighted by the overall result. */
-  function paint(P, g, regionPct) {
+  /* Chromosome painting. Markers are grouped in windows; each window scores every
+     region (or pair of regions, one per copy), and a Viterbi pass picks the path
+     that explains the windows best while paying a cost for each switch, so short
+     noisy runs are smoothed out. With phased haplotypes (h1, h2: 0/1 per marker,
+     -1 if unknown) each copy is painted on its own. */
+  function paint(P, g, regionPct, haps) {
     const U = unpack(P), K = U.K, R = P.regions.length;
     const rk = P.regions.map(r => P.groups.map((G, k) => G.region === r.id ? k : -1).filter(k => k >= 0));
     const wts = rk.map(ks => ks.map(k => P.groups[k].n));
-    // A light pull toward the overall result; wide windows keep short noisy runs out.
-    const W = 120, prior = regionPct.map(p => 0.3 * Math.log(Math.max(p, 0.5) / 100));
+    const W = 60, SW = 7, prior = regionPct.map(p => 0.3 * Math.log(Math.max(p, 0.5) / 100));
+    const pairs = []; for (let a = 0; a < R; a++) for (let b = a; b < R; b++) pairs.push([a, b]);
+    // Switch cost between pairs: one step for each copy whose region changes.
+    const pairCost = pairs.map(p => pairs.map(q => { const r = q.slice(); let m = 0; p.forEach(e => { const i = r.indexOf(e); if (i >= 0) { m++; r.splice(i, 1); } }); return SW * (2 - m); }));
+    const viterbi = (em, nS, cost) => {
+      // em[w][s]: log score of state s in window w. Returns the best state per window.
+      const n = em.length; if (!n) return [];
+      let v = em[0].slice(); const back = [];
+      for (let w = 1; w < n; w++) {
+        const nv = new Array(nS), bk = new Int16Array(nS);
+        for (let s = 0; s < nS; s++) { let best = -Infinity, bi = 0; for (let t = 0; t < nS; t++) { const x = v[t] - cost(t, s); if (x > best) { best = x; bi = t; } } nv[s] = best + em[w][s]; bk[s] = bi; }
+        back.push(bk); v = nv;
+      }
+      let s = 0; for (let t = 1; t < nS; t++) if (v[t] > v[s]) s = t;
+      const path = [s]; for (let w = n - 2; w >= 0; w--) { s = back[w][s]; path.unshift(s); }
+      return path;
+    };
     const out = [];
     for (let c = 1; c <= 22; c++) {
-      const idx = []; for (let i = 0; i < U.n; i++) if (U.chr[i] === c && g[i] >= 0) idx.push(i);
-      const segs = [[], []];
-      let prev = null;
-      for (let w = 0; w < idx.length; w += W) {
-        const win = idx.slice(w, w + W); if (win.length < 30) break;
-        const rf = win.map(j => rk.map((ks, r) => { let s = 0, t = 0; ks.forEach((k, m) => { s += U.F[j * K + k] * wts[r][m]; t += wts[r][m]; }); return s / t; }));
-        let best = -Infinity, bp = [0, 0];
-        for (let a = 0; a < R; a++) for (let b = a; b < R; b++) {
-          let s = prior[a] + prior[b];
-          win.forEach((j, m) => { const fa = rf[m][a], fb = rf[m][b], d = g[j]; s += Math.log(d === 2 ? fa * fb : d === 1 ? fa * (1 - fb) + fb * (1 - fa) : (1 - fa) * (1 - fb)); });
-          if (s > best) { best = s; bp = [a, b]; }
-        }
-        if (prev && (bp[0] === prev[1] || bp[1] === prev[0])) bp = [bp[1], bp[0]];
-        prev = bp;
-        const start = w === 0 ? 0 : (U.pos[win[0]] + U.pos[idx[w - 1]]) / 2;
-        const end = w + W >= idx.length - 29 ? U.pos[idx[idx.length - 1]] : (U.pos[win[win.length - 1]] + U.pos[idx[w + W]]) / 2;
-        [0, 1].forEach(cp => { const id = P.regions[bp[cp]].id, s = segs[cp]; if (s.length && s[s.length - 1].pop === id) s[s.length - 1].e = end; else s.push({ pop: id, s: start, e: end }); });
+      const idx = []; for (let i = 0; i < U.n; i++) if (U.chr[i] === c && (haps ? haps[0][i] >= 0 && haps[1][i] >= 0 : g[i] >= 0)) idx.push(i);
+      const wins = [];
+      for (let w = 0; w < idx.length; w += W) { const win = idx.slice(w, w + W); if (win.length < 20 && wins.length) { wins[wins.length - 1].push(...win); break; } if (win.length >= 20) wins.push(win); }
+      if (!wins.length) { out.push([[], []]); continue; }
+      const rf = wins.map(win => win.map(j => rk.map((ks, r) => { let s = 0, t = 0; ks.forEach((k, m) => { s += U.F[j * K + k] * wts[r][m]; t += wts[r][m]; }); return Math.min(0.995, Math.max(0.005, s / t)); })));
+      let copyA, copyB;
+      if (haps) {
+        const one = h => viterbi(wins.map((win, w) => { const e = prior.slice(); win.forEach((j, m) => { const d = h[j]; for (let r = 0; r < R; r++) e[r] += Math.log(d ? rf[w][m][r] : 1 - rf[w][m][r]); }); return e; }), R, (t, s) => t === s ? 0 : SW);
+        copyA = one(haps[0]); copyB = one(haps[1]);
+      } else {
+        const em = wins.map((win, w) => pairs.map(([a, b]) => { let s = prior[a] + prior[b]; win.forEach((j, m) => { const fa = rf[w][m][a], fb = rf[w][m][b], d = g[j]; s += Math.log(d === 2 ? fa * fb : d === 1 ? fa * (1 - fb) + fb * (1 - fa) : (1 - fa) * (1 - fb)); }); return s; }));
+        const path = viterbi(em, pairs.length, (t, s) => pairCost[t][s]);
+        copyA = []; copyB = []; let prev = null;
+        path.forEach(si => { let bp = pairs[si].slice(); if (prev && (bp[0] === prev[1] || bp[1] === prev[0]) && bp[0] !== prev[0]) bp = [bp[1], bp[0]]; prev = bp; copyA.push(bp[0]); copyB.push(bp[1]); });
       }
+      const segs = [[], []];
+      wins.forEach((win, w) => {
+        const start = w === 0 ? U.pos[win[0]] : (U.pos[win[0]] + U.pos[wins[w - 1][wins[w - 1].length - 1]]) / 2;
+        const end = w === wins.length - 1 ? U.pos[win[win.length - 1]] : (U.pos[win[win.length - 1]] + U.pos[wins[w + 1][0]]) / 2;
+        [copyA[w], copyB[w]].forEach((r, cp) => { const id = P.regions[r].id, sg = segs[cp]; if (sg.length && sg[sg.length - 1].pop === id) sg[sg.length - 1].e = end; else sg.push({ pop: id, s: start, e: end }); });
+      });
+      if (segs[0].length) segs.forEach(sg => { sg[0].s = 0; });
       out.push(segs);
     }
     return out;

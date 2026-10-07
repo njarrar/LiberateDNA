@@ -46,15 +46,15 @@ const TF = 'files/';
   await p.fill('input[type=search]', 'rs3918290'); await p.waitForTimeout(400); await p.click('[data-rs=rs3918290]');
   await p.click('role=switch'); await p.click('text=Look up this marker'); await p.waitForSelector('text=PharmGKB'); await p.waitForTimeout(300); t = await txt();
   check('DPYD frequency is real', /Minor allele T, frequency 0.003/.test(t));
-  // real heritage: a held-out Palestinian man, mt J1c, Y J-P58
-  await p.goto('http://localhost:8765/?theme=lab'); await p.setInputFiles('#locus-file', TF + 'genome_Full_her.txt');
+  // real heritage on a made-up European and Han Chinese man, mt H1, Y O-M122
+  await p.goto('http://localhost:8765/?theme=lab'); await p.setInputFiles('#locus-file', TF + 'genome_Full_mix.txt');
   await p.waitForSelector('text=What was in your file', { timeout: 30000 });
   t = await txt();
-  check('her overview names Middle East', /Mostly Middle Eastern/.test(t));
+  check('mix overview names both regions', /East and North Asian/.test(t) && /European/.test(t));
   await p.click('nav >> text=Heritage'); await p.waitForTimeout(300); t = await txt();
-  check('her closest group shown', /Closest reference group/.test(t) && /Palestinian|Druze|Bedouin/.test(t));
-  check('her deep lines', /J1c/.test(t) && /J-P58/.test(t));
-  check('her painting computed', /Chromosome painting/.test(t) && !/Example numbers below/.test(t));
+  check('mix closest group shown', /Closest reference group/.test(t));
+  check('mix deep lines', /H1/.test(t) && /O-M122|O2/.test(t));
+  check('mix painting computed', /Chromosome painting/.test(t) && !/Example numbers below/.test(t));
   await p.screenshot({ path: '../shots/her-heritage.png', fullPage: true });
   console.log('errors:', errs);
   check('no page errors', errs.length === 0);

@@ -86,6 +86,14 @@
     <translation>Correspondances masquées avec vos résultats sensibles : {0}</translation>
   </entry>
   <entry>
+    <source>{0} Mb in stretches over 8 Mb</source>
+    <translation>{0} Mb dans des segments de plus de 8 Mb</translation>
+  </entry>
+  <entry>
+    <source>{0} Neanderthal copies at {1} places tested</source>
+    <translation>{0} copies néandertaliennes sur {1} positions testées</translation>
+  </entry>
+  <entry>
     <source>{0} no-calls</source>
     <translation>{0} non lus</translation>
   </entry>
@@ -96,6 +104,18 @@
   <entry>
     <source>{0} of {1} curated markers shown, plus {2} more from your file</source>
     <translation>{0} sur {1} marqueurs sélectionnés affichés, plus {2} autres de votre fichier</translation>
+  </entry>
+  <entry>
+    <source>{0} of {1} lighter-skin alleles</source>
+    <translation>{0} allèles sur {1} liés à une peau plus claire</translation>
+  </entry>
+  <entry>
+    <source>{0} of {1} lower-conversion alleles</source>
+    <translation>{0} allèles sur {1} liés à une conversion plus faible</translation>
+  </entry>
+  <entry>
+    <source>{0} of {1} lower-vitamin-D alleles</source>
+    <translation>{0} allèles sur {1} liés à une vitamine D plus basse</translation>
   </entry>
   <entry>
     <source>{0} of {1} tested variants may be present</source>
@@ -138,12 +158,20 @@
     <translation>{0} reste masqué jusqu'à ce que vous choisissiez de le voir.</translation>
   </entry>
   <entry>
+    <source>{0} stretches over 1.5 Mb</source>
+    <translation>Segments de plus de 1,5 Mb : {0}</translation>
+  </entry>
+  <entry>
     <source>{0} submission records</source>
     <translation>Enregistrements de soumission : {0}</translation>
   </entry>
   <entry>
     <source>{0} to {1}%</source>
     <translation>{0} à {1} %</translation>
+  </entry>
+  <entry>
+    <source>{0} traits linked in published studies</source>
+    <translation>Traits liés dans des études publiées : {0}</translation>
   </entry>
   <entry>
     <source>{0} variant, two copies</source>
@@ -282,8 +310,16 @@
     <translation>4216C : avec 15452A, indique l'haplogroupe JT</translation>
   </entry>
   <entry>
+    <source>677T: {0} of 2; 1298C: {1} of 2</source>
+    <translation>677T : {0} sur 2 ; 1298C : {1} sur 2</translation>
+  </entry>
+  <entry>
     <source>7028C: marks haplogroup H</source>
     <translation>7028C : marque l'haplogroupe H</translation>
+  </entry>
+  <entry>
+    <source>9p21 heart disease risk allele</source>
+    <translation>Allèle de risque cardiaque 9p21</translation>
   </entry>
   <entry>
     <source>A European line carried by Ice Age hunter-gatherers.</source>
@@ -298,6 +334,10 @@
     <translation>Un haplogroupe est une branche de l'arbre généalogique humain, définie par des mutations transmises par une seule lignée : de la mère à l'enfant par l'ADN mitochondrial, ou du père au fils par le chromosome Y.</translation>
   </entry>
   <entry>
+    <source>A mix of lighter and darker alleles</source>
+    <translation>Un mélange d'allèles plus clairs et plus foncés</translation>
+  </entry>
+  <entry>
     <source>A rare branch found in East Africa.</source>
     <translation>Une branche rare présente en Afrique de l'Est.</translation>
   </entry>
@@ -310,8 +350,32 @@
     <translation>Variants A- et méditerranéen non trouvés</translation>
   </entry>
   <entry>
+    <source>Abacavir (HIV)</source>
+    <translation>Abacavir (VIH)</translation>
+  </entry>
+  <entry>
+    <source>ABO 261delG, the O blood group allele</source>
+    <translation>ABO 261delG, l'allèle du groupe sanguin O</translation>
+  </entry>
+  <entry>
+    <source>ABO 796C&gt;A, marks the B blood group allele</source>
+    <translation>ABO 796C&gt;A, marque l'allèle du groupe sanguin B</translation>
+  </entry>
+  <entry>
+    <source>ABO 803G&gt;C, marks the B blood group allele</source>
+    <translation>ABO 803G&gt;C, marque l'allèle du groupe sanguin B</translation>
+  </entry>
+  <entry>
+    <source>ABO blood group</source>
+    <translation>Groupe sanguin ABO</translation>
+  </entry>
+  <entry>
     <source>about</source>
     <translation>environ</translation>
+  </entry>
+  <entry>
+    <source>About {0} cM</source>
+    <translation>Environ {0} cM</translation>
   </entry>
   <entry>
     <source>About {0}%</source>
@@ -324,6 +388,10 @@
   <entry>
     <source>About {0}% {1}.</source>
     <translation>Environ {0} % {1}.</translation>
+  </entry>
+  <entry>
+    <source>About 1 in 10 people have 677TT. Medical groups advise against routine MTHFR testing; normal folate intake, plus folic acid in pregnancy, is enough.</source>
+    <translation>Environ 1 personne sur 10 a 677TT. Les sociétés médicales déconseillent le test MTHFR de routine ; un apport normal en folates, plus de l'acide folique pendant la grossesse, suffit.</translation>
   </entry>
   <entry>
     <source>About 1 in 10 people of European ancestry carry R151C.</source>
@@ -366,6 +434,10 @@
     <translation>Environ 1 personne d'ascendance européenne sur 4 porte DQ2.5.</translation>
   </entry>
   <entry>
+    <source>About 1 in 4 people of European or Asian ancestry have two copies.</source>
+    <translation>Environ 1 personne sur 4 d'ascendance européenne ou asiatique a deux copies.</translation>
+  </entry>
+  <entry>
     <source>About 1 in 40 Ashkenazi Jewish people carry one of these three.</source>
     <translation>Environ 1 personne juive ashkénaze sur 40 porte l'un de ces trois variants.</translation>
   </entry>
@@ -374,12 +446,20 @@
     <translation>Environ 1 personne sur 5 a deux copies du X.</translation>
   </entry>
   <entry>
+    <source>About 1 in 5 people of European ancestry are non-secretors, who resist the most common norovirus strains. This marker misses the East Asian non-secretor variant.</source>
+    <translation>Environ 1 personne sur 5 d'ascendance européenne est non sécrétrice, ce qui protège contre les souches de norovirus les plus courantes. Ce marqueur ne détecte pas le variant non sécréteur d'Asie de l'Est.</translation>
+  </entry>
+  <entry>
     <source>About 1 in 5 people of European ancestry carry H63D.</source>
     <translation>Environ 1 personne d'ascendance européenne sur 5 porte H63D.</translation>
   </entry>
   <entry>
     <source>About 1 in 7 people of European ancestry carry rs10455872 G.</source>
     <translation>Environ 1 personne d'ascendance européenne sur 7 porte rs10455872 G.</translation>
+  </entry>
+  <entry>
+    <source>About 3 in 100 people of European ancestry carry R46L.</source>
+    <translation>Environ 3 personnes sur 100 d'ascendance européenne portent R46L.</translation>
   </entry>
   <entry>
     <source>About 3 in 4 people can taste PTC.</source>
@@ -398,8 +478,20 @@
     <translation>Au-dessus de 98 %, la qualité est bonne</translation>
   </entry>
   <entry>
+    <source>Across {0} diabetes markers (TCF7L2, SLC30A8, KCNJ11 and PPARG) you carry {1} of {2} risk alleles. Most people carry 3 to 6.</source>
+    <translation>Sur {0} marqueurs du diabète (TCF7L2, SLC30A8, KCNJ11 et PPARG), vous portez {1} allèles de risque sur {2}. La plupart des gens en portent de 3 à 6.</translation>
+  </entry>
+  <entry>
+    <source>Add another person's raw DNA file to see how closely you are related, and whether you both carry a variant for the same recessive condition. Their file is read in this browser and is not saved. Ask them first: it is their DNA.</source>
+    <translation>Ajoutez le fichier ADN brut d'une autre personne pour voir à quel point vous êtes apparentés, et si vous portez tous les deux un variant pour la même maladie récessive. Son fichier est lu dans ce navigateur et n'est pas enregistré. Demandez-lui d'abord : c'est son ADN.</translation>
+  </entry>
+  <entry>
     <source>Add phased file</source>
     <translation>Ajouter un fichier phasé</translation>
+  </entry>
+  <entry>
+    <source>Add their file</source>
+    <translation>Ajouter son fichier</translation>
   </entry>
   <entry>
     <source>Add your phased file to see this</source>
@@ -410,8 +502,20 @@
     <translation>S'ajoute à ce rapport. Rien d'autre n'est réinitialisé.</translation>
   </entry>
   <entry>
+    <source>ADORA2A 1976T, caffeine anxiety allele</source>
+    <translation>ADORA2A 1976T, allèle de l'anxiété liée à la caféine</translation>
+  </entry>
+  <entry>
     <source>Adygei, North Caucasus</source>
     <translation>Adyguéens, Caucase du Nord</translation>
+  </entry>
+  <entry>
+    <source>Affects how much vitamin A you make from beta-carotene in plants. Animal foods supply vitamin A directly.</source>
+    <translation>Influe sur la quantité de vitamine A que vous fabriquez à partir du bêta-carotène des plantes. Les aliments d'origine animale apportent directement de la vitamine A.</translation>
+  </entry>
+  <entry>
+    <source>African</source>
+    <translation>Africain</translation>
   </entry>
   <entry>
     <source>Alcohol flush</source>
@@ -422,12 +526,16 @@
     <translation>Allèle de rougeur liée à l'alcool</translation>
   </entry>
   <entry>
-    <source>All populations combined</source>
-    <translation>Toutes populations confondues</translation>
-  </entry>
-  <entry>
     <source>Allele frequency {0}</source>
     <translation>Fréquence de l'allèle : {0}</translation>
+  </entry>
+  <entry>
+    <source>Alleles linked to darker skin</source>
+    <translation>Allèles liés à une peau plus foncée</translation>
+  </entry>
+  <entry>
+    <source>Alleles linked to lighter skin</source>
+    <translation>Allèles liés à une peau plus claire</translation>
   </entry>
   <entry>
     <source>Alzheimer's disease</source>
@@ -440,6 +548,10 @@
   <entry>
     <source>Amazonian Indigenous</source>
     <translation>Autochtones d'Amazonie</translation>
+  </entry>
+  <entry>
+    <source>Among the top 10% most likely to be harmful</source>
+    <translation>Parmi les 10 % les plus susceptibles d'être nocifs</translation>
   </entry>
   <entry>
     <source>An African branch from which almost every lineage outside Africa descends. Common in East Africa.</source>
@@ -470,6 +582,10 @@
     <translation>et</translation>
   </entry>
   <entry>
+    <source>APOA2 -265C promoter allele</source>
+    <translation>Allèle du promoteur APOA2 -265C</translation>
+  </entry>
+  <entry>
     <source>Arose in the Near East. Found across the Middle East, Europe and North Africa.</source>
     <translation>Apparue au Proche-Orient. Présente au Moyen-Orient, en Europe et en Afrique du Nord.</translation>
   </entry>
@@ -490,6 +606,10 @@
     <translation>Demandez un dosage sanguin de l'enzyme G6PD, et signalez ce résultat avant de prendre de la primaquine, de la dapsone ou de la rasburicase.</translation>
   </entry>
   <entry>
+    <source>Ask for a G6PD enzyme test before these drugs.</source>
+    <translation>Demandez un test de l'enzyme G6PD avant ces médicaments.</translation>
+  </entry>
+  <entry>
     <source>Ask for a one-time Lp(a) blood test.</source>
     <translation>Demandez un dosage sanguin unique de la Lp(a).</translation>
   </entry>
@@ -508,6 +628,14 @@
   <entry>
     <source>Ask your doctor for clinical BRCA testing and a genetic counselor referral.</source>
     <translation>Demandez à votre médecin un test BRCA clinique et une orientation vers un conseiller en génétique.</translation>
+  </entry>
+  <entry>
+    <source>Average</source>
+    <translation>Moyen</translation>
+  </entry>
+  <entry>
+    <source>Azathioprine, mercaptopurine, thioguanine</source>
+    <translation>Azathioprine, mercaptopurine, thioguanine</translation>
   </entry>
   <entry>
     <source>Baloch and Brahui</source>
@@ -534,6 +662,22 @@
     <translation>Basé sur les recommandations du CPIC et de PharmGKB. Montrez-les à votre médecin ou à votre pharmacien, et ne modifiez jamais un traitement de vous-même.</translation>
   </entry>
   <entry>
+    <source>BCO1 A379V, lower beta-carotene conversion</source>
+    <translation>BCO1 A379V, conversion plus faible du bêta-carotène</translation>
+  </entry>
+  <entry>
+    <source>BCO1 T170S, lower beta-carotene conversion</source>
+    <translation>BCO1 T170S, conversion plus faible du bêta-carotène</translation>
+  </entry>
+  <entry>
+    <source>BDNF release</source>
+    <translation>Libération du BDNF</translation>
+  </entry>
+  <entry>
+    <source>BDNF V66M, Met allele</source>
+    <translation>BDNF V66M, allèle Met</translation>
+  </entry>
+  <entry>
     <source>Bedouin</source>
     <translation>Bédouins</translation>
   </entry>
@@ -554,8 +698,16 @@
     <translation>Bêta-thalassémie, IVS1-110</translation>
   </entry>
   <entry>
+    <source>Beta-carotene to vitamin A</source>
+    <translation>Bêta-carotène en vitamine A</translation>
+  </entry>
+  <entry>
     <source>Biaka, Mbuti</source>
     <translation>Biaka, Mbuti</translation>
+  </entry>
+  <entry>
+    <source>Bilirubin may run a little high. Standard dosing usually applies. *80 stands in for *28, which chips cannot read directly.</source>
+    <translation>La bilirubine peut être un peu élevée. La posologie standard s'applique généralement. *80 sert d'indicateur pour *28, que les puces ne peuvent pas lire directement.</translation>
   </entry>
   <entry>
     <source>Bitter taste</source>
@@ -570,16 +722,40 @@
     <translation>blmAsh</translation>
   </entry>
   <entry>
+    <source>blond C</source>
+    <translation>C blond</translation>
+  </entry>
+  <entry>
+    <source>Blond hair</source>
+    <translation>Cheveux blonds</translation>
+  </entry>
+  <entry>
+    <source>Blood</source>
+    <translation>Sang</translation>
+  </entry>
+  <entry>
+    <source>Blood pressure, cholesterol, smoking and diabetes matter far more than this marker.</source>
+    <translation>La tension artérielle, le cholestérol, le tabac et le diabète comptent bien plus que ce marqueur.</translation>
+  </entry>
+  <entry>
     <source>Bloom syndrome</source>
     <translation>Syndrome de Bloom</translation>
   </entry>
   <entry>
-    <source>blue-eye G</source>
-    <translation>G des yeux bleus</translation>
+    <source>Blue {0}%, green or hazel {1}%, brown {2}%</source>
+    <translation>Bleu {0} %, vert ou noisette {1} %, marron {2} %</translation>
+  </entry>
+  <entry>
+    <source>BNC2 second</source>
+    <translation>BNC2 second</translation>
   </entry>
   <entry>
     <source>Bold type, flat color</source>
     <translation>Caractères gras, couleurs unies</translation>
+  </entry>
+  <entry>
+    <source>Brain, sleep and aging</source>
+    <translation>Cerveau, sommeil et vieillissement</translation>
   </entry>
   <entry>
     <source>BRCA1 and BRCA2</source>
@@ -626,6 +802,10 @@
     <translation>par LiberateDNA. Taux de lecture</translation>
   </entry>
   <entry>
+    <source>C risk</source>
+    <translation>C à risque</translation>
+  </entry>
+  <entry>
     <source>C282Y and H63D not found</source>
     <translation>C282Y et H63D non trouvés</translation>
   </entry>
@@ -640,6 +820,10 @@
   <entry>
     <source>C282Y, two copies</source>
     <translation>C282Y, deux copies</translation>
+  </entry>
+  <entry>
+    <source>Caffeine and sleep</source>
+    <translation>Caféine et sommeil</translation>
   </entry>
   <entry>
     <source>Caffeine metabolism</source>
@@ -690,6 +874,10 @@
     <translation>Les porteurs n'ont généralement aucun symptôme.</translation>
   </entry>
   <entry>
+    <source>Carries one red hair variant</source>
+    <translation>Porte un variant des cheveux roux</translation>
+  </entry>
+  <entry>
     <source>Caucasus</source>
     <translation>Caucase</translation>
   </entry>
@@ -714,12 +902,16 @@
     <translation>Vérifier le type de fichier</translation>
   </entry>
   <entry>
-    <source>Checks ClinVar, SNPedia, Ensembl, gnomAD and PharmGKB. Sends one rsID per request, never your genotype or file.</source>
-    <translation>Consulte ClinVar, SNPedia, Ensembl, gnomAD et PharmGKB. Envoie un seul rsID par requête, jamais votre génotype ni votre fichier.</translation>
+    <source>Checks ClinVar, SNPedia, Ensembl, gnomAD, PharmGKB, the GWAS Catalog and CADD. Sends one rsID per request, never your genotype or file.</source>
+    <translation>Interroge ClinVar, SNPedia, Ensembl, gnomAD, PharmGKB, le GWAS Catalog et CADD. Envoie un seul rsID par requête, jamais votre génotype ni votre fichier.</translation>
   </entry>
   <entry>
     <source>Checks the European variant and the Arabian one (rs41380347). Other variants exist in East Africa.</source>
     <translation>Vérifie le variant européen et le variant arabe (rs41380347). D'autres variants existent en Afrique de l'Est.</translation>
+  </entry>
+  <entry>
+    <source>Children of first cousins have about 6% of their genome in such stretches, children of second cousins about 1.5%. Chip data finds stretches over about 1.5 Mb; shorter ones are missed. If your parents are related, a genetic counselor can explain what it means for recessive conditions in your family.</source>
+    <translation>Les enfants de cousins germains ont environ 6 % de leur génome dans de tels segments, les enfants de cousins issus de germains environ 1,5 %. Les données de puce détectent les segments de plus de 1,5 Mb environ ; les plus courts sont manqués. Si vos parents sont apparentés, un conseiller en génétique peut vous expliquer ce que cela signifie pour les maladies récessives dans votre famille.</translation>
   </entry>
   <entry>
     <source>China</source>
@@ -740,6 +932,14 @@
   <entry>
     <source>Chitral valleys</source>
     <translation>Vallées du Chitral</translation>
+  </entry>
+  <entry>
+    <source>Cholesterol tests still matter, whatever this result.</source>
+    <translation>Les bilans de cholestérol restent importants, quel que soit ce résultat.</translation>
+  </entry>
+  <entry>
+    <source>Choline need</source>
+    <translation>Besoin en choline</translation>
   </entry>
   <entry>
     <source>Choose a look</source>
@@ -782,6 +982,14 @@
     <translation>Chromosome {0} : {1}</translation>
   </entry>
   <entry>
+    <source>Chromosome {0}: {1} to {2} Mb</source>
+    <translation>Chromosome {0} : de {1} à {2} Mb</translation>
+  </entry>
+  <entry>
+    <source>Chromosome 3</source>
+    <translation>Chromosome 3</translation>
+  </entry>
+  <entry>
     <source>Chromosome painting</source>
     <translation>Peinture chromosomique</translation>
   </entry>
@@ -808,6 +1016,10 @@
   <entry>
     <source>ClinVar, SNPedia</source>
     <translation>ClinVar, SNPedia</translation>
+  </entry>
+  <entry>
+    <source>ClinVar; Cohen et al., 2006</source>
+    <translation>ClinVar ; Cohen et al., 2006</translation>
   </entry>
   <entry>
     <source>ClinVar; Farrer et al., 1997</source>
@@ -894,6 +1106,10 @@
     <translation>Répandu dans le Croissant fertile, en Anatolie, dans le Caucase, en Iran et autour de la Méditerranée.</translation>
   </entry>
   <entry>
+    <source>Compare with a relative or partner</source>
+    <translation>Comparer avec un proche ou un partenaire</translation>
+  </entry>
+  <entry>
     <source>Compared with</source>
     <translation>Comparé à</translation>
   </entry>
@@ -904,6 +1120,10 @@
   <entry>
     <source>Comparing with reference populations</source>
     <translation>Comparaison avec les populations de référence</translation>
+  </entry>
+  <entry>
+    <source>COMT V158M, Met allele</source>
+    <translation>COMT V158M, allèle Met</translation>
   </entry>
   <entry>
     <source>Concentrated in northern Italy, Switzerland and eastern France.</source>
@@ -918,6 +1138,14 @@
     <translation>Faites confirmer par un test clinique et prévenez tout oncologue avant une chimiothérapie.</translation>
   </entry>
   <entry>
+    <source>Confirm with a clinical test before any thiopurine.</source>
+    <translation>Confirmez par un test clinique avant toute thiopurine.</translation>
+  </entry>
+  <entry>
+    <source>Confirm with a G6PD enzyme test before these drugs.</source>
+    <translation>Confirmez par un test de l'enzyme G6PD avant ces médicaments.</translation>
+  </entry>
+  <entry>
     <source>Consider a one-time Lp(a) blood test, especially with a family history of early heart disease.</source>
     <translation>Envisagez un dosage unique de la Lp(a) dans le sang, surtout en cas d'antécédents familiaux de maladie cardiaque précoce.</translation>
   </entry>
@@ -930,12 +1158,24 @@
     <translation>Données de génotypage grand public ({0}, {1}). Généré le {2} par LiberateDNA. Taux de lecture {3}.</translation>
   </entry>
   <entry>
+    <source>Coronary heart disease (9p21)</source>
+    <translation>Maladie coronarienne (9p21)</translation>
+  </entry>
+  <entry>
     <source>Couldn't reach</source>
     <translation>Inaccessible</translation>
   </entry>
   <entry>
     <source>Couldn't reach {0}. It timed out.</source>
     <translation>Impossible de joindre {0}. Le délai d'attente a expiré.</translation>
+  </entry>
+  <entry>
+    <source>CPIC guidance says to avoid rasburicase and pegloticase, and to take care with primaquine, dapsone and some antibiotics</source>
+    <translation>Les recommandations du CPIC conseillent d'éviter la rasburicase et la pegloticase, et d'être prudent avec la primaquine, la dapsone et certains antibiotiques</translation>
+  </entry>
+  <entry>
+    <source>CPIC guidance says to avoid rasburicase and pegloticase, and to take care with primaquine, dapsone and some antibiotics.</source>
+    <translation>Les recommandations du CPIC conseillent d'éviter la rasburicase et la pegloticase, et d'être prudent avec la primaquine, la dapsone et certains antibiotiques.</translation>
   </entry>
   <entry>
     <source>CYP2C19 *17, faster metabolism</source>
@@ -954,6 +1194,10 @@
     <translation>CYP2D6 a souvent des copies du gène en plus ou des délétions, que les puces de génotypage ne peuvent pas voir.</translation>
   </entry>
   <entry>
+    <source>CYP3A5 *3, non-working allele</source>
+    <translation>CYP3A5 *3, allèle non fonctionnel</translation>
+  </entry>
+  <entry>
     <source>Cystic fibrosis</source>
     <translation>Mucoviscidose</translation>
   </entry>
@@ -964,6 +1208,10 @@
   <entry>
     <source>deficiency</source>
     <translation>de déficit</translation>
+  </entry>
+  <entry>
+    <source>Deficiency variant</source>
+    <translation>Variant de déficit</translation>
   </entry>
   <entry>
     <source>Defines APOE ε2</source>
@@ -1030,6 +1278,10 @@
     <translation>le fait. Arbre paternel : l'</translation>
   </entry>
   <entry>
+    <source>Dopamine clearance</source>
+    <translation>Élimination de la dopamine</translation>
+  </entry>
+  <entry>
     <source>DQ2.5 is needed for most celiac disease, but about 1 in 3 people carry it and most never develop the condition.</source>
     <translation>DQ2.5 est nécessaire à la plupart des cas de maladie cœliaque, mais environ 1 personne sur 3 le porte et la plupart ne développent jamais la maladie.</translation>
   </entry>
@@ -1064,6 +1316,26 @@
   <entry>
     <source>dry-earwax T</source>
     <translation>T du cérumen sec</translation>
+  </entry>
+  <entry>
+    <source>Duffy blood group</source>
+    <translation>Groupe sanguin Duffy</translation>
+  </entry>
+  <entry>
+    <source>Duffy positive</source>
+    <translation>Duffy positif</translation>
+  </entry>
+  <entry>
+    <source>Duffy-null C</source>
+    <translation>C Duffy nul</translation>
+  </entry>
+  <entry>
+    <source>Duffy-null is common in African and some Middle Eastern ancestry. It protects against one malaria parasite and comes with a lower, healthy neutrophil count that standard lab ranges can flag as low.</source>
+    <translation>Le phénotype Duffy nul est fréquent chez les personnes d'ascendance africaine et de certaines origines du Moyen-Orient. Il protège contre un parasite du paludisme et s'accompagne d'un taux de neutrophiles plus bas mais sain, que les valeurs de référence habituelles des laboratoires peuvent signaler comme bas.</translation>
+  </entry>
+  <entry>
+    <source>Duffy-null promoter variant</source>
+    <translation>Variant du promoteur Duffy nul</translation>
   </entry>
   <entry>
     <source>E1b1b arose roughly 30,000 years ago</source>
@@ -1142,6 +1414,10 @@
     <translation>Couleur des yeux</translation>
   </entry>
   <entry>
+    <source>Eye color marker used by IrisPlex</source>
+    <translation>Marqueur de la couleur des yeux utilisé par IrisPlex</translation>
+  </entry>
+  <entry>
     <source>Factor V Leiden</source>
     <translation>Facteur V Leiden</translation>
   </entry>
@@ -1160,6 +1436,10 @@
   <entry>
     <source>Factor V Leiden, two copies</source>
     <translation>Facteur V Leiden, deux copies</translation>
+  </entry>
+  <entry>
+    <source>FADS1, lower omega-3 and omega-6 conversion</source>
+    <translation>FADS1, conversion plus faible des oméga-3 et oméga-6</translation>
   </entry>
   <entry>
     <source>Familial Mediterranean fever</source>
@@ -1206,6 +1486,10 @@
     <translation>Récupéré : {0}</translation>
   </entry>
   <entry>
+    <source>Fewer alleles linked to low vitamin D</source>
+    <translation>Moins d'allèles liés à une vitamine D basse</translation>
+  </entry>
+  <entry>
     <source>File type</source>
     <translation>Type de fichier</translation>
   </entry>
@@ -1240,6 +1524,10 @@
   <entry>
     <source>flush A</source>
     <translation>A de rougeur</translation>
+  </entry>
+  <entry>
+    <source>Folate processing</source>
+    <translation>Traitement des folates</translation>
   </entry>
   <entry>
     <source>For people who have had their genome read, or have taken their raw data back from 23andMe and similar services. Add your file to see your heritage, health, traits and drug response.</source>
@@ -1402,6 +1690,10 @@
     <translation>Présent surtout en Asie du Nord-Est.</translation>
   </entry>
   <entry>
+    <source>Found mainly in Northern Europe. It lightens hair only a little; many genes shape hair color.</source>
+    <translation>Présent surtout en Europe du Nord. Il éclaircit à peine les cheveux ; de nombreux gènes déterminent leur couleur.</translation>
+  </entry>
+  <entry>
     <source>Found mainly in Pakistan and South Asia, with branches in the Near East and the Caucasus.</source>
     <translation>Présent surtout au Pakistan et en Asie du Sud, avec des branches au Proche-Orient et dans le Caucase.</translation>
   </entry>
@@ -1414,6 +1706,10 @@
     <translation>Présente surtout au Tibet, au Japon et dans les îles Andaman.</translation>
   </entry>
   <entry>
+    <source>Found more often in people who live past 95 in several studies. Its effect for any one person is tiny.</source>
+    <translation>Retrouvé plus souvent chez les personnes qui vivent au-delà de 95 ans dans plusieurs études. Son effet pour une personne donnée est minime.</translation>
+  </entry>
+  <entry>
     <source>Found mostly around the Mediterranean and in the Near East.</source>
     <translation>Présent surtout autour de la Méditerranée et au Proche-Orient.</translation>
   </entry>
@@ -1424,6 +1720,14 @@
   <entry>
     <source>Found mostly in South Asia; its U2e branch is European.</source>
     <translation>Présent surtout en Asie du Sud ; sa branche U2e est européenne.</translation>
+  </entry>
+  <entry>
+    <source>FOXO3, allele linked to long life</source>
+    <translation>FOXO3, allèle lié à la longévité</translation>
+  </entry>
+  <entry>
+    <source>frameshift variant</source>
+    <translation>variant de décalage du cadre de lecture</translation>
   </entry>
   <entry>
     <source>France</source>
@@ -1452,6 +1756,10 @@
   <entry>
     <source>Full genome + phased</source>
     <translation>Génome complet + phasé</translation>
+  </entry>
+  <entry>
+    <source>FUT2 W154X, the non-secretor allele</source>
+    <translation>FUT2 W154X, l'allèle non sécréteur</translation>
   </entry>
   <entry>
     <source>G6PD A- usually also needs a second change (376G) that this report does not check. Other G6PD variants exist.</source>
@@ -1530,6 +1838,10 @@
     <translation>GWAS Catalog</translation>
   </entry>
   <entry>
+    <source>GWAS Catalog; Samani et al., 2007</source>
+    <translation>GWAS Catalog ; Samani et al., 2007</translation>
+  </entry>
+  <entry>
     <source>H arose roughly 20,000 years ago</source>
     <translation>H est apparu il y a environ 20 000 ans</translation>
   </entry>
@@ -1584,6 +1896,10 @@
   <entry>
     <source>Hemochromatosis (H63D)</source>
     <translation>Hémochromatose (H63D)</translation>
+  </entry>
+  <entry>
+    <source>HERC2, OCA2 and 4 more</source>
+    <translation>HERC2, OCA2 et 4 autres</translation>
   </entry>
   <entry>
     <source>Hereditary hemochromatosis</source>
@@ -1642,6 +1958,10 @@
     <translation>Risque plus élevé de douleurs musculaires avec la simvastatine à forte dose.</translation>
   </entry>
   <entry>
+    <source>HLA-B*57:01 unlikely</source>
+    <translation>HLA-B*57:01 peu probable</translation>
+  </entry>
+  <entry>
     <source>How sure we are</source>
     <translation>Notre degré de certitude</translation>
   </entry>
@@ -1686,6 +2006,14 @@
     <translation>Rapports Illumina (format [Header] et [Data]) des laboratoires qui utilisent la puce Global Screening Array.</translation>
   </entry>
   <entry>
+    <source>In between (Val/Met)</source>
+    <translation>Intermédiaire (Val/Met)</translation>
+  </entry>
+  <entry>
+    <source>In some studies, people with two copies gained more weight on diets high in saturated fat. About 4 in 10 people of European ancestry have two copies.</source>
+    <translation>Dans certaines études, les personnes ayant deux copies ont pris plus de poids avec une alimentation riche en graisses saturées. Environ 4 personnes sur 10 d'ascendance européenne ont deux copies.</translation>
+  </entry>
+  <entry>
     <source>In this report</source>
     <translation>Dans ce rapport</translation>
   </entry>
@@ -1716,6 +2044,22 @@
   <entry>
     <source>intron variant</source>
     <translation>variant intronique</translation>
+  </entry>
+  <entry>
+    <source>IRF4, freckling and lighter eye allele</source>
+    <translation>IRF4, allèle des taches de rousseur et des yeux plus clairs</translation>
+  </entry>
+  <entry>
+    <source>Irinotecan, atazanavir</source>
+    <translation>Irinotécan, atazanavir</translation>
+  </entry>
+  <entry>
+    <source>IrisPlex model with {0} of 6 markers; the missing ones use typical values, so treat it as a rough guess. It is best at telling blue from brown.</source>
+    <translation>Modèle IrisPlex avec {0} marqueurs sur 6 ; les marqueurs manquants prennent des valeurs habituelles, considérez donc le résultat comme une estimation approximative. Il distingue le mieux le bleu du marron.</translation>
+  </entry>
+  <entry>
+    <source>IrisPlex model with all 6 markers. It is best at telling blue from brown; green and hazel are harder to call.</source>
+    <translation>Modèle IrisPlex avec les 6 marqueurs. Il distingue le mieux le bleu du marron ; le vert et le noisette sont plus difficiles à déterminer.</translation>
   </entry>
   <entry>
     <source>Iron build-up also depends on sex, age, diet and alcohol.</source>
@@ -1770,8 +2114,20 @@
     <translation>Karitianas, Suruís</translation>
   </entry>
   <entry>
+    <source>KCNJ11 E23K, type 2 diabetes risk allele</source>
+    <translation>KCNJ11 E23K, allèle de risque du diabète de type 2</translation>
+  </entry>
+  <entry>
+    <source>Keep up regular blood pressure and cholesterol checks.</source>
+    <translation>Continuez à faire contrôler régulièrement votre tension et votre cholestérol.</translation>
+  </entry>
+  <entry>
     <source>Kinh, Dai, Khmer</source>
     <translation>Kinh, Dai, Khmers</translation>
+  </entry>
+  <entry>
+    <source>Known as F(ROH)</source>
+    <translation>Appelé F(ROH)</translation>
   </entry>
   <entry>
     <source>Lab</source>
@@ -1820,6 +2176,10 @@
   <entry>
     <source>Lebanese, Syrian, Palestinian</source>
     <translation>Libanais, syriens, palestiniens</translation>
+  </entry>
+  <entry>
+    <source>Less likely to feel jittery from caffeine</source>
+    <translation>Moins susceptible de se sentir nerveux avec la caféine</translation>
   </entry>
   <entry>
     <source>Less sensitive to bitter compounds</source>
@@ -1874,12 +2234,28 @@
     <translation>Probablement marron</translation>
   </entry>
   <entry>
+    <source>Likely deficient</source>
+    <translation>Déficit probable</translation>
+  </entry>
+  <entry>
     <source>Likely flush after alcohol</source>
     <translation>Rougeur probable après l'alcool</translation>
   </entry>
   <entry>
-    <source>Likely hazel or green</source>
-    <translation>Probablement noisette ou verts</translation>
+    <source>Likely genotype {0}</source>
+    <translation>Génotype probable {0}</translation>
+  </entry>
+  <entry>
+    <source>Likely Gilbert syndrome, a harmless rise in bilirubin. Atazanavir often causes jaundice (CPIC suggests weighing another drug), and standard irinotecan doses can cause severe side effects.</source>
+    <translation>Syndrome de Gilbert probable, une hausse sans danger de la bilirubine. L'atazanavir provoque souvent une jaunisse (le CPIC suggère d'envisager un autre médicament), et les doses standard d'irinotécan peuvent causer des effets indésirables graves.</translation>
+  </entry>
+  <entry>
+    <source>Likely green or hazel</source>
+    <translation>Probablement vert ou noisette</translation>
+  </entry>
+  <entry>
+    <source>Likely group {0}</source>
+    <translation>Groupe probable {0}</translation>
   </entry>
   <entry>
     <source>Likely intolerant as an adult</source>
@@ -1930,6 +2306,22 @@
     <translation>Emplacement</translation>
   </entry>
   <entry>
+    <source>Long stretches where the copy from your mother and the copy from your father carry the same letters. They show how closely related your parents' families are.</source>
+    <translation>De longs segments où la copie de votre mère et celle de votre père portent les mêmes lettres. Ils montrent à quel point les familles de vos parents sont apparentées.</translation>
+  </entry>
+  <entry>
+    <source>Longest stretch</source>
+    <translation>Segment le plus long</translation>
+  </entry>
+  <entry>
+    <source>Longevity marker</source>
+    <translation>Marqueur de longévité</translation>
+  </entry>
+  <entry>
+    <source>longevity-linked G</source>
+    <translation>G lié à la longévité</translation>
+  </entry>
+  <entry>
     <source>Look</source>
     <translation>Apparence</translation>
   </entry>
@@ -1950,12 +2342,36 @@
     <translation>Recherche en cours</translation>
   </entry>
   <entry>
+    <source>Looks and taste</source>
+    <translation>Apparence et goût</translation>
+  </entry>
+  <entry>
     <source>looks most like</source>
     <translation>ressemble le plus à</translation>
   </entry>
   <entry>
     <source>Low confidence</source>
     <translation>Confiance faible</translation>
+  </entry>
+  <entry>
+    <source>Lower (677TT)</source>
+    <translation>Plus faible (677TT)</translation>
+  </entry>
+  <entry>
+    <source>Lower conversion</source>
+    <translation>Conversion plus faible</translation>
+  </entry>
+  <entry>
+    <source>Lower LDL cholesterol (PCSK9)</source>
+    <translation>Cholestérol LDL plus bas (PCSK9)</translation>
+  </entry>
+  <entry>
+    <source>lower-conversion C</source>
+    <translation>C de conversion plus faible</translation>
+  </entry>
+  <entry>
+    <source>Lowest {0} {1}, highest {2} {3}</source>
+    <translation>Le plus bas {0} {1}, le plus haut {2} {3}</translation>
   </entry>
   <entry>
     <source>Lp(a) is mostly genetic but driven by many variants.</source>
@@ -2050,6 +2466,10 @@
     <translation>Correspondance de {0} marqueurs sur cet appareil</translation>
   </entry>
   <entry>
+    <source>Matching stretches (runs of homozygosity)</source>
+    <translation>Segments identiques (segments d'homozygotie)</translation>
+  </entry>
+  <entry>
     <source>Maternal and paternal lines</source>
     <translation>Lignées maternelle et paternelle</translation>
   </entry>
@@ -2074,6 +2494,14 @@
     <translation>Confiance moyenne</translation>
   </entry>
   <entry>
+    <source>Mention this before abacavir is considered.</source>
+    <translation>Signalez-le avant d'envisager l'abacavir.</translation>
+  </entry>
+  <entry>
+    <source>Mention this before irinotecan or atazanavir.</source>
+    <translation>Signalez-le avant l'irinotécan ou l'atazanavir.</translation>
+  </entry>
+  <entry>
     <source>Mention this before starting clopidogrel or an SSRI.</source>
     <translation>Signalez-le avant de commencer le clopidogrel ou un ISRS.</translation>
   </entry>
@@ -2090,12 +2518,36 @@
     <translation>Signalez-le si un ISRS ou un anti-acide vous est prescrit.</translation>
   </entry>
   <entry>
+    <source>Mention this if irinotecan or atazanavir is prescribed.</source>
+    <translation>Signalez-le si l'on vous prescrit de l'irinotécan ou de l'atazanavir.</translation>
+  </entry>
+  <entry>
+    <source>Mention this if tacrolimus is prescribed.</source>
+    <translation>Signalez-le si l'on vous prescrit du tacrolimus.</translation>
+  </entry>
+  <entry>
     <source>Mention this if warfarin, phenytoin or a long-term NSAID is prescribed.</source>
     <translation>Signalez-le si on vous prescrit de la warfarine, de la phénytoïne ou un AINS au long cours.</translation>
   </entry>
   <entry>
     <source>Mesoamerican Indigenous</source>
     <translation>Autochtones de Mésoamérique</translation>
+  </entry>
+  <entry>
+    <source>Met (A)</source>
+    <translation>Met (A)</translation>
+  </entry>
+  <entry>
+    <source>Met (T)</source>
+    <translation>Met (T)</translation>
+  </entry>
+  <entry>
+    <source>Met lowers how nerve cells release BDNF. Links to memory and mood are small and mixed. Met is common in East Asia.</source>
+    <translation>Met réduit la libération du BDNF par les cellules nerveuses. Les liens avec la mémoire et l'humeur sont faibles et contradictoires. Met est fréquent en Asie de l'Est.</translation>
+  </entry>
+  <entry>
+    <source>Met slows how the brain clears dopamine. Claims about stress, pain or personality from this marker are not reliable.</source>
+    <translation>Met ralentit l'élimination de la dopamine par le cerveau. Les affirmations sur le stress, la douleur ou la personnalité tirées de ce marqueur ne sont pas fiables.</translation>
   </entry>
   <entry>
     <source>Middle Eastern</source>
@@ -2158,8 +2610,20 @@
     <translation>Sensibilité modérée à la warfarine</translation>
   </entry>
   <entry>
+    <source>More alleles linked to low vitamin D</source>
+    <translation>Plus d'allèles liés à un faible taux de vitamine D</translation>
+  </entry>
+  <entry>
     <source>More endurance-type fibers</source>
     <translation>Davantage de fibres de type endurance</translation>
+  </entry>
+  <entry>
+    <source>More likely blond</source>
+    <translation>Plus de chances d'être blond</translation>
+  </entry>
+  <entry>
+    <source>More likely to feel anxious or sleep worse after caffeine</source>
+    <translation>Plus de risques de se sentir anxieux ou de mal dormir après la caféine</translation>
   </entry>
   <entry>
     <source>More likely to freckle</source>
@@ -2172,6 +2636,10 @@
   <entry>
     <source>More power-type fibers</source>
     <translation>Davantage de fibres de type puissance</translation>
+  </entry>
+  <entry>
+    <source>More than half of people carry this variant, and its effect on B12 use is small.</source>
+    <translation>Plus de la moitié des gens portent ce variant, et son effet sur l'utilisation de la vitamine B12 est faible.</translation>
   </entry>
   <entry>
     <source>Most Alzheimer's risk comes from age and other factors, not APOE alone.</source>
@@ -2194,6 +2662,10 @@
     <translation>Plus courante dans le Caucase, et présente au Proche-Orient, en Iran, en Anatolie et en Europe du Sud.</translation>
   </entry>
   <entry>
+    <source>Most DNA chips do not include these markers. Whole genome files usually do.</source>
+    <translation>La plupart des puces ADN n'incluent pas ces marqueurs. Les fichiers de génome complet les incluent généralement.</translation>
+  </entry>
+  <entry>
     <source>most DNA tools ask you to upload your genome to their servers. LiberateDNA lets you explore it without handing it to anyone.</source>
     <translation>la plupart des outils ADN vous demandent d'envoyer votre génome sur leurs serveurs. LiberateDNA vous permet de l'explorer sans le confier à personne.</translation>
   </entry>
@@ -2206,8 +2678,8 @@
     <translation>La plupart des Européens du Nord le portent ; il est rare en Asie de l'Est.</translation>
   </entry>
   <entry>
-    <source>Most people of Northern European ancestry carry at least one G.</source>
-    <translation>La plupart des personnes d'ascendance nord-européenne portent au moins un G.</translation>
+    <source>Most people outside Africa carry 1 to 2% Neanderthal DNA. The chromosome 3 stretch is linked to severe COVID-19, the BNC2 one to sunburn. The OAS1 G is linked to milder COVID-19; in African ancestry it is old human DNA rather than Neanderthal, so it is not counted.</source>
+    <translation>La plupart des personnes hors d'Afrique portent 1 à 2 % d'ADN néandertalien. Le segment du chromosome 3 est lié aux formes graves de COVID-19, celui de BNC2 aux coups de soleil. Le G d'OAS1 est lié à des formes plus légères de COVID-19 ; chez les personnes d'ascendance africaine, il s'agit d'ADN humain ancien et non néandertalien, il n'est donc pas compté.</translation>
   </entry>
   <entry>
     <source>Most people with one ε4 copy never develop Alzheimer's. Age, blood pressure, sleep, hearing and activity also contribute. ε4 is also linked to higher LDL cholesterol.</source>
@@ -2258,6 +2730,38 @@
     <translation>Vallée du Mzab, Algérie</translation>
   </entry>
   <entry>
+    <source>Neanderthal BNC2 allele, linked to sunburn</source>
+    <translation>Allèle néandertalien de BNC2, lié aux coups de soleil</translation>
+  </entry>
+  <entry>
+    <source>Neanderthal DNA</source>
+    <translation>ADN néandertalien</translation>
+  </entry>
+  <entry>
+    <source>Neanderthal stretch on chromosome 3 (second tag)</source>
+    <translation>Segment néandertalien sur le chromosome 3 (second marqueur)</translation>
+  </entry>
+  <entry>
+    <source>Neanderthal stretch on chromosome 3, linked to severe COVID-19</source>
+    <translation>Segment néandertalien sur le chromosome 3, lié aux formes graves de COVID-19</translation>
+  </entry>
+  <entry>
+    <source>Neanderthal variants</source>
+    <translation>Variants néandertaliens</translation>
+  </entry>
+  <entry>
+    <source>Near CYP2R1, lower vitamin D allele</source>
+    <translation>Près de CYP2R1, allèle de vitamine D plus basse</translation>
+  </entry>
+  <entry>
+    <source>Near DHCR7, lower vitamin D allele</source>
+    <translation>Près de DHCR7, allèle de vitamine D plus basse</translation>
+  </entry>
+  <entry>
+    <source>Near KITLG, blond hair allele</source>
+    <translation>Près de KITLG, allèle des cheveux blonds</translation>
+  </entry>
+  <entry>
     <source>Negev Bedouin, the closest open sample to Arabian ancestry</source>
     <translation>Bédouins du Néguev, l'échantillon ouvert le plus proche de l'ascendance arabe</translation>
   </entry>
@@ -2294,6 +2798,14 @@
     <translation>Aucune mesure nécessaire en dehors des examens de routine.</translation>
   </entry>
   <entry>
+    <source>No action needed beyond routine cholesterol checks.</source>
+    <translation>Aucune mesure nécessaire en dehors des contrôles habituels du cholestérol.</translation>
+  </entry>
+  <entry>
+    <source>No action needed unless abacavir is considered.</source>
+    <translation>Aucune mesure nécessaire, sauf si l'abacavir est envisagé.</translation>
+  </entry>
+  <entry>
     <source>No action needed.</source>
     <translation>Aucune mesure nécessaire.</translation>
   </entry>
@@ -2320,6 +2832,10 @@
   <entry>
     <source>No copies</source>
     <translation>Aucune copie</translation>
+  </entry>
+  <entry>
+    <source>No dosing guideline uses this gene.</source>
+    <translation>Aucune recommandation de dosage n'utilise ce gène.</translation>
   </entry>
   <entry>
     <source>No DQ2.5 tag</source>
@@ -2358,6 +2874,10 @@
     <translation>Aucun allèle à risque</translation>
   </entry>
   <entry>
+    <source>No shared carrier variants among the {0} tested in both files.</source>
+    <translation>Aucun variant de porteur en commun parmi les {0} testés dans les deux fichiers.</translation>
+  </entry>
+  <entry>
     <source>No Y chromosome</source>
     <translation>Pas de chromosome Y</translation>
   </entry>
@@ -2374,6 +2894,14 @@
     <translation>Aucun marqueur du chromosome Y, comme attendu pour un fichier XX.</translation>
   </entry>
   <entry>
+    <source>non-coding transcript variant</source>
+    <translation>variant de transcrit non codant</translation>
+  </entry>
+  <entry>
+    <source>non-secretor A</source>
+    <translation>non-sécréteur A</translation>
+  </entry>
+  <entry>
     <source>None detected in {0} conditions tested.</source>
     <translation>Aucun détecté parmi les {0} maladies testées.</translation>
   </entry>
@@ -2388,6 +2916,10 @@
   <entry>
     <source>Normal metabolizer</source>
     <translation>Métaboliseur normal</translation>
+  </entry>
+  <entry>
+    <source>Normal metabolizer (expresser)</source>
+    <translation>Métaboliseur normal (expresseur)</translation>
   </entry>
   <entry>
     <source>North African</source>
@@ -2426,6 +2958,14 @@
     <translation>Non détecté</translation>
   </entry>
   <entry>
+    <source>Not enough markers</source>
+    <translation>Pas assez de marqueurs</translation>
+  </entry>
+  <entry>
+    <source>Not found</source>
+    <translation>Introuvable</translation>
+  </entry>
+  <entry>
     <source>Not in file</source>
     <translation>Absent du fichier</translation>
   </entry>
@@ -2458,6 +2998,18 @@
     <translation>Rien n'est envoyé à un service en ligne sauf si vous le choisissez. Les recherches dans les bases de données restent désactivées jusqu'à ce que vous les activiez, et n'envoient alors qu'un nom de marqueur, jamais vos génotypes.</translation>
   </entry>
   <entry>
+    <source>Nutrition</source>
+    <translation>Nutrition</translation>
+  </entry>
+  <entry>
+    <source>OAS1 splice allele, on a Neanderthal stretch outside Africa</source>
+    <translation>Allèle d'épissage d'OAS1, sur un segment néandertalien hors d'Afrique</translation>
+  </entry>
+  <entry>
+    <source>OCA2 R419Q, eye color marker</source>
+    <translation>OCA2 R419Q, marqueur de la couleur des yeux</translation>
+  </entry>
+  <entry>
     <source>Oceanian</source>
     <translation>Océanien</translation>
   </entry>
@@ -2476,6 +3028,10 @@
   <entry>
     <source>Older chip detected (23andMe v4). Two drug-response markers are not on this chip, so CYP2C19 and SLCO1B1 cannot be called.</source>
     <translation>Ancienne puce détectée (23andMe v4). Deux marqueurs de réponse aux médicaments ne figurent pas sur cette puce, CYP2C19 et SLCO1B1 ne peuvent donc pas être lus.</translation>
+  </entry>
+  <entry>
+    <source>Omega-3 conversion</source>
+    <translation>Conversion des oméga-3</translation>
   </entry>
   <entry>
     <source>one copy</source>
@@ -2498,6 +3054,10 @@
     <translation>Une copie d'un variant de Lp(a) élevée</translation>
   </entry>
   <entry>
+    <source>One copy of a mildly slower variant</source>
+    <translation>Une copie d'un variant légèrement plus lent</translation>
+  </entry>
+  <entry>
     <source>One copy of APOE ε4 is associated with about 2 to 3 times the typical risk of late-onset Alzheimer's disease.</source>
     <translation>Une copie d'APOE ε4 est associée à un risque de maladie d'Alzheimer à début tardif environ 2 à 3 fois supérieur au risque habituel.</translation>
   </entry>
@@ -2506,8 +3066,20 @@
     <translation>Une copie de C282Y fait de vous un porteur. À elle seule, elle provoque rarement une surcharge en fer.</translation>
   </entry>
   <entry>
+    <source>One copy of the longevity-linked allele</source>
+    <translation>Une copie de l'allèle lié à la longévité</translation>
+  </entry>
+  <entry>
+    <source>One copy of ε4, linked to higher Alzheimer's risk</source>
+    <translation>Une copie de ε4, associée à un risque plus élevé de maladie d'Alzheimer</translation>
+  </entry>
+  <entry>
     <source>One DQ2.5 tag</source>
     <translation>Un marqueur DQ2.5</translation>
+  </entry>
+  <entry>
+    <source>One Met copy</source>
+    <translation>Une copie Met</translation>
   </entry>
   <entry>
     <source>One of the deepest maternal branches. Found mostly in southern and eastern Africa, including among the Khoisan.</source>
@@ -2530,8 +3102,16 @@
     <translation>Un allèle de risque</translation>
   </entry>
   <entry>
+    <source>Only {0} markers are in both files, too few to compare.</source>
+    <translation>Seuls {0} marqueurs figurent dans les deux fichiers, trop peu pour comparer.</translation>
+  </entry>
+  <entry>
     <source>Only relevant if you have symptoms. Ask about a tTG-IgA blood test before cutting out gluten.</source>
     <translation>Utile seulement si vous avez des symptômes. Renseignez-vous sur une prise de sang tTG-IgA avant de supprimer le gluten.</translation>
+  </entry>
+  <entry>
+    <source>Only the OAS1 marker was found</source>
+    <translation>Seul le marqueur OAS1 a été trouvé</translation>
   </entry>
   <entry>
     <source>Open report</source>
@@ -2540,6 +3120,14 @@
   <entry>
     <source>Open the page for community notes</source>
     <translation>Ouvrir la page pour voir les notes de la communauté</translation>
+  </entry>
+  <entry>
+    <source>Opioid pain relievers</source>
+    <translation>Analgésiques opioïdes</translation>
+  </entry>
+  <entry>
+    <source>Opposite calls: {0}%</source>
+    <translation>Résultats opposés : {0} %</translation>
   </entry>
   <entry>
     <source>Other clotting variants exist that this chip does not test.</source>
@@ -2594,12 +3182,24 @@
     <translation>Pathogène</translation>
   </entry>
   <entry>
+    <source>PCSK9 R46L, lowers LDL cholesterol</source>
+    <translation>PCSK9 R46L, abaisse le cholestérol LDL</translation>
+  </entry>
+  <entry>
+    <source>PEMT V175M, linked to higher choline need</source>
+    <translation>PEMT V175M, lié à un besoin accru en choline</translation>
+  </entry>
+  <entry>
     <source>people in</source>
     <translation>personnes en</translation>
   </entry>
   <entry>
     <source>people left out of the reference.</source>
     <translation>personnes exclues de la référence.</translation>
+  </entry>
+  <entry>
+    <source>People with HLA-B*57:01 can have a severe allergic reaction to abacavir. This marker only tags it; a clinical HLA-B test decides.</source>
+    <translation>Les personnes porteuses de HLA-B*57:01 peuvent faire une réaction allergique grave à l'abacavir. Ce marqueur ne fait que le signaler ; c'est un test HLA-B clinique qui tranche.</translation>
   </entry>
   <entry>
     <source>Pharmacogenomics</source>
@@ -2662,16 +3262,36 @@
     <translation>Métaboliseur lent</translation>
   </entry>
   <entry>
+    <source>Poor metabolizer (non-expresser)</source>
+    <translation>Métaboliseur lent (non-expresseur)</translation>
+  </entry>
+  <entry>
     <source>Position</source>
     <translation>Position</translation>
+  </entry>
+  <entry>
+    <source>Possible HLA-B*57:01</source>
+    <translation>HLA-B*57:01 possible</translation>
   </entry>
   <entry>
     <source>Possible variant</source>
     <translation>Variant possible</translation>
   </entry>
   <entry>
+    <source>Possibly higher choline need</source>
+    <translation>Besoin en choline peut-être accru</translation>
+  </entry>
+  <entry>
+    <source>Possibly higher opioid need</source>
+    <translation>Besoin en opioïdes peut-être accru</translation>
+  </entry>
+  <entry>
     <source>Poster</source>
     <translation>Affiche</translation>
+  </entry>
+  <entry>
+    <source>PPARG P12A, Pro12 type 2 diabetes risk allele</source>
+    <translation>PPARG P12A, allèle Pro12 de risque de diabète de type 2</translation>
   </entry>
   <entry>
     <source>Print or save PDF</source>
@@ -2726,6 +3346,22 @@
     <translation>R0 ou HV</translation>
   </entry>
   <entry>
+    <source>R46L lowers LDL cholesterol by about 15% for life and is linked to less heart disease.</source>
+    <translation>R46L abaisse le cholestérol LDL d'environ 15 % à vie et est lié à moins de maladies cardiaques.</translation>
+  </entry>
+  <entry>
+    <source>R46L not found</source>
+    <translation>R46L non trouvé</translation>
+  </entry>
+  <entry>
+    <source>R46L, one copy</source>
+    <translation>R46L, une copie</translation>
+  </entry>
+  <entry>
+    <source>R46L, two copies</source>
+    <translation>R46L, deux copies</translation>
+  </entry>
+  <entry>
     <source>Rapid metabolizer</source>
     <translation>Métaboliseur rapide</translation>
   </entry>
@@ -2742,8 +3378,16 @@
     <translation>Résultat rare. Environ 40 % des variants rares dans les données de puces grand public sont des faux positifs (Tandy-Connor et al., 2018). Faites confirmer par un test clinique avant toute décision de projet familial.</translation>
   </entry>
   <entry>
+    <source>Rasburicase, primaquine, dapsone, nitrofurantoin</source>
+    <translation>Rasburicase, primaquine, dapsone, nitrofurantoïne</translation>
+  </entry>
+  <entry>
     <source>Raw data</source>
     <translation>Données brutes</translation>
+  </entry>
+  <entry>
+    <source>Read from a marker that tags the O allele, so less certain.</source>
+    <translation>Lu à partir d'un marqueur qui signale l'allèle O, donc moins certain.</translation>
   </entry>
   <entry>
     <source>Read locally</source>
@@ -2770,6 +3414,18 @@
     <translation>Lecture…</translation>
   </entry>
   <entry>
+    <source>Red hair</source>
+    <translation>Cheveux roux</translation>
+  </entry>
+  <entry>
+    <source>Red hair likely</source>
+    <translation>Cheveux roux probables</translation>
+  </entry>
+  <entry>
+    <source>Red hair unlikely</source>
+    <translation>Cheveux roux peu probables</translation>
+  </entry>
+  <entry>
     <source>reference groups from HGDP and 1000 Genomes, using</source>
     <translation>groupes de référence issus de HGDP et 1000 Genomes, avec</translation>
   </entry>
@@ -2792,6 +3448,10 @@
   <entry>
     <source>Retry</source>
     <translation>Réessayer</translation>
+  </entry>
+  <entry>
+    <source>Rh (positive or negative) cannot be read from DNA chip data. Never use this for a transfusion; a blood test decides.</source>
+    <translation>Le Rhésus (positif ou négatif) ne peut pas être lu à partir des données d'une puce ADN. Ne l'utilisez jamais pour une transfusion ; c'est une analyse de sang qui tranche.</translation>
   </entry>
   <entry>
     <source>risk</source>
@@ -2842,6 +3502,10 @@
     <translation>Sarde</translation>
   </entry>
   <entry>
+    <source>Saturated fat and weight</source>
+    <translation>Graisses saturées et poids</translation>
+  </entry>
+  <entry>
     <source>Saved on this device</source>
     <translation>Enregistré sur cet appareil</translation>
   </entry>
@@ -2854,12 +3518,28 @@
     <translation>Analyser tout votre fichier avec ClinVar</translation>
   </entry>
   <entry>
+    <source>Score {0}</source>
+    <translation>Score {0}</translation>
+  </entry>
+  <entry>
     <source>Search by rsID, gene or chromosome</source>
     <translation>Rechercher par rsID, gène ou chromosome</translation>
   </entry>
   <entry>
     <source>Search markers in your file. Select one to see what it means and, if you choose, check public databases.</source>
     <translation>Recherchez des marqueurs dans votre fichier. Sélectionnez-en un pour voir ce qu'il signifie et, si vous le souhaitez, consulter les bases de données publiques.</translation>
+  </entry>
+  <entry>
+    <source>Second Neanderthal BNC2 allele</source>
+    <translation>Second allèle néandertalien de BNC2</translation>
+  </entry>
+  <entry>
+    <source>Secretor</source>
+    <translation>Sécréteur</translation>
+  </entry>
+  <entry>
+    <source>Secretor status</source>
+    <translation>Statut sécréteur</translation>
   </entry>
   <entry>
     <source>See your heritage</source>
@@ -2874,8 +3554,16 @@
     <translation>Sénégambien et sierra-léonais</translation>
   </entry>
   <entry>
+    <source>Separate from how fast you clear caffeine. Some studies link two T copies to anxiety and lighter sleep after coffee.</source>
+    <translation>Indépendant de la vitesse à laquelle vous éliminez la caféine. Certaines études associent deux copies de T à de l'anxiété et à un sommeil plus léger après le café.</translation>
+  </entry>
+  <entry>
     <source>Sequencing data</source>
     <translation>Données de séquençage</translation>
+  </entry>
+  <entry>
+    <source>Share of your genome</source>
+    <translation>Part de votre génome</translation>
   </entry>
   <entry>
     <source>Share with whoever doses warfarin, if it is ever prescribed.</source>
@@ -2910,12 +3598,32 @@
     <translation>Sindhis</translation>
   </entry>
   <entry>
+    <source>Skin tone markers</source>
+    <translation>Marqueurs de la couleur de peau</translation>
+  </entry>
+  <entry>
+    <source>SLC24A5 A111T, light skin allele</source>
+    <translation>SLC24A5 A111T, allèle de peau claire</translation>
+  </entry>
+  <entry>
+    <source>SLC30A8 R325W, type 2 diabetes risk allele C</source>
+    <translation>SLC30A8 R325W, allèle de risque C du diabète de type 2</translation>
+  </entry>
+  <entry>
+    <source>SLC45A2 L374F, light skin and hair allele</source>
+    <translation>SLC45A2 L374F, allèle de peau et cheveux clairs</translation>
+  </entry>
+  <entry>
     <source>SLCO1B1 *5 allele</source>
     <translation>Allèle SLCO1B1 *5</translation>
   </entry>
   <entry>
     <source>Slightly elevated</source>
     <translation>Légèrement élevé</translation>
+  </entry>
+  <entry>
+    <source>Slightly more likely blond</source>
+    <translation>Un peu plus de chances d'être blond</translation>
   </entry>
   <entry>
     <source>slow C</source>
@@ -2956,6 +3664,18 @@
   <entry>
     <source>Some SSRIs and proton pump inhibitors may clear faster and work less well at standard doses.</source>
     <translation>Certains ISRS et inhibiteurs de la pompe à protons peuvent être éliminés plus vite et être moins efficaces aux doses standard.</translation>
+  </entry>
+  <entry>
+    <source>Some studies link the G allele to needing more opioid for pain relief, but results are mixed. CPIC makes no dosing change for this gene.</source>
+    <translation>Certaines études associent l'allèle G à un besoin accru d'opioïdes pour soulager la douleur, mais les résultats sont partagés. Le CPIC ne recommande aucun ajustement de dose pour ce gène.</translation>
+  </entry>
+  <entry>
+    <source>Somewhat lower (677T and 1298C)</source>
+    <translation>Un peu plus faible (677T et 1298C)</translation>
+  </entry>
+  <entry>
+    <source>Somewhat lower conversion</source>
+    <translation>Conversion un peu plus faible</translation>
   </entry>
   <entry>
     <source>Source and build</source>
@@ -3010,6 +3730,10 @@
     <translation>Espagne, Pays basque</translation>
   </entry>
   <entry>
+    <source>splice acceptor variant</source>
+    <translation>variant du site accepteur d'épissage</translation>
+  </entry>
+  <entry>
     <source>splice donor variant</source>
     <translation>variant du site donneur d'épissage</translation>
   </entry>
@@ -3026,8 +3750,32 @@
     <translation>La posologie standard s'applique.</translation>
   </entry>
   <entry>
+    <source>Standard dosing applies. This marker stands in for the *28 repeat, which chips cannot read directly.</source>
+    <translation>La posologie standard s'applique. Ce marqueur remplace la répétition *28, que les puces ne peuvent pas lire directement.</translation>
+  </entry>
+  <entry>
     <source>Standard statin dosing applies.</source>
     <translation>La posologie standard des statines s'applique.</translation>
+  </entry>
+  <entry>
+    <source>Standard tacrolimus dosing applies. This is the most common result in people of European ancestry.</source>
+    <translation>La posologie standard du tacrolimus s'applique. C'est le résultat le plus fréquent chez les personnes d'ascendance européenne.</translation>
+  </entry>
+  <entry>
+    <source>Standard thiopurine doses can cause life-threatening bone marrow suppression. CPIC guidance calls for a much lower dose or a different drug.</source>
+    <translation>Les doses standard de thiopurines peuvent provoquer une aplasie médullaire mettant la vie en danger. Les recommandations du CPIC préconisent une dose bien plus faible ou un autre médicament.</translation>
+  </entry>
+  <entry>
+    <source>Standard thiopurine doses can drop blood counts dangerously. CPIC guidance suggests a lower starting dose. This variant is most common in East and South Asia.</source>
+    <translation>Les doses standard de thiopurines peuvent faire chuter dangereusement la numération sanguine. Les recommandations du CPIC suggèrent une dose de départ plus faible. Ce variant est plus fréquent en Asie de l'Est et du Sud.</translation>
+  </entry>
+  <entry>
+    <source>Standard thiopurine dosing applies.</source>
+    <translation>La posologie standard des thiopurines s'applique.</translation>
+  </entry>
+  <entry>
+    <source>Standard thiopurine dosing applies. Rarer TPMT variants are not tested.</source>
+    <translation>La posologie standard des thiopurines s'applique. Les variants plus rares de TPMT ne sont pas testés.</translation>
   </entry>
   <entry>
     <source>Standard warfarin dosing applies.</source>
@@ -3046,8 +3794,20 @@
     <translation>Forte rougeur probable</translation>
   </entry>
   <entry>
+    <source>Studies link the T allele to higher choline needs, mainly in women after menopause. Eggs, meat and soy are rich sources.</source>
+    <translation>Des études associent l'allèle T à un besoin accru en choline, surtout chez les femmes après la ménopause. Les œufs, la viande et le soja en sont riches.</translation>
+  </entry>
+  <entry>
     <source>Sub-Saharan African</source>
     <translation>Afrique subsaharienne</translation>
+  </entry>
+  <entry>
+    <source>Sun, diet and skin tone matter much more. Only a blood test shows your level.</source>
+    <translation>Le soleil, l'alimentation et la couleur de peau comptent bien plus. Seule une analyse de sang indique votre taux.</translation>
+  </entry>
+  <entry>
+    <source>synonymous variant</source>
+    <translation>variant synonyme</translation>
   </entry>
   <entry>
     <source>synonymous variant (splice defect)</source>
@@ -3058,8 +3818,36 @@
     <translation>T à risque</translation>
   </entry>
   <entry>
+    <source>Tacrolimus</source>
+    <translation>Tacrolimus</translation>
+  </entry>
+  <entry>
+    <source>Tacrolimus clears faster. CPIC guidance suggests a higher starting dose, then dosing by blood levels.</source>
+    <translation>Le tacrolimus est éliminé plus vite. Les recommandations du CPIC suggèrent une dose de départ plus élevée, puis un ajustement selon les taux sanguins.</translation>
+  </entry>
+  <entry>
+    <source>Tacrolimus clears faster. CPIC guidance suggests a starting dose 1.5 to 2 times higher, then dosing by blood levels.</source>
+    <translation>Le tacrolimus est éliminé plus vite. Les recommandations du CPIC suggèrent une dose de départ 1,5 à 2 fois plus élevée, puis un ajustement selon les taux sanguins.</translation>
+  </entry>
+  <entry>
+    <source>Tag not found</source>
+    <translation>Marqueur non trouvé</translation>
+  </entry>
+  <entry>
+    <source>Tag present</source>
+    <translation>Marqueur présent</translation>
+  </entry>
+  <entry>
+    <source>Tags HLA-B*57:01</source>
+    <translation>Signale HLA-B*57:01</translation>
+  </entry>
+  <entry>
     <source>Tags HLA-DQ2.5</source>
     <translation>Marqueur de HLA-DQ2.5</translation>
+  </entry>
+  <entry>
+    <source>Tags the O blood group allele</source>
+    <translation>Signale l'allèle du groupe sanguin O</translation>
   </entry>
   <entry>
     <source>Tap a segment to see its position, length and origin.</source>
@@ -3118,6 +3906,14 @@
     <translation>Le marqueur *17 n'était pas dans votre fichier.</translation>
   </entry>
   <entry>
+    <source>The *6 and *7 alleles, found mainly in African ancestry, are not tested.</source>
+    <translation>Les allèles *6 et *7, présents surtout chez les personnes d'ascendance africaine, ne sont pas testés.</translation>
+  </entry>
+  <entry>
+    <source>The 9p21 region is the most replicated common genetic signal for heart disease. Each C raises risk by about a quarter.</source>
+    <translation>La région 9p21 est le signal génétique courant le plus répliqué pour les maladies cardiaques. Chaque C augmente le risque d'environ un quart.</translation>
+  </entry>
+  <entry>
     <source>The ancestor of lines Q and R.</source>
     <translation>L'ancêtre des lignées Q et R.</translation>
   </entry>
@@ -3134,8 +3930,16 @@
     <translation>La branche asiatique de R1a, fréquente en Asie du Sud et centrale et en Iran.</translation>
   </entry>
   <entry>
+    <source>The B allele markers were not in your file.</source>
+    <translation>Les marqueurs de l'allèle B ne figuraient pas dans votre fichier.</translation>
+  </entry>
+  <entry>
     <source>The build and the company are found from the file. Zip and gzip work as they are.</source>
     <translation>La version et l'entreprise sont trouvées à partir du fichier. Les fichiers zip et gzip fonctionnent tels quels.</translation>
+  </entry>
+  <entry>
+    <source>The C allele lowers how well you turn plant omega-3 and omega-6 fats into long-chain forms. Fish and algae provide these directly.</source>
+    <translation>L'allèle C réduit votre capacité à transformer les graisses oméga-3 et oméga-6 végétales en formes à longue chaîne. Le poisson et les algues les fournissent directement.</translation>
   </entry>
   <entry>
     <source>The deepest branches of the Y tree, found in Africa.</source>
@@ -3178,6 +3982,10 @@
     <translation>Le principal variant C282Y n'a pas été trouvé. Une seule copie de H63D cause rarement une surcharge en fer.</translation>
   </entry>
   <entry>
+    <source>The main eye color marker, rs12913832, was not in your file.</source>
+    <translation>Le principal marqueur de la couleur des yeux, rs12913832, ne figurait pas dans votre fichier.</translation>
+  </entry>
+  <entry>
     <source>The main G branch in Europe and the Caucasus, linked with the first farmers from Anatolia.</source>
     <translation>La principale branche G en Europe et dans le Caucase, associée aux premiers agriculteurs venus d'Anatolie.</translation>
   </entry>
@@ -3196,6 +4004,10 @@
   <entry>
     <source>The marker for this gene is not on the v4 chip, so it cannot be called from your file.</source>
     <translation>Le marqueur de ce gène ne figure pas sur la puce v4 : il ne peut donc pas être lu dans votre fichier.</translation>
+  </entry>
+  <entry>
+    <source>The marker that tags HLA-B*57:01 was not found. The tag can miss carriers, so a clinical HLA-B test is still required before abacavir.</source>
+    <translation>Le marqueur qui signale HLA-B*57:01 n'a pas été trouvé. Ce marqueur peut manquer des porteurs, donc un test HLA-B clinique reste obligatoire avant l'abacavir.</translation>
   </entry>
   <entry>
     <source>The most common J branch in Europe.</source>
@@ -3274,6 +4086,10 @@
     <translation>Le groupe principal était le bon pour {0} % d'entre elles, et la grande région principale était la bonne pour {1} %. La précision est la plus faible entre voisins proches : {2}.</translation>
   </entry>
   <entry>
+    <source>The two most common deficiency variants were not found. Others exist.</source>
+    <translation>Les deux variants de déficit les plus fréquents n'ont pas été trouvés. Il en existe d'autres.</translation>
+  </entry>
+  <entry>
     <source>The two rows are the two copies, but LiberateDNA does not yet know which came from which parent, even with the phased file. A stretch shown on the top row may come from either parent.</source>
     <translation>Les deux rangées correspondent aux deux copies, mais LiberateDNA ne sait pas encore laquelle vient de quel parent, même avec le fichier phasé. Un segment affiché sur la rangée du haut peut venir de l'un ou l'autre parent.</translation>
   </entry>
@@ -3292,6 +4108,10 @@
   <entry>
     <source>These results come from your sequencing file and they are not a diagnosis.</source>
     <translation>Ces résultats proviennent de votre fichier de séquençage et ne constituent pas un diagnostic.</translation>
+  </entry>
+  <entry>
+    <source>These two genes explain much of the skin color difference between African and European ancestry, but little within a group. Many other genes play a part.</source>
+    <translation>Ces deux gènes expliquent une grande partie de la différence de couleur de peau entre ascendances africaine et européenne, mais peu de chose au sein d'un même groupe. Beaucoup d'autres gènes jouent un rôle.</translation>
   </entry>
   <entry>
     <source>These variants are linked to high Lp(a)</source>
@@ -3350,6 +4170,10 @@
     <translation>Ce zip est trop volumineux pour être ouvert ici</translation>
   </entry>
   <entry>
+    <source>Total in long stretches</source>
+    <translation>Total dans les longs segments</translation>
+  </entry>
+  <entry>
     <source>Traced through</source>
     <translation>Retracé via</translation>
   </entry>
@@ -3386,6 +4210,10 @@
     <translation>Deux copies d'un variant associé à une Lp(a) élevée</translation>
   </entry>
   <entry>
+    <source>Two copies of a mildly slower variant</source>
+    <translation>Deux copies d'un variant légèrement plus lent</translation>
+  </entry>
+  <entry>
     <source>Two copies of APOE ε4 are associated with roughly 8 to 12 times the typical risk of late-onset Alzheimer's disease.</source>
     <translation>Deux copies d'APOE ε4 sont associées à un risque environ 8 à 12 fois supérieur au risque habituel de maladie d'Alzheimer tardive.</translation>
   </entry>
@@ -3398,8 +4226,20 @@
     <translation>Deux copies de H63D peuvent augmenter légèrement le taux de fer, mais causent rarement une maladie.</translation>
   </entry>
   <entry>
+    <source>Two copies of the longevity-linked allele</source>
+    <translation>Deux copies de l'allèle lié à la longévité</translation>
+  </entry>
+  <entry>
     <source>Two DQ2.5 tags</source>
     <translation>Deux marqueurs DQ2.5</translation>
+  </entry>
+  <entry>
+    <source>Two MC1R red hair variants, one from each parent, usually give red hair. Other MC1R variants are not tested.</source>
+    <translation>Deux variants MC1R des cheveux roux, un de chaque parent, donnent généralement des cheveux roux. Les autres variants MC1R ne sont pas testés.</translation>
+  </entry>
+  <entry>
+    <source>Two Met copies</source>
+    <translation>Deux copies Met</translation>
   </entry>
   <entry>
     <source>Two risk alleles</source>
@@ -3418,12 +4258,32 @@
     <translation>Habituel</translation>
   </entry>
   <entry>
+    <source>Typical (Val/Val)</source>
+    <translation>Habituel (Val/Val)</translation>
+  </entry>
+  <entry>
+    <source>Typical conversion</source>
+    <translation>Conversion habituelle</translation>
+  </entry>
+  <entry>
+    <source>Typical for people whose parents are not related.</source>
+    <translation>Habituel chez les personnes dont les parents ne sont pas apparentés.</translation>
+  </entry>
+  <entry>
     <source>Typical freckling</source>
     <translation>Taches de rousseur habituelles</translation>
   </entry>
   <entry>
+    <source>Typical response</source>
+    <translation>Réponse habituelle</translation>
+  </entry>
+  <entry>
     <source>Typical warfarin sensitivity</source>
     <translation>Sensibilité habituelle à la warfarine</translation>
+  </entry>
+  <entry>
+    <source>TYR, lighter eye allele</source>
+    <translation>TYR, allèle des yeux plus clairs</translation>
   </entry>
   <entry>
     <source>U152 arose roughly 4,500 years ago</source>
@@ -3432,6 +4292,10 @@
   <entry>
     <source>U152: marks R-U152, under P312</source>
     <translation>U152 : marque R-U152, sous P312</translation>
+  </entry>
+  <entry>
+    <source>UGT1A1 *80, stands in for *28</source>
+    <translation>UGT1A1 *80, remplace *28</translation>
   </entry>
   <entry>
     <source>Ultrarapid metabolizer</source>
@@ -3486,6 +4350,18 @@
     <translation>Version {0}. Logiciel libre sous licence MIT.</translation>
   </entry>
   <entry>
+    <source>Vitamin B12 recycling</source>
+    <translation>Recyclage de la vitamine B12</translation>
+  </entry>
+  <entry>
+    <source>Vitamin D binding protein, lower vitamin D allele</source>
+    <translation>Protéine de liaison de la vitamine D, allèle de vitamine D plus basse</translation>
+  </entry>
+  <entry>
+    <source>Vitamin D level</source>
+    <translation>Taux de vitamine D</translation>
+  </entry>
+  <entry>
     <source>Warfarin</source>
     <translation>Warfarine</translation>
   </entry>
@@ -3514,12 +4390,16 @@
     <translation>Impossible de lire ce fichier</translation>
   </entry>
   <entry>
-    <source>Weight, diet and activity have a much larger effect than this variant.</source>
-    <translation>Le poids, l'alimentation et l'activité ont un effet bien plus important que ce variant.</translation>
+    <source>Weight may respond more to saturated fat</source>
+    <translation>Le poids peut réagir davantage aux graisses saturées</translation>
   </entry>
   <entry>
-    <source>Well-studied markers for appearance, taste and metabolism. Most traits come from many genes, so treat these as tendencies.</source>
-    <translation>Des marqueurs bien étudiés pour l'apparence, le goût et le métabolisme. La plupart des traits dépendent de nombreux gènes : considérez-les comme des tendances.</translation>
+    <source>Weight, diet and activity have a much larger effect than these variants.</source>
+    <translation>Le poids, l'alimentation et l'activité ont un effet bien plus important que ces variants.</translation>
+  </entry>
+  <entry>
+    <source>Well-studied markers for looks, taste, blood, nutrition, the brain and Neanderthal DNA. Most traits come from many genes, so treat these as tendencies, and check the evidence label on each card.</source>
+    <translation>Des marqueurs bien étudiés pour l'apparence, le goût, le sang, la nutrition, le cerveau et l'ADN néandertalien. La plupart des traits dépendent de nombreux gènes : considérez-les comme des tendances et vérifiez le niveau de preuve sur chaque fiche.</translation>
   </entry>
   <entry>
     <source>well-studied variants), right here on this device. No marker IDs leave your device.</source>
@@ -3582,6 +4462,14 @@
     <translation>Pourquoi le fichier phasé ?</translation>
   </entry>
   <entry>
+    <source>Windows of about 60 markers are matched to the closest pair of broad regions, and a smoothing pass removes short switches that are likely noise. Treat it as a rough picture.</source>
+    <translation>Des fenêtres d'environ 60 marqueurs sont associées à la paire de grandes régions la plus proche, puis un lissage supprime les changements courts, probablement dus au bruit. Considérez-la comme une image approximative.</translation>
+  </entry>
+  <entry>
+    <source>With one of two X copies affected, enzyme levels range from normal to low. CPIC guidance treats this as uncertain until tested.</source>
+    <translation>Avec une des deux copies de X touchée, le taux d'enzyme va de normal à bas. Les recommandations du CPIC considèrent ce résultat comme incertain tant qu'il n'est pas testé.</translation>
+  </entry>
+  <entry>
     <source>With one X copy carrying this variant, enzyme levels are often normal or mildly low.</source>
     <translation>Avec une copie de X porteuse de ce variant, le taux d'enzyme est souvent normal ou légèrement bas.</translation>
   </entry>
@@ -3610,12 +4498,24 @@
     <translation>Yoruba, Esan</translation>
   </entry>
   <entry>
+    <source>You both carry a variant in {0}, linked to {1} (yours: {2}; theirs: {3}). If two carriers have a child, each child has a 1 in 4 chance of the condition. Rare calls on consumer chips are often wrong, so confirm with a clinical test.</source>
+    <translation>Vous portez tous les deux un variant dans {0}, lié à {1} (le vôtre : {2} ; le sien : {3}). Si deux porteurs ont un enfant, chaque enfant a 1 risque sur 4 d'avoir la maladie. Les résultats rares sur les puces grand public sont souvent faux : confirmez-les par un test clinique.</translation>
+  </entry>
+  <entry>
     <source>You carry an inherited clotting variant</source>
     <translation>Vous portez un variant héréditaire de la coagulation</translation>
   </entry>
   <entry>
     <source>You carry an inherited clotting variant. One copy raises the chance of a deep vein clot several times, especially with estrogen, surgery or long travel.</source>
     <translation>Vous êtes porteur d'un variant héréditaire de la coagulation. Une copie multiplie plusieurs fois le risque de caillot dans une veine profonde, surtout en cas d'œstrogènes, de chirurgie ou de long voyage.</translation>
+  </entry>
+  <entry>
+    <source>You do not carry R46L, a variant that lowers LDL cholesterol for life. Most people do not.</source>
+    <translation>Vous ne portez pas R46L, un variant qui abaisse le cholestérol LDL à vie. La plupart des gens ne le portent pas.</translation>
+  </entry>
+  <entry>
+    <source>You do not carry the C allele at 9p21, the most replicated common genetic signal for heart disease.</source>
+    <translation>Vous ne portez pas l'allèle C en 9p21, le signal génétique courant le plus répliqué pour les maladies cardiaques.</translation>
   </entry>
   <entry>
     <source>You do not carry the T allele, the strongest common genetic signal for type 2 diabetes.</source>
@@ -3630,12 +4530,16 @@
     <translation>Vous n'avez aucune copie de ε4. ε2 est associé à un risque d'Alzheimer légèrement plus faible.</translation>
   </entry>
   <entry>
-    <source>You have two copies of each chromosome, one from each parent. Colors show where each stretch most likely comes from.</source>
-    <translation>Vous avez deux copies de chaque chromosome, une de chaque parent. Les couleurs montrent l'origine la plus probable de chaque segment.</translation>
+    <source>You have two copies of each chromosome, one from each parent.</source>
+    <translation>Vous avez deux copies de chaque chromosome, une de chaque parent.</translation>
   </entry>
   <entry>
-    <source>You have two copies of each chromosome, one from each parent. Each stretch of about 120 markers is matched to the closest pair of broad regions. Short pieces under a few percent can be noise, so treat this as a rough picture.</source>
-    <translation>Vous avez deux copies de chaque chromosome, une de chaque parent. Chaque segment d'environ 120 marqueurs est associé à la paire de grandes régions la plus proche. Les petits morceaux de moins de quelques pour cent peuvent être du bruit : considérez ceci comme une image approximative.</translation>
+    <source>You have two copies of each chromosome, one from each parent. {0}</source>
+    <translation>Vous avez deux copies de chaque chromosome, une de chaque parent. {0}</translation>
+  </entry>
+  <entry>
+    <source>You have two copies of each chromosome, one from each parent. Colors show where each stretch most likely comes from.</source>
+    <translation>Vous avez deux copies de chaque chromosome, une de chaque parent. Les couleurs montrent l'origine la plus probable de chaque segment.</translation>
   </entry>
   <entry>
     <source>You uploaded the full genome file, which can't tell which parent each piece came from. Your percentages above are still valid. In 23andMe go to Settings → 23andMe Data, and download Phased genotype.</source>
@@ -3668,6 +4572,10 @@
   <entry>
     <source>Your file can't tell which parent each piece came from, so this view needs a phased file from 23andMe. Your percentages above are still valid.</source>
     <translation>Votre fichier ne permet pas de savoir de quel parent vient chaque morceau, donc cette vue nécessite un fichier phasé de 23andMe. Vos pourcentages ci-dessus restent valables.</translation>
+  </entry>
+  <entry>
+    <source>Your file has {0} autosomal markers. This needs at least 100,000, as on a full chip file, to find long stretches reliably.</source>
+    <translation>Votre fichier contient {0} marqueurs autosomiques. Il en faut au moins 100 000, comme dans un fichier de puce complet, pour trouver les longs segments de façon fiable.</translation>
   </entry>
   <entry>
     <source>Your file is read in this browser and stays on your machine. There is no server, no account and no upload.</source>

@@ -1,7 +1,8 @@
 /* LiberateDNA app shell and report views. */
 const { render, Component } = htmPreact;
-const APP_VERSION = '3.2.0';
+const APP_VERSION = '4.0.0';
 const notr = html.keep;
+const LK_DBS = ['ClinVar', 'SNPedia', 'Ensembl', 'gnomAD', 'PharmGKB', 'GWAS Catalog', 'CADD'];
 /* Page language, direction and, for scripts the theme fonts lack, a matching web font. */
 function applyLang() {
   const d = document.documentElement; d.lang = I18N.code; d.dir = I18N.dir;
@@ -44,7 +45,9 @@ const DB_LINKS = {
   SNPedia: id => `https://www.snpedia.com/index.php/${id[0].toUpperCase() + id.slice(1)}`,
   Ensembl: id => `https://grch37.ensembl.org/Homo_sapiens/Variation/Explore?v=${id}`,
   gnomAD: id => `https://gnomad.broadinstitute.org/variant/${id}?dataset=gnomad_r4`,
-  PharmGKB: id => `https://www.pharmgkb.org/search?query=${id}`
+  PharmGKB: id => `https://www.pharmgkb.org/search?query=${id}`,
+  'GWAS Catalog': id => `https://www.ebi.ac.uk/gwas/variants/${id}`,
+  CADD: id => `https://myvariant.info/v1/query?q=dbsnp.rsid:${id}&fields=cadd.phred`
 };
 
 /* Runs the parser in a Web Worker, or in this page if workers are blocked. */
@@ -149,13 +152,28 @@ class LiberateDNA extends Component {
   attachReal(f) {
     this._attachJob = 'a' + Date.now();
     this.setState({ attachErr: '', attaching: true });
-    this.engine().send({ type: 'parse', id: this._attachJob, file: f, name: f.name, pw: '', curated: [], keep: false, fname: f.name });
+    this.engine().send({ type: 'parse', id: this._attachJob, file: f, name: f.name, pw: '', curated: [], keep: false, fname: f.name, heritage: !!(this.state.real && this.state.real.heritage) });
     this._attachName = f.name;
   }
+  compareReal(f) {
+    this._cmpJob = 'c' + Date.now();
+    this.setState({ cmp: null, cmpErr: '', comparing: true, cmpName: f.name });
+    this.engine().send({ type: 'parse', id: this._cmpJob, file: f, name: f.name, pw: '', curated: CURATED_IDS, coords: CURATED_POS, keep: false, compare: true });
+  }
   onEngine(m) {
+    if (m.id && m.id === this._cmpJob) {
+      if (m.type === 'done') { const c = m.result.compare; this.setState({ comparing: false, cmp: c && !c.tooFew ? { ...c, genos: m.result.genos } : null, cmpErr: !c ? 'Open your own file again first, so both files can be compared.' : c.tooFew ? t('Only {0} markers are in both files, too few to compare.', fmt(c.n)) : '' }); }
+      else if (m.type === 'error') this.setState({ comparing: false, cmpErr: m.code === 'password' ? 'That zip is password-protected. Unzip it first, then add the file inside.' : "We couldn't read that file." });
+      return;
+    }
     if (m.type === 'search') { if (m.q === this.state.q.trim().toLowerCase()) this.setState({ xrows: m.rows, xtotal: m.total }); return; }
     if (m.id && m.id === this._attachJob) {
-      if (m.type === 'done' && (!m.result.vendor || m.result.vendor === '23andMe')) { this.setState({ attaching: false }); this.attachPhased(this._attachName); }
+      if (m.type === 'done' && (!m.result.vendor || m.result.vendor === '23andMe')) {
+        const real = this.state.real, h = m.result.heritage;
+        // A real phased file repaints each chromosome copy on its own.
+        if (real && real.heritage && h && h.phasedPaint) this.setState({ real: { ...real, heritage: { ...real.heritage, paint: h.paint, phasedPaint: true } } });
+        this.setState({ attaching: false }); this.attachPhased(this._attachName);
+      }
       else if (m.type === 'error') this.setState({ attaching: false, attachErr: "We couldn't read that file. Try the phased genotype zip from 23andMe." });
       else if (m.type === 'done' && m.result.vendor && m.result.vendor !== '23andMe') this.setState({ attaching: false, attachErr: t('That looks like a {0} file. Add the phased file from 23andMe.', m.result.vendor) });
       return;
@@ -176,7 +194,7 @@ class LiberateDNA extends Component {
     if (m.type === 'done') {
       const r = m.result;
       const called = r.counts.reduce((a, c) => a + c[2], 0);
-      const real = { rows: r.rows, called, counts: r.counts, genos: r.genos, pos: r.pos, heritage: r.heritage, vendor: r.vendor, build: r.build, kind: r.kind, filled: r.filled };
+      const real = { rows: r.rows, called, counts: r.counts, genos: r.genos, pos: r.pos, heritage: r.heritage, vendor: r.vendor, build: r.build, kind: r.kind, filled: r.filled, roh: r.roh };
       this.setState({ real, ftype: r.ftype, sex: r.sex, chip: r.chip, rows: r.rows, est: r.rows, step: 2, hasStore: true, variant: r.ftype === 'phased' ? 'phased' : 'full' });
       const tick = () => { const k = this.state.step + 1; if (k >= 6) { this.setState({ phase: 'ready', step: 6, slow: false }); this.save(); } else { this.setState({ step: k }); this._t = setTimeout(tick, P.demo === 'slow' ? 1200 : 380); } };
       this._t = setTimeout(tick, 380);
@@ -236,11 +254,12 @@ class LiberateDNA extends Component {
     const prev = (this.state.lkData[rsid] || {});
     this.setState({ lk: { ...this.state.lk, [rsid]: retry ? 'retrying' : 'loading' }, ask: null, live: true });
     const isRs = /^rs\d+$/.test(rsid);
-    const want = retry ? Object.keys(prev).filter(k => prev[k].fail) : ['ClinVar', 'SNPedia', 'Ensembl', 'gnomAD', 'PharmGKB'];
+    const want = retry ? Object.keys(prev).filter(k => prev[k].fail) : LK_DBS;
     const res = { ...prev };
     const forceFail = P.demo === 'lookupfail' && !retry;
     const tasks = [];
-    if (isRs && (want.includes('ClinVar') || want.includes('gnomAD'))) tasks.push(fetchJSON(`https://myvariant.info/v1/query?q=dbsnp.rsid:${rsid}&fields=clinvar,gnomad_genome,gnomad_exome&size=10`).then(j => {
+    const MV = ['ClinVar', 'gnomAD', 'GWAS Catalog', 'CADD'];
+    if (isRs && MV.some(k => want.includes(k))) tasks.push(fetchJSON(`https://myvariant.info/v1/query?q=dbsnp.rsid:${rsid}&fields=clinvar,gnomad_genome,gnomad_exome,gwassnps,cadd.phred&size=10`).then(j => {
       // A marker with several alternate alleles comes back as several hits; read them all.
       const hits = (j && j.hits) || [];
       if (want.includes('ClinVar')) {
@@ -251,9 +270,25 @@ class LiberateDNA extends Component {
       if (want.includes('gnomAD')) {
         const afOf = h => { const g = h && (h.gnomad_genome || h.gnomad_exome); return g && g.af && g.af.af; };
         const afs = hits.map(afOf).filter(x => x != null);
-        res.gnomAD = { live: true, val: afs.length ? t('Allele frequency {0}', afs.map(x => Number(x).toPrecision(2)).join(', ')) : 'Not in gnomAD', sub: afs.length > 1 ? 'One value per alternate allele, all populations' : 'All populations combined' };
+        // Regional figures for the first allele: the lowest and highest population, to show how much it varies.
+        const g0 = hits.map(h => h && (h.gnomad_genome || h.gnomad_exome)).find(g => g && g.af) || null;
+        const REG = { af_afr: 'African', af_amr: 'Latino', af_asj: 'Ashkenazi', af_eas: 'East Asian', af_fin: 'Finnish', af_nfe: 'European', af_sas: 'South Asian', af_mid: 'Middle Eastern' };
+        const reg = g0 ? Object.keys(REG).filter(k => g0.af[k] != null).map(k => [REG[k], Number(g0.af[k])]).sort((a, b) => a[1] - b[1]) : [];
+        const sub = reg.length > 1 ? t('Lowest {0} {1}, highest {2} {3}', t(reg[0][0]), reg[0][1].toPrecision(2), t(reg[reg.length - 1][0]), reg[reg.length - 1][1].toPrecision(2))
+          : afs.length > 1 ? 'One value per alternate allele, all populations' : 'All populations combined';
+        res.gnomAD = { live: true, val: afs.length ? t('Allele frequency {0}', afs.map(x => Number(x).toPrecision(2)).join(', ')) : 'Not in gnomAD', sub };
       }
-    }).catch(() => { if (want.includes('ClinVar')) res.ClinVar = { fallback: true }; if (want.includes('gnomAD')) res.gnomAD = { fallback: true }; }));
+      if (want.includes('GWAS Catalog')) {
+        const gw = hits.flatMap(h => h && h.gwassnps ? [].concat(h.gwassnps) : []);
+        const traits = [...new Set(gw.map(x => x.trait).filter(Boolean))];
+        res['GWAS Catalog'] = { live: true, val: traits.length ? traits.slice(0, 3).join('; ') : 'No study results', notr: !!traits.length, sub: traits.length ? t('{0} traits linked in published studies', traits.length) : 'Not linked to a trait in the GWAS Catalog' };
+      }
+      if (want.includes('CADD')) {
+        const ph = hits.map(h => h && h.cadd && h.cadd.phred).filter(x => x != null).map(Number);
+        const top = ph.length ? Math.max(...ph) : null;
+        res.CADD = { live: true, val: top != null ? t('Score {0}', top.toFixed(1)) : 'No score', sub: top == null ? 'Scores cover single-letter changes' : top >= 20 ? 'Among the top 1% most likely to be harmful' : top >= 10 ? 'Among the top 10% most likely to be harmful' : 'Not predicted to be harmful' };
+      }
+    }).catch(() => { MV.forEach(k => { if (want.includes(k)) res[k] = { fallback: true }; }); }));
     if (isRs && want.includes('Ensembl')) tasks.push(fetchJSON(`https://rest.ensembl.org/variation/human/${rsid}?content-type=application/json`).then(j => {
       res.Ensembl = { live: true, val: (j.most_severe_consequence || 'Unknown consequence').replace(/_/g, ' '), sub: j.MAF != null ? t('Minor allele {0}, frequency {1}', j.minor_allele, j.MAF) : 'Ensembl GRCh38 record' };
     }).catch(() => { res.Ensembl = { fallback: true }; }));
@@ -304,7 +339,7 @@ class LiberateDNA extends Component {
     const carrier = buildCarrier(G).map(c => ({ ...c, status: c.missing ? 'Not called' : c.affected ? 'Two copies' : c.carrier ? 'Carrier' : 'Not detected', ...lv(c.missing ? -1 : c.affected ? 2 : c.carrier ? 1 : 0) }))
       .sort((a, b) => (b.n || 0) - (a.n || 0));
     const carriers = carrier.filter(c => c.n >= 1);
-    const drugs = buildDrugs(G).map(d => {
+    const drugs = buildDrugs(G, xx).map(d => {
       if (!d.missing) return { ...d, ...lv(d.level) };
       const offChip = v4 && d.chipDep;
       return { ...d, diplo: 'Not called', pheno: offChip ? 'Not on your chip' : 'Not called', level: -1, ...lv(-1),
@@ -322,13 +357,13 @@ class LiberateDNA extends Component {
     const m = document.querySelector('[data-main]'); if (m) m.scrollTop = 0;
   }
   term(t) { this.setState({ term: this.state.term === t ? null : t }); }
-  openPicker(attach) { this._attach = !!attach; const el = document.getElementById(this.inputId); if (el) { el.value = ''; el.click(); } }
+  openPicker(attach) { this._attach = attach === true; this._compare = attach === 'compare'; const el = document.getElementById(this.inputId); if (el) { el.value = ''; el.click(); } }
 
   render() {
     const D = this.derive(), s = this.state, T = D.T;
     const rootStyle = Object.assign({}, T.vars, I18N.font ? { '--font': `${I18N.font}, ${T.vars['--font'] || 'system-ui, sans-serif'}` } : {}, { position: 'fixed', inset: '0', display: 'flex', flexDirection: 'column', fontFamily: 'var(--font)', color: 'var(--ink)', background: 'var(--bg)', overflow: 'hidden' });
     return html`<div data-locus-root="1" class=${'locus theme-' + s.theme} lang=${s.lang} dir=${I18N.dir} style=${rootStyle}>
-      <input id=${this.inputId} type="file"  onChange=${e => { const f = e.target.files && e.target.files[0]; if (!f) return; if (this._attach) { this._attach = false; this.attachReal(f); } else this.pickFile(f); }} tabindex="-1" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;left:-10px;top:-10px" />
+      <input id=${this.inputId} type="file"  onChange=${e => { const f = e.target.files && e.target.files[0]; if (!f) return; if (this._attach) { this._attach = false; this.attachReal(f); } else if (this._compare) { this._compare = false; this.compareReal(f); } else this.pickFile(f); }} tabindex="-1" aria-hidden="true" style="position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;left:-10px;top:-10px" />
       <div class="locus-shell" style="flex:1;min-height:0;display:flex;flex-direction:column" inert=${s.look || s.report ? true : undefined} aria-hidden=${s.look || s.report ? 'true' : undefined}>
         ${s.phase === 'upload' && this.viewUpload(D)}
         ${s.phase === 'parsing' && this.viewParsing(D)}
@@ -560,7 +595,7 @@ class LiberateDNA extends Component {
     const regions = rows(H.anc.regions, regMeta, r => I18N.join(REF_PANEL.groups.filter(g => g.region === r.id).map(g => g.name).slice(0, 4)));
     const mat = H.mt && { hg: H.mt.hg, path: H.mt.path, via: 'mitochondrial DNA, from mother to every child', desc: lineInfo(MT_INFO, H.mt.hg), markers: t('Placed on PhyloTree from {0} mitochondrial markers. Match score {1}%.', fmt(H.mt.tested), Math.round(H.mt.score * 100)) };
     const pat = !xx && H.y && { hg: H.y.short || H.y.hg, alt: H.y.short ? `ISOGG 2016: ${H.y.hg}` : '', path: H.y.path.filter(n => n !== 'Root'), via: 'the Y chromosome, from father to son', desc: lineInfo(Y_INFO, H.y.hg), markers: t('Placed on the ISOGG tree from {0} Y-chromosome markers; {1} carry the branch mutations on your path.', fmt(H.y.tested), fmt(H.y.derived)) };
-    return { groups, regions, closest: H.anc.closest.map(c => meta[c.id]), paint: H.paint, used: H.anc.used, refPeople: REF_PANEL.groups.reduce((t, g) => t + g.n, 0), lines: { mat, pat } };
+    return { groups, regions, closest: H.anc.closest.map(c => meta[c.id]), paint: H.paint, phasedPaint: !!H.phasedPaint, used: H.anc.used, refPeople: REF_PANEL.groups.reduce((t, g) => t + g.n, 0), lines: { mat, pat } };
   }
 
   ancestryRows(D) {
@@ -752,10 +787,10 @@ class LiberateDNA extends Component {
       <div style="${S.card};padding:clamp(18px,3vw,26px);display:flex;flex-direction:column;gap:14px">
         <div style="display:flex;flex-direction:column;gap:6px">
           <h2 style=${S.h2}>Chromosome painting</h2>
-          <p style="margin:0;font-size:14px;line-height:1.55;color:var(--muted);max-width:66ch">You have two copies of each chromosome, one from each parent. Each stretch of about 120 markers is matched to the closest pair of broad regions. Short pieces under a few percent can be noise, so treat this as a rough picture. <button onClick=${() => this.term('phased')} aria-expanded=${s.term === 'phased' ? 'true' : 'false'} style=${S.term}>Which copy is which?</button></p>
+          <p style="margin:0;font-size:14px;line-height:1.55;color:var(--muted);max-width:66ch">You have two copies of each chromosome, one from each parent. ${H.phasedPaint ? 'Your phased file shows which letters sit together on each copy, so each copy is painted on its own. Windows of about 60 markers are matched to the closest broad region, and a smoothing pass removes short switches that are likely noise.' : 'Windows of about 60 markers are matched to the closest pair of broad regions, and a smoothing pass removes short switches that are likely noise. Treat it as a rough picture.'} <button onClick=${() => this.term('phased')} aria-expanded=${s.term === 'phased' ? 'true' : 'false'} style=${S.term}>Which copy is which?</button></p>
         </div>
         ${s.term === 'phased' && html`<div style=${S.tip}>The two rows are the two copies, but LiberateDNA does not yet know which came from which parent, even with the phased file. A stretch shown on the top row may come from either parent.</div>`}
-        ${s.file2 && html`<div role="status" style="display:flex;gap:10px;padding:12px 14px;border-radius:var(--r);background:var(--l0b);color:var(--l0f);font-size:14px;line-height:1.5"><i class="ph ph-check-circle" aria-hidden="true" style="font-size:18px;flex:none"></i><span>Phased file added: ${s.file2}. Your results are unchanged.</span></div>`}
+        ${s.file2 && html`<div role="status" style="display:flex;gap:10px;padding:12px 14px;border-radius:var(--r);background:var(--l0b);color:var(--l0f);font-size:14px;line-height:1.5"><i class="ph ph-check-circle" aria-hidden="true" style="font-size:18px;flex:none"></i><span>Phased file added: ${s.file2}. ${H.phasedPaint ? 'Each copy is now painted on its own; your other results are unchanged.' : 'Your results are unchanged.'}</span></div>`}
         <div style="font-size:14px;color:var(--muted)">Tap a segment to see its position, length and origin.</div>
         <div style="display:flex;flex-direction:column;gap:9px">
           ${paint.map(c => html`<div style="display:grid;grid-template-columns:26px minmax(0,1fr);gap:6px 10px;align-items:center">
@@ -786,6 +821,9 @@ class LiberateDNA extends Component {
         </div>
       </div>
 
+      ${D.real && this.viewRoh(D)}
+      ${D.real && this.viewCompare(D)}
+
       <details style="${S.card};padding:clamp(18px,3vw,26px)">
         <summary style="cursor:pointer;font-size:var(--h2);font-weight:var(--hw)">How this works and how sure it is</summary>
         <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px;font-size:14px;line-height:1.6;max-width:72ch">
@@ -795,6 +833,72 @@ class LiberateDNA extends Component {
         </div>
       </details>
     </section>`;
+  }
+
+  /* Runs of homozygosity: how much of the genome sits in long stretches where both copies match. */
+  viewRoh(D) {
+    const r = D.real.roh;
+    const card = body => html`<div style="${S.card};padding:clamp(18px,3vw,26px);display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;flex-direction:column;gap:6px"><h2 style=${S.h2}>Matching stretches (runs of homozygosity)</h2>
+      <p style="margin:0;font-size:14px;line-height:1.55;color:var(--muted);max-width:70ch">Long stretches where the copy from your mother and the copy from your father carry the same letters. They show how closely related your parents' families are.</p></div>${body}</div>`;
+    if (!r) return null;
+    if (r.tooFew) return card(html`<p style="margin:0;font-size:14px;color:var(--muted)">${t('Your file has {0} autosomal markers. This needs at least 100,000, as on a full chip file, to find long stretches reliably.', fmt(r.markers))}</p>`);
+    const pct = x => (x * 100).toFixed(x < 0.01 ? 2 : 1) + '%';
+    const verdict = r.fLong >= 0.04 ? ['Your parents are likely closely related, about as close as first cousins or closer.', 2]
+      : r.fLong >= 0.01 ? ['Your parents likely share a recent common ancestor, about as close as second cousins.', 1]
+      : r.f >= 0.005 ? ["Your parents' families probably come from the same community, where people have married within the group for many generations. This is common in many parts of the world, such as the Arabian Peninsula, the Levant, Ashkenazi Jewish communities, Sardinia and Finland.", 1]
+      : ['Typical for people whose parents are not related.', 0];
+    const stats = [
+      { label: 'Total in long stretches', value: notr(r.totalMb.toFixed(0) + ' Mb'), sub: t('{0} stretches over 1.5 Mb', fmt(r.n)) },
+      { label: 'Share of your genome', value: notr(pct(r.f)), sub: 'Known as F(ROH)' },
+      { label: 'Longest stretch', value: notr(r.longest.toFixed(1) + ' Mb'), sub: t('{0} Mb in stretches over 8 Mb', r.longMb.toFixed(0)) }
+    ];
+    if (r.het != null) stats.push({ label: 'Mixed calls', value: notr(pct(r.het)), sub: 'Markers where your two copies differ' });
+    const by = {}; r.segs.forEach(sg => (by[sg[0]] = by[sg[0]] || []).push(sg));
+    return card(html`
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:10px">
+        ${stats.map(x => html`<div style="padding:14px;border-radius:var(--r);background:var(--soft);display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;font-weight:600;color:var(--muted)">${x.label}</span><span style="font-size:22px;font-weight:700;font-family:var(--mono)">${x.value}</span><span style="font-size:12px;color:var(--muted)">${x.sub}</span></div>`)}
+      </div>
+      <div role="note" style="display:flex;gap:10px;padding:12px 14px;border-radius:var(--r);background:var(--l${verdict[1]}b);color:var(--l${verdict[1]}f);font-size:14px;line-height:1.55"><i class="ph ph-users-three" aria-hidden="true" style="font-size:18px;flex:none;margin-top:1px"></i><span>${verdict[0]}</span></div>
+      ${r.n > 0 && html`<div style="display:flex;flex-direction:column;gap:5px" aria-label="Where the stretches are">
+        ${CHR.slice(0, 22).map(([name, len]) => html`<div style="display:grid;grid-template-columns:26px minmax(0,1fr);gap:10px;align-items:center">
+          <span style="font-family:var(--mono);font-size:12px;color:var(--muted);text-align:end">${name}</span>
+          <div dir="ltr" style="position:relative;width:${(len / 249 * 100).toFixed(1)}%;height:9px;border-radius:var(--rc);background:var(--surface2)">${(by[+name] || []).map(sg => html`<span title=${t('Chromosome {0}: {1} to {2} Mb', name, (sg[1] / 1e6).toFixed(1), (sg[2] / 1e6).toFixed(1))} style="position:absolute;top:0;bottom:0;left:${(sg[1] / 1e6 / len * 100).toFixed(2)}%;width:${Math.max(0.6, (sg[2] - sg[1]) / 1e6 / len * 100).toFixed(2)}%;border-radius:var(--rc);background:var(--accent)"></span>`)}</div>
+        </div>`)}
+      </div>`}
+      <p style="margin:0;font-size:13px;line-height:1.6;color:var(--muted);max-width:72ch">Children of first cousins have about 6% of their genome in such stretches, children of second cousins about 1.5%. Chip data finds stretches over about 1.5 Mb; shorter ones are missed. If your parents are related, a genetic counselor can explain what it means for recessive conditions in your family.</p>`);
+  }
+
+  /* A second person's file: how closely related, and recessive variants both carry. */
+  viewCompare(D) {
+    const s = this.state, c = s.cmp;
+    const REL = { same: 'The same person, or identical twins', parent: 'Parent and child', sibling: 'Full siblings',
+      second: 'Second-degree relatives: grandparent, aunt or uncle, niece or nephew, or half siblings', third: 'Third-degree relatives, such as first cousins',
+      fourth: 'Distant relatives, such as second cousins', none: 'No close relationship found' };
+    let shared = null;
+    if (c) {
+      // Same gene counts even when the two variants differ (two different MEFV or HBB variants still add up).
+      const a = buildCarrier(D.G), b = buildCarrier(c.genos), genes = l => new Set(l.filter(x => x.n >= 1).map(x => x.gene)), gb = genes(b);
+      shared = [...genes(a)].filter(g => gb.has(g)).map(g => ({ gene: g, cond: a.find(x => x.gene === g && x.n >= 1).cond, va: I18N.join(a.filter(x => x.gene === g && x.n >= 1).map(x => x.variant)), vb: I18N.join(b.filter(x => x.gene === g && x.n >= 1).map(x => x.variant)) }));
+      shared.tested = a.filter((x, i) => x.n != null && b[i].n != null).length;
+    }
+    return html`<div style="${S.card};padding:clamp(18px,3vw,26px);display:flex;flex-direction:column;gap:14px">
+      <div style="display:flex;flex-direction:column;gap:6px"><h2 style=${S.h2}>Compare with a relative or partner</h2>
+        <p style="margin:0;font-size:14px;line-height:1.55;color:var(--muted);max-width:70ch">Add another person's raw DNA file to see how closely you are related, and whether you both carry a variant for the same recessive condition. Their file is read in this browser and is not saved. Ask them first: it is their DNA.</p></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><button onClick=${() => this.openPicker('compare')} disabled=${!!s.comparing} style=${S.btnP}><i class="ph ph-user-plus" aria-hidden="true"></i>${s.comparing ? 'Reading…' : c ? 'Compare another file' : 'Add their file'}</button>${c && html`<span style="font-family:var(--mono);font-size:13px;color:var(--muted);word-break:break-all">${notr(s.cmpName)}</span>`}</div>
+      ${s.cmpErr && html`<span role="alert" style="align-self:flex-start;font-size:13px;font-weight:600;padding:4px 9px;border-radius:var(--rc);color:var(--l2f);background:var(--l2b)">${s.cmpErr}</span>`}
+      ${c && html`<div aria-live="polite" style="display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:13px;font-weight:600;color:var(--muted)">Most likely relationship</span><span style="font-size:clamp(22px,3vw,30px);font-weight:var(--h1w);line-height:1.15">${REL[c.rel]}</span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,170px),1fr));gap:10px">
+          ${[['DNA shared', notr(Math.round(c.shared * 100) + '%'), t('About {0} cM', fmt(Math.round(c.shared * 7000 / 10) * 10))], ['Kinship', notr(c.phi.toFixed(3)), '0.5 same person, 0.25 parent or sibling'], ['Markers compared', notr(fmt(c.n)), t('Opposite calls: {0}%', (c.ibs0 * 100).toFixed(2))]].map(([l, v, sub]) => html`<div style="padding:14px;border-radius:var(--r);background:var(--soft);display:flex;flex-direction:column;gap:4px"><span style="font-size:12px;font-weight:600;color:var(--muted)">${l}</span><span style="font-size:22px;font-weight:700;font-family:var(--mono)">${v}</span><span style="font-size:12px;color:var(--muted)">${sub}</span></div>`)}
+        </div>
+        <p style="margin:0;font-size:13px;line-height:1.6;color:var(--muted);max-width:72ch">Parents and children never have opposite letters at a marker (such as AA and GG), while siblings sometimes do, which is how the two are told apart. Relatives more distant than second cousins often look unrelated with this method.</p>
+        <div style="display:flex;flex-direction:column;gap:8px"><span style="font-size:15px;font-weight:700">Recessive conditions you both carry</span>
+          ${shared.length ? shared.map(x => html`<div role="note" style="display:flex;gap:10px;padding:12px 14px;border-radius:var(--r);background:var(--l2b);color:var(--l2f);font-size:14px;line-height:1.55"><i class="ph ph-warning" aria-hidden="true" style="font-size:18px;flex:none;margin-top:1px"></i><span>${t('You both carry a variant in {0}, linked to {1} (yours: {2}; theirs: {3}). If two carriers have a child, each child has a 1 in 4 chance of the condition. Rare calls on consumer chips are often wrong, so confirm with a clinical test.', x.gene, x.cond, x.va, x.vb)}</span></div>`)
+            : html`<p style="margin:0;font-size:14px;color:var(--muted)">${t('No shared carrier variants among the {0} tested in both files.', shared.tested)}</p>`}
+        </div>
+      </div>`}
+    </div>`;
   }
 
   viewHeritageExample(D) {
@@ -1002,17 +1106,19 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
     return html`<section aria-labelledby="h-tr" style="display:flex;flex-direction:column;gap:20px">
       <header style="display:flex;flex-direction:column;gap:10px">
         <h1 id="h-tr" style=${S.h1}>Traits</h1>
-        <p style=${S.lead}>Well-studied markers for appearance, taste and metabolism. Most traits come from many genes, so treat these as tendencies.</p>
+        <p style=${S.lead}>Well-studied markers for looks, taste, blood, nutrition, the brain and Neanderthal DNA. Most traits come from many genes, so treat these as tendencies, and check the evidence label on each card.</p>
       </header>
+      ${TRAIT_GROUPS.map(gname => { const list = D.traits.filter(x => x.group === gname); return list.length > 0 && html`<div style="display:flex;flex-direction:column;gap:12px">
+      ${gname !== 'Looks and taste' && html`<h2 style=${S.h2}>${gname}</h2>`}
       <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,240px),1fr));gap:12px">
-        ${D.traits.map((t, ti) => { const c = lv(t.ev === 'Strong' ? 0 : t.ev === 'Moderate' ? -1 : 1); return html`<div style="${S.card};padding:18px;display:flex;flex-direction:column;gap:10px">
+        ${list.map((t, ti) => { const c = lv(t.ev === 'Strong' ? 0 : t.ev === 'Moderate' ? -1 : 1); return html`<div style="${S.card};padding:18px;display:flex;flex-direction:column;gap:10px">
           <span aria-hidden="true" style="display:var(--iconDisp);width:40px;height:40px;border-radius:50%;background:oklch(0.94 0.04 ${(ti * 40 + 180) % 360});align-items:center;justify-content:center"><i class=${'ph ' + t.icon} style="font-size:20px;color:#262421"></i></span>
           <div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><span style="font-size:13px;color:var(--muted)">${t.name}</span><span style="font-size:11px;font-weight:600;padding:2px 7px;border-radius:var(--rc);color:${c.fg};background:${c.bg};white-space:nowrap">${t.ev} evidence</span></div>
           <span style="font-size:18px;font-weight:var(--tw);line-height:1.3;text-wrap:pretty">${t.result}</span>
           <span style="font-size:13px;line-height:1.45;color:var(--muted);text-wrap:pretty">${t.freq}</span>
-          <div style="margin-top:auto;padding-top:10px;border-top:var(--row);display:flex;flex-direction:column;gap:6px">${Copies(t.n, t.eff)}<span style="${S.mono12}">${t.gene} ${t.rsid} ${t.geno}</span></div>
+          <div style="margin-top:auto;padding-top:10px;border-top:var(--row);display:flex;flex-direction:column;gap:6px">${t.detail ? html`<span style="font-size:13px;color:var(--ink)">${t.detail}</span>` : t.calc && t.n == null ? '' : Copies(t.n, t.eff)}<span style="${S.mono12}">${t.gene} ${t.rsid} ${t.geno}</span></div>
         </div>`; })}
-      </div>
+      </div></div>`; })}
     </section>`;
   }
 
@@ -1036,14 +1142,16 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
       SNPedia: { val: sm ? sr.rsid : `${sr.rsid}(${sr.geno.replace('/', ';')})`, sub: sm ? 'Summary hidden with your sensitive results' : sr.label },
       Ensembl: { val: sr.cons, sub: t('chr{0} on GRCh37', sr.loc) },
       gnomAD: { val: sr.maf ? t('Minor allele {0}, frequency {1}', sr.maf[0], sr.maf[1]) : 'No built-in figure', sub: sr.maf ? '1000 Genomes, all populations' : 'Look it up for gnomAD data' },
-      PharmGKB: { val: sr.cat === 'drug' ? 'Level 1A clinical annotation' : 'No drug annotations', sub: sr.cat === 'drug' ? 'CPIC guideline available' : 'Not a pharmacogene marker' }
+      PharmGKB: { val: sr.cat === 'drug' ? 'Level 1A clinical annotation' : 'No drug annotations', sub: sr.cat === 'drug' ? 'CPIC guideline available' : 'Not a pharmacogene marker' },
+      'GWAS Catalog': { val: 'Not checked yet', sub: 'Look it up to see linked traits' },
+      CADD: { val: 'Not checked yet', sub: 'Look it up for a harm score' }
     };
     const fetched = t('Fetched {0}', (s.lkTime || {})[sr.rsid] || today());
-    const results = ['ClinVar', 'SNPedia', 'Ensembl', 'gnomAD', 'PharmGKB'].map(db => {
+    const results = LK_DBS.map(db => {
       const d = data[db] || {};
       if (d.fail) return { db, failed: lk !== 'retrying', retrying: lk === 'retrying' };
-      if (d.live) return { db, ok: true, val: d.val, sub: d.sub, src: fetched, live: true };
-      return { db, ok: true, val: builtIn[db].val, sub: builtIn[db].sub, src: d.fallback && db !== 'PharmGKB' && /^rs/.test(sr.rsid) ? 'Built-in note (live source did not answer)' : 'Built-in note' };
+      if (d.live) return { db, ok: true, val: d.notr ? notr(d.val) : d.val, sub: d.sub, src: fetched, live: true };
+      return { db, ok: true, val: builtIn[db].val, sub: builtIn[db].sub, src: d.fallback && db !== 'PharmGKB' && /^rs/.test(sr.rsid) && builtIn[db].val !== 'Not checked yet' ? 'Built-in note (live source did not answer)' : 'Built-in note' };
     });
     const onLookup = () => { if (offline) return; if (!s.live) this.setState({ ask: sr.rsid }); else this.lookup(sr.rsid); };
     const select = r => this.setState({ sel: r.rsid, xsel: r.fromFile ? r : this.state.xsel, ask: null });
@@ -1094,10 +1202,10 @@ ${(!D.real || s.showEx) && html`      <div role="group" aria-label="Detail level
             <span style="font-size:13px;font-weight:700">Public databases</span>
             ${!lk && s.ask !== sr.rsid && html`
               <button class="press" onClick=${onLookup} disabled=${offline} style="${S.btnP};align-self:flex-start;${offline ? 'opacity:.5;cursor:not-allowed' : ''}"><i class="ph ph-globe-simple" aria-hidden="true"></i>Look up this marker</button>
-              <span style="font-size:12px;color:var(--muted);line-height:1.5">Checks ClinVar, SNPedia, Ensembl, gnomAD and PharmGKB. Sends one rsID per request, never your genotype or file.</span>`}
+              <span style="font-size:12px;color:var(--muted);line-height:1.5">Checks ClinVar, SNPedia, Ensembl, gnomAD, PharmGKB, the GWAS Catalog and CADD. Sends one rsID per request, never your genotype or file.</span>`}
             ${s.ask === sr.rsid && html`<div style="padding:16px;border-radius:var(--r);background:var(--soft);display:flex;flex-direction:column;gap:12px">
               <span style="font-size:15px;font-weight:700">Turn on live lookups?</span>
-              <p style="margin:0;font-size:14px;line-height:1.55">LiberateDNA will send ${sr.rsid} to five public databases. Your genotypes stay on this device. You can turn lookups off at any time.</p>
+              <p style="margin:0;font-size:14px;line-height:1.55">LiberateDNA will send ${sr.rsid} to public databases. Your genotypes stay on this device. You can turn lookups off at any time.</p>
               <div style="display:flex;gap:8px;flex-wrap:wrap"><button onClick=${() => this.lookup(sr.rsid)} style="${S.btnP};min-height:42px">Allow lookups</button><button onClick=${() => this.setState({ ask: null })} style="${S.btnS};min-height:42px">Not now</button></div>
             </div>`}
             ${lk === 'loading' && html`<div role="status" aria-label="Looking up" style="display:flex;flex-direction:column;gap:8px">${[0, 1, 2].map(() => html`<div class="pulse" style="height:48px;border-radius:var(--r);background:var(--surface2)"></div>`)}</div>`}

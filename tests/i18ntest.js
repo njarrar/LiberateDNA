@@ -38,8 +38,8 @@ const check = (name, ok, extra) => { console.log((ok ? 'PASS ' : 'FAIL ') + name
       (await leftovers()).forEach(x => left.add(x));
       if (tab === 'health') for (let i = 1; i < 3; i++) { const subs = await p.$$('[role=tablist] button, [aria-label] > button[aria-pressed]'); }
     }
-    await p.setInputFiles('#locus-file', path.join(__dirname, 'files', 'genome_Full_her.txt')).catch(() => {});
-    await p.goto(`${U}?start=upload&lang=${L}`); await p.setInputFiles('#locus-file', path.join(__dirname, 'files', 'genome_Full_her.txt'));
+    await p.setInputFiles('#locus-file', path.join(__dirname, 'files', 'genome_Full_mix.txt')).catch(() => {});
+    await p.goto(`${U}?start=upload&lang=${L}`); await p.setInputFiles('#locus-file', path.join(__dirname, 'files', 'genome_Full_mix.txt'));
     await p.waitForSelector('nav button[aria-current="page"]', { timeout: 30000 });
     for (const i of [0, 1, 2, 3, 4]) { const nb = (await p.$$('nav[aria-label] button'))[i]; if (nb) { await nb.click(); await p.waitForTimeout(200); (await leftovers()).forEach(x => left.add(x)); } }
     const lb = (await leftovers()).length;

@@ -7,7 +7,7 @@
 LiberateDNA reads your raw DNA file right in your web browser and shows your heritage,
 health, traits and drug response. Your file never leaves your machine.
 
-**[Open LiberateDNA](https://njarrar.github.io/LiberateDNA/)** · Version 3.2.0 · English, العربية, Français
+**[Open LiberateDNA](https://njarrar.github.io/LiberateDNA/)** · Version 4.0.0 · English, العربية, Français
 
 ![Home page](docs/screenshots/home.png)
 
@@ -35,7 +35,63 @@ without handing it to anyone else.
 - **Open source.** Every line is in this repository under the MIT license, so anyone can
   check what it does.
 
-## What's new in 3.2.0
+## What's new in 4.0.0
+
+**Heritage**
+- **Matching stretches (runs of homozygosity).** Finds long stretches where the copy from
+  your mother and the copy from your father are the same, and says how closely related your
+  parents' families are likely to be. Shows the total length, the share of your genome
+  (F(ROH)), the longest stretch and a map by chromosome.
+- **Compare with a relative or partner.** Add a second person's raw file to see how closely
+  you are related (same person, parent and child, sibling, second, third or fourth degree),
+  with the share of DNA in common. It also lists recessive conditions you both carry a
+  variant for, gene by gene. The second file is read in the browser and never saved.
+- **Smoother chromosome painting.** Windows of 60 markers, then a path through them that
+  avoids switching region without good reason (Viterbi smoothing).
+- **Each parent's copy painted on its own.** With a phased file (23andMe phased data or a
+  phased VCF), each copy is painted separately instead of as a pair.
+
+**Health and drugs**
+- **Heart:** the 9p21 risk marker and PCSK9 R46L, which lowers LDL cholesterol.
+- **Type 2 diabetes:** the card now counts risk alleles across TCF7L2, SLC30A8, KCNJ11 and PPARG.
+- **Seven more drug genes:** TPMT and NUDT15 (thiopurines), UGT1A1 (irinotecan, atazanavir),
+  CYP3A5 (tacrolimus), an HLA-B\*57:01 tag (abacavir), OPRM1 (opioids; no dosing guideline)
+  and G6PD (rasburicase, primaquine, dapsone).
+
+**Traits, now in groups**
+- **Looks:** eye color from the IrisPlex model (six markers, with chances for blue, green or
+  hazel, and brown), red hair, blond hair and skin tone markers.
+- **Blood:** likely ABO group, secretor status (FUT2) and Duffy-null.
+- **Nutrition:** folate (MTHFR 677 and 1298), vitamin B12 recycling, vitamin D level,
+  omega-3 conversion, beta-carotene to vitamin A, choline need, saturated fat and weight.
+- **Brain, sleep and aging:** COMT, BDNF, caffeine and sleep (ADORA2A) and a FOXO3 longevity
+  marker, each marked as limited evidence.
+- **Neanderthal DNA:** documented archaic variants on chromosome 3 (LZTFL1), at BNC2 and at OAS1.
+
+**Explorer**
+- Lookups now also show traits from the GWAS Catalog, the CADD harm score, and the lowest and
+  highest gnomAD frequency by region.
+
+**How the new markers were checked**
+Every new marker was checked against gnomAD v3.1.2 (HGDP + 1000 Genomes) for its position on
+both builds, its letters and its frequency in each region, and against the source papers for
+which letter has the effect. That check corrected several common mistakes: for eight markers
+the effect letter is the reference letter, four are usually written on the other strand, and
+the ABO O allele is a one-letter deletion that the reference genome itself carries.
+
+**Left out on purpose**
+- **An ancient-origins breakdown** (hunter-gatherer, early farmer, steppe). There is no open,
+  trustworthy set of figures per reference group to build it from, and invented numbers would
+  mislead.
+- **Using your maternal or paternal line to adjust your ancestry mix.** Those lines are one
+  ancestor each out of thousands, so they should not move the whole-genome result.
+- **A separate list of ancestry markers with quoted frequencies.** Those figures could not be
+  verified. The app keeps its 15,410 markers with frequencies measured in gnomAD.
+- **Rh blood type.** RhD negative comes from a whole gene being missing, which chips do not read.
+- **TLR1 rs5743618 as a Neanderthal marker.** The study on archaic immune genes does not name
+  it, so it is not shown as one.
+
+### 3.2.0
 
 - **Files from any provider.** LiberateDNA now reads raw data from AncestryDNA, MyHeritage,
   FamilyTreeDNA, Living DNA and many more, not only 23andMe. It works out the company, the
@@ -98,7 +154,7 @@ wherever its grammar needs. Anything left empty falls back to English.
 | ![Chromosome painting](docs/screenshots/painting.png) | ![Maternal and paternal lines](docs/screenshots/lineage.png) |
 | **Chromosome painting.** Where each stretch of your DNA most likely comes from. | **Maternal and paternal lines.** Placed on the full public family trees. |
 | ![Health](docs/screenshots/health.png) | ![Traits](docs/screenshots/traits.png) |
-| **Health.** Risk factors, carrier status and drug response, with sensitive results hidden until you ask. | **Traits.** Lactose tolerance, caffeine, eye color and more. |
+| **Health.** Risk factors, carrier status and drug response, with sensitive results hidden until you ask. | **Traits.** Eye color, blood group, nutrition, Neanderthal variants and more. |
 
 It also has an **Explorer** to search every marker in your file, a **doctor summary** you
 can print, four color themes, three languages and a phone layout.
@@ -141,8 +197,14 @@ Everything below runs in your browser, on your file:
   1000 Genomes projects. A supervised mixture model (as in frappe and ADMIXTURE projection)
   finds the share of each group; ranges come from resampling blocks of markers. Groups under
   2% are dropped, since they mostly soak up noise.
-- **Chromosome painting.** Windows of about 120 markers are matched to the closest pair of
-  broad regions, with a light pull toward the overall result. It is a rough picture.
+- **Chromosome painting.** Windows of 60 markers are matched to the closest pair of broad
+  regions, with a light pull toward the overall result, then smoothed with a Viterbi path so
+  the region changes only where the evidence supports it. Phased files are painted one copy at
+  a time. It is a rough picture.
+- **Matching stretches.** Runs of at least 80 markers and 1.5 Mb where both copies agree
+  (allowing about one mixed call per 100 markers), on chips with 100,000 or more markers.
+- **Relatives.** Kinship is the KING-robust estimate over markers both files share; parent and
+  child are told apart from siblings by the near absence of opposite calls (such as AA and GG).
 - **Maternal line.** Placed on PhyloTree Build 17 (5,400+ branches) with the HaploGrep
   scoring method, from the mitochondrial calls in the file.
 - **Paternal line.** Placed on the ISOGG 2016 Y tree (1,800+ branches, 15,000 SNPs) by the
@@ -192,7 +254,7 @@ expects Preact + htm (`htm/preact/standalone.umd.js`), `@phosphor-icons/web` 2.1
 fflate 0.8.3 (for gzip and bgzip files) unpacked in a `deps/` folder next to `src/`.
 
 ## Tests
-`tests/` holds Playwright scripts and sample files (a normal zip, a phased zip, a zip with password `hunter2`, an AncestryDNA export, a cut-off file and an empty file). `node tests/formats.js` writes the same person's DNA in 15 formats (AncestryDNA, MyHeritage, FamilyTreeDNA, Illumina reports, build 36, a chip VCF, a GRCh38 whole genome VCF in bgzip blocks, a gVCF and more) to `shots/formats/`, reads each one with the real parser and checks that genotypes, heritage and both family lines match the 23andMe original. `tests/files/make_me.py` builds three more: a Middle Eastern style male file (J1 lines, Arabian lactase variant, G6PD, an i-number duplicate), the same as CSV, and a female file whose Y rows are single-dash no-calls. `genome_Full_her.txt` is a held-out Palestinian man from the reference build, used to check the Heritage page; `node tests/fixtest.js` checks them. Serve the folder (`python3 -m http.server 8765`), then run `node tests/realtest.js` from inside `tests/` with Playwright installed. `node tests/i18ntest.js` checks language switching, the right to left layout and that no translated text is left in English; `LANGS=en,ar,fr node tests/sweep.js` checks every theme and language at desktop and phone widths.
+`tests/` holds Playwright scripts and sample files (a normal zip, a phased zip, a zip with password `hunter2`, an AncestryDNA export, a cut-off file and an empty file). `node tests/formats.js` writes the same person's DNA in 15 formats (AncestryDNA, MyHeritage, FamilyTreeDNA, Illumina reports, build 36, a chip VCF, a GRCh38 whole genome VCF in bgzip blocks, a gVCF and more) to `shots/formats/`, reads each one with the real parser and checks that genotypes, heritage and both family lines match the 23andMe original. `tests/files/make_me.py` builds three more: a Middle Eastern style male file (J1 lines, Arabian lactase variant, G6PD, an i-number duplicate), the same as CSV, and a female file whose Y rows are single-dash no-calls. `genome_Full_mix.txt` is a made-up man of mixed European and East Asian ancestry, built by `node tests/files/make_mixed.js` from the reference group frequencies (no real person's DNA; maternal line H1, paternal line O-M122), used to check the Heritage page and for the screenshots; `node tests/fixtest.js` checks them. Serve the folder (`python3 -m http.server 8765`), then run `node tests/realtest.js` from inside `tests/` with Playwright installed. `node tests/i18ntest.js` checks language switching, the right to left layout and that no translated text is left in English; `LANGS=en,ar,fr node tests/sweep.js` checks every theme and language at desktop and phone widths. `node tests/genome.js` builds simulated people (a child of cousins, a family with cousins and half siblings, a person with one African and one European copy) and checks matching stretches, relative matching and painting of phased files; `node tests/genome-ui.js` then opens those files in the browser. `node tests/mock.js` checks database lookups against stand-in replies. `node tests/screens.js` retakes the screenshots in `docs/screenshots` from the made-up file.
 
 ## License
 

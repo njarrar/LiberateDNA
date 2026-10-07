@@ -19,7 +19,7 @@ function engine() {
 
 // One person: the heritage test file, plus the curated markers and X from the other test file.
 const rd = f => load('tests/files/' + f).split('\n').filter(l => l && l[0] !== '#').map(l => l.split('\t'));
-const her = rd('genome_Full_her.txt'), me = rd('genome_Full_me.txt');
+const her = rd('genome_Full_mix.txt'), me = rd('genome_Full_me.txt');
 const cur = new Set(CURATED_IDS), seen = new Set(her.map(r => r[0]));
 const base = her.concat(me.filter(r => !seen.has(r[0]) && (cur.has(r[0]) || r[1] === 'X')));
 const order = c => c === 'X' ? 23 : c === 'Y' ? 24 : c === 'MT' ? 25 : +c;

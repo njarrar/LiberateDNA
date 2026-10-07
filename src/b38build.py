@@ -74,6 +74,8 @@ for rid, c, p in rows:
             f = r.split('\t', 5)
             if int(f[1]) == q and len(f[3]) == 1: ref = f[3]; break
     except Exception as e: print('fetch', rid, e, file=sys.stderr)
+    # The reference genome carries the ABO O deletion, so a whole genome file that lists nothing here is D/D.
+    if rid == 'rs8176719': ref = 'D'
     cur[rid] = [q, ref]
 print('panel lifted', sum(1 for o in po if o != 'x'), 'of', len(po), '| y', sum(1 for o in yp if o != 'x'), 'of', len(yp),
       '| curated', len(cur), 'with ref', sum(1 for v in cur.values() if v[1]), file=sys.stderr)
